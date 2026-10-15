@@ -1,0 +1,1 @@
+{"target": "ccz_cs12cs13", "d": 2, "n": 10, "s": 1, "status": "infeasible", "sec": 0.9}

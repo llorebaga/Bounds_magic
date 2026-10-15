@@ -1,0 +1,11 @@
+{"target": "tt", "d": 2, "n": 8, "s": 1, "status": "infeasible", "sec": 0.0}
+{"target": "tt", "d": 2, "n": 8, "s": 2, "status": "infeasible", "sec": 2.9}
+{"target": "tt", "d": 2, "n": 8, "s": 3, "status": "infeasible", "sec": 28.0}
+{"target": "tt", "d": 2, "n": 8, "s": 4, "status": "infeasible", "sec": 63.8}
+{"target": "tt", "d": 2, "n": 9, "s": 1, "status": "infeasible", "sec": 0.0}
+{"target": "tt", "d": 2, "n": 9, "s": 2, "status": "infeasible", "sec": 0.1}
+{"target": "tt", "d": 2, "n": 9, "s": 3, "status": "infeasible", "sec": 4.7}
+{"target": "tt", "d": 2, "n": 9, "s": 4, "status": "infeasible", "sec": 133.3}
+{"target": "tt", "d": 2, "n": 10, "s": 1, "status": "infeasible", "sec": 0.0}
+{"target": "tt", "d": 2, "n": 10, "s": 2, "status": "infeasible", "sec": 5.7}
+{"target": "tt", "d": 2, "n": 10, "s": 3, "status": "infeasible", "sec": 61.4}

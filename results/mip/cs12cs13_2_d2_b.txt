@@ -1,0 +1,6 @@
+{"target": "cs12cs13_2", "d": 2, "n": 11, "s": 2, "status": "infeasible", "sec": 0.8}
+{"target": "cs12cs13_2", "d": 2, "n": 11, "s": 3, "status": "timeout", "sec": 2400.7}
+{"target": "cs12cs13_2", "d": 2, "n": 12, "s": 2, "status": "timeout", "sec": 2400.1}
+{"target": "cs12cs13_2", "d": 2, "n": 12, "s": 3, "status": "timeout", "sec": 2400.1}
+{"target": "cs12cs13_2", "d": 2, "n": 13, "s": 2, "status": "infeasible", "sec": 0.2}
+{"target": "cs12cs13_2", "d": 2, "n": 13, "s": 3, "status": "timeout", "sec": 2400.3}

@@ -1,0 +1,314 @@
+%apsrev4-2.bst 2019-01-14 (MD) hand-edited version of apsrev4-1.bst
+%Control: key (0)
+%Control: author (8) initials jnrlst
+%Control: editor formatted (1) identically to author
+%Control: production of article title (0) allowed
+%Control: page (0) single
+%Control: year (1) truncated
+%Control: production of eprint (0) enabled
+\begin{thebibliography}{26}%
+\makeatletter
+\providecommand \@ifxundefined [1]{%
+ \@ifx{#1\undefined}
+}%
+\providecommand \@ifnum [1]{%
+ \ifnum #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \@ifx [1]{%
+ \ifx #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \natexlab [1]{#1}%
+\providecommand \enquote  [1]{``#1''}%
+\providecommand \bibnamefont  [1]{#1}%
+\providecommand \bibfnamefont [1]{#1}%
+\providecommand \citenamefont [1]{#1}%
+\providecommand \href@noop [0]{\@secondoftwo}%
+\providecommand \href [0]{\begingroup \@sanitize@url \@href}%
+\providecommand \@href[1]{\@@startlink{#1}\@@href}%
+\providecommand \@@href[1]{\endgroup#1\@@endlink}%
+\providecommand \@sanitize@url [0]{\catcode `\\12\catcode `\$12\catcode
+  `\&12\catcode `\#12\catcode `\^12\catcode `\_12\catcode `\%12\relax}%
+\providecommand \@@startlink[1]{}%
+\providecommand \@@endlink[0]{}%
+\providecommand \url  [0]{\begingroup\@sanitize@url \@url }%
+\providecommand \@url [1]{\endgroup\@href {#1}{\urlprefix }}%
+\providecommand \urlprefix  [0]{URL }%
+\providecommand \Eprint [0]{\href }%
+\providecommand \doibase [0]{https://doi.org/}%
+\providecommand \selectlanguage [0]{\@gobble}%
+\providecommand \bibinfo  [0]{\@secondoftwo}%
+\providecommand \bibfield  [0]{\@secondoftwo}%
+\providecommand \translation [1]{[#1]}%
+\providecommand \BibitemOpen [0]{}%
+\providecommand \bibitemStop [0]{}%
+\providecommand \bibitemNoStop [0]{.\EOS\space}%
+\providecommand \EOS [0]{\spacefactor3000\relax}%
+\providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
+\let\auto@bib@innerbib\@empty
+%</preamble>
+\bibitem [{\citenamefont {Bravyi}\ and\ \citenamefont
+  {Kitaev}(2005)}]{bravyikitaev}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Bravyi}}\ and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Kitaev}},\ }\bibfield  {title} {\bibinfo {title} {Universal quantum
+  computation with ideal {Clifford} gates and noisy ancillas},\ }\href
+  {https://doi.org/10.1103/PhysRevA.71.022316} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {71}},\ \bibinfo
+  {pages} {022316} (\bibinfo {year} {2005})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bravyi}\ and\ \citenamefont
+  {Haah}(2012)}]{bravyihaah}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Bravyi}}\ and\ \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Haah}},\
+  }\bibfield  {title} {\bibinfo {title} {Magic-state distillation with low
+  overhead},\ }\href {https://doi.org/10.1103/PhysRevA.86.052329} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume}
+  {86}},\ \bibinfo {pages} {052329} (\bibinfo {year} {2012})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Campbell}\ and\ \citenamefont
+  {Howard}(2017)}]{campbellhoward}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.~T.}\ \bibnamefont
+  {Campbell}}\ and\ \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Howard}},\ }\bibfield  {title} {\bibinfo {title} {Unified framework for
+  magic state distillation and multiqubit gate synthesis with reduced resource
+  cost},\ }\href {https://doi.org/10.1103/PhysRevA.95.022316} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume}
+  {95}},\ \bibinfo {pages} {022316} (\bibinfo {year} {2017})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Eastin}(2013)}]{eastin}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Eastin}},\ }\bibfield  {title} {\bibinfo {title} {Distilling one-qubit magic
+  states into {Toffoli} states},\ }\href
+  {https://doi.org/10.1103/PhysRevA.87.032321} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {87}},\ \bibinfo
+  {pages} {032321} (\bibinfo {year} {2013})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Jones}(2013)}]{jones}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Jones}},\ }\bibfield  {title} {\bibinfo {title} {Low-overhead constructions
+  for the fault-tolerant {Toffoli} gate},\ }\href
+  {https://doi.org/10.1103/PhysRevA.87.022328} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {87}},\ \bibinfo
+  {pages} {022328} (\bibinfo {year} {2013})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Haah}\ and\ \citenamefont {Hastings}(2018)}]{haah}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Haah}}\ and\ \bibinfo {author} {\bibfnamefont {M.~B.}\ \bibnamefont
+  {Hastings}},\ }\bibfield  {title} {\bibinfo {title} {Codes and protocols for
+  distilling {$T$}, controlled-{$S$}, and {Toffoli} gates},\ }\href
+  {https://doi.org/10.22331/q-2018-06-07-71} {\bibfield  {journal} {\bibinfo
+  {journal} {Quantum}\ }\textbf {\bibinfo {volume} {2}},\ \bibinfo {pages} {71}
+  (\bibinfo {year} {2018})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Litinski}(2019)}]{litinski}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Litinski}},\ }\bibfield  {title} {\bibinfo {title} {Magic state
+  distillation: Not as costly as you think},\ }\href
+  {https://doi.org/10.22331/q-2019-12-02-205} {\bibfield  {journal} {\bibinfo
+  {journal} {Quantum}\ }\textbf {\bibinfo {volume} {3}},\ \bibinfo {pages}
+  {205} (\bibinfo {year} {2019})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Singh}\ \emph {et~al.}(2026)\citenamefont {Singh},
+  \citenamefont {Gidney},\ and\ \citenamefont {Jones}}]{borrowed}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Singh}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Gidney}},\ and\
+  \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Jones}},\ }\href@noop {}
+  {\bibinfo {title} {Borrowed identities: Malleable distillation factories and
+  a unified numerical search}} (\bibinfo {year} {2026}),\ \Eprint
+  {https://arxiv.org/abs/2606.28518} {arXiv:2606.28518 [quant-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Jacinto}\ \emph {et~al.}(2026)\citenamefont
+  {Jacinto}, \citenamefont {Valcarce}, \citenamefont {Barizien}, \citenamefont
+  {Gouzien},\ and\ \citenamefont {Sangouard}}]{jacinto}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {Jacinto}}, \bibinfo {author} {\bibfnamefont {X.}~\bibnamefont {Valcarce}},
+  \bibinfo {author} {\bibfnamefont {V.}~\bibnamefont {Barizien}}, \bibinfo
+  {author} {\bibfnamefont {{\'E}.}~\bibnamefont {Gouzien}},\ and\ \bibinfo
+  {author} {\bibfnamefont {N.}~\bibnamefont {Sangouard}},\ }\href@noop {}
+  {\bibinfo {title} {Exploring the landscape of compact magic-state
+  distillation factories}} (\bibinfo {year} {2026}),\ \Eprint
+  {https://arxiv.org/abs/2606.07734} {arXiv:2606.07734 [quant-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Wills}\ \emph {et~al.}(2026)\citenamefont {Wills},
+  \citenamefont {Jain},\ and\ \citenamefont {Singh}}]{wjs}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Wills}}, \bibinfo {author} {\bibfnamefont {S.~P.}\ \bibnamefont {Jain}},\
+  and\ \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Singh}},\
+  }\href@noop {} {\bibinfo {title} {Classification of generalised triorthogonal
+  codes through length 54}} (\bibinfo {year} {2026}),\ \Eprint
+  {https://arxiv.org/abs/2609.30860} {arXiv:2609.30860 [quant-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Gong}\ \emph {et~al.}(2026)\citenamefont {Gong},
+  \citenamefont {Pattison}, \citenamefont {Rall},\ and\ \citenamefont
+  {Wills}}]{gong}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Gong}}, \bibinfo {author} {\bibfnamefont {C.~A.}\ \bibnamefont {Pattison}},
+  \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Rall}},\ and\ \bibinfo
+  {author} {\bibfnamefont {A.}~\bibnamefont {Wills}},\ }\href@noop {} {\bibinfo
+  {title} {Magic state distillation via codes over binary extension fields}}
+  (\bibinfo {year} {2026}),\ \Eprint {https://arxiv.org/abs/2608.09727}
+  {arXiv:2608.09727 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fang}\ and\ \citenamefont {Liu}(2020)}]{fangliu}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
+  {Fang}}\ and\ \bibinfo {author} {\bibfnamefont {Z.-W.}\ \bibnamefont {Liu}},\
+  }\bibfield  {title} {\bibinfo {title} {No-go theorems for quantum resource
+  purification},\ }\href {https://doi.org/10.1103/PhysRevLett.125.060405}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf
+  {\bibinfo {volume} {125}},\ \bibinfo {pages} {060405} (\bibinfo {year}
+  {2020})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fang}\ and\ \citenamefont {Liu}(2022)}]{fangliu2}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
+  {Fang}}\ and\ \bibinfo {author} {\bibfnamefont {Z.-W.}\ \bibnamefont {Liu}},\
+  }\bibfield  {title} {\bibinfo {title} {No-go theorems for quantum resource
+  purification: New approach and channel theory},\ }\href
+  {https://doi.org/10.1103/PRXQuantum.3.010337} {\bibfield  {journal} {\bibinfo
+   {journal} {PRX Quantum}\ }\textbf {\bibinfo {volume} {3}},\ \bibinfo {pages}
+  {010337} (\bibinfo {year} {2022})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Regula}(2022)}]{regulaprl}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Regula}},\ }\bibfield  {title} {\bibinfo {title} {Probabilistic
+  transformations of quantum resources},\ }\href
+  {https://doi.org/10.1103/PhysRevLett.128.110505} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {128}},\
+  \bibinfo {pages} {110505} (\bibinfo {year} {2022})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Regula}\ and\ \citenamefont
+  {Takagi}(2021)}]{regulatakagi}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Regula}}\ and\ \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Takagi}},\ }\bibfield  {title} {\bibinfo {title} {Fundamental limitations on
+  distillation of quantum channel resources},\ }\href
+  {https://doi.org/10.1038/s41467-021-24699-0} {\bibfield  {journal} {\bibinfo
+  {journal} {Nat. Commun.}\ }\textbf {\bibinfo {volume} {12}},\ \bibinfo
+  {pages} {4411} (\bibinfo {year} {2021})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Seddon}\ \emph {et~al.}(2021)\citenamefont {Seddon},
+  \citenamefont {Regula}, \citenamefont {Pashayan}, \citenamefont {Ouyang},\
+  and\ \citenamefont {Campbell}}]{seddon}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~R.}\ \bibnamefont
+  {Seddon}}, \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont {Regula}},
+  \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont {Pashayan}}, \bibinfo
+  {author} {\bibfnamefont {Y.}~\bibnamefont {Ouyang}},\ and\ \bibinfo {author}
+  {\bibfnamefont {E.~T.}\ \bibnamefont {Campbell}},\ }\bibfield  {title}
+  {\bibinfo {title} {Quantifying quantum speedups: Improved classical
+  simulation from tighter magic monotones},\ }\href
+  {https://doi.org/10.1103/PRXQuantum.2.010345} {\bibfield  {journal} {\bibinfo
+   {journal} {PRX Quantum}\ }\textbf {\bibinfo {volume} {2}},\ \bibinfo {pages}
+  {010345} (\bibinfo {year} {2021})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Nezami}\ and\ \citenamefont
+  {Haah}(2022)}]{nezamihaah}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Nezami}}\ and\ \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Haah}},\
+  }\bibfield  {title} {\bibinfo {title} {Classification of small triorthogonal
+  codes},\ }\href {https://doi.org/10.1103/PhysRevA.106.012437} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume}
+  {106}},\ \bibinfo {pages} {012437} (\bibinfo {year} {2022})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Koutsioumpas}\ \emph {et~al.}(2022)\citenamefont
+  {Koutsioumpas}, \citenamefont {Banfield},\ and\ \citenamefont {Kay}}]{kbk}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Koutsioumpas}}, \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Banfield}},\ and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Kay}},\ }\href@noop {} {\bibinfo {title} {The smallest code with transversal
+  {T}}} (\bibinfo {year} {2022}),\ \Eprint {https://arxiv.org/abs/2210.14066}
+  {arXiv:2210.14066 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Gidney}\ and\ \citenamefont
+  {Fowler}(2019)}]{gidneyfowler}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Gidney}}\ and\ \bibinfo {author} {\bibfnamefont {A.~G.}\ \bibnamefont
+  {Fowler}},\ }\bibfield  {title} {\bibinfo {title} {Efficient magic state
+  factories with a catalyzed {$|CCZ\rangle \to 2|T\rangle$} transformation},\
+  }\href {https://doi.org/10.22331/q-2019-04-30-135} {\bibfield  {journal}
+  {\bibinfo  {journal} {Quantum}\ }\textbf {\bibinfo {volume} {3}},\ \bibinfo
+  {pages} {135} (\bibinfo {year} {2019})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Beverland}\ \emph {et~al.}(2020)\citenamefont
+  {Beverland}, \citenamefont {Campbell}, \citenamefont {Howard},\ and\
+  \citenamefont {Kliuchnikov}}]{beverland}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Beverland}}, \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Campbell}},
+  \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Howard}},\ and\ \bibinfo
+  {author} {\bibfnamefont {V.}~\bibnamefont {Kliuchnikov}},\ }\bibfield
+  {title} {\bibinfo {title} {Lower bounds on the non-{Clifford} resources for
+  quantum computations},\ }\href {https://doi.org/10.1088/2058-9565/ab8963}
+  {\bibfield  {journal} {\bibinfo  {journal} {Quantum Sci. Technol.}\ }\textbf
+  {\bibinfo {volume} {5}},\ \bibinfo {pages} {035009} (\bibinfo {year}
+  {2020})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Golowich}\ and\ \citenamefont
+  {Guruswami}(2024)}]{golowich}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Golowich}}\ and\ \bibinfo {author} {\bibfnamefont {V.}~\bibnamefont
+  {Guruswami}},\ }\href@noop {} {\bibinfo {title} {Asymptotically good quantum
+  codes with transversal non-{Clifford} gates}} (\bibinfo {year} {2024}),\
+  \Eprint {https://arxiv.org/abs/2408.09254} {arXiv:2408.09254 [quant-ph]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Nguyen}(2024)}]{nguyen}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Q.~T.}\ \bibnamefont
+  {Nguyen}},\ }\href@noop {} {\bibinfo {title} {Good binary quantum codes with
+  transversal {CCZ} gate}} (\bibinfo {year} {2024}),\ \Eprint
+  {https://arxiv.org/abs/2408.10140} {arXiv:2408.10140 [quant-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Meier}\ \emph {et~al.}(2013)\citenamefont {Meier},
+  \citenamefont {Eastin},\ and\ \citenamefont {Knill}}]{mek}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~M.}\ \bibnamefont
+  {Meier}}, \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont {Eastin}},\ and\
+  \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Knill}},\ }\bibfield
+  {title} {\bibinfo {title} {Magic-state distillation with the four-qubit
+  code},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Quantum
+  Inf. Comput.}\ }\textbf {\bibinfo {volume} {13}},\ \bibinfo {pages} {195}
+  (\bibinfo {year} {2013})},\ \Eprint {https://arxiv.org/abs/1204.4221}
+  {arXiv:1204.4221} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Campbell}\ and\ \citenamefont
+  {Browne}(2010)}]{campbellbrowne}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.~T.}\ \bibnamefont
+  {Campbell}}\ and\ \bibinfo {author} {\bibfnamefont {D.~E.}\ \bibnamefont
+  {Browne}},\ }\bibfield  {title} {\bibinfo {title} {On the structure of
+  protocols for magic state distillation},\ }in\ \href@noop {} {\emph {\bibinfo
+  {booktitle} {Theory of Quantum Computation, Communication, and Cryptography
+  (TQC 2009)}}},\ \bibinfo {series} {Lecture Notes in Computer Science}, Vol.\
+  \bibinfo {volume} {5906}\ (\bibinfo  {publisher} {Springer},\ \bibinfo {year}
+  {2010})\ pp.\ \bibinfo {pages} {20--32},\ \Eprint
+  {https://arxiv.org/abs/0908.0838} {arXiv:0908.0838} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fattal}\ \emph {et~al.}(2004)\citenamefont {Fattal},
+  \citenamefont {Cubitt}, \citenamefont {Yamamoto}, \citenamefont {Bravyi},\
+  and\ \citenamefont {Chuang}}]{fattal}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Fattal}}, \bibinfo {author} {\bibfnamefont {T.~S.}\ \bibnamefont {Cubitt}},
+  \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont {Yamamoto}}, \bibinfo
+  {author} {\bibfnamefont {S.}~\bibnamefont {Bravyi}},\ and\ \bibinfo {author}
+  {\bibfnamefont {I.~L.}\ \bibnamefont {Chuang}},\ }\href@noop {} {\bibinfo
+  {title} {Entanglement in the stabilizer formalism}} (\bibinfo {year}
+  {2004}),\ \Eprint {https://arxiv.org/abs/quant-ph/0406168}
+  {arXiv:quant-ph/0406168} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Wills}\ \emph {et~al.}(2024)\citenamefont {Wills},
+  \citenamefont {Hsieh},\ and\ \citenamefont {Yamasaki}}]{whyamasaki}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Wills}}, \bibinfo {author} {\bibfnamefont {M.-H.}\ \bibnamefont {Hsieh}},\
+  and\ \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont {Yamasaki}},\
+  }\href@noop {} {\bibinfo {title} {Constant-overhead magic state
+  distillation}} (\bibinfo {year} {2024}),\ \Eprint
+  {https://arxiv.org/abs/2408.07764} {arXiv:2408.07764 [quant-ph]} \BibitemShut
+  {NoStop}%
+\end{thebibliography}%

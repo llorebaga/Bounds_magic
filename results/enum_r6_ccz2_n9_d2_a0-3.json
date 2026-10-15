@@ -1,0 +1,33 @@
+{
+ "stats": {
+  "n": 9,
+  "d": 2,
+  "r": 6,
+  "E_size": 19,
+  "per_a": {
+   "0": {
+    "structures": 788035,
+    "pruned_by_logical": 788035,
+    "signed_candidates": 0
+   },
+   "1": {
+    "structures": 97155,
+    "pruned_by_logical": 97154,
+    "signed_candidates": 8
+   },
+   "2": {
+    "structures": 5461,
+    "pruned_by_logical": 5453,
+    "signed_candidates": 8192
+   },
+   "3": {
+    "structures": 131,
+    "pruned_by_logical": 117,
+    "signed_candidates": 3670016
+   }
+  },
+  "survivors": 0,
+  "seconds": 87.02941250801086
+ },
+ "survivors": []
+}

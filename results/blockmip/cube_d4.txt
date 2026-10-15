@@ -1,0 +1,1 @@
+{"target": "ccz", "D": 4, "s": 3, "nT": 0, "nJ": 0, "nC": 2, "Tcost": 16, "fault_constraints": 14, "sec": 459.0, "status": "infeasible"}

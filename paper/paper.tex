@@ -1,0 +1,328 @@
+\documentclass[aps,pra,reprint,twocolumn,amsmath,amssymb,floatfix,nofootinbib,superscriptaddress]{revtex4-2}
+\usepackage{amsmath,amssymb,amsthm,booktabs,hyperref}
+\hypersetup{hidelinks}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\F}{\mathbb F_2}
+\newcommand{\CCZ}{\mathrm{CCZ}}
+\newcommand{\CCCZ}{\mathrm{CCCZ}}
+\newcommand{\CS}{\mathrm{CS}}
+\newcommand{\tr}{\operatorname{Tr}}
+% ---- numbers that depend on running computations (update in one place) ----
+\newcommand{\TNmax}{7}      % largest n excluded for one T state at d=2
+\newcommand{\TLB}{8}        % resulting lower bound
+\newcommand{\QuarticUB}{48} % best two-level quartic CCZ factory found
+\newcommand{\QuarticCoef}{864}
+\begin{document}
+\title{Every magic-state factory is a single code:\\ exact limits and new constructions}
+\author{[Authors]}
+\affiliation{[Affiliations]}
+\date{14 October 2026}
+\begin{abstract}
+Magic-state distillation dominates the cost of fault-tolerant quantum computing, yet little is known about how small a factory can be. Under postselection, the best general lower bound on the number $n$ of noisy T states needed to suppress errors to order $p^d$ has been $n\geq\max(d,\nu)$, where $\nu$ is the stabilizer nullity of the target. We show that every factory, however adaptive, postselected or multistage, is equivalent to projecting its inputs onto a single stabilizer code, and that it tolerates a set of input faults exactly when all of them collapse onto one code vector. For targets with rational Pauli expectations, such as the CCZ state, the field automorphism $\sqrt2\mapsto-\sqrt2$ adds a symmetry: a fault pattern is harmful exactly when its complement is. Together these turn factory design into an exact finite problem. We attack it analytically, by exhaustive search, and with integer and satisfiability programs over structured code families, and we certify every construction with the same collapse test. The eight-input quadratic CCZ factory is optimal; cubic CCZ needs at least ten inputs; quadratic distillation of one T state needs at least \TLB\ inputs, and of a controlled-S state exactly eight; the CCCZ state costs exactly six T states; and $n\geq2d+1$ at every order. On the constructive side, a Clifford equivalence between $\CS_{12}\CS_{13}|{+}{+}{+}\rangle$ and the CCZ state yields a 36-input cubic CCZ factory, eleven inputs fewer than the smallest reported. Two-level designs found by a SAT solver give a quartic CCZ factory with \QuarticUB\ inputs and leading error $\QuarticCoef p^4$, a third of the best known.
+\end{abstract}
+\maketitle
+
+%=====================================================================
+\section{Introduction}
+Fault-tolerant quantum computers implement Clifford operations cheaply, but universal computation needs a supply of non-Clifford resources. These are magic states, distilled from many noisy copies~\cite{bravyikitaev,bravyihaah}, and distillation remains one of the dominant costs of fault-tolerant computing. Factory designs have improved steadily~\cite{campbellhoward,eastin,jones,haah,litinski,borrowed,jacinto,wjs,gong}, but little is known about how far they can improve. How many noisy T states must any protocol consume to output a target state with error $O(p^d)$, where $p$ is the input error rate and $d$ the \emph{suppression order}?
+
+Existing tools barely see $d$. Resource monotones that survive postselection grow only like $1/p$ for a noisy T state, so they give $n\gtrsim d$ and no more~\cite{fangliu,fangliu2,regulaprl}. Stronger monotone bounds require deterministic or high-success-probability protocols~\cite{regulatakagi,seddon}, which practical factories are not. Exhaustive searches and classifications do resolve $d$, but only within particular code families or circuit layouts~\cite{nezamihaah,wjs,jacinto,borrowed,kbk}. Even for the CCZ state, whose eight-input quadratic factory~\cite{eastin,jones,haah} is a workhorse of resource estimates~\cite{litinski,gidneyfowler}, it was not known whether a smarter, adaptive or multistage protocol could use fewer inputs.
+
+\paragraph*{Central message.}
+\emph{Every magic-state factory is a single stabilizer code.} Adaptivity, randomness, postselection and multiple stages add nothing. A protocol tolerates a set of input faults exactly when all of them project onto one common vector of one code, and that vector encodes the target. A second observation sharpens this condition for the most useful targets. Flipping the sign of $\sqrt2$ commutes with stabilizer operations and fixes targets with rational Pauli expectations such as CCZ, but it turns a T state with error $p$ into one with error $1-p$. A fault pattern therefore damages the output exactly when its complement does. Together, the two facts turn the question ``how small can a factory be?'' into an exact, finite and largely combinatorial problem.
+
+\paragraph*{What the reduction gives.}
+On the lower-bound side, it yields analytic bounds for every order, and exhaustive searches over all codes that settle the smallest cases (Sec.~\ref{sec:lower}). On the constructive side, the same collapse test certifies factories found by integer and satisfiability programs over structured code families, including two-level designs in which an outer code consumes CCZ states made by small inner factories (Sec.~\ref{sec:upper}). Table~\ref{tab:final} summarizes the results. In brief:
+\begin{itemize}
+\item the eight-input quadratic CCZ factory is optimal among all stabilizer protocols; cubic and quartic CCZ need at least ten inputs; and every protocol needs $n\geq2d+1$ for rational non-stabilizer targets;
+\item quadratic distillation of one T state needs at least \TLB\ inputs (the best known uses ten), and of a controlled-S state exactly eight; the CCCZ state costs exactly six T states;
+\item recognizing that $\CS_{12}\CS_{13}|{+}{+}{+}\rangle$ is Clifford-equivalent to CCZ yields a 36-input cubic CCZ factory, against the 47 inputs reported so far; a two-level quartic CCZ factory with \QuarticUB\ inputs has leading error $\QuarticCoef p^4$, against $2816p^4$ for the best previous design.
+\end{itemize}
+
+\begin{table*}[t]
+\caption{Fewest noisy T inputs $n_{\min}(\tau,d)$ for distilling target $\tau$ with suppression order $d$, over all stabilizer protocols, including adaptive, postselected and multistage ones. ``Prior LB'' is $\max(d,\nu)$~\cite{fangliu,fangliu2,regulaprl,beverland}, the best general bound we found under arbitrary postselection (deterministic protocols obey stronger bounds~\cite{regulatakagi}; Appendix~\ref{app:prior}). Bold entries are new. Sources: $a$, analytic (Theorem~\ref{thm:analytic}); $e$, exhaustive search (Theorems~\ref{thm:ccz} and~\ref{thm:tcs}); $c$, Clifford orbit (Proposition~\ref{prop:orbit}); $m$, integer program, certified; $s$, CCZ factory followed by a Y measurement (Proposition~\ref{prop:cs}); $t$, two-level design, certified (Sec.~\ref{sec:upper}). Leading error coefficients are in parentheses.}
+\label{tab:final}
+\begin{ruledtabular}
+\begin{tabular}{cccccc}
+$\tau$ & $d$ & prior LB & LB & prior UB & UB \\
+\hline
+CCZ & 1 & 3 & 4$^a$ & 4~\cite{jones} & 4 \\
+CCZ & 2 & 3 & $\mathbf{8}^e$ & 8 (28)~\cite{eastin,jones,haah} & 8 (28) \\
+CCZ & 3 & 3 & $\mathbf{10}^e$ & 47 (236)~\cite{jacinto,wjs} & $\mathbf{36}$ (120)$^{c,m}$ \\
+CCZ & 4 & 4 & $\mathbf{10}^e$ & 48 (2816)~\cite{jacinto} & \QuarticUB\ ($\mathbf{\QuarticCoef}$)$^t$ \\
+CCZ & $d\geq5$ & $d$ & $\mathbf{2d+1}^a$ & -- & $O(d)$~\cite{golowich,nguyen} \\
+CCZ$^{\otimes2}$ & 1 & 6 & $\mathbf{8}^e$ & 8~\cite{jones} & 8 \\
+CCZ$^{\otimes2}$ & 2 & 6 & $\mathbf{10}^e$ & 14~\cite{campbellhoward} & 14 \\
+CS & 1 & 2 & 3$^a$ & 3 & 3 \\
+CS & 2 & 2 & $\mathbf{8}^e$ & 12~\cite{campbellhoward,gong} & $\mathbf{8}^{s}$ \\
+CS & 3 & 3 & $\mathbf{9}^e$ & 35 (84)~\cite{nezamihaah,wjs} & 35 \\
+T & 2 & 2 & $\mathbf{\TLB}^e$ & 10~\cite{mek} & 10 \\
+T & 3 & 3 & $\mathbf{\TLB}^e$ & 15 (35)~\cite{bravyikitaev} & 15 \\
+CCCZ & 1 & 4 & $\mathbf{6}^e$ & 6~\cite{beverland} & 6$^e$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+%=====================================================================
+\section{Factories as codes}\label{sec:framework}
+\paragraph*{Setting.}
+Let $|T\rangle=(|0\rangle+\omega|1\rangle)/\sqrt2$ with $\omega=e^{i\pi/4}$. After a standard twirl~\cite{bravyikitaev}, each input is
+\begin{equation}
+ \rho_T(p)=(1-p)|T\rangle\langle T|+pZ|T\rangle\langle T|Z=\tfrac12\bigl[I+\tfrac{1-2p}{\sqrt2}(X+Y)\bigr].
+ \label{eq:input}
+\end{equation}
+A fault pattern $e\in\F^n$ marks the faulty inputs; the states $|\phi_e\rangle=Z^e|T\rangle^{\otimes n}$ are orthonormal. A \emph{protocol} applies stabilizer operations to the $n$ inputs: Clifford gates, stabilizer ancillas, Pauli measurements, classical feedforward and randomness, postselection and discarding, in any number of stages. Its accepted output is a trace-nonincreasing map $\Lambda$. For a pure target $\tau$ of $r$ qubits, pattern $e$ is \emph{harmless} if $\Lambda(\rho_e)$ is a multiple of $|\tau\rangle\langle\tau|$. The output error is a ratio of polynomials in $p$ with nonnegative coefficients, so the protocol has suppression order $d$ exactly when every pattern with $|e|<d$ is harmless and the fault-free one is accepted. All statements concern individual patterns, so they hold for any fault distribution, correlated or not. We write $n_{\min}(\tau,d)$ for the least possible $n$; it is nondecreasing in $d$. The \emph{stabilizer nullity} $\nu(\tau)$ is $r$ minus the number of independent Pauli operators fixing $\tau$~\cite{beverland}; $\nu=3$ for CCZ. A target is \emph{rational} (\emph{dyadic}) if all its Pauli expectations are rational (of the form $k/2^j$). Phase states $2^{-r/2}\sum_xi^{f(x)}|x\rangle$ such as CCZ, CS and CCCZ are dyadic, while $|T\rangle$ is not rational.
+
+\paragraph*{One code suffices.}
+\begin{theorem}\label{thm:code}
+Let $\nu(\tau)=r$, and let $H$ be a set of fault patterns containing $\mathbf 0$. Some protocol makes every pattern in $H$ harmless if and only if some stabilizer code $C$ on the $n$ inputs, with Clifford encoding $U$ of $r$ qubits, satisfies $\Pi_C|\phi_{\mathbf0}\rangle\neq0$ and
+\begin{equation}
+ \Pi_C|\phi_e\rangle\in\mathbb C\,U|\tau\rangle\qquad\text{for every }e\in H.
+ \label{eq:collapse}
+\end{equation}
+\end{theorem}
+The proof (Appendix~\ref{app:proofs}) refines the protocol into single Kraus operators, as in Campbell and Browne's normal form for single-output protocols~\cite{campbellbrowne}. Each Kraus operator is a code projection followed by a Clifford isometry~\cite{fattal}, and positivity forces every branch to be harmless on $H$. We call Eq.~\eqref{eq:collapse} \emph{collapse}: all tolerated inputs project onto one code vector. With the Gram matrix $G_{ef}=\langle\phi_e|\Pi_C|\phi_f\rangle$, collapse is the set of polynomial identities $G_{\mathbf0\mathbf0}G_{ee}=|G_{\mathbf0e}|^2>0$ for $e\in H$. The theorem holds for any product of resource states, not only T states.
+
+\paragraph*{Complementary faults.}
+\begin{theorem}\label{thm:pairing}
+If $\tau$ is rational, then in every protocol a pattern $e$ is harmless if and only if its complement $e+\mathbf1$ is. With suppression order $d$, every pattern with $|e|<d$ or $|e|>n-d$ is harmless.
+\end{theorem}
+Every stabilizer operation acts on Pauli coefficients with rational numbers, so it commutes with the automorphism $\sigma$ of $\mathbb Q(\sqrt2)$ that flips the sign of $\sqrt2$. By Eq.~\eqref{eq:input}, $\sigma$ maps $\rho_T(p)$ to $\rho_T(1-p)$, hence $\rho_e$ to $\rho_{e+\mathbf1}$, and it fixes the rational target. The damages of $e$ and of its complement are therefore conjugate numbers, and one vanishes exactly when the other does (Appendix~\ref{app:proofs}). Beverland \emph{et al.} noted that $\sigma$ commutes with postselected stabilizer circuits and maps $|T\rangle$ to $Z|T\rangle$~\cite{beverland}. Applied to noisy inputs, it pairs each fault pattern with its complement. This explains, for instance, why Eastin's exact CCZ factory error polynomial is invariant under $p\mapsto1-p$~\cite{eastin}. In the code picture, the fault-free and the all-faulty inputs must collapse together, so the projected ideal input must be proportional to its own image under $\sigma$.
+
+\paragraph*{Targets up to Clifford equivalence.}
+Appending a stabilizer branch that maps $\tau$ to $\tau'$ with nonzero probability turns every order-$d$ factory for $\tau$ into one for $\tau'$ (Lemma~\ref{lem:post}). In particular, $n_{\min}$ depends only on the Clifford orbit of the target, which is larger than the CNOT+S classes used to organize code families~\cite{wjs}:
+\begin{proposition}\label{prop:orbit}
+\begin{equation}
+ \CS_{12}\CS_{13}|{+}{+}{+}\rangle=\mathrm{CX}_{23}H_2\mathrm{CX}_{12}S_2H_2|\CCZ\rangle,
+ \label{eq:orbit}
+\end{equation}
+with the rightmost gate acting first.
+\end{proposition}
+
+%=====================================================================
+\section{Lower bounds}\label{sec:lower}
+\paragraph*{All orders.}
+When $n$ is small, Theorem~\ref{thm:pairing} forces almost every pattern to be harmless. Feeding the protocol a well-chosen state whose fault patterns all avoid the damaging range then makes the target from too weak a resource. Appendix~\ref{app:analytic} gives the details. The witnesses are $|0\rangle^{\otimes n}$, a GHZ-type stabilizer state that contains every fault weight except the middle one, and a family of low-nullity states with non-dyadic Pauli expectations.
+\begin{theorem}\label{thm:analytic}
+Every protocol of suppression order $d$ satisfies $n\geq d-1+L(\tau)$, where $L(\tau)$ is the least number of ideal T states from which $\tau$ can be made. If $\tau$ is rational and not a stabilizer state, then $n\geq2d+1$. If $\tau$ is dyadic and not a stabilizer state, and $d\geq2$, then $n\geq d+\nu(\tau)+1$.
+\end{theorem}
+Linear growth in $d$ is the right scaling: asymptotically good codes with transversal CCZ~\cite{golowich,nguyen,whyamasaki}, fed with four-T CCZ preparations, give one CCZ state with $n=O(d)$. The constant, however, is far from tight.
+
+\paragraph*{Small cases exactly.}
+Theorem~\ref{thm:code} reduces the existence of a protocol to a search over signed stabilizer codes. We parametrize each code by its X parts, its Z-type stabilizers and lifts, and reduce modulo permutations and the Clifford $W=(X+Y)/\sqrt2$ that fixes $|T\rangle$. A simple necessary condition prunes most codes: no harmless $Z^e$ may act as a logical operator. The remaining collapse identities are tested in exact arithmetic over $\mathbb Z[\sqrt2,i]$. Appendix~\ref{app:search} describes the search, its validation with an independent second implementation and a compiled kernel, and the size of every run, up to $9\times10^{11}$ signed codes.
+\begin{theorem}[computer-assisted]\label{thm:ccz}
+Let $\tau$ be a 3-qubit state fixed by no Pauli operator other than the identity, for example CCZ. No stabilizer protocol has suppression order two with $n\leq7$ inputs. If $\tau$ is also rational, none has suppression order three, and hence none has order four, with $n\leq9$.
+\end{theorem}
+\begin{theorem}[computer-assisted]\label{thm:tcs}
+No stabilizer protocol distills one T state with suppression order two from $n\leq\TNmax$ inputs. None distills $\CS|{+}{+}\rangle$ with order two from $n\leq7$ inputs, or with order three from $n\leq8$. Two CCZ states need eight ideal T states and, for quadratic suppression, ten noisy ones. The CCCZ state needs six ideal T states.
+\end{theorem}
+The eight-input quadratic CCZ factory is therefore optimal, whether single- or multistage, adaptive or not, and it is unique up to symmetry among codes of X-rank at most four. At $n=7$ the weight-one collapse conditions alone exclude every code, which is why the quadratic statement needs no rationality. The complementary-fault symmetry drives the analytic bounds and makes the cubic searches feasible.
+
+%=====================================================================
+\section{Constructions}\label{sec:upper}
+Every construction below is a stabilizer protocol. We certify its suppression order with the collapse test of Theorem~\ref{thm:code}, in exact arithmetic.
+
+\paragraph*{Clifford orbits: a 36-input cubic CCZ factory.}
+Many factories are built from a binary matrix $G$ with one column per input and a set of logical and check rows~\cite{bravyihaah,haah,wjs}. They implement a diagonal third-level gate $U_\tau$ on the logical register. When every overlap of rows that involves a check row is even (\emph{generalized triorthogonality}), they detect every fault pattern $e$ with $G_0e\neq0$, where $G_0$ collects the check rows. All these conditions are parities of products of binary variables, so finding $G$ is an integer program (Appendix~\ref{app:programs}). The classification of Wills, Jain and Singh~\cite{wjs} identifies outputs only up to CNOT and S gates, and its CCZ class needs 47 inputs at $d=3$. By Proposition~\ref{prop:orbit}, however, its $\CS_{12}\CS_{13}$ class also yields CCZ states, and it reaches distance three with 36 inputs. The reason is the cost of the diagonal gate: four T gates suffice for $\CS_{12}\CS_{13}$, against seven for CCZ. Our MIP finds such a matrix independently, and the exact test certifies order three with leading error $120p^3$.
+
+\paragraph*{Stabilizer post-processing.}
+Measuring one qubit of a CCZ state in the Y basis leaves $\CS|{+}{+}\rangle$ up to a Clifford correction (Proposition~\ref{prop:cs}). The eight-input CCZ factory followed by this measurement is therefore a quadratic CS factory with eight inputs, matching Theorem~\ref{thm:tcs}. No generalized triorthogonal matrix achieves this with $n\leq10$ and up to three check rows. Similarly, projecting $|T\rangle^{\otimes6}$ onto the $[[6,4,2]]$ code with $Z^{\otimes6}=+1$ and $X^{\otimes6}=-1$ yields $X^{\otimes4}|\CCCZ\rangle$ up to Clifford phases, with probability $1/4$ (Proposition~\ref{prop:cccz}).
+
+\paragraph*{Two-level factories.}
+Transversal families cannot be pushed further: the classification shows that no generalized triorthogonal factory beats 36 inputs for cubic or 48 for quartic CCZ~\cite{wjs}. Theorem~\ref{thm:code} suggests where to look instead. Any combination of stabilizer operations is again a factory, so an outer code may consume, besides raw T states, CCZ states produced by small inner factories. The inner factories we use are Jones' four-T preparation, in which a single fault spoils the block, and the eight-T cube factory, which takes two faults to spoil. Each block applies a CCZ gate to three parities of the outer registers by gate teleportation. A faulty block, after a Clifford twirl, applies a Z error on some nonzero combination of those parities. The composite has suppression order $D$ if every combination of faulty units whose total cost is below $D$ is detected or harmless. All conditions remain parities, now including the cubic terms contributed by the blocks, and a SAT encoding solves these instances orders of magnitude faster than the MIP (Appendix~\ref{app:programs}). Six cube blocks give a quartic CCZ factory with \QuarticUB\ T inputs. Only 54 of the cost-four combinations, each consisting of two faulty blocks, are harmful, and each arises from $4\times4$ pairs of input fault pairs. So $\epsilon=\QuarticCoef p^4+O(p^5)$: the best known input count with a third of its leading error. Five cube blocks (40 inputs), and mixtures of four cube blocks with Jones blocks, remain undecided after 15 minutes per instance, so whether 40 inputs suffice is open.
+
+%=====================================================================
+\section{Discussion}
+Viewing a factory as a single code removes the distinction between clever protocols and simple ones: adaptivity, postselection and multistage composition are absorbed into the choice of code. The view is restrictive enough to prove that the workhorse eight-input CCZ factory is optimal, and to give the first bounds beyond $\max(d,\nu)$ that survive postselection. It is also generative enough to certify new factories, from code families whose outputs are taken up to Clifford equivalence to two-level designs. The remaining gaps in Table~\ref{tab:final} are $10\leq n\leq36$ and $10\leq n\leq\QuarticUB$ for cubic and quartic CCZ, $10\leq n\leq14$ for two CCZ states, and $\TLB\leq n\leq10$ and $\TLB\leq n\leq15$ for one T state.
+
+Three directions look within reach. First, all 137 codes that collapse at $n=8$, $d=2$ contain $Z^{\otimes n}$ in their stabilizer. Proving that this always holds would eliminate the largest sector of the search and extend the exact bounds beyond ten inputs. Second, the collapse identities are polynomial, and relaxations of them, rather than of the set of protocols, could raise the analytic constant two. Third, the two-level model is a small, exact and solver-friendly design space that contains all known multistage factories. Extending it with further inner factories, and with outputs taken up to Clifford equivalence, is a systematic route to smaller factories.
+
+\begin{acknowledgments}
+[Acknowledgments.] Computations used Gurobi~12 (academic license) and CaDiCaL via PySAT.
+\end{acknowledgments}
+
+\paragraph*{Code and data.}
+Search code, exact verifiers, integer and SAT models, logs and certificates are available as supplementary material.
+
+%=====================================================================
+\appendix
+\section{Proofs of the reductions}\label{app:proofs}
+\begin{proof}[Proof of Theorem~\ref{thm:code}]
+Write the accepted map as $\Lambda=\sum_bc_b\Lambda_b$ over branches, where a branch fixes all random choices and measurement outcomes. Each branch damage $h_{b,e}=\tr[(I-\Pi)\Lambda_b(\rho_e)]$ is nonnegative, and these damages sum to the damage of $e$, so every branch is harmless on $H$. Measuring each discarded qubit in the computational basis refines the branches into branches given by single Kraus operators $K$. Pick one with $K|\phi_{\mathbf0}\rangle\neq0$, which exists because the fault-free input is accepted. $K$ is a product of Clifford gates, stabilizer preparations and Pauli projections~\cite{campbellbrowne}, so applied to half of $n$ Bell pairs it yields a pure stabilizer state on $n+r$ qubits. Every bipartite pure stabilizer state equals, up to local Clifford gates, a product of Bell pairs and single-qubit states~\cite{fattal}. Hence $K=c\,V\Pi_C$, where $C$ is a stabilizer code on the inputs and $V$ a Clifford isometry from $C$ onto its range. Since $K|\phi_{\mathbf0}\rangle\propto|\tau\rangle$ and $\tau$ is fixed by no Pauli operator other than the identity, the range is the whole output space, so $\dim C=2^r$ and $U=V^{-1}$ is an encoding. Harmlessness of $e$ in this branch is Eq.~\eqref{eq:collapse}. Conversely, measuring the stabilizers of $C$, postselecting the prescribed signs and applying $V$ is a protocol. Equality in the Cauchy--Schwarz inequality gives the Gram form.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:pairing}]
+Let $\sigma$ flip the sign of $\sqrt2$ in every Pauli coefficient of the form $x+y\sqrt2$ with $x,y$ rational. Each step of a branch maps Pauli coefficients by rational matrices. Cliffords permute Paulis up to sign, stabilizer preparations have rational coefficients, partial traces multiply by integers, and a measurement outcome acts as $O\mapsto(I\pm P)O(I\pm P)/4$. Hence $\sigma\circ\Lambda_b=\Lambda_b\circ\sigma$. By Eq.~\eqref{eq:input}, $\sigma(\rho_T(p))=\rho_T(1-p)$, so $\sigma(\rho_e)=\rho_{e+\mathbf1}$, and $\sigma$ fixes the projector onto a rational $\tau$. Thus $\sigma(h_{b,e})=h_{b,e+\mathbf1}$, and $\sigma$ maps only zero to zero. Since $\Pi_C$ has entries in $\mathbb Q(i)$, the same argument maps $\Pi_C\phi_{\mathbf0}$ to $\Pi_C\phi_{\mathbf1}$, which gives the cross condition.
+\end{proof}
+
+\begin{lemma}[No hidden logical]\label{lem:logical}
+In Theorem~\ref{thm:code}, if $e\in H$ is nonzero and $Z^e$ commutes with all stabilizers of $C$, then $\pm Z^e$ is a stabilizer.
+\end{lemma}
+\begin{proof}
+Otherwise $Z^e$ is a nontrivial logical operator with $\Pi_CZ^e\phi_{\mathbf0}=Z^e\Pi_C\phi_{\mathbf0}\propto\Pi_C\phi_{\mathbf0}$, so the encoded target would be fixed by a Pauli operator.
+\end{proof}
+
+\begin{lemma}[Post-processing]\label{lem:post}
+If a stabilizer branch maps $|\tau\rangle$ to $|\tau'\rangle$ with nonzero probability, then $n_{\min}(\tau',d)\leq n_{\min}(\tau,d)$. This holds in particular for Clifford equivalence and for discarding a tensor factor.
+\end{lemma}
+\begin{proof}
+Patterns that produced exactly $\tau$ now produce exactly $\tau'$, and the fault-free input is still accepted.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:orbit}]
+Direct computation on the eight amplitudes, checked in exact arithmetic (supplementary code). A breadth-first search shows that the Clifford orbit of $|\CCZ\rangle$ has 69{,}120 elements up to phase. Its diagonal third-level members have no T terms. Up to S gates, their phase polynomials are $4x_1x_2x_3$ plus zero, one or three CS terms, or exactly two CS terms and no cubic term. These are the CNOT+S classes of CCZ and $\CS_{12}\CS_{13}$~\cite{wjs}.
+\end{proof}
+
+\begin{proposition}\label{prop:cs}
+Projecting the third qubit of $|\CCZ\rangle$ onto $(|0\rangle\pm i|1\rangle)/\sqrt2$ leaves $\CS^{\pm1}|{+}{+}\rangle$, so $n_{\min}(\CS,d)\leq n_{\min}(\CCZ,d)$.
+\end{proposition}
+\begin{proof}
+The remaining amplitudes are $1\mp i(-1)^{x_1x_2}$, whose ratio between $x_1x_2=1$ and $x_1x_2=0$ is $\pm i$. Since $\CS^{-1}=\CS\cdot\mathrm{CZ}$, both outcomes give $\CS|{+}{+}\rangle$ up to a Clifford gate; apply Lemma~\ref{lem:post}.
+\end{proof}
+
+\begin{proposition}\label{prop:cccz}
+$L(\CCCZ)=6$.
+\end{proposition}
+\begin{proof}
+The search excludes every code on five inputs. For the matching construction, project $|T\rangle^{\otimes6}$ onto $Z^{\otimes6}=+1$ and $X^{\otimes6}=-1$; this succeeds with probability $1/4$. The code space is spanned by $|x\rangle-|\bar x\rangle$ for even-weight $x$. On the representatives $x=(y,y_1\oplus\dots\oplus y_4,0)$, $y\in\F^4$, the amplitudes are proportional to $(-1)^{e_3(y)+e_4(y)}$, where $e_k$ are the elementary symmetric polynomials. Since $e_4(y\oplus\mathbf1)=e_4+e_3+e_2+e_1+1$ modulo two, this is $X^{\otimes4}|\CCCZ\rangle$ up to the Clifford phases $(-1)^{e_1+e_2+1}$.
+\end{proof}
+
+\section{Analytic bounds}\label{app:analytic}
+The Clifford $W=(X+Y)/\sqrt2$ fixes $|T\rangle$ and negates $Z|T\rangle$, so $W^a\phi_e=(-1)^{a\cdot e}\phi_e$. Applying $W$ to each qubit of $|\psi\rangle$ independently with probability one half removes all coherence between patterns:
+\begin{equation}
+ 2^{-n}\textstyle\sum_aW^a|\psi\rangle\langle\psi|W^a=\sum_eq_e\rho_e,\qquad q_e=|\langle\phi_e|\psi\rangle|^2.
+ \label{eq:twirl}
+\end{equation}
+We say that $\psi$ \emph{contains} the patterns with $q_e>0$.
+
+\begin{lemma}[Witness]\label{lem:witness}
+If $\psi$ contains the fault-free pattern and only harmless patterns, then a stabilizer branch maps $|\psi\rangle$ to $|\tau\rangle$ with nonzero probability.
+\end{lemma}
+\begin{proof}
+Feed the mixture~\eqref{eq:twirl} to the protocol. The output $\sum_eq_ea_e\Pi$ is a positive multiple of the target. Splitting it by twirl choice and by branch writes a multiple of a pure state as a sum of positive operators. Each of them is then a multiple of $\Pi$, and at least one is nonzero.
+\end{proof}
+
+\begin{lemma}[Nullity]\label{lem:nullity}
+If a stabilizer branch maps $|\psi\rangle$ to $|\varphi\rangle$, then $\nu(\psi)\geq\nu(\varphi)$, and at equality every Pauli expectation of $\psi$ is zero or $\pm$ one of $\varphi$.
+\end{lemma}
+\begin{proof}
+Postpone discarding to the end. Ancillas and Cliffords preserve the nullity. Consider a projection $(I+P)/2$ on a pure state $\chi$. If $\pm P\in S_\chi$, it acts trivially or annihilates $\chi$. If $P$ anticommutes with some $g\in S_\chi$, it acts as the Clifford $(P+g)/\sqrt2$. Otherwise it lowers the nullity by one. A pure output means the remaining qubits are in a state $\varphi\otimes\kappa$ of nullity $\nu(\varphi)+\nu(\kappa)$. At equality, no projection lowers the nullity and $\kappa$ is a stabilizer state, so $|\varphi\rangle|\kappa\rangle=C|\psi\rangle|s\rangle$ for a Clifford $C$, which maps Pauli expectations to Pauli expectations up to sign.
+\end{proof}
+
+At equality, $1/\sqrt2$ would have to be $\pm$ a rational expectation, so $L(\tau)\geq\nu(\tau)+1$ for rational $\tau$. Since $|0\rangle=(|T\rangle+Z|T\rangle)/\sqrt2$, the state $|0\rangle^{\otimes n}$ contains every pattern. For even $N$, the stabilizer state $|G_N\rangle=(|{+_i}\rangle^{\otimes N}-|{-_i}\rangle^{\otimes N})/\sqrt2$ has $\langle\phi_e|G_N\rangle=(\alpha^{N-|e|}\beta^{|e|}-\beta^{N-|e|}\alpha^{|e|})/\sqrt2$, with $\alpha=(1+\omega)/2$ and $\beta=(1-\omega)/2$. Since $|\alpha/\beta|=1+\sqrt2$, this vanishes exactly when $|e|=N/2$.
+
+\begin{proof}[Proof of Theorem~\ref{thm:analytic}, first two claims]
+The state $|T\rangle^{\otimes(n-d+1)}|0\rangle^{\otimes(d-1)}$ contains only patterns of weight below $d$, so Lemma~\ref{lem:witness} gives $n-d+1\geq L(\tau)$. If $n<2d$, Theorem~\ref{thm:pairing} makes every pattern harmless, and $|0\rangle^{\otimes n}$ would turn a stabilizer state into $\tau$, which is impossible since $\nu(\tau)\geq1$. If $n=2d$, only patterns of weight $n/2$ can be harmful, and $G_n$ contains none of them.
+\end{proof}
+
+For the third claim, split the inputs into a block $A$ of $a\geq2$ qubits and a block $B$ of $d$ qubits. Set $|\beta\rangle=(1+\bar\omega)^d|{+}\rangle^{\otimes d}-(1-\bar\omega)^d|{-}\rangle^{\otimes d}$ and $|\psi\rangle\propto|T\rangle^{\otimes a}|\beta\rangle+(Z|T\rangle)^{\otimes a}Z^{\otimes d}|\beta\rangle$.
+\begin{lemma}\label{lem:magicwitness}
+The state $\psi$ has $\nu(\psi)\leq a$. It contains the fault-free pattern, and only patterns with fewer than $d$ or more than $a$ faults. For $d\geq2$, some Pauli expectation of $\psi$ is not dyadic.
+\end{lemma}
+\begin{proof}
+The operators $X_jX_{j+1}$ on neighbouring qubits of $B$ fix both terms, and $Z^{\otimes(a+d)}$ swaps them; these are $d$ independent stabilizers. Since $\langle T|Z|T\rangle=0$, the $A$ part of every contained pattern is all-clear or all-faulty. With $\langle T|{\pm}\rangle=(1\pm\bar\omega)/2$ and $\langle ZT|{\pm}\rangle=(1\mp\bar\omega)/2$, the all-faulty pattern of $B$ is absent from $\beta$, and the fault-free one is absent from $Z^{\otimes d}\beta$. The fault-free amplitude $[(1+\bar\omega)^{2d}-(1-\bar\omega)^{2d}]2^{-d}$ is nonzero. For $X$ on one qubit of each block, $\langle X_AX_B\rangle=[(2+\sqrt2)^d-(2-\sqrt2)^d]/\{\sqrt2[(2+\sqrt2)^d+(2-\sqrt2)^d]\}$. Writing $(1+\sqrt2)^d=P+Q\sqrt2$, this equals $Q/P$ for even $d$ and $P/(2Q)$ for odd $d$. From $P^2-2Q^2=(-1)^d$, $P$ is odd and coprime to $Q$, so for $d\geq2$ the reduced denominator has an odd factor.
+\end{proof}
+\begin{proof}[Proof of Theorem~\ref{thm:analytic}, third claim]
+Suppose $n\leq d+\nu$. Since $n\geq2d+1$, the block size $a=n-d$ satisfies $3\leq a\leq\nu$. All patterns in $\psi$ are harmless by Theorem~\ref{thm:pairing}, so Lemma~\ref{lem:witness} maps $\psi$ to $\tau$. Lemma~\ref{lem:nullity} then forces $\nu(\psi)=\nu(\tau)$ and dyadic expectations, which contradicts Lemma~\ref{lem:magicwitness}.
+\end{proof}
+
+\paragraph*{Limits of witnesses.}
+For CCZ these bounds give six inputs at $d=2$, while the truth is eight. Witnesses of nullity three are excluded by the equality case of Lemma~\ref{lem:nullity}, so the first nontrivial case is nullity four. We enumerated all signed Pauli groups of size $2^{n-4}$ and, within each joint eigenspace, the span of the harmless patterns. In floating point, at $n=6$ every such witness becomes a state with the Pauli spectrum of CCZ after one Pauli measurement, so the nullity argument raises no obstacle; at $n=7$ none exists. Closing the gap requires the full collapse condition.
+
+\section{Exhaustive search}\label{app:search}
+\paragraph*{Parametrization.}
+For a code with $m=n-r$ generators, the X parts of the stabilizers form a subspace $A$ of dimension $a$, and the Z-type stabilizers $Z^b$ form a subspace $B\subseteq A^\perp$ of dimension $m-a$. A basis $x_i$ of $A$ has lifts $X^{x_i}Z^{z_i}$, unique modulo $B$, which commute if and only if $x_i\cdot z_j=x_j\cdot z_i$. All $2^m$ sign choices are handled at once by a Walsh--Hadamard transform over the group.
+
+\paragraph*{Symmetry, pruning and arithmetic.}
+$A$ is taken up to input permutations. The Clifford $W$ on input $j$ exchanges $X_j$ and $Y_j$, so we fix one bit of a lift per input that is not a pivot of $B$. Lemma~\ref{lem:logical} removes every pair $(A,B)$ for which some nonzero $e\in H$ orthogonal to $A$ lies outside $B$. The Gram entries follow from $\langle\phi_e|i^pX^xZ^z|\phi_f\rangle=[k\subseteq x]\,2^{-|x|/2}\,i^{p+2|e\wedge x|-|k|}$ with $k=z+e+f$. After scaling they lie in $\mathbb Z[\sqrt2,i]$, and every minor is tested exactly.
+
+\paragraph*{Target tests.}
+Collapse does not see which state is encoded. The Python search keeps a survivor only if the absolute Pauli expectations of $\Pi_C\phi_{\mathbf0}$ match those of the target padded with $|0\rangle$ states, a necessary condition for Clifford equivalence. The compiled kernel tests collapse only. For one T state at $n=8$, its X-rank-six sector has 890{,}940 collapse survivors, which we classified exactly. For each code we compute two logical Paulis by linear algebra over $\F$, and one of the three logical expectations of $\Pi_C\phi_{\mathbf0}$ always has modulus one. Every survivor therefore encodes a stabilizer state. The classifier agrees with a full Pauli-spectrum computation on a random sample and recognizes a T-equivalent control.
+
+\paragraph*{Padding and monotonicity.}
+A protocol on $n-1$ inputs, extended by one discarded input, keeps its suppression order, so each search at fixed $n$ also excludes all smaller $n$. Order $d$ implies order $d-1$, so the quartic CCZ bound follows from the cubic one, and the quartic run is a consistency check.
+
+\paragraph*{Validation.}
+For $n\leq5$ the search agrees with brute force over all signed codes. Six hundred random codes at $n=6,7$ map under the symmetries to visited codes with identical Gram matrices, and exact and floating-point entries agree. The search recovers Jones' four-T CCZ preparation, the three-T CS preparation and the eight-T cube factory. A separately written implementation, without the $W$ symmetry and with its own arithmetic, confirms the CCZ runs at $n=7$, and an external referee's independent reimplementation reproduces the $n=7$, $d=2$ counts exactly. A compiled kernel runs the largest sectors and reproduces the Python search on every smaller case. The two-CCZ and CCCZ runs use the Python implementation only. Table~\ref{tab:runs} lists the decisive runs.
+
+\begin{table}[t]
+\caption{Decisive exhaustive runs: the number of signed codes that survive Lemma~\ref{lem:logical}. None of them collapses with the target's Pauli spectrum.}
+\label{tab:runs}
+\begin{ruledtabular}
+\begin{tabular}{cccr}
+target & $d$ & $n$ & signed codes \\
+\hline
+3-qubit, $\nu=3$ & 2 & 7 & 17{,}161{,}440 \\
+CCZ (complements) & 2 & 7 & 7{,}699{,}696 \\
+CCZ & 3 & 8 & 543{,}178{,}752 \\
+CCZ & 3 & 9 & $9.13\times10^{11}$ \\
+CCZ & 4 & 9 & $1.39\times10^{11}$ \\
+CCZ$^{\otimes2}$ & 1 & 7 & 172 \\
+CCZ$^{\otimes2}$ & 2 & 9 & 3{,}678{,}216 \\
+CS & 2 & 7 & 99{,}429{,}248 \\
+CS & 3 & 8 & 9{,}240{,}117{,}248 \\
+T & 2 & 7 & 469{,}735{,}424 \\
+CCCZ & 1 & 5 & 44 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\section{Integer and SAT programs}\label{app:programs}
+\paragraph*{Phase-polynomial factories.}
+Registers $v=(y,c)$, with $k$ logical and $s$ check bits, start in $|{+}\rangle$. Each column $G_j$ applies T to the parity $G_j\cdot v$, consuming one input, so the phase is $\omega^{g(v)}$ with $g(v)=\sum_j[G_j\cdot v]$, where $[\cdot]\in\{0,1\}$ is a parity read as an integer. Suppose every overlap $\sum_jG_{aj}G_{bj}G_{cj}$ (rows not necessarily distinct) that involves a check row is even. Then the check-involving part $P(y,c)=g(y,c)-g(y,0)$ has even linear, doubly even quadratic and no cubic terms modulo eight, so $\omega^{-P}$ is a diagonal Clifford. Undoing it and projecting the checks onto $|{+}\rangle^{\otimes s}$ gives, on an input fault $e$,
+\begin{equation}
+ \mathrm{out}_e(y)=\textstyle\sum_c\omega^{g(y,c)-P(y,c)}(-1)^{(Ge)\cdot(y,c)},
+ \label{eq:out}
+\end{equation}
+which is one branch of a stabilizer protocol.
+
+\paragraph*{Integer program.}
+The variables are the entries $G_{aj}\in\{0,1\}$. For every set $R$ of at most three rows and every column $j$, a product variable $y_{R,j}$ is linearized in the standard way. For every $R$, an integer slack $t_R$ enforces $\sum_jy_{R,j}=2t_R+\tau_R$, where $\tau_R$ is zero if $R$ contains a check row and is otherwise the target's T, CS or CCZ coefficient. Distance two requires every column with a nonzero logical part to have a nonzero check part, and distance three requires distinct nonzero check parts. Column orderings break symmetry. A run covers the target's whole CNOT+S class, and we run every class in its Clifford orbit. Gurobi~12 finds the cube factory and Bravyi and Kitaev's 15-to-1 protocol instantly. It also proves in-class infeasibility, not independently checked and not used in Table~\ref{tab:final}, in four cases: one T state at $d=2$ for $n\leq10$; $T\otimes T$ at $d=2$ for $n\leq10$; CS at $d=2$ for $n\leq10$; and $\CS_{12}\CS_{13}$ at $d=2$ for $n\leq9$.
+
+\paragraph*{Certification.}
+For every design we check exactly that $\omega^{-P}$ is Clifford, and evaluate Eq.~\eqref{eq:out} in $\mathbb Z[\omega]$ for every fault pattern below the target order. We test collapse through all $2\times2$ minors, count the harmful patterns at the target order, and compare the Pauli spectrum of the output with that of the target. The cube factory and 15-to-1 give $28p^2$ and $35p^3$.
+
+\paragraph*{The 36-input cubic factory.}
+For $\tau=\CS_{12}\CS_{13}$, $n=36$, $s=6$ and $d=3$, Gurobi returns the matrix below in 15 minutes (logical rows first). The certificate shows that the correction is Clifford, that all patterns of weight at most two are harmless, and that 120 of the 7140 weight-three patterns are harmful. After diagonal S and CZ corrections, the Clifford of Proposition~\ref{prop:orbit} maps the output to $|\CCZ\rangle$. The same parameters and coefficient appear for the corresponding entry of Ref.~\cite{wjs}.
+{\footnotesize
+\begin{verbatim}
+111010110100001011110010000110101010
+000100100111111001100001100001010000
+010100001010111011010011010111100100
+100101100111010100010110010111011101
+101100100010110010110010001010001011
+011100010001110001110001000101000111
+000011110000001111110000111100111111
+000000001111111111110000000011111111
+000000000000000000001111111111111111
+\end{verbatim}}
+
+\paragraph*{Two-level model.}
+Besides T columns, the outer code may contain CCZ blocks $(a,b,c)$ of three parity vectors. A block is a CCZ state from an inner factory, consumed by gate teleportation, and it multiplies the outer state by $(-1)^{[a\cdot v][b\cdot v][c\cdot v]}$. Modulo eight this phase is $4\,(a\cdot v)(b\cdot v)(c\cdot v)$. Its quadratic and linear parts are CZ and Z gates. Its cubic part adds to every distinct triple of rows the symmetrized tensor $\sum_\pi a_{\pi_1}b_{\pi_2}c_{\pi_3}$ modulo two. The twirl by the CCZ-preserving Cliffords $X_i\mathrm{CZ}_{jk}$ turns any error of a block into a mixture of $Z^l$ with $l\in\F^3\setminus\{0\}$, which acts on the outer state as $Z^{l_1a+l_2b+l_3c}$. A Jones block (four T, inner order one) has fault cost one; a cube block (eight T, inner order two) has fault cost two. Suppose every combination of faulty units (T columns or blocks, with any patterns) of total cost below $D$ has a nonzero check part or a zero logical part. Then fewer than $D$ input faults are always harmless, and by Theorem~\ref{thm:code} and Lemma~\ref{lem:post}, applied stage by stage, the composite has order $D$. The CNF encoding uses Tseitin variables for products and XOR chains for parities. CaDiCaL~1.9.5 solves the instances, and each satisfying design is certified exactly as above. The six-cube-block quartic factory has outer registers $3+5$; each row below lists a block's parity vectors $(a,b,c)$, with bits in register order:
+{\footnotesize
+\begin{verbatim}
+01111110 00001111 10100111
+11101000 10110111 11111001
+10101111 11011110 10110110
+11000001 11100111 10010111
+00010000 10110001 11110110
+11010111 00010001 01011001
+\end{verbatim}}
+\noindent In the cube factory, every nonzero logical error pattern arises from four of its 28 harmful fault pairs, so each of the 54 harmful block pairs contributes $16p^4$. The solver reproduces the controls: the eight-T cube factory is found, seven T states are proved insufficient, and a single Jones block gives CCZ at order one. For quartic CCZ, two cube blocks (three check rows) and three cube blocks (three and four check rows) are unsatisfiable. Six cube blocks are satisfiable with four to seven check rows; each design is certified, with 54 to 98 harmful block pairs. Five cube blocks, also searched with the first block fixed to unit vectors by the row symmetries, and four cube blocks with two Jones blocks, time out after 15 minutes, as do designs with nine Jones blocks for cubic CCZ. For two CCZ states at $d=2$, every design with two Jones blocks and two to five T states (10 to 13 inputs, up to six check rows), and with three Jones blocks (up to four check rows), is unsatisfiable within this model. These negative results are restricted to the two-level model and do not enter Table~\ref{tab:final}.
+
+\section{Prior lower bounds in our setting}\label{app:prior}
+\paragraph*{Valid under arbitrary postselection.}
+Fang and Liu~\cite{fangliu,fangliu2} give $n\geq\log[(1-f_\tau)/\epsilon]/\log[(1+R)/\lambda_{\min}]$, with stabilizer fidelity $f_\tau$ of the target, robustness $R$ of the input and smallest input eigenvalue $\lambda_{\min}$. Their statement also contains a success-probability factor, which can be removed~\cite{regulaprl}. For $\rho_T(p)$, $\lambda_{\min}=p$ and $1+R\leq4-2\sqrt2$, so the bound tends to $d$ as $p\to0$. At $p=10^{-3}$, with the constants of known protocols, it gives $n\geq3$ for T at $d=3$ and $n\geq2$ for CCZ at $d=2$. Regula's projective robustness~\cite{regulaprl} grows like $1/p$ and has the same limit. The nullity gives $n\geq\nu$ at every $d\geq1$, since $\epsilon(0)=0$ forces an exact postselected conversion~\cite{beverland}. Hence $n_{\min}\geq\max(d,\nu)$.
+
+\paragraph*{Deterministic or high-probability protocols.}
+The robustness bound of Regula and Takagi~\cite{regulatakagi}, $n\geq\log[(1-\epsilon)/F]/\log(4-2\sqrt2)$, is independent of $d$. It gives $n\geq4$ for CCZ ($F=9/16$), $n\geq3$ for CS ($F=5/8$) and $n\geq8$ for two CCZ states. Seddon \emph{et al.}~\cite{seddon} weight such bounds by the success probability $P$; for CCZ they give $n\geq4$ only when $P>0.83$.
+
+\paragraph*{Class-restricted bounds.}
+Codes with a transversal non-Clifford phase gate need at least fifteen qubits for distance three~\cite{kbk}. Generalized triorthogonal codes are classified through length 54 at distance at least three~\cite{nezamihaah,wjs}, and footprint bounds limit particular circuit families~\cite{jacinto}. None of these covers adaptive, non-transversal or multistage protocols. The optimal CS factory and the two-level designs lie outside all of these classes.
+
+%=====================================================================
+\bibliography{refs}
+\end{document}

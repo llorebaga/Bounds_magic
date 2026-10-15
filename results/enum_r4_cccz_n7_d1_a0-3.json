@@ -1,0 +1,150 @@
+{
+ "stats": {
+  "n": 7,
+  "d": 1,
+  "r": 4,
+  "E_size": 1,
+  "per_a": {
+   "0": {
+    "structures": 11811,
+    "pruned_by_logical": 11160,
+    "signed_candidates": 5208
+   },
+   "1": {
+    "structures": 4557,
+    "pruned_by_logical": 1860,
+    "signed_candidates": 124176
+   },
+   "2": {
+    "structures": 713,
+    "pruned_by_logical": 210,
+    "signed_candidates": 411904
+   },
+   "3": {
+    "structures": 43,
+    "pruned_by_logical": 9,
+    "signed_candidates": 1425408
+   }
+  },
+  "survivors": 8,
+  "seconds": 61.48536396026611
+ },
+ "survivors": [
+  {
+   "a": 1,
+   "AX": [
+    63
+   ],
+   "BZ": [
+    64,
+    63
+   ],
+   "c": [
+    0
+   ],
+   "signs": 0
+  },
+  {
+   "a": 1,
+   "AX": [
+    63
+   ],
+   "BZ": [
+    64,
+    63
+   ],
+   "c": [
+    0
+   ],
+   "signs": 1
+  },
+  {
+   "a": 1,
+   "AX": [
+    63
+   ],
+   "BZ": [
+    64,
+    63
+   ],
+   "c": [
+    0
+   ],
+   "signs": 2
+  },
+  {
+   "a": 1,
+   "AX": [
+    63
+   ],
+   "BZ": [
+    64,
+    63
+   ],
+   "c": [
+    0
+   ],
+   "signs": 3
+  },
+  {
+   "a": 2,
+   "AX": [
+    64,
+    63
+   ],
+   "BZ": [
+    63
+   ],
+   "c": [
+    0,
+    0
+   ],
+   "signs": 0
+  },
+  {
+   "a": 2,
+   "AX": [
+    64,
+    63
+   ],
+   "BZ": [
+    63
+   ],
+   "c": [
+    0,
+    0
+   ],
+   "signs": 1
+  },
+  {
+   "a": 2,
+   "AX": [
+    64,
+    63
+   ],
+   "BZ": [
+    63
+   ],
+   "c": [
+    0,
+    0
+   ],
+   "signs": 2
+  },
+  {
+   "a": 2,
+   "AX": [
+    64,
+    63
+   ],
+   "BZ": [
+    63
+   ],
+   "c": [
+    0,
+    0
+   ],
+   "signs": 3
+  }
+ ]
+}

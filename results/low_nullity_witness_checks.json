@@ -1,0 +1,89 @@
+{
+  "family_checks": [
+    {
+      "a": 3,
+      "d": 2,
+      "n": 5,
+      "nu_upper": 3,
+      "XX_expectation": "2/3",
+      "non_dyadic": true
+    },
+    {
+      "a": 4,
+      "d": 2,
+      "n": 6,
+      "nu_upper": 4,
+      "XX_expectation": "2/3",
+      "non_dyadic": true
+    },
+    {
+      "a": 5,
+      "d": 2,
+      "n": 7,
+      "nu_upper": 5,
+      "XX_expectation": "2/3",
+      "non_dyadic": true
+    },
+    {
+      "a": 6,
+      "d": 2,
+      "n": 8,
+      "nu_upper": 6,
+      "XX_expectation": "2/3",
+      "non_dyadic": true
+    },
+    {
+      "a": 4,
+      "d": 3,
+      "n": 7,
+      "nu_upper": 4,
+      "XX_expectation": "7/10",
+      "non_dyadic": true
+    },
+    {
+      "a": 5,
+      "d": 3,
+      "n": 8,
+      "nu_upper": 5,
+      "XX_expectation": "7/10",
+      "non_dyadic": true
+    }
+  ],
+  "pell_ratio_non_dyadic_for_2<=d<=200": true,
+  "d1_ratio": "1/2 (dyadic)",
+  "qutrit_ghz_numerical": [
+    {
+      "n": 3,
+      "d_excluded": 2,
+      "zero_count_classes": [
+        [
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "n": 6,
+      "d_excluded": 4,
+      "zero_count_classes": [
+        [
+          2,
+          2,
+          2
+        ]
+      ]
+    },
+    {
+      "n": 9,
+      "d_excluded": 6,
+      "zero_count_classes": [
+        [
+          3,
+          3,
+          3
+        ]
+      ]
+    }
+  ]
+}
