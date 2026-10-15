@@ -1,6 +1,6 @@
 # Bounds_magic
 
-Code and data for **"Every magic-state factory is a single code: exact limits and new constructions"**
+Code and data for **"Exact limits of magic-state distillation"**
 (`paper/paper.tex`, `paper/refs.bib`, compiled `paper/paper.pdf`).
 
 Every stabilizer protocol for magic-state distillation is equivalent to projecting the noisy T inputs onto one
