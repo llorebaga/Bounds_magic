@@ -1,0 +1,4 @@
+{"target": "ccz", "D": 3, "s": 4, "nT": 0, "nJ": 0, "nC": 4, "Tcost": 32, "status": "TIMEOUT", "sec": 900.0}
+{"target": "ccz", "D": 3, "s": 5, "nT": 0, "nJ": 0, "nC": 4, "Tcost": 32, "status": "TIMEOUT", "sec": 900.0}
+{"target": "ccz", "D": 3, "s": 6, "nT": 0, "nJ": 0, "nC": 4, "Tcost": 32, "status": "TIMEOUT", "sec": 900.0}
+{"target": "cs12cs13", "D": 3, "s": 4, "nT": 0, "nJ": 0, "nC": 4, "Tcost": 32, "status": "UNSAT(trivial)"}

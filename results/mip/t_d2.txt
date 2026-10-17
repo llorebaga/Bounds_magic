@@ -22,3 +22,5 @@
 {"target": "t", "d": 2, "n": 10, "s": 2, "status": "infeasible", "sec": 2.2}
 {"target": "t", "d": 2, "n": 10, "s": 3, "status": "infeasible", "sec": 4.7}
 {"target": "t", "d": 2, "n": 10, "s": 4, "status": "infeasible", "sec": 29.1}
+{"target": "t", "n": 9, "s": 6, "d": 2, "status": "infeasible", "seconds": 868.7}
+{"target": "t", "n": 9, "s": 7, "d": 2, "status": "timeout", "seconds": 900.3}

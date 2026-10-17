@@ -1,0 +1,4 @@
+{"target": "ccz", "D": 3, "s": 4, "nT": 4, "nJ": 0, "nC": 3, "Tcost": 28, "vars": 1971, "clauses": 7557, "fault_combos": 31, "sec": 0.0, "status": "UNSAT"}
+{"target": "ccz", "D": 3, "s": 5, "nT": 4, "nJ": 0, "nC": 3, "Tcost": 28, "vars": 2969, "clauses": 11492, "fault_combos": 31, "sec": 0.0, "status": "UNSAT"}
+{"target": "cs12cs13", "D": 3, "s": 4, "nT": 4, "nJ": 0, "nC": 3, "Tcost": 28, "vars": 1971, "clauses": 7557, "fault_combos": 31, "sec": 0.0, "status": "UNSAT"}
+{"target": "cs12cs13", "D": 3, "s": 5, "nT": 4, "nJ": 0, "nC": 3, "Tcost": 28, "vars": 2969, "clauses": 11492, "fault_combos": 31, "sec": 0.0, "status": "UNSAT"}

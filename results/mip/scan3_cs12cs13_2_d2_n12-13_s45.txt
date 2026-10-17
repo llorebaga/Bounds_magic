@@ -1,0 +1,5 @@
+Set parameter Username
+Set parameter LicenseID to value 2873805
+Academic license - for non-commercial use only - expires 2027-10-12
+{"target": "cs12cs13_2", "d": 2, "n": 12, "s": 4, "status": "timeout", "sec": 900.1}
+{"target": "cs12cs13_2", "d": 2, "n": 12, "s": 5, "status": "timeout", "sec": 900.2}
