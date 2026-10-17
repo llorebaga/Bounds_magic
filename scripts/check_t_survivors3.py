@@ -46,7 +46,7 @@ def classify(AX, BZ, cs, signs, cache={}):
     return out
 
 if __name__ == "__main__":
-    counts = {}; examples = []
+    counts = {}; examples = []; texamples = []
     # finditer over the whole log: threads occasionally print two records on one line
     for m in re.finditer(r"SURVIVOR a=(\d+) AX=\[([^\]]*)\] BZ=\[([^\]]*)\] c=(\d+) signs=\[([^\]]*)\]", open(fname).read()):
         a = int(m[1]); AX = tuple(int(x) for x in m[2].split(","))
@@ -55,6 +55,8 @@ if __name__ == "__main__":
         signs = [int(x) for x in m[5].split(",") if x.strip()]
         for sg, r in zip(signs, classify(AX, BZ, cs, signs)):
             counts[r] = counts.get(r, 0) + 1
+            if r == "T": texamples.append({"AX": AX, "BZ": BZ, "c": cs, "signs": sg})
             if r != "stabilizer" and len(examples) < 50: examples.append({"AX": AX, "BZ": BZ, "c": cs, "signs": sg, "class": r})
     print(json.dumps(counts))
     json.dump(examples, open(fname + ".nonstab.json", "w"), indent=1)
+    if texamples: json.dump(texamples, open(fname + ".T.json", "w"), indent=1)

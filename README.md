@@ -69,6 +69,20 @@ complementary patterns (needed for non-rational targets such as T).
 
 Total for one T state at n=8, d=2: 1.32e11 signed codes over all X-ranks.
 
+### Nine-input quadratic T factory (Proposition 7)
+| Claim | Command | Output |
+|---|---|---|
+| n=9, d=2, one T state: sectors a<=6 (Julia kernel, 2.2e11 signed codes) | `GALOIS=0 R=1 TARGET=t python export_structs.py 9 2 {1..6}`; `GALOIS=0 julia -t 16 fast_enum.jl ../results/structs_nogal_r1_n9_d2_a{1..6}.txt 9 2 8` | `log_fast_t_n9_d2_a{1..6}.txt.gz` |
+| Classification of the 2.5e7 collapse survivors: 96 encode a T-equivalent state (all one factory up to symmetry) | `python classify_parallel.py ../results/log_fast_t_n9_d2_a6.txt 9 16` (after `gunzip -k`) | `log_fast_t_n9_d2_a6.txt.T.json` |
+| Exact certificate: all single faults collapse, logical Bloch moduli {0,1/sqrt2,1/sqrt2}, acceptance 1/128, eps = 27/2 p^2 + O(p^3) | `python verify_t_factory.py ../results/log_fast_t_n9_d2_a6.txt.T.json 5 9` | `results/t9_factory_cert.txt` |
+
+Sectors a=7, 8 at n=9 (3.8e12 and 7.0e13 signed codes) were not run: the factory already shows n_min(T,2)=9.
+
+### Leading-coefficient minimization (exploratory)
+`python tri_mip_opt.py TARGET n s timelimit [warmstart.json]` minimizes the number of harmful weight-3 patterns
+over distance-3 generalized triorthogonal matrices (exact parity linearization). Control: `python tri_mip_opt.py t 15 4 300`
+proves 35 optimal (15-to-1). Output: `results/mip/opt_*.json`.
+
 Validation (App. D): `python validate_enum.py 5 2` (brute force), `python validate_canon.py 7 2 300`
 (canonicalization), `python validate_arith.py 7 2 30` (exact vs dense), `python control_cube.py` (8-T cube
 factory), `julia -t 16 independent_check.jl 7 2` (independent implementation), `python diag.py` (which condition
