@@ -361,22 +361,6 @@ $A$ is taken up to input permutations, as one canonical representative per orbit
 \paragraph*{Fault sets.}
 For rational targets (CCZ, CCZ$^{\otimes2}$, CS, CCCZ) every run takes $H=\{e:|e|<d\text{ or }|e|>n-d\}$ by Theorem~\ref{thm:pairing}, both in Lemma~\ref{lem:logical} and in the collapse test; at $d=1$ this is $\{\mathbf0,\mathbf1\}$. The runs labelled ``3-qubit, $\nu=3$'' and ``T'' in Table~\ref{tab:runs} use $H=\{e:|e|<d\}$ only.
 
-\paragraph*{Target tests.}
-The collapse conditions do not determine which state is encoded. Since the code space is $U(\mathbb C^{2^r}\otimes|0\rangle^{\otimes m})$ for a Clifford encoding $U$, the normalized $n$-qubit state $\Pi_C|\phi_{\mathbf0}\rangle/\sqrt{G_{\mathbf0\mathbf0}}$ must be Clifford-equivalent to $|\tau\rangle|0\rangle^{\otimes m}$, with the $m=n-r$ syndrome qubits in $|0\rangle$. The Python implementation retains a code that satisfies the collapse conditions only if the multiset of absolute Pauli expectations of this normalized state equals that of $|\tau\rangle|0\rangle^{\otimes m}$, a necessary condition for Clifford equivalence. The compiled kernel tests the collapse conditions only.
-
-For one T state at $n=8$ and $d=2$, with $H=\{e:|e|<2\}$, the search covers all X-ranks, $1.32\times10^{11}$ signed codes in total. The sectors of X-rank at most four (Python, with the target test) contain no T-state protocol, and in the sector of X-rank seven ($1.2\times10^{11}$ signed codes, compiled kernel) no code satisfies the collapse conditions. In the sectors of X-rank six ($1.1\times10^{10}$ signed codes) and five ($9.1\times10^{8}$), 890{,}940 and 346{,}136 codes satisfy them, and we classified these codes exactly. For each code we compute two logical Paulis by linear algebra over $\F$ and the three logical expectations of the normalized state $\Pi_C\phi_{\mathbf0}/\sqrt{G_{\mathbf0\mathbf0}}$. A single-qubit Clifford only permutes these up to sign, and for $|T\rangle$ their moduli are $\{1/\sqrt2,1/\sqrt2,0\}$. All of these codes of X-rank six, and all but 928 of X-rank five, have one modulus equal to one and so encode stabilizer states. The remaining 928 have moduli $\{0,1/3,2\sqrt2/3\}$: they encode a non-stabilizer state, but not one in the Clifford orbit of $|T\rangle$. This classification agrees with a computation of the full Pauli spectrum on random samples and on all stored codes that encode non-stabilizer states, and it correctly identifies a test code that encodes $|T\rangle$.
-
-At $n=9$ we ran the compiled kernel on the sectors of X-rank at most six ($2.2\times10^{11}$ signed codes) and classified in the same way the $2.5\times10^{7}$ codes that satisfy the collapse conditions. Almost all encode stabilizer states, a few thousand encode other non-stabilizer states, and 96 encode a state whose logical Pauli expectations have the moduli of those of $|T\rangle$. These 96 codes all accept the ideal input with probability $1/128$ and have the same error polynomial, and they are equivalent to the code of Proposition~\ref{prop:t9}. For that code an independent certificate recomputes, in exact arithmetic over $\mathbb Q(\sqrt2,i)$, all single-fault minors, the logical Pauli expectations and the full error polynomial: the harmful patterns number 36, 45, 90, 75, 76, 15, 6 and 1 at weights two to nine, and $\epsilon=\tfrac{27}{2}p^2+O(p^3)$. A computation with dense state vectors confirms the collapse conditions and the Pauli spectrum of $|T\rangle$ for all 96 codes. The sectors of X-rank seven and eight were not run, since the factory already shows that nine inputs suffice.
-
-\paragraph*{Monotonicity in $n$ and $d$.}
-A protocol on $n-1$ inputs, extended by one discarded input, keeps its suppression order, so each search at fixed $n$ also excludes all smaller $n$. Order $d$ implies order $d-1$, so the quartic CCZ bound follows from the cubic one, and the quartic run is a consistency check.
-
-\paragraph*{Validation.}
-For $n\leq5$ the search agrees with brute force over all signed codes. Six hundred random codes at $n=6,7$ are mapped by the symmetries onto codes enumerated by the search, with identical Gram matrices, and the exact and floating-point Gram entries agree. The search recovers Jones' four-T CCZ preparation, the three-T CS preparation and the eight-T cube factory. A separately written implementation, without the $W$ symmetry and with its own arithmetic, confirms the CCZ runs at $n=7$. A compiled kernel treats the largest sectors and reproduces the results of the Python implementation in every smaller case. The two-CCZ and CCCZ runs use the Python implementation only. Table~\ref{tab:runs} lists the searches on which Theorems~\ref{thm:ccz} and~\ref{thm:tcs} rest.
-
-\paragraph*{Verification levels.}
-The computational results are verified at three levels. Reproduced by two independent implementations: quadratic CCZ ($n\leq7$) and cubic CCZ at $n=7$. One implementation, with the compiled kernel cross-checked against the Python search on all smaller cases: cubic CCZ at $n=8,9$, quartic CCZ at $n=9$, one T state at $n=8$, CS, two CCZ states and CCCZ. Exact certificates, recomputed by separate scripts in exact arithmetic: every construction of the main text, including the nine-input T factory, and the worked examples of Sec.~\ref{app:example}.
-
 \begin{table}[t]
 \caption{Exhaustive searches underlying Theorems~\ref{thm:ccz} and~\ref{thm:tcs}. The last column gives the number of signed codes that are not excluded by Lemma~\ref{lem:logical} and for which the collapse conditions were therefore tested in exact arithmetic. In no case does a code satisfy them with an encoded state that has the Pauli spectrum of the target. Except in the rows ``3-qubit, $\nu=3$'' and T, the tolerated set $H$ contains the complementary patterns $|e|>n-d$.}
 \label{tab:runs}
@@ -399,6 +383,23 @@ CCCZ & 1 & 5 & 44 \\
 \end{ruledtabular}
 \end{table}
 
+\paragraph*{Target tests.}
+The collapse conditions do not determine which state is encoded. Since the code space is $U(\mathbb C^{2^r}\otimes|0\rangle^{\otimes m})$ for a Clifford encoding $U$, the normalized $n$-qubit state $\Pi_C|\phi_{\mathbf0}\rangle/\sqrt{G_{\mathbf0\mathbf0}}$ must be Clifford-equivalent to $|\tau\rangle|0\rangle^{\otimes m}$, with the $m=n-r$ syndrome qubits in $|0\rangle$. The Python implementation retains a code that satisfies the collapse conditions only if the multiset of absolute Pauli expectations of this normalized state equals that of $|\tau\rangle|0\rangle^{\otimes m}$, a necessary condition for Clifford equivalence. The compiled kernel tests the collapse conditions only.
+
+For one T state at $n=8$ and $d=2$, with $H=\{e:|e|<2\}$, the search covers all X-ranks, $1.32\times10^{11}$ signed codes in total. The sectors of X-rank at most four (Python, with the target test) contain no T-state protocol, and in the sector of X-rank seven ($1.2\times10^{11}$ signed codes, compiled kernel) no code satisfies the collapse conditions. In the sectors of X-rank six ($1.1\times10^{10}$ signed codes) and five ($9.1\times10^{8}$), 890{,}940 and 346{,}136 codes satisfy them, and we classified these codes exactly. For each code we compute two logical Paulis by linear algebra over $\F$ and the three logical expectations of the normalized state $\Pi_C\phi_{\mathbf0}/\sqrt{G_{\mathbf0\mathbf0}}$. A single-qubit Clifford only permutes these up to sign, and for $|T\rangle$ their moduli are $\{1/\sqrt2,1/\sqrt2,0\}$. All of these codes of X-rank six, and all but 928 of X-rank five, have one modulus equal to one and so encode stabilizer states. The remaining 928 have moduli $\{0,1/3,2\sqrt2/3\}$: they encode a non-stabilizer state, but not one in the Clifford orbit of $|T\rangle$. This classification agrees with a computation of the full Pauli spectrum on random samples and on all stored codes that encode non-stabilizer states, and it correctly identifies a test code that encodes $|T\rangle$.
+
+At $n=9$ we ran the compiled kernel on the sectors of X-rank at most six ($2.2\times10^{11}$ signed codes) and classified in the same way the $2.5\times10^{7}$ codes that satisfy the collapse conditions. Almost all encode stabilizer states, a few thousand encode other non-stabilizer states, and 96 encode a state whose logical Pauli expectations have the moduli of those of $|T\rangle$. These 96 codes all accept the ideal input with probability $1/128$ and have the same error polynomial, and they are equivalent to the code of Proposition~\ref{prop:t9}. For that code an independent certificate recomputes, in exact arithmetic over $\mathbb Q(\sqrt2,i)$, all single-fault minors, the logical Pauli expectations and the full error polynomial: the harmful patterns number 36, 45, 90, 75, 76, 15, 6 and 1 at weights two to nine, and $\epsilon=\tfrac{27}{2}p^2+O(p^3)$. A computation with dense state vectors confirms the collapse conditions and the Pauli spectrum of $|T\rangle$ for all 96 codes. The sectors of X-rank seven and eight were not run, since the factory already shows that nine inputs suffice.
+
+\paragraph*{Monotonicity in $n$ and $d$.}
+A protocol on $n-1$ inputs, extended by one discarded input, keeps its suppression order, so each search at fixed $n$ also excludes all smaller $n$. Order $d$ implies order $d-1$, so the quartic CCZ bound follows from the cubic one, and the quartic run is a consistency check.
+
+\paragraph*{Validation.}
+For $n\leq5$ the search agrees with brute force over all signed codes. Six hundred random codes at $n=6,7$ are mapped by the symmetries onto codes enumerated by the search, with identical Gram matrices, and the exact and floating-point Gram entries agree. The search recovers Jones' four-T CCZ preparation, the three-T CS preparation and the eight-T cube factory. A separately written implementation, without the $W$ symmetry and with its own arithmetic, confirms the CCZ runs at $n=7$. A compiled kernel treats the largest sectors and reproduces the results of the Python implementation in every smaller case. The two-CCZ and CCCZ runs use the Python implementation only. Table~\ref{tab:runs} lists the searches on which Theorems~\ref{thm:ccz} and~\ref{thm:tcs} rest.
+
+\paragraph*{Verification levels.}
+The computational results are verified at three levels. Reproduced by two independent implementations: quadratic CCZ ($n\leq7$) and cubic CCZ at $n=7$. One implementation, with the compiled kernel cross-checked against the Python search on all smaller cases: cubic CCZ at $n=8,9$, quartic CCZ at $n=9$, one T state at $n=8$, CS, two CCZ states and CCCZ. Exact certificates, recomputed by separate scripts in exact arithmetic: every construction of the main text, including the nine-input T factory, and the worked examples of Sec.~\ref{app:example}.
+
+\onecolumngrid
 \section{Integer and SAT programs}\label{app:programs}
 \paragraph*{Phase-polynomial factories.}
 Registers $v=(y,c)$, with $k$ logical and $s$ check bits, start in $|{+}\rangle$. Each column $G_j$ applies T to the parity $G_j\cdot v$, consuming one input, so the phase is $\omega^{g(v)}$ with $g(v)=\sum_j[G_j\cdot v]$, where $[\cdot]\in\{0,1\}$ is a parity read as an integer. A faulty input $j$ applies $ZT$ instead of T to that parity, an extra sign $(-1)^{G_j\cdot v}$. These signs multiply, with no cross terms, so a fault pattern $e$ of any weight contributes $\prod_{j:e_j=1}(-1)^{G_j\cdot v}=(-1)^{(Ge)\cdot v}$. Suppose every overlap $\sum_jG_{aj}G_{bj}G_{cj}$ (rows not necessarily distinct) that involves a check row is even. Then the check-involving part $P(y,c)=g(y,c)-g(y,0)$ has even linear, doubly even quadratic and no cubic terms modulo eight, so $\omega^{-P}$ is a diagonal Clifford. Undoing it and projecting the checks onto $|{+}\rangle^{\otimes s}$ gives, on an input fault $e$,
@@ -410,6 +411,42 @@ which is one branch of a stabilizer protocol.
 
 \paragraph*{Integer program.}
 The variables are the entries $G_{aj}\in\{0,1\}$. For every set $R$ of at most three rows and every column $j$, a binary variable $y_{R,j}$ represents the product $\prod_{a\in R}G_{aj}$ through the standard linearization $y_{R,j}\leq G_{aj}$ for $a\in R$ and $y_{R,j}\geq\sum_{a\in R}G_{aj}-|R|+1$. For every $R$, an integer slack $t_R$ enforces $\sum_jy_{R,j}=2t_R+\tau_R$, where $\tau_R$ is zero if $R$ contains a check row and is otherwise the target's T, CS or CCZ coefficient. Every column is nonzero. Distance two requires every column, including check-only columns, to have a nonzero check part, and distance three requires the check parts of all columns to be pairwise distinct, so that no fault of weight one or two has $G_0e=0$. To break the column-permutation symmetry, the columns are sorted in nondecreasing order of their binary value or, at distance three, in strictly increasing order of the binary value of their check parts, which also makes the check parts distinct. Each program covers the whole CNOT+S class of the target, and we solve one program for every class in its Clifford orbit. Gurobi~12 finds the cube factory and Bravyi and Kitaev's 15-to-1 protocol within seconds. It also proves infeasibility within this family in two cases cited in the main text: one T state at $d=2$ for $n\leq9$ with at most six check rows, and CS at $d=2$ for $n\leq10$ with at most three check rows. Such results concern this family only and are not used in Table~\ref{tab:final}.
+
+In algebraic form, write $L=\{1,\dots,k\}$ for the logical rows, $S=\{k+1,\dots,N\}$ with $N=k+s$ for the check rows, $[n]=\{1,\dots,n\}$, and $\mathcal R=\{R\subseteq[N]:1\leq|R|\leq3\}$. Up to Clifford gates, the diagonal gate of the target is $\omega^{f(y)}$ with
+\begin{equation*}
+ f(y)=\sum_a\tau_ay_a+2\sum_{a<b}\tau_{ab}y_ay_b+4\sum_{a<b<c}\tau_{abc}y_ay_by_c,
+\end{equation*}
+where $\tau_{ab}$ stands for $\tau_{\{a,b\}}$ and so on, and $\tau_R=0$ whenever $R\cap S\neq\emptyset$. Set $y_{\{a\}j}=G_{aj}$ and define the column keys $\kappa_j=\sum_{a\in[N]}2^{a-1}G_{aj}$ for $d\leq2$ and $\kappa_j=\sum_{r\in S}2^{r-k-1}G_{rj}$ for $d=3$. For $d\in\{2,3\}$ the program is
+\begin{equation}
+\begin{aligned}
+\min_{G,\,y,\,t}\ \ & 0\\
+\text{s.t.}\ \ & \textstyle\sum_{j\in[n]}y_{Rj}=2t_R+\tau_R, && R\in\mathcal R,\\
+& y_{Rj}\leq G_{aj}, && |R|\geq2,\ a\in R,\ j\in[n],\\
+& y_{Rj}\geq\textstyle\sum_{a\in R}G_{aj}-|R|+1, && |R|\geq2,\ j\in[n],\\
+& \textstyle\sum_{a\in[N]}G_{aj}\geq1, && j\in[n],\\
+& G_{aj}\leq\textstyle\sum_{r\in S}G_{rj}, && a\in L,\ j\in[n],\\
+& \kappa_j+[d=3]\leq\kappa_{j+1}, && j\in[n-1],\\
+& G_{aj},\,y_{Rj}\in\{0,1\},\quad t_R\in\{0,1,\dots,n\}.
+\end{aligned}
+\label{eq:ip1}
+\end{equation}
+The first constraint fixes the parity of every overlap; the next two make $y_{Rj}=\prod_{a\in R}G_{aj}$. The fourth and fifth constraints give every column a nonzero check part, so that every single fault is detected, and at $d=3$ the strict ordering of the check keys makes the check parts pairwise distinct, so that every pair of faults is detected as well.
+
+\paragraph*{Leading coefficient.}
+A second program minimizes, at $d=3$, the number of harmful weight-three patterns, that is, of triples of columns whose check parts sum to zero while their logical parts do not. For each triple $J$ in $\mathcal J=\{J\subseteq[n]:|J|=3\}$ and each row $r$, the binary variable $z_{Jr}$ is the parity of row $r$ on $J$, $u_J=1$ exactly when all check parities vanish, and $h_J$ marks a harmful triple:
+\begin{equation}
+\begin{aligned}
+\min\ \ & \textstyle\sum_{J\in\mathcal J}h_J\\
+\text{s.t.}\ \ & \text{all constraints of Eq.~\eqref{eq:ip1} with }d=3,\\
+& \textstyle\sum_{j\in J}G_{rj}=z_{Jr}+2w_{Jr}, && J\in\mathcal J,\ r\in[N],\\
+& u_J\geq1-\textstyle\sum_{r\in S}z_{Jr}, && J\in\mathcal J,\\
+& u_J\leq1-z_{Jr}, && J\in\mathcal J,\ r\in S,\\
+& h_J\geq u_J+z_{Jr}-1, && J\in\mathcal J,\ r\in L,\\
+& z_{Jr},\,w_{Jr},\,u_J,\,h_J\in\{0,1\}.
+\end{aligned}
+\label{eq:ip2}
+\end{equation}
+Since $h_J$ is only bounded from below, at an optimum $h_J=1$ exactly when $J$ is harmful, and the optimal value is the coefficient of $p^3$ in the output error. For the 15-to-1 protocol (target T, $n=15$, $s=4$), Gurobi proves within a second that the value 35 is optimal. Started from the 36-input design of the next paragraph, it found no better solution within an hour, and its dual bound remained zero, so whether a smaller coefficient is possible with 36 inputs is open.
 
 \paragraph*{Certification.}
 For every design we check exactly that $\omega^{-P}$ is Clifford, and evaluate Eq.~\eqref{eq:out} in $\mathbb Z[\omega]$ for every fault pattern below the target order. We test collapse through all $2\times2$ minors, count the harmful patterns at the target order, and compare the Pauli spectrum of the output with that of the target. The cube factory and 15-to-1 give $28p^2$ and $35p^3$.
@@ -430,7 +467,32 @@ For $\tau=\CS_{12}\CS_{13}$, $n=36$, $s=6$ and $d=3$, Gurobi returns the matrix 
 \end{verbatim}}
 
 \paragraph*{Two-level model.}
-Besides T columns, the outer code may contain CCZ blocks $(a,b,c)$ of three parity vectors. A block is a CCZ state from an inner factory, consumed by gate teleportation, and it multiplies the outer state by $(-1)^{[a\cdot v][b\cdot v][c\cdot v]}$. Modulo eight this phase is $4\,(a\cdot v)(b\cdot v)(c\cdot v)$. Its quadratic and linear parts are CZ and Z gates. Its cubic part adds to every distinct triple of rows the symmetrized tensor $\sum_\pi a_{\pi_1}b_{\pi_2}c_{\pi_3}$ modulo two. The twirl by the CCZ-preserving Cliffords $X_i\mathrm{CZ}_{jk}$ turns any error of a block into a mixture of $Z^l$ with $l\in\F^3\setminus\{0\}$, which acts on the outer state as $Z^{l_1a+l_2b+l_3c}$. A Jones block (four T, inner order one) has fault cost one; a cube block (eight T, inner order two) has fault cost two. Suppose every combination of faulty units (T columns or blocks, with any patterns) of total cost below $D$ has a nonzero check part or a zero logical part. Then fewer than $D$ input faults are always harmless, and by Theorem~\ref{thm:code} and Lemma~\ref{lem:post}, applied stage by stage, the composite has order $D$. The CNF encoding uses Tseitin variables for products and XOR chains for parities. CaDiCaL~1.9.5 solves the instances, and each satisfying design is certified exactly as above. The six-cube-block quartic factory has outer registers $3+5$; each row below lists a block's parity vectors $(a,b,c)$, with bits in register order:
+Besides T columns, the outer code may contain CCZ blocks $(a,b,c)$ of three parity vectors. A block is a CCZ state from an inner factory, consumed by gate teleportation, and it multiplies the outer state by $(-1)^{[a\cdot v][b\cdot v][c\cdot v]}$. Modulo eight this phase is $4\,(a\cdot v)(b\cdot v)(c\cdot v)$. Its quadratic and linear parts are CZ and Z gates. Its cubic part adds to every distinct triple of rows the symmetrized tensor $\sum_\pi a_{\pi_1}b_{\pi_2}c_{\pi_3}$ modulo two. The twirl by the CCZ-preserving Cliffords $X_i\mathrm{CZ}_{jk}$ turns any error of a block into a mixture of $Z^l$ with $l\in\F^3\setminus\{0\}$, which acts on the outer state as $Z^{l_1a+l_2b+l_3c}$. A Jones block (four T, inner order one) has fault cost one; a cube block (eight T, inner order two) has fault cost two. Suppose every combination of faulty units (T columns or blocks, with any patterns) of total cost below $D$ has a nonzero check part or a zero logical part. Then fewer than $D$ input faults are always harmless, and by Theorem~\ref{thm:code} and Lemma~\ref{lem:post}, applied stage by stage, the composite has order $D$.
+
+In algebraic form, let the outer code have $n_T$ T columns $G_{\cdot j}$ and $B=n_J+n_C$ blocks, the first $n_J$ of Jones type and the remaining $n_C$ of cube type, and let $A_{bqr}\in\{0,1\}$, $q=1,2,3$, be the entries of the parity vectors $(a,b,c)$ of block $b$. A \emph{fault configuration} $(W,l)$ consists of a set $W$ of T columns and blocks with total cost below $D$ and a nonzero $l^{(b)}\in\F^3$ for each block $b\in W$. Its integer row sums are
+\begin{equation*}
+ \zeta_r(W,l)=\sum_{j\in W}G_{rj}+\sum_{b\in W}\sum_{q=1}^3l^{(b)}_qA_{bqr},
+\end{equation*}
+whose parities give the Z-vector of the configuration. With $\mathcal R$, $L$, $S$ and $\tau_R$ as in Eq.~\eqref{eq:ip1}, $\Pi_R$ the set of bijections $\pi\colon\{1,2,3\}\to R$ for $|R|=3$, and $\kappa_j=\sum_{r\in[N]}2^{r-1}G_{rj}$, the program is as follows, where $j\in[n_T]$, $b\in[B]$, $q\in\{1,2,3\}$, $r\in[N]$ and the fault configurations $(W,l)$ range over all values unless restricted:
+\begin{equation}
+\begin{aligned}
+\min_{G,\,A,\,y,\,x,\,t,\,\beta,\,\gamma}\ \ & 0\\
+\text{s.t.}\ \ & \textstyle\sum_{j\in[n_T]}y_{Rj}+[|R|=3]\sum_{b\in[B]}\sum_{\pi\in\Pi_R}x_{b\pi}=2t_R+\tau_R, && R\in\mathcal R,\\
+& y_{Rj}\leq G_{aj}, && |R|\geq2,\ a\in R,\\
+& y_{Rj}\geq\textstyle\sum_{a\in R}G_{aj}-|R|+1, && |R|\geq2,\\
+& x_{b\pi}\leq A_{bq\pi(q)}, && |R|=3,\ \pi\in\Pi_R,\\
+& x_{b\pi}\geq\textstyle\sum_{q=1}^3A_{bq\pi(q)}-2, && |R|=3,\ \pi\in\Pi_R,\\
+& \zeta_r(W,l)=\beta_r^{Wl}+2\gamma_r^{Wl}, && \\
+& \beta_r^{Wl}\leq\textstyle\sum_{r'\in S}\beta_{r'}^{Wl}, && r\in L,\\
+& \textstyle\sum_{r\in S}G_{rj}\geq1, && \\
+& \kappa_j\leq\kappa_{j+1}, && j<n_T,\\
+& G_{rj},A_{bqr},y_{Rj},x_{b\pi},\beta_r^{Wl}\in\{0,1\},\quad t_R,\gamma_r^{Wl}\in\mathbb Z_{\geq0}.
+\end{aligned}
+\label{eq:ip3}
+\end{equation}
+The first constraint fixes the parity of every overlap, including the cubic contributions of the blocks; the next four make $y_{Rj}=\prod_{a\in R}G_{aj}$ and $x_{b\pi}=\prod_qA_{bq\pi(q)}$; and the fault constraints require that a configuration with zero check part also have zero logical part. The total number of T inputs, $n_T+4n_J+8n_C$, is fixed by the instance, so the program decides feasibility. Gurobi solves it, but slowly; for instance, it proves two cube blocks with three check rows infeasible for quartic CCZ in 460 seconds.
+
+The SAT instances impose the same constraints on Boolean variables $G$ and $A$. Products are Tseitin variables, every parity is an XOR chain, and each overlap and fault constraint becomes a set of clauses. The only differences are in the treatment of degenerate T columns: every T column is required to be nonzero, and the columns are in strictly increasing lexicographic order. This excludes repeated columns without loss, because removing two equal T columns from a design leaves a valid design with two fewer inputs. CaDiCaL~1.9.5 solves the instances, and each satisfying design is certified exactly as above. The six-cube-block quartic factory has outer registers $3+5$; each row below lists a block's parity vectors $(a,b,c)$, with bits in register order:
 {\footnotesize
 \begin{verbatim}
 01111110 00001111 10100111
@@ -442,6 +504,7 @@ Besides T columns, the outer code may contain CCZ blocks $(a,b,c)$ of three pari
 \end{verbatim}}
 \noindent In the cube factory, every nonzero logical error pattern arises from four of its 28 harmful fault pairs, so each of the 54 harmful block pairs contributes $16p^4$. As tests, the solver finds the eight-T cube factory, proves that seven T states are insufficient, and shows that a single Jones block gives CCZ at order one. For quartic CCZ, two cube blocks (three check rows) and three cube blocks (three and four check rows) are unsatisfiable. Six cube blocks are satisfiable with four to seven check rows; each design is certified, with 54 to 98 harmful block pairs. Five cube blocks, and four cube blocks with two Jones blocks, are not decided within 15 minutes per instance. These negative results concern the two-level model only and are not used in Table~\ref{tab:final}.
 
+\twocolumngrid
 \section{Previous lower bounds}\label{app:prior}
 \paragraph*{Valid under arbitrary postselection.}
 Fang and Liu~\cite{fangliu,fangliu2} give $n\geq\log[(1-f_\tau)/\epsilon]/\log[(1+R)/\lambda_{\min}]$, with stabilizer fidelity $f_\tau$ of the target, generalized robustness $R$ of the input (the least $s$ such that $(\rho+s\sigma)/(1+s)$ is a stabilizer mixture for some state $\sigma$) and smallest input eigenvalue $\lambda_{\min}$. Their statement also contains a success-probability factor, which can be removed~\cite{regulaprl}. For $\rho_T(p)$, $\lambda_{\min}=p$, and by convexity $R(\rho_T(p))\leq R(|T\rangle)=3-2\sqrt2$: the Bloch vector $(1,1,0)/\sqrt2$ must be mixed with its antipode to reach the stabilizer octahedron $|x|+|y|+|z|\leq1$. Thus $1+R\leq4-2\sqrt2$, which coincides with the inverse stabilizer fidelity of $|T\rangle$, and the bound tends to $d$ as $p\to0$. (With the standard robustness, $1+R(|T\rangle)=(1+\sqrt2)/2$, the limit and the integer values below are unchanged.) At $p=10^{-3}$, with the constants of known protocols, it gives $n\geq3$ for T at $d=3$ and $n\geq2$ for CCZ at $d=2$. Regula's projective robustness~\cite{regulaprl} grows like $1/p$ and has the same limit. The nullity gives $n\geq\nu$ at every $d\geq1$, since $\epsilon(0)=0$ forces an exact postselected conversion~\cite{beverland}. Hence $n_{\min}\geq\max(d,\nu)$. For rational targets, the equality case of the canonical form of Ref.~\cite[Theorem~5.3]{beverland} raises the nullity bound to $\nu+1$ (Theorem~\ref{thm:analytic}). We have not found this bound stated in the literature, and Beverland \emph{et al.} use the automorphism $\sigma$ only to bound postselection probabilities~\cite[Proposition~5.8]{beverland}. It follows, however, immediately from their results, so Table~\ref{tab:final} marks the $d=1$ entries $\nu+1$ with a dagger rather than as new. Their stabilizer-extent bound (e.g.\ $3.63$ for CCZ) is not established under arbitrary postselection, so we do not use it; compare the probability-weighted bounds of Ref.~\cite{seddon} below.
