@@ -21,3 +21,5 @@ results/*.err
 results/mip/*.err
 results/log_fast_t_n8_d2_a5.txt
 results/log_fast_t_n9_d2_a?.txt
+results/sat/*.err
+paper/paper_source.zip
