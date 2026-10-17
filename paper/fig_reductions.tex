@@ -4,7 +4,7 @@
 \definecolor{tolblue}{cmyk}{1,0.36,0,0.30}      % tolerated patterns and the target line
 \definecolor{harmver}{cmyk}{0,0.56,1,0.165}     % harmful patterns
 \definecolor{skyblue}{cmyk}{0.63,0.23,0,0.09}   % code space
-\definecolor{rejgray}{cmyk}{0,0,0,0.50}         % rejected patterns
+\definecolor{rejgray}{cmyk}{0,0,0,0.62}         % rejected patterns
 \definecolor{inkgray}{cmyk}{0,0,0,0.75}         % neutral annotation
 \newcommand{\figPi}{\text{\fontencoding{OT1}\fontfamily{cmss}\selectfont\char5}}
 \begin{tikzpicture}[
@@ -81,6 +81,7 @@
   \draw[tolblue, line width=0.4pt] ($(f0)-0.13*(t)$) -- ++(0,0.13) -- ($(f0)+(0,0.13)$);
   \draw[tolblue, line width=0.4pt] ($(f1)+0.13*(t)$) -- ++(0,0.13) -- ($(f1)+(0,0.13)$);
   \draw[harmver, line width=0.4pt] ($(fh)+(-0.122,0.046)$) -- ++(0,0.13) -- ($(fh)+(0,0.13)$);
+  \draw[rejgray, line width=0.4pt] ($(O)+(0.106,0.074)$) -- ++(0,0.13) -- ($(O)+(0,0.13)$); % rejected: perpendicular to C, projects to zero
   % drop lines (the projection Pi_C)
   \draw[drop, tolblue] (p0) -- (f0);
   \draw[drop, tolblue] (p1) -- (f1);
@@ -95,7 +96,7 @@
   \draw[vec, tolblue] (O) -- (p0);
   \draw[vec, tolblue] (O) -- (p1);
   \fill (O) circle (0.9pt);
-  \node[anchor=south, rejgray, inner sep=1.5pt] at (pr) {rejected};
+  \node[anchor=south, rejgray, inner sep=1.5pt, align=center] at (pr) {rejected\\[-1pt]$\figPi_C\phi_e=0$};
   \node[anchor=west, harmver, inner sep=1.5pt] at (ph) {harmful};
   \node[anchor=west, tolblue, inner sep=1.5pt] at (p0) {$\phi_{\mathbf 0}$};
   \node[anchor=east, tolblue, inner sep=1.5pt] at (p1) {$\phi_{\mathbf 1}$};
