@@ -4,6 +4,16 @@ paper/*.aux
 paper/*.log
 paper/*.blg
 paper/*.out
+paper/*.pdf
+paper/*.bbl
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz
+paper/*.toc
+paper/*.dvi
+paper/*.xdv
+paper/*.bcf
+paper/*.run.xml
 paper/paperNotes.bib
 results/*.err
 results/mip/*.err
