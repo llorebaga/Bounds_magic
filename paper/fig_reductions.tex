@@ -91,28 +91,41 @@
   \node[font=\scriptsize, okblue] at (1.95,3.95) {$\sqrt2\mapsto-\sqrt2$};
 \end{scope}
 %======================== (d) constructions ========================
+% \minimat{x}{y}{rows}{on-color}: small binary matrix, top-left corner (x,y), rows given as bit strings
+\newcommand{\minimat}[4]{%
+  \foreach \row [count=\r from 0] in {#3} {
+    \foreach \b [count=\i from 0] in \row {
+      \ifnum\b=1 \def\fc{#4!75}\else\def\fc{#4!12}\fi
+      \fill[\fc] ({#1+0.11*\i},{#2-0.11*\r}) rectangle ++(0.095,-0.095);
+    }
+  }%
+}
 \begin{scope}[shift={(13.05,0)}]
   \node[ttl] at (-0.1,4.55) {(d) Constructions};
-  % binary matrix of the eight-input cube factory: column j = vertex j of the cube
-  \def\cs{0.36}
-  \foreach \j in {0,...,7} {
-    \node[circle, draw, fill=okblue!15, inner sep=0.6pt, font=\tiny] at ({0.55+\cs*\j},3.95) {$T$};
-    \foreach \r/\yy in {0/3.45,1/3.09,2/2.73} {
-      \pgfmathtruncatemacro{\bit}{mod(floor(\j/2^\r),2)}
-      \ifnum\bit=1
-        \fill[okblue!75] ({0.55+\cs*\j-0.17},{\yy-0.17}) rectangle ({0.55+\cs*\j+0.17},{\yy+0.17});
-      \else
-        \fill[okblue!8] ({0.55+\cs*\j-0.17},{\yy-0.17}) rectangle ({0.55+\cs*\j+0.17},{\yy+0.17});
-      \fi
-    }
-    \fill[softgray!70!black] ({0.55+\cs*\j-0.17},{2.22-0.17}) rectangle ({0.55+\cs*\j+0.17},{2.22+0.17});
+  % candidate designs
+  \minimat{0.12}{4.12}{{1,0,1,1,0},{0,1,1,0,1},{1,1,0,0,1},{0,1,0,1,1}}{okblue}
+  \minimat{0.98}{4.12}{{0,1,1,0,1},{1,0,0,1,1},{1,1,1,0,0},{0,0,1,1,1}}{okblue}
+  \minimat{1.84}{4.12}{{1,1,0,1,0},{0,1,1,1,0},{1,0,1,0,1},{1,1,1,1,1}}{okblue}
+  \minimat{2.70}{4.12}{{1,0,0,1,1},{1,1,0,1,0},{0,1,1,1,0},{1,0,1,0,1}}{okblue}
+  % funnel = solver over parity constraints
+  \draw[okblue, fill=planefill, rounded corners=2pt]
+    (0.0,3.62) -- (3.3,3.62) -- (2.0,2.62) -- (2.0,2.35) -- (1.3,2.35) -- (1.3,2.62) -- cycle;
+  \node at (1.65,3.25) {MIP / SAT};
+  % rejected designs drop out of the funnel
+  \foreach \xx/\bx in {0.05/0.62,2.72/2.68} {
+    \minimat{\xx}{2.75}{{1,1,0,0,1},{0,1,1,0,0},{1,0,0,1,1},{0,0,1,1,0}}{softgray}
+    \draw[badred, very thick] (\xx,2.31) -- ++(0.54,0.44) (\xx,2.75) -- ++(0.54,-0.44);
   }
-  \node[font=\scriptsize, okblue, rotate=90] at (0.18,3.09) {logical};
-  \node[font=\tiny, softgray!70!black, rotate=90] at (0.18,2.22) {check};
-  % solver and certificate
-  \draw[->, very thick, okblue] (1.81,1.85) -- (1.81,1.42);
-  \node[draw, rounded corners=2pt, fill=planefill, minimum width=14mm, minimum height=5mm] (mip) at (1.81,1.12) {MIP / SAT};
-  \draw[->, very thick, okblue] (mip.south) -- (1.81,0.42);
-  \node[font=\scriptsize, anchor=north] at (1.81,0.38) {collapse test \textcolor{tgtgreen}{\checkmark}};
+  % the certified design: eight-input cube factory (three logical rows, one check row)
+  \draw[->, very thick, okblue] (1.65,2.3) -- (1.65,1.98);
+  \foreach \j in {0,...,7} {
+    \foreach \r/\yy in {0/1.85,1/1.63,2/1.41} {
+      \pgfmathtruncatemacro{\bit}{mod(floor(\j/2^\r),2)}
+      \ifnum\bit=1 \def\fc{okblue!75}\else\def\fc{okblue!10}\fi
+      \fill[\fc] ({0.79+0.22*\j},\yy) rectangle ++(0.19,-0.19);
+    }
+    \fill[softgray!75!black] ({0.79+0.22*\j},1.15) rectangle ++(0.19,-0.19);
+  }
+  \node[font=\scriptsize, anchor=north] at (1.65,0.78) {factory \textcolor{tgtgreen}{\checkmark}};
 \end{scope}
 \end{tikzpicture}
