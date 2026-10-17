@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{26}%
+\begin{thebibliography}{29}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -69,6 +69,28 @@
   overhead},\ }\href {https://doi.org/10.1103/PhysRevA.86.052329} {\bibfield
   {journal} {\bibinfo  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume}
   {86}},\ \bibinfo {pages} {052329} (\bibinfo {year} {2012})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Gidney}\ \emph {et~al.}(2024)\citenamefont {Gidney},
+  \citenamefont {Shutty},\ and\ \citenamefont {Jones}}]{cultivation}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Gidney}}, \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {Shutty}},\
+  and\ \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Jones}},\
+  }\href@noop {} {\bibinfo {title} {Magic state cultivation: growing {T} states
+  as cheap as {CNOT} gates}} (\bibinfo {year} {2024}),\ \Eprint
+  {https://arxiv.org/abs/2409.17595} {arXiv:2409.17595 [quant-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Rosenfeld}\ \emph {et~al.}(2025)\citenamefont
+  {Rosenfeld}, \citenamefont {Gidney}, \citenamefont {Roberts} \emph
+  {et~al.}}]{googlecultivation}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Rosenfeld}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Gidney}},
+  \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Roberts}}, \emph
+  {et~al.},\ }\href@noop {} {\bibinfo {title} {Magic state cultivation on a
+  superconducting quantum processor}} (\bibinfo {year} {2025}),\ \bibinfo
+  {note} {published in Science (2026)},\ \Eprint
+  {https://arxiv.org/abs/2512.13908} {arXiv:2512.13908 [quant-ph]} \BibitemShut
   {NoStop}%
 \bibitem [{\citenamefont {Campbell}\ and\ \citenamefont
   {Howard}(2017)}]{campbellhoward}%
@@ -227,6 +249,14 @@
   {Kay}},\ }\href@noop {} {\bibinfo {title} {The smallest code with transversal
   {T}}} (\bibinfo {year} {2022}),\ \Eprint {https://arxiv.org/abs/2210.14066}
   {arXiv:2210.14066 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Rizzo}\ and\ \citenamefont
+  {Leone}(2026)}]{rizzoleone}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Rizzo}}\ and\ \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Leone}},\
+  }\href@noop {} {\bibinfo {title} {Universal magic state concentration}}
+  (\bibinfo {year} {2026}),\ \Eprint {https://arxiv.org/abs/2608.13376}
+  {arXiv:2608.13376 [quant-ph]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Gidney}\ and\ \citenamefont
   {Fowler}(2019)}]{gidneyfowler}%
   \BibitemOpen
@@ -301,14 +331,15 @@
   {title} {Entanglement in the stabilizer formalism}} (\bibinfo {year}
   {2004}),\ \Eprint {https://arxiv.org/abs/quant-ph/0406168}
   {arXiv:quant-ph/0406168} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Wills}\ \emph {et~al.}(2024)\citenamefont {Wills},
+\bibitem [{\citenamefont {Wills}\ \emph {et~al.}(2025)\citenamefont {Wills},
   \citenamefont {Hsieh},\ and\ \citenamefont {Yamasaki}}]{whyamasaki}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
   {Wills}}, \bibinfo {author} {\bibfnamefont {M.-H.}\ \bibnamefont {Hsieh}},\
   and\ \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont {Yamasaki}},\
-  }\href@noop {} {\bibinfo {title} {Constant-overhead magic state
-  distillation}} (\bibinfo {year} {2024}),\ \Eprint
-  {https://arxiv.org/abs/2408.07764} {arXiv:2408.07764 [quant-ph]} \BibitemShut
-  {NoStop}%
+  }\bibfield  {title} {\bibinfo {title} {Constant-overhead magic state
+  distillation},\ }\bibfield  {journal} {\bibinfo  {journal} {Nat. Phys.}\
+  }\href {https://doi.org/10.1038/s41567-025-03026-0}
+  {10.1038/s41567-025-03026-0} (\bibinfo {year} {2025}),\ \Eprint
+  {https://arxiv.org/abs/2408.07764} {arXiv:2408.07764} \BibitemShut {NoStop}%
 \end{thebibliography}%
