@@ -1,0 +1,5 @@
+Set parameter Username
+Set parameter LicenseID to value 2873805
+Academic license - for non-commercial use only - expires 2027-10-12
+  d=6 n=10: INFEASIBLE (3825 cuts, 38s)
+  d=6 n=11: INFEASIBLE (4597 cuts, 141s)
