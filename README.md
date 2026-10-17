@@ -12,7 +12,7 @@ into lower bounds, the integer/SAT programs that find constructions, and the exa
 ## Layout
 
 ```
-paper/     paper.tex, refs.bib, paper.bbl, paper.pdf
+paper/     paper.tex, refs.bib, paper.bbl, paper.pdf, fig_reductions.tex (TikZ source of Fig. 1, \input by paper.tex)
 scripts/   all code (run from inside scripts/: paths are relative, e.g. ../results/)
 results/   logs, JSON outputs, certificates and designs referenced in the paper
 ```
@@ -24,7 +24,7 @@ results/   logs, JSON outputs, certificates and designs referenced in the paper
 - `python-sat` (`pip install python-sat`; CaDiCaL 1.9.5 backend) for the SAT programs
 - Julia 1.10 (multi-threaded) for the compiled kernel `fast_enum.jl` and the independent check
 
-Exact arithmetic everywhere except where noted (floating point only in the witness search of App. B and in
+Exact arithmetic everywhere except where noted (floating point only in the witness search of App. C and in
 dense cross-checks).
 
 ## Claims and how to reproduce them
@@ -33,20 +33,25 @@ All commands are run from `scripts/`. Environment variables: `R` = number of log
 `TARGET` = spectral target filter (`ccz`, `ccz2`, `cccz`, `cs`, `t`, `tt`), `GALOIS=0` disables the
 complementary patterns (needed for non-rational targets such as T).
 
-### Reductions and Clifford orbit (Sec. II, App. A)
+### Worked example (App. A, Fig. 1)
+| Claim | Command | Output |
+|---|---|---|
+| Three T states -> CS: code Z1Z2Z3, projected amplitudes, Gram entries, eps(p) = 3p(1-p); a rejected seven-input candidate (minor 3/1024); the eight-input cube factory (G00 = 1/16, single faults rejected, 28 harmful pairs). Exact (sympy), cross-checked against dense linear algebra | `python worked_example.py` | stdout |
+
+### Reductions and Clifford orbit (Sec. II, App. B)
 | Claim | Command | Output |
 |---|---|---|
 | Prop. 3: CS12CS13\|+++> = CX23 H2 CX12 S2 H2 \|CCZ> (exact, sympy) | `python verify_orbit.py` | stdout |
 | Clifford orbit of \|CCZ> has 69,120 states; its diagonal members | `python clifford_orbit_ccz.py` | stdout |
 
-### Analytic bounds (Theorem 4, App. B)
+### Analytic bounds (Theorem 4, App. C)
 | Claim | Command | Output |
 |---|---|---|
 | Witness identities, n >= 2d+1 (exact in Q(zeta_8)) | `python 41_check_free_witnesses.py` | `results/free_witness_checks.json` |
 | Low-nullity witness, n >= d + nu + 1 (exact) | `python 52_check_low_nullity_witness.py 10` | `results/low_nullity_witness_checks.json` |
 | Limits of witnesses (floating point) | `python 53_search_magic_witnesses.py 6 2 4` and `... 7 2 4` | stdout |
 
-### Exhaustive searches (Theorems 5, 6, App. C, Table II)
+### Exhaustive searches (Theorems 5, 6, App. D, Table II)
 | Claim | Command | Output |
 |---|---|---|
 | Any 3-qubit nu=3 target, d=2, n=7: no code (weight <= 1 only, 17,161,440 signed codes) | `GALOIS=0 R=3 python enum_codes_v2.py 7 2` | stdout |
@@ -65,12 +70,12 @@ Status note: for one T state at n=8, sectors a<=4 (Python, `log_t_n8_d2_a0-5.txt
 complete without a T-state protocol; the a=5 sector (`GALOIS=0 R=1 TARGET=t python enum_codes_v2.py 8 2 5 5`)
 was still running when this repository was created, so the paper states the bound n >= 8.
 
-Validation (App. C): `python validate_enum.py 5 2` (brute force), `python validate_canon.py 7 2 300`
+Validation (App. D): `python validate_enum.py 5 2` (brute force), `python validate_canon.py 7 2 300`
 (canonicalization), `python validate_arith.py 7 2 30` (exact vs dense), `python control_cube.py` (8-T cube
 factory), `julia -t 16 independent_check.jl 7 2` (independent implementation), `python diag.py` (which condition
 fails first). The Julia kernel is cross-checked on `structs_nogal_r1_n7_d2_a6.txt` (402,653,184 signed codes).
 
-### Integer programs and the 36-input cubic CCZ factory (Sec. IV, App. D)
+### Integer programs and the 36-input cubic CCZ factory (Sec. IV, App. E)
 | Claim | Command | Output |
 |---|---|---|
 | Controls: cube 8T (d=2), 7T infeasible, 15-to-1 | `python tri_mip.py ccz 8 1 2`; `python tri_mip.py ccz 7 2 2`; `python tri_mip.py t 15 4 3` | stdout |
@@ -78,12 +83,12 @@ fails first). The Julia kernel is cross-checked on `structs_nogal_r1_n7_d2_a6.tx
 | Exact certificate: Clifford correction, order 3, 120 harmful weight-3 patterns | `python verify_tri2.py ../results/mip/cs12cs13_36.json 3` | `results/mip/cs12cs13_36_cert.json` |
 | In-class infeasibility scans (not used in Table I) | `python mip_scan.py TARGET d n_min n_max s_list timelimit` | `results/mip/*.txt` |
 
-### Two-level factories (Sec. IV, App. D)
+### Two-level factories (Sec. IV, App. E)
 | Claim | Command | Output |
 |---|---|---|
 | SAT model controls | `python sat_block.py ccz 2 1 8 0 0`; `python sat_block.py ccz 2 2 7 0 0`; `python sat_block.py ccz 1 0 0 1 0` | stdout |
 | Quartic CCZ from six cube blocks (48 T), certified, 54 harmful block pairs -> 864 p^4 | `python sat_sweep.py out.jsonl 600 "ccz 4 5 0 0 6"` | `results/sat/quartic_ccz_6cube_s{4,5,6,7}.json`, `results/sat/A2.jsonl` |
 | Exact certificate of a design | `python verify_block.py ../results/sat/quartic_ccz_6cube_s5.json` | stdout |
-| Negative / undecided instances listed in App. D | see `results/sat/*.log`, `*.jsonl` | |
+| Negative / undecided instances listed in App. E | see `results/sat/*.log`, `*.jsonl` | |
 
 `block_mip.py` is the Gurobi version of the same two-level model (much slower than the SAT encoding).

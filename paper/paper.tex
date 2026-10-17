@@ -1,5 +1,7 @@
 \documentclass[aps,pra,reprint,twocolumn,amsmath,amssymb,floatfix,nofootinbib,superscriptaddress]{revtex4-2}
-\usepackage{amsmath,amssymb,amsthm,booktabs,hyperref}
+\usepackage{amsmath,amssymb,amsthm,booktabs,graphicx,hyperref}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,positioning}
 \hypersetup{hidelinks}
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -66,6 +68,13 @@ CCCZ & 1 & 4 & $\mathbf{6}^e$ & 6~\cite{beverland} & 6$^p$ \\
 \end{ruledtabular}
 \end{table*}
 
+\begin{figure*}[t]
+\centering
+\resizebox{\textwidth}{!}{\input{fig_reductions}}
+\caption{The reductions behind every result. (a)~Theorem~\ref{thm:code}: however adaptive, postselected or multistage a protocol is, one accepted branch already works, and it amounts to measuring the stabilizers of a single code $C$, keeping one outcome and decoding with a Clifford $V$. (b)~Collapse: the fault states $\phi_e=Z^e|T\rangle^{\otimes n}$ are orthonormal, and the protocol projects them onto the much smaller code space. Every tolerated pattern must land on the line spanned by the encoded target or on zero (rejected); a harmful pattern lands elsewhere. (c)~Theorem~\ref{thm:pairing}: for rational targets, flipping the sign of $\sqrt2$ turns error rate $p$ into $1-p$ and pairs each fault pattern with its complement. The harmless weights below $d$ are mirrored above $n-d$, so damage is confined to the middle (here $n=8$, $d=2$), and in particular the fault-free input $\phi_{\mathbf0}$ and the all-faulty input $\phi_{\mathbf1}$ must collapse together. (d)~The exact search for quadratic CCZ with seven inputs: symmetry and the no-hidden-logical condition shrink the problem, and an exact collapse test rejects every remaining signed code. Appendix~\ref{app:example} follows these steps on explicit examples.}
+\label{fig:reductions}
+\end{figure*}
+
 %=====================================================================
 \section{Factories as codes}\label{sec:framework}
 \paragraph*{Setting.}
@@ -84,13 +93,16 @@ Let $\nu(\tau)=r$, and let $H$ be a set of fault patterns containing $\mathbf 0$
  \label{eq:collapse}
 \end{equation}
 \end{theorem}
-The proof (Appendix~\ref{app:proofs}) refines the protocol into single Kraus operators, as in Campbell and Browne's normal form for single-output protocols~\cite{campbellbrowne}. Each Kraus operator is a code projection followed by a Clifford isometry~\cite{fattal}, and positivity forces every branch to be harmless on $H$. We call Eq.~\eqref{eq:collapse} \emph{collapse}: all tolerated inputs project onto one code vector, or are rejected ($\Pi_C|\phi_e\rangle=0$). With the Gram matrix $G_{ef}=\langle\phi_e|\Pi_C|\phi_f\rangle$, and given that $\Pi_C|\phi_{\mathbf0}\rangle$ encodes $\tau$, collapse is the set of polynomial conditions $G_{\mathbf0\mathbf0}>0$ and $G_{\mathbf0\mathbf0}G_{ee}=|G_{\mathbf0e}|^2$ for $e\in H$; rejected patterns have $G_{ee}=G_{\mathbf0e}=0$. The theorem holds for any product of resource states, not only T states.
+Figure~\ref{fig:reductions}(a,b) illustrates the statement. The proof (Appendix~\ref{app:proofs}) refines the protocol into single Kraus operators, as in Campbell and Browne's normal form for single-output protocols~\cite{campbellbrowne}. Each Kraus operator is a code projection followed by a Clifford isometry~\cite{fattal}, and positivity forces every branch to be harmless on $H$. We call Eq.~\eqref{eq:collapse} \emph{collapse}: all tolerated inputs project onto one code vector, or are rejected ($\Pi_C|\phi_e\rangle=0$). With the Gram matrix $G_{ef}=\langle\phi_e|\Pi_C|\phi_f\rangle$, and given that $\Pi_C|\phi_{\mathbf0}\rangle$ encodes $\tau$, collapse is the set of polynomial conditions $G_{\mathbf0\mathbf0}>0$ and $G_{\mathbf0\mathbf0}G_{ee}=|G_{\mathbf0e}|^2$ for $e\in H$; rejected patterns have $G_{ee}=G_{\mathbf0e}=0$. The theorem holds for any product of resource states, not only T states.
 
 \paragraph*{Complementary faults.}
 \begin{theorem}\label{thm:pairing}
 If $\tau$ is rational, then in every protocol a pattern $e$ is harmless if and only if its complement $e+\mathbf1$ is. With suppression order $d$, every pattern with $|e|<d$ or $|e|>n-d$ is harmless.
 \end{theorem}
-Every stabilizer operation acts on Pauli coefficients with rational numbers, so it commutes with the automorphism $\sigma$ of $\mathbb Q(\sqrt2)$ that flips the sign of $\sqrt2$. By Eq.~\eqref{eq:input}, $\sigma$ maps $\rho_T(p)$ to $\rho_T(1-p)$, hence $\rho_e$ to $\rho_{e+\mathbf1}$, and it fixes the rational target. The damages of $e$ and of its complement are therefore conjugate numbers, and one vanishes exactly when the other does (Appendix~\ref{app:proofs}). Beverland \emph{et al.} noted that $\sigma$ commutes with postselected stabilizer circuits and maps $|T\rangle$ to $Z|T\rangle$~\cite{beverland}. Applied to noisy inputs, it pairs each fault pattern with its complement. This explains, for instance, why Eastin's exact CCZ factory error polynomial is invariant under $p\mapsto1-p$~\cite{eastin}. In the code picture, extend $\sigma$ to amplitudes in $\mathbb Q(\omega)=\mathbb Q(\sqrt2,i)$ by fixing $i$. Then $\sigma(|T\rangle)=-Z|T\rangle$ and, since $\Pi_C$ has entries in $\mathbb Q(i)$, $\sigma(\Pi_C|\phi_{\mathbf0}\rangle)=(-1)^n\Pi_C|\phi_{\mathbf1}\rangle\neq0$. The fault-free and the all-faulty inputs must therefore collapse together, so the projected ideal input is proportional to its own image under $\sigma$; we call this the \emph{cross condition}.
+Every stabilizer operation acts on Pauli coefficients with rational numbers, so it commutes with the automorphism $\sigma$ of $\mathbb Q(\sqrt2)$ that flips the sign of $\sqrt2$. By Eq.~\eqref{eq:input}, $\sigma$ maps $\rho_T(p)$ to $\rho_T(1-p)$, hence $\rho_e$ to $\rho_{e+\mathbf1}$, and it fixes the rational target. The damages of $e$ and of its complement are therefore conjugate numbers, and one vanishes exactly when the other does (Appendix~\ref{app:proofs}). Beverland \emph{et al.} noted that $\sigma$ commutes with postselected stabilizer circuits and maps $|T\rangle$ to $Z|T\rangle$~\cite{beverland}. Applied to noisy inputs, it pairs each fault pattern with its complement. This explains, for instance, why Eastin's exact CCZ factory error polynomial is invariant under $p\mapsto1-p$~\cite{eastin}. In the code picture, extend $\sigma$ to amplitudes in $\mathbb Q(\omega)=\mathbb Q(\sqrt2,i)$ by fixing $i$. Then $\sigma(|T\rangle)=-Z|T\rangle$ and, since $\Pi_C$ has entries in $\mathbb Q(i)$, $\sigma(\Pi_C|\phi_{\mathbf0}\rangle)=(-1)^n\Pi_C|\phi_{\mathbf1}\rangle\neq0$. The fault-free and the all-faulty inputs must therefore collapse together, so the projected ideal input is proportional to its own image under $\sigma$; we call this the \emph{cross condition} [Fig.~\ref{fig:reductions}(c)].
+
+\paragraph*{A worked example.}
+Three T states make the state $\CS|{+}{+}\rangle$ of the controlled-S gate: measure $Z_1Z_2Z_3$, keep the outcome $+1$, and decode. Here the code is the $+1$ eigenspace of $Z_1Z_2Z_3$, and the fault-free input projects onto the encoded target with probability $1/2$. The all-faulty input collapses onto the same vector, because $Z^{\otimes3}$ is itself the stabilizer, as Theorem~\ref{thm:pairing} requires. A single fault, in contrast, acts as a logical Pauli operator and is harmful. The protocol therefore has suppression order one, with output error exactly $3p(1-p)$, a polynomial invariant under $p\mapsto1-p$. Appendix~\ref{app:example} carries out every step explicitly. It then follows the same test through a seven-input code that the search rejects, and through the eight-input CCZ factory, which passes.
 
 \paragraph*{Targets up to Clifford equivalence.}
 Appending a stabilizer branch that maps $\tau$ to $\tau'$ with nonzero probability turns every order-$d$ factory for $\tau$ into one for $\tau'$ (Lemma~\ref{lem:post}). In particular, $n_{\min}$ depends only on the Clifford orbit of the target, which is larger than the CNOT+S classes used to organize code families~\cite{wjs}:
@@ -112,7 +124,7 @@ Every protocol of suppression order $d$ satisfies $n\geq d-1+L(\tau)$, where $L(
 The bound $L(\tau)\geq\nu(\tau)+1$ is the equality case of Beverland \emph{et al.}'s canonical form for postselected stabilizer circuits~\cite{beverland}; the bounds $2d+1$ and $d+\nu+1$ use Theorem~\ref{thm:pairing}. Linear growth in $d$ is the right scaling: asymptotically good codes with transversal CCZ~\cite{golowich,nguyen,whyamasaki}, fed with four-T CCZ preparations, give one CCZ state with $n=O(d)$. The constant, however, is far from tight.
 
 \paragraph*{Small cases exactly.}
-Theorem~\ref{thm:code} reduces the existence of a protocol to a search over signed stabilizer codes. We parametrize each code by its X parts, its Z-type stabilizers and lifts, and reduce modulo permutations and the Clifford $W=(X+Y)/\sqrt2$ that fixes $|T\rangle$. A simple necessary condition prunes most codes: no harmless $Z^e$ may act as a logical operator. The remaining collapse identities are tested in exact arithmetic over $\mathbb Z[\sqrt2,i]$. Appendix~\ref{app:search} describes the search, its validation with an independent second implementation and a compiled kernel, and the size of every run, up to $9\times10^{11}$ signed codes.
+Theorem~\ref{thm:code} reduces the existence of a protocol to a search over signed stabilizer codes. We parametrize each code by its X parts, its Z-type stabilizers and lifts, and reduce modulo permutations and the Clifford $W=(X+Y)/\sqrt2$ that fixes $|T\rangle$. A simple necessary condition prunes most codes: no harmless $Z^e$ may act as a logical operator. The remaining collapse identities are tested in exact arithmetic over $\mathbb Z[\sqrt2,i]$ [Fig.~\ref{fig:reductions}(d)]. Appendix~\ref{app:search} describes the search, its validation with an independent second implementation and a compiled kernel, and the size of every run, up to $9\times10^{11}$ signed codes.
 \begin{theorem}[computer-assisted]\label{thm:ccz}
 Let $\tau$ be a 3-qubit state fixed by no Pauli operator other than the identity, for example CCZ. No stabilizer protocol has suppression order two with $n\leq7$ inputs. If $\tau$ is also rational, none has suppression order three, and hence none has order four, with $n\leq9$.
 \end{theorem}
@@ -149,6 +161,57 @@ Search code, exact verifiers, integer and SAT models, logs and certificates are 
 
 %=====================================================================
 \appendix
+\section{A worked example}\label{app:example}
+We follow one small protocol through every step of the method, then apply the same test to a code that the exhaustive search rejects and to the eight-input CCZ factory. The script \texttt{worked\_example.py} reproduces every number below in exact arithmetic.
+
+\paragraph*{Step 1: the protocol.}
+Take three noisy T states. Measure $Z_1Z_2Z_3$ and keep the outcome $+1$. Then apply CNOT gates from qubits 1 and 2 onto qubit 3, which leaves qubit 3 in $|0\rangle$, and discard it. We show below that the output is $\CS|{+}{+}\rangle$ up to Clifford gates, with $\CS=\mathrm{diag}(1,1,1,i)$.
+
+\paragraph*{Step 2: the code.}
+In the language of Theorem~\ref{thm:code}, the protocol projects onto the code $C$ fixed by $Z_1Z_2Z_3$, with projector $\Pi_C=(I+Z_1Z_2Z_3)/2$. It is spanned by the even-weight strings $|000\rangle,|011\rangle,|101\rangle,|110\rangle$ and has dimension $4=2^r$ with $r=2$. The decoder is the inverse of the Clifford encoding $U|y_1y_2\rangle=|y_1,y_2,y_1\oplus y_2\rangle$.
+
+\paragraph*{Step 3: the fault-free input.}
+Since $|T\rangle^{\otimes3}=2^{-3/2}\sum_x\omega^{|x|}|x\rangle$ and $\omega^2=i$, the projection keeps the even strings,
+\begin{equation}
+ \Pi_C|\phi_{\mathbf0}\rangle=2^{-3/2}\bigl(|000\rangle+i|011\rangle+i|101\rangle+i|110\rangle\bigr).
+\end{equation}
+Decoded, the amplitudes on $|y_1y_2\rangle$ are $(1,i,i,i)/2^{3/2}$, that is, $i^{y_1+y_2}(-i)^{y_1y_2}$ up to normalization. This is $(S\otimes S)\,\CS^{-1}|{+}{+}\rangle$, and $\CS^{-1}=\CS\cdot\mathrm{CZ}$, so the output is $\CS|{+}{+}\rangle$ up to Clifford gates. The Gram entry $G_{\mathbf0\mathbf0}=\|\Pi_C\phi_{\mathbf0}\|^2=1/2$ is the probability of accepting the ideal input.
+
+\paragraph*{Step 4: the faulty inputs.}
+Every $Z^e$ commutes with $Z_1Z_2Z_3$, so $\Pi_C|\phi_e\rangle=Z^e\,\Pi_C|\phi_{\mathbf0}\rangle$, and $G_{ee}=1/2$ for all $e$. Two cases occur.
+\begin{itemize}
+\item $e=111$. Here $Z^e=Z_1Z_2Z_3$ is the stabilizer itself, so $\Pi_C|\phi_{111}\rangle=\Pi_C|\phi_{\mathbf0}\rangle$: the all-faulty input collapses onto the fault-free one. In Gram form, $G_{\mathbf0\mathbf0}G_{ee}-|G_{\mathbf0e}|^2=\tfrac12\cdot\tfrac12-\tfrac14=0$. This is the cross condition of Theorem~\ref{thm:pairing} in its simplest form.
+\item $e=100$, and likewise every pattern of weight one or two. Now $Z^e$ commutes with the stabilizer without being one, so it acts on $C$ as a logical Pauli operator; for $e=100$ it is $Z$ on the first logical qubit. The output becomes $Z_1\CS|{+}{+}\rangle$, which differs from the target. Indeed $G_{\mathbf0e}=\tfrac18(1+1-1-1)=0$, so the minor is $\tfrac14\neq0$. Lemma~\ref{lem:logical} predicts this without computation.
+\end{itemize}
+
+\paragraph*{Step 5: the error.}
+Every pattern is accepted with probability $1/2$, and only $000$ and $111$ are harmless, so
+\begin{equation}
+ \epsilon(p)=1-(1-p)^3-p^3=3p(1-p).
+\end{equation}
+The suppression order is one, and the error is invariant under $p\mapsto1-p$, as Theorem~\ref{thm:pairing} demands. Theorem~\ref{thm:analytic} shows that suppression order two needs at least five inputs, and Theorem~\ref{thm:tcs} raises this to eight.
+
+\paragraph*{Step 6: a code rejected by the search.}
+For quadratic CCZ with seven inputs, the tolerated set $H$ contains the fault-free pattern, the seven single faults, their seven complements and the all-faulty pattern. The first code of X-rank one that survives the pruning of Lemma~\ref{lem:logical} has stabilizers
+\begin{equation}
+ X_1X_2X_3X_4X_5X_6,\quad Z_7,\quad Z_1Z_6,\quad Z_2Z_3Z_4Z_5.
+\end{equation}
+It passes the pruning because every tolerated $Z^e$ that commutes with all stabilizers is itself a stabilizer: $Z_7$, $Z_1\cdots Z_6=(Z_1Z_6)(Z_2Z_3Z_4Z_5)$ and $Z^{\otimes7}$. Every other single fault is detected. With all signs $+1$, the exact Gram entries are $G_{\mathbf0\mathbf0}=1/16$ and, for a fault on input 1, $G_{\mathbf0e}=-i/32$ and $G_{ee}=1/16$. Hence
+\begin{equation}
+ G_{\mathbf0\mathbf0}G_{ee}-|G_{\mathbf0e}|^2=\tfrac1{256}-\tfrac1{1024}=\tfrac3{1024}\neq0 .
+\end{equation}
+The faulty input projects partly along the ideal vector and partly orthogonally to it, so it produces a wrong output state. Each of the 16 sign choices fails twelve of the fifteen conditions. The search runs this test on all 7{,}699{,}696 signed codes that survive the pruning, and none passes.
+
+\paragraph*{Step 7: the eight-input factory passes.}
+Label the eight inputs by the vertices $v\in\F^3$ of a cube. Writing the T$^\dagger$ inputs of the usual construction as $S^\dagger|T\rangle$, the stabilizers are $X$ on the four even-weight vertices times $Y$ on the four odd-weight vertices, together with $Z$ on the faces $v_1=0$, $v_2=0$, $v_3=0$ and $v_1=1$. These generate $Z$ on all six faces and $Z^{\otimes8}$. The test gives the following.
+\begin{itemize}
+\item $G_{\mathbf0\mathbf0}=1/16$, and $\Pi_C\phi_{\mathbf0}$ has the Pauli spectrum of CCZ.
+\item Every single fault anticommutes with the first stabilizer and is rejected: $G_{ee}=G_{\mathbf0e}=0$.
+\item Since $Z^{\otimes8}$ is a stabilizer, each pattern behaves like its complement. The weight-seven patterns are rejected, and the all-faulty input collapses onto the fault-free one, with $G_{\mathbf0\mathbf1}=G_{\mathbf1\mathbf1}=1/16$.
+\item Every $Z_jZ_k$ commutes with all stabilizers but is not one, so it is a logical error. All 28 weight-two patterns are harmful, and $\epsilon=28p^2+O(p^3)$.
+\end{itemize}
+So eight inputs reach order two, while the search shows that seven never do.
+
 \section{Proofs of the reductions}\label{app:proofs}
 \begin{proof}[Proof of Theorem~\ref{thm:code}]
 Write the accepted map as $\Lambda=\sum_bc_b\Lambda_b$ over branches, where a branch fixes all random choices and measurement outcomes. Each branch damage $h_{b,e}=\tr[(I-\Pi)\Lambda_b(\rho_e)]$ is nonnegative, and these damages sum to the damage of $e$, so every branch is harmless on $H$. Measuring each discarded qubit in the computational basis refines the branches into branches given by single Kraus operators $K$. Pick one with $K|\phi_{\mathbf0}\rangle\neq0$, which exists because the fault-free input is accepted. $K$ is a product of Clifford gates, stabilizer preparations and Pauli projections~\cite{campbellbrowne}, so applied to half of $n$ Bell pairs it yields a pure stabilizer state on $n+r$ qubits. Every bipartite pure stabilizer state equals, up to local Clifford gates, a product of Bell pairs and single-qubit states~\cite{fattal}. Hence $K=c\,V\Pi_C$, where $C$ is a stabilizer code on the inputs and $V$ a Clifford isometry from $C$ onto its range. Since $K|\phi_{\mathbf0}\rangle\propto|\tau\rangle$ and $\tau$ is fixed by no Pauli operator other than the identity, the range is the whole output space, so $\dim C=2^r$ and $U=V^{-1}$ is an encoding. Harmlessness of $e$ in this branch is Eq.~\eqref{eq:collapse}. Conversely, measuring the stabilizers of $C$, postselecting the prescribed signs and applying $V$ is a protocol. For the Gram form, $G_{\mathbf0\mathbf0}>0$ is $\Pi_C|\phi_{\mathbf0}\rangle\neq0$, and given this, $\Pi_C|\phi_e\rangle\in\mathbb C\,\Pi_C|\phi_{\mathbf0}\rangle$ (including $\Pi_C|\phi_e\rangle=0$) is equality in the Cauchy--Schwarz inequality $|G_{\mathbf0e}|^2\leq G_{\mathbf0\mathbf0}G_{ee}$.
