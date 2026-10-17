@@ -1,5 +1,5 @@
 \documentclass[aps,prl,reprint,twocolumn,amsmath,amssymb,floatfix,nofootinbib,superscriptaddress]{revtex4-2}
-\usepackage{amsmath,amssymb,amsthm,booktabs,graphicx,hyperref}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array,graphicx,hyperref}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,calc,positioning}
 \hypersetup{hidelinks}
@@ -73,7 +73,7 @@ CCCZ & 1 & 4 & $\mathbf{6}^e$ & 6$^p$ & 6~\cite{beverland} \\
 \begin{figure*}[t]
 \centering
 \resizebox{\textwidth}{!}{\input{fig_reductions}}
-\caption{The reductions behind every result. (a)~Theorem~\ref{thm:code}: a protocol with gates, measurements and feedforward (top) can be replaced by one of its accepted branches, which measures the stabilizers of a single code $C$, keeps one outcome and decodes with a Clifford $V$ (bottom). (b)~Collapse: the fault states $\phi_e=Z^e|T\rangle^{\otimes n}$ are orthonormal, and the protocol projects them onto the much smaller code space. Every tolerated pattern must land on the line spanned by the encoded target or on zero (rejected); a harmful pattern lands elsewhere. (c)~Theorem~\ref{thm:pairing}: for rational targets, flipping the sign of $\sqrt2$ turns the error rate $p$ into $1-p$ and pairs each fault pattern with its complement. The harmless weights below $d$ are mirrored above $n-d$, so damage is confined to the middle (here $n=8$, $d=2$); in particular the fault-free input $\phi_{\mathbf0}$ and the all-faulty input $\phi_{\mathbf1}$ must collapse together. (d)~Constructions: many factories are a binary matrix with one column per input and logical (blue) and check (gray) rows. Parity conditions on the rows turn factory design into an integer or satisfiability program that discards failing matrices; each surviving design, here the eight-input cube factory, is certified by the collapse test of (b). Section~\ref{app:example} of the Supplemental Material works through these steps on explicit examples.}
+\caption{The reductions behind every result. (a)~Theorem~\ref{thm:code}: a protocol with gates, measurements and feedforward (top) can be replaced by one of its accepted branches, which measures the stabilizers of a single code $C$, keeps one outcome and decodes with a Clifford $V$ (bottom). (b)~Collapse: the fault states $\phi_e=Z^e|T\rangle^{\otimes n}$ are orthonormal, and the protocol projects them onto the much smaller code space. Every tolerated pattern must land on the line spanned by the encoded target or on zero (rejected); a harmful pattern lands elsewhere. (c)~Theorem~\ref{thm:pairing}: for rational targets, flipping the sign of $\sqrt2$ turns the error rate $p$ into $1-p$ and pairs each fault pattern with its complement. The harmless weights below $d$ are mirrored above $n-d$, so damage is confined to the middle (here $n=8$, $d=2$); in particular the fault-free input $\phi_{\mathbf0}$ and the all-faulty input $\phi_{\mathbf1}$ must collapse together. (d)~Two workflows share the collapse test of (b). Lower bounds: an exhaustive search runs over all codes on $n$ inputs, reduced by symmetries and by necessary conditions, and if none passes, no protocol with $n$ inputs exists. Upper bounds: integer and satisfiability programs propose structured designs (binary matrices or two-level block layouts), and a design that passes is a factory. A code that passes inside the exhaustive search is also a factory. Section~\ref{app:example} of the Supplemental Material works through these steps on explicit examples, and Table~\ref{tab:methods} there summarizes the methods.}
 \label{fig:reductions}
 \end{figure*}
 
@@ -156,7 +156,7 @@ and keep the run if every outcome is $+1$. This happens with probability $1/128$
 An exact certificate (Sec.~\ref{app:search}) checks that all nine single faults collapse and that the encoded state has the logical Bloch moduli $\{0,1/\sqrt2,1/\sqrt2\}$ of $|T\rangle$. The best previous quadratic protocol uses ten inputs~\cite{mek}. The new one lies outside the generalized triorthogonal family. Its two Z-type stabilizers would require a matrix with nine columns and six check rows, and the integer program below proves that no such matrix, and none with fewer check rows, gives a quadratic T factory. Its acceptance is low, so it saves inputs per attempt rather than per accepted output.
 
 \paragraph*{Clifford orbits: a 36-input cubic CCZ factory.}
-Many factories are built from a binary matrix $G$ with one column per input and a set of logical and check rows~\cite{bravyihaah,haah,wjs} [Fig.~\ref{fig:reductions}(d)]. They implement a diagonal third-level gate $U_\tau$ on the logical register. When every overlap of rows that involves a check row is even (\emph{generalized triorthogonality}), they detect every fault pattern $e$ with $G_0e\neq0$, where $G_0$ collects the check rows. All these conditions are parities of products of binary variables, so finding $G$ is an integer program (Sec.~\ref{app:programs}). The classification of Wills, Jain and Singh~\cite{wjs} identifies outputs only up to CNOT and S gates, and its CCZ class needs 47 inputs at $d=3$. By Proposition~\ref{prop:orbit}, however, its $\CS_{12}\CS_{13}$ class also yields CCZ states, and it reaches distance three with 36 inputs. The reason is the cost of the diagonal gate: four T gates suffice for $\CS_{12}\CS_{13}$, against seven for CCZ. Our MIP finds such a matrix independently, and the exact test certifies order three with leading error $120p^3$.
+Many factories are built from a binary matrix $G$ with one column per input and a set of logical and check rows~\cite{bravyihaah,haah,wjs}. They implement a diagonal third-level gate $U_\tau$ on the logical register. When every overlap of rows that involves a check row is even (\emph{generalized triorthogonality}), they detect every fault pattern $e$ with $G_0e\neq0$, where $G_0$ collects the check rows. All these conditions are parities of products of binary variables, so finding $G$ is an integer program (Sec.~\ref{app:programs}). The classification of Wills, Jain and Singh~\cite{wjs} identifies outputs only up to CNOT and S gates, and its CCZ class needs 47 inputs at $d=3$. By Proposition~\ref{prop:orbit}, however, its $\CS_{12}\CS_{13}$ class also yields CCZ states, and it reaches distance three with 36 inputs. The reason is the cost of the diagonal gate: four T gates suffice for $\CS_{12}\CS_{13}$, against seven for CCZ. Our MIP finds such a matrix independently, and the exact test certifies order three with leading error $120p^3$.
 
 \paragraph*{Stabilizer post-processing.}
 Measuring one qubit of a CCZ state in the Y basis leaves $\CS|{+}{+}\rangle$ up to a Clifford correction (Proposition~\ref{prop:cs}). The eight-input CCZ factory followed by this measurement is therefore a quadratic CS factory with eight inputs, matching Theorem~\ref{thm:tcs}. No generalized triorthogonal matrix achieves this with $n\leq10$ and up to three check rows. Similarly, projecting $|T\rangle^{\otimes6}$ onto the $[[6,4,2]]$ code with $Z^{\otimes6}=+1$ and $X^{\otimes6}=-1$ yields $X^{\otimes4}|\CCCZ\rangle$ up to Clifford phases, with probability $1/4$ (Proposition~\ref{prop:cccz}).
@@ -190,7 +190,31 @@ Search code, exact verifiers, integer and SAT models, logs and certificates are 
 \renewcommand{\theequation}{S\arabic{equation}}
 \renewcommand{\thetable}{S\Roman{table}}
 \renewcommand{\thefigure}{S\arabic{figure}}
+\onecolumngrid
 \begin{center}\textbf{\large Supplemental Material}\end{center}
+
+\paragraph*{Overview of methods.}
+Table~\ref{tab:methods} lists the methods and what each contributes. Every entry of Table~\ref{tab:final} rests either on a lower-bound argument, analytic or exhaustive, that rules out all stabilizer protocols, or on an explicit factory certified in exact arithmetic. Integer and satisfiability programs serve only to find factories; their infeasibility results are restricted to a design family and do not enter Table~\ref{tab:final}.
+
+\begin{table}[h]
+\caption{Methods and their roles. LB, lower bound valid for all stabilizer protocols; UB, explicit factory.}
+\label{tab:methods}
+\begin{ruledtabular}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.18\textwidth}>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}p{0.15\textwidth}}
+Method & What it covers & What it gives & Where \\
+\hline
+Single-code reduction & every protocol, adaptive or multistage & existence of a protocol $\Leftrightarrow$ a code that collapses & Thm.~\ref{thm:code}, Sec.~\ref{app:proofs} \\
+Complementary faults & rational targets & harmless weights mirrored; smaller fault sets & Thm.~\ref{thm:pairing}, Sec.~\ref{app:proofs} \\
+Analytic witnesses & test states avoiding the damaging fault weights & LB at every order ($2d+1$, $d+\nu+1$) & Thm.~\ref{thm:analytic}, Sec.~\ref{app:analytic} \\
+Exhaustive search & all stabilizer codes on $n$ inputs, up to permutations and the $W$ gauge & LB when no code passes; factories when one does (T, $n=9$) & Thms.~\ref{thm:ccz},~\ref{thm:tcs}, Sec.~\ref{app:search} \\
+Clifford orbits & Clifford-equivalent forms of the target & cheaper equivalent targets ($\CS_{12}\CS_{13}\simeq\CCZ$) & Prop.~\ref{prop:orbit} \\
+Integer program & binary matrices $G$ with parity constraints & single-level factories (UB) & Sec.~\ref{app:programs} \\
+SAT & T columns and CCZ blocks of two-level designs & multistage factories (UB) & Sec.~\ref{app:programs} \\
+Exact certification & each explicit construction & collapse, error polynomial and output state, independent of the solvers & Secs.~\ref{app:search},~\ref{app:programs} \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+\twocolumngrid
 
 %=====================================================================
 \section{A worked example}\label{app:example}
