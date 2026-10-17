@@ -90,30 +90,29 @@
   }
   \node[font=\scriptsize, okblue] at (1.95,3.95) {$\sqrt2\mapsto-\sqrt2$};
 \end{scope}
-%======================== (d) exact search ========================
+%======================== (d) constructions ========================
 \begin{scope}[shift={(13.05,0)}]
-  \node[ttl] at (-0.1,4.55) {(d) Exact search};
-  \node[font=\scriptsize] at (1.85,4.05) {quadratic CCZ};
-  % input counts n = 5..8
-  \foreach \n/\x in {5/0.35,6/1.15,7/1.95,8/2.95} {
-    \node[draw, rounded corners=2pt, minimum width=6mm, minimum height=5mm, font=\footnotesize] at (\x,0.75) {$\n$};
+  \node[ttl] at (-0.1,4.55) {(d) Constructions};
+  % binary matrix of the eight-input cube factory: column j = vertex j of the cube
+  \def\cs{0.36}
+  \foreach \j in {0,...,7} {
+    \node[circle, draw, fill=okblue!15, inner sep=0.6pt, font=\tiny] at ({0.55+\cs*\j},3.95) {$T$};
+    \foreach \r/\yy in {0/3.45,1/3.09,2/2.73} {
+      \pgfmathtruncatemacro{\bit}{mod(floor(\j/2^\r),2)}
+      \ifnum\bit=1
+        \fill[okblue!75] ({0.55+\cs*\j-0.17},{\yy-0.17}) rectangle ({0.55+\cs*\j+0.17},{\yy+0.17});
+      \else
+        \fill[okblue!8] ({0.55+\cs*\j-0.17},{\yy-0.17}) rectangle ({0.55+\cs*\j+0.17},{\yy+0.17});
+      \fi
+    }
+    \fill[softgray!70!black] ({0.55+\cs*\j-0.17},{2.22-0.17}) rectangle ({0.55+\cs*\j+0.17},{2.22+0.17});
   }
-  \node[font=\scriptsize] at (1.65,0.2) {inputs $n$};
-  \foreach \x in {0.35,1.15,1.95} {
-    \draw[badred, line width=1.4pt] (\x-0.2,1.55) -- (\x+0.2,1.95);
-    \draw[badred, line width=1.4pt] (\x-0.2,1.95) -- (\x+0.2,1.55);
-  }
-  \draw[tgtgreen, line width=1.6pt] (2.72,1.75) -- (2.88,1.55) -- (3.2,2.0);
-  % the eight-input cube code above n=8
-  \begin{scope}[shift={(2.62,2.45)}, scale=0.62]
-    \coordinate (A) at (0,0); \coordinate (B) at (1,0); \coordinate (Cc) at (1,1); \coordinate (D) at (0,1);
-    \coordinate (E) at (0.4,0.32); \coordinate (F) at (1.4,0.32); \coordinate (G) at (1.4,1.32); \coordinate (Hh) at (0.4,1.32);
-    \draw[tgtgreen!70!black] (A) -- (B) -- (Cc) -- (D) -- cycle;
-    \draw[tgtgreen!70!black] (D) -- (Hh) -- (G) -- (Cc);
-    \draw[tgtgreen!70!black] (B) -- (F) -- (G);
-    \draw[tgtgreen!70!black, dashed] (A) -- (E) -- (F); \draw[tgtgreen!70!black, dashed] (E) -- (Hh);
-    \foreach \p in {A,B,Cc,D,E,F,G,Hh} \fill[okblue] (\p) circle (1.6pt);
-  \end{scope}
-  \node[font=\scriptsize, badred] at (1.15,2.35) {no code};
+  \node[font=\scriptsize, okblue, rotate=90] at (0.18,3.09) {logical};
+  \node[font=\tiny, softgray!70!black, rotate=90] at (0.18,2.22) {check};
+  % solver and certificate
+  \draw[->, very thick, okblue] (1.81,1.85) -- (1.81,1.42);
+  \node[draw, rounded corners=2pt, fill=planefill, minimum width=14mm, minimum height=5mm] (mip) at (1.81,1.12) {MIP / SAT};
+  \draw[->, very thick, okblue] (mip.south) -- (1.81,0.42);
+  \node[font=\scriptsize, anchor=north] at (1.81,0.38) {collapse test \textcolor{tgtgreen}{\checkmark}};
 \end{scope}
 \end{tikzpicture}
