@@ -16,7 +16,7 @@
   },
   cl/.style={double, double distance=1.2pt, softgray!90!black},
 ]
-%======================== (a) one code suffices ========================
+% (a) one code suffices
 \begin{scope}[shift={(0,0)}]
   \node[ttl] at (-0.2,4.55) {(a) One code suffices};
   % ---- any protocol: gates, measurements, feedforward
@@ -47,7 +47,7 @@
   \node at (2.0,1.05) {$V$};
   \node[font=\scriptsize, right] at (3.45,1.35) {$\tau$};
 \end{scope}
-%======================== (b) collapse ========================
+% (b) collapse
 \begin{scope}[shift={(4.45,0)}]
   \node[ttl] at (-0.1,4.55) {(b) Collapse};
   \coordinate (O) at (1.0,0.55);
@@ -68,7 +68,7 @@
   \draw[->, softgray, thick] (O) -- ($(O)+(-0.55,2.0)$) node[above, font=\scriptsize] {rejected};
   \fill (O) circle (1.1pt);
 \end{scope}
-%======================== (c) complementary faults ========================
+% (c) complementary faults
 \begin{scope}[shift={(8.7,0)}]
   \node[ttl] at (-0.1,4.55) {(c) Complementary faults};
   \fill[badred!12, rounded corners=2pt] (0.95,0.95) rectangle (2.95,1.45);
@@ -90,7 +90,7 @@
   }
   \node[font=\scriptsize, okblue] at (1.95,3.95) {$\sqrt2\mapsto-\sqrt2$};
 \end{scope}
-%======================== (d) lower and upper bounds ========================
+% (d) lower and upper bounds
 \begin{scope}[shift={(13.05,0)}]
   \node[ttl] at (-0.1,4.55) {(d) Two workflows};
   \tikzset{

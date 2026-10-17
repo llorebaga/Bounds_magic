@@ -1,5 +1,5 @@
 \documentclass[aps,prl,reprint,twocolumn,amsmath,amssymb,floatfix,nofootinbib,superscriptaddress]{revtex4-2}
-\usepackage{amsmath,amssymb,amsthm,booktabs,array,graphicx,hyperref}
+\usepackage{amsmath,amssymb,amsthm,booktabs,graphicx,hyperref}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,calc,positioning}
 \hypersetup{hidelinks}
@@ -12,6 +12,7 @@
 \newcommand{\CCCZ}{\mathrm{CCCZ}}
 \newcommand{\CS}{\mathrm{CS}}
 \newcommand{\tr}{\operatorname{Tr}}
+\newcommand{\RR}{\raggedright}
 \newcommand{\TNmax}{8}
 \newcommand{\TLB}{9}
 \newcommand{\QuarticUB}{48}
@@ -29,7 +30,7 @@ Magic-state distillation remains a major cost of fault-tolerant quantum computin
 \end{abstract}
 \maketitle
 
-%=====================================================================
+%
 \section{Introduction}
 Fault-tolerant quantum computers implement Clifford operations cheaply, but universal computation needs a supply of non-Clifford resources. These are magic states, distilled from many noisy copies~\cite{bravyikitaev,bravyihaah}, and distillation remains one of the dominant costs of fault-tolerant computing. Magic-state cultivation~\cite{cultivation}, now demonstrated on hardware~\cite{googlecultivation}, prepares T states far more cheaply and may make large, high-order factories unnecessary. Reaching the error rates of long algorithms, however, still calls for small factories of low suppression order fed with cultivated states, and that is exactly the regime in which the questions below can be answered exactly. Factory designs have improved steadily~\cite{campbellhoward,eastin,jones,haah,litinski,borrowed,jacinto,wjs,gong}, but little is known about how far they can improve. How many noisy T states must any protocol consume to output a target state with error $O(p^d)$, where $p$ is the input error rate and $d$ the \emph{suppression order}?
 
@@ -77,7 +78,7 @@ CCCZ & 1 & 4 & $\mathbf{6}^e$ & 6$^p$ & 6~\cite{beverland} \\
 \label{fig:reductions}
 \end{figure*}
 
-%=====================================================================
+%
 \section{Factories as codes}\label{sec:framework}
 \paragraph*{Setting.}
 Let $|T\rangle=(|0\rangle+\omega|1\rangle)/\sqrt2$ with $\omega=e^{i\pi/4}$. After a standard twirl~\cite{bravyikitaev}, each input is
@@ -116,7 +117,7 @@ Appending a stabilizer branch that maps $\tau$ to $\tau'$ with nonzero probabili
 with the rightmost gate acting first.
 \end{proposition}
 
-%=====================================================================
+%
 \section{Lower bounds}\label{sec:lower}
 \paragraph*{All orders.}
 When $n$ is small, Theorem~\ref{thm:pairing} forces almost every pattern to be harmless. Feeding the protocol a well-chosen state whose fault patterns all avoid the damaging range then makes the target from too weak a resource. Sec.~\ref{app:analytic} gives the details. The witnesses are $|0\rangle^{\otimes n}$, a GHZ-type stabilizer state that contains every fault weight except the middle one, and a family of low-nullity states with non-dyadic Pauli expectations.
@@ -135,7 +136,7 @@ No stabilizer protocol distills one T state with suppression order two from $n\l
 \end{theorem}
 The eight-input quadratic CCZ factory is therefore optimal, whether single- or multistage, adaptive or not, and it is unique up to symmetry among codes of X-rank at most four. At $n=7$ the weight-one collapse conditions alone exclude every code, which is why the quadratic statement needs no rationality. The complementary-fault symmetry drives the analytic bounds and makes the cubic searches feasible. For one T state, which is not rational, the search uses only patterns of weight below $d$. At $n=8$ it finds codes that collapse, but every one of them encodes a state that is not Clifford-equivalent to $|T\rangle$, mostly stabilizer states (Sec.~\ref{app:search}). At $n=9$ it finds a T-state factory, so the bound is tight (Proposition~\ref{prop:t9}).
 
-%=====================================================================
+%
 \section{Constructions}\label{sec:upper}
 Every construction below is a stabilizer protocol. We certify its suppression order with the collapse test of Theorem~\ref{thm:code}, in exact arithmetic.
 
@@ -164,7 +165,7 @@ Measuring one qubit of a CCZ state in the Y basis leaves $\CS|{+}{+}\rangle$ up 
 \paragraph*{Two-level factories.}
 Transversal families cannot be pushed further: the classification shows that no generalized triorthogonal factory beats 36 inputs for cubic or 48 for quartic CCZ~\cite{wjs}. Theorem~\ref{thm:code} suggests where to look instead. Any combination of stabilizer operations is again a factory, so an outer code may consume, besides raw T states, CCZ states produced by small inner factories. The inner factories we use are Jones' four-T preparation, in which a single fault spoils the block, and the eight-T cube factory, which takes two faults to spoil. Each block applies a CCZ gate to three parities of the outer registers by gate teleportation. A faulty block, after a Clifford twirl, applies a Z error on some nonzero combination of those parities. The composite has suppression order $D$ if every combination of faulty units whose total cost is below $D$ is detected or harmless. All conditions remain parities, now including the cubic terms contributed by the blocks, and a SAT encoding solves these instances orders of magnitude faster than the MIP (Sec.~\ref{app:programs}). Six cube blocks give a quartic CCZ factory with \QuarticUB\ T inputs. Only 54 of the cost-four combinations, each consisting of two faulty blocks, are harmful, and each arises from $4\times4$ pairs of input fault pairs. So $\epsilon=\QuarticCoef p^4+O(p^5)$: the best known input count with a third of its leading error. Five cube blocks (40 inputs), and mixtures of four cube blocks with Jones blocks, remain undecided after 15 minutes per instance, so whether 40 inputs suffice is open.
 
-%=====================================================================
+%
 \section{Discussion}
 Viewing a factory as a single code removes the distinction between clever protocols and simple ones: adaptivity, postselection and multistage composition are absorbed into the choice of code. The view is restrictive enough to prove that the workhorse eight-input CCZ factory is optimal, and to give the first bounds beyond $\max(d,\nu)$ that survive postselection. It is also generative enough to certify new factories, from code families whose outputs are taken up to Clifford equivalence to two-level designs. The exhaustive search itself is a constructor: it found the nine-input T factory, which lies outside every structured family we modelled with integer programs. The remaining gaps in Table~\ref{tab:final} are $10\leq n\leq36$ and $10\leq n\leq\QuarticUB$ for cubic and quartic CCZ, $10\leq n\leq14$ for two CCZ states, $9\leq n\leq35$ for cubic CS, and $\TLB\leq n\leq15$ for cubic distillation of one T state.
 
@@ -181,7 +182,7 @@ Computations used Gurobi~12 (academic license) and CaDiCaL via PySAT.
 \paragraph*{Code and data.}
 Search code, exact verifiers, integer and SAT models, logs and certificates are available with the Supplemental Material.
 
-%=====================================================================
+%
 \bibliography{refs}
 
 \clearpage
@@ -200,23 +201,23 @@ Table~\ref{tab:methods} lists the methods and what each contributes. Every entry
 \caption{Methods and their roles. LB, lower bound valid for all stabilizer protocols; UB, explicit factory.}
 \label{tab:methods}
 \begin{ruledtabular}
-\begin{tabular}{>{\raggedright\arraybackslash}p{0.18\textwidth}>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}p{0.15\textwidth}}
+\begin{tabular}{p{0.18\textwidth}p{0.31\textwidth}p{0.31\textwidth}l}
 Method & What it covers & What it gives & Where \\
 \hline
-Single-code reduction & every protocol, adaptive or multistage & existence of a protocol $\Leftrightarrow$ a code that collapses & Thm.~\ref{thm:code}, Sec.~\ref{app:proofs} \\
-Complementary faults & rational targets & harmless weights mirrored; smaller fault sets & Thm.~\ref{thm:pairing}, Sec.~\ref{app:proofs} \\
-Analytic witnesses & test states avoiding the damaging fault weights & LB at every order ($2d+1$, $d+\nu+1$) & Thm.~\ref{thm:analytic}, Sec.~\ref{app:analytic} \\
-Exhaustive search & all stabilizer codes on $n$ inputs, up to permutations and the $W$ gauge & LB when no code passes; factories when one does (T, $n=9$) & Thms.~\ref{thm:ccz},~\ref{thm:tcs}, Sec.~\ref{app:search} \\
-Clifford orbits & Clifford-equivalent forms of the target & cheaper equivalent targets ($\CS_{12}\CS_{13}\simeq\CCZ$) & Prop.~\ref{prop:orbit} \\
-Integer program & binary matrices $G$ with parity constraints & single-level factories (UB) & Sec.~\ref{app:programs} \\
-SAT & T columns and CCZ blocks of two-level designs & multistage factories (UB) & Sec.~\ref{app:programs} \\
-Exact certification & each explicit construction & collapse, error polynomial and output state, independent of the solvers & Secs.~\ref{app:search},~\ref{app:programs} \\
+\RR Single-code reduction & \RR every protocol, adaptive or multistage & \RR existence of a protocol $\Leftrightarrow$ a code that collapses & Thm.~\ref{thm:code}, Sec.~\ref{app:proofs} \\
+\RR Complementary faults & \RR rational targets & \RR harmless weights mirrored; smaller fault sets & Thm.~\ref{thm:pairing}, Sec.~\ref{app:proofs} \\
+\RR Analytic witnesses & \RR test states avoiding the damaging fault weights & \RR LB at every order ($2d+1$, $d+\nu+1$) & Thm.~\ref{thm:analytic}, Sec.~\ref{app:analytic} \\
+\RR Exhaustive search & \RR all stabilizer codes on $n$ inputs, up to permutations and the $W$ gauge & \RR LB when no code passes; factories when one does (T, $n=9$) & Thms.~\ref{thm:ccz},~\ref{thm:tcs}, Sec.~\ref{app:search} \\
+\RR Clifford orbits & \RR Clifford-equivalent forms of the target & \RR cheaper equivalent targets ($\CS_{12}\CS_{13}\simeq\CCZ$) & Prop.~\ref{prop:orbit} \\
+\RR Integer program & \RR binary matrices $G$ with parity constraints & \RR single-level factories (UB) & Sec.~\ref{app:programs} \\
+\RR SAT & \RR T columns and CCZ blocks of two-level designs & \RR multistage factories (UB) & Sec.~\ref{app:programs} \\
+\RR Exact certification & \RR each explicit construction & \RR collapse, error polynomial and output state, independent of the solvers & Secs.~\ref{app:search},~\ref{app:programs} \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
 \twocolumngrid
 
-%=====================================================================
+%
 \section{A worked example}\label{app:example}
 We follow one small protocol through every step of the method, then apply the same test to a code that the exhaustive search rejects and to the eight-input CCZ factory. The script \texttt{worked\_example.py} reproduces every number below in exact arithmetic.
 
