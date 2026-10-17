@@ -31,6 +31,7 @@ Magic-state distillation remains a major cost of fault-tolerant quantum computin
 \maketitle
 
 %=====================================================================
+\section{Introduction}
 Fault-tolerant quantum computers implement Clifford operations cheaply, but universal computation needs a supply of non-Clifford resources. These are magic states, distilled from many noisy copies~\cite{bravyikitaev,bravyihaah}, and distillation remains one of the dominant costs of fault-tolerant computing. Magic-state cultivation~\cite{cultivation}, now demonstrated on hardware~\cite{googlecultivation}, prepares T states far more cheaply and may make large, high-order factories unnecessary. Reaching the error rates of long algorithms, however, still calls for small factories of low suppression order fed with cultivated states, and that is exactly the regime in which the questions below can be answered exactly. Factory designs have improved steadily~\cite{campbellhoward,eastin,jones,haah,litinski,borrowed,jacinto,wjs,gong}, but little is known about how far they can improve. How many noisy T states must any protocol consume to output a target state with error $O(p^d)$, where $p$ is the input error rate and $d$ the \emph{suppression order}?
 
 Existing tools barely see $d$. Resource monotones that survive postselection grow only like $1/p$ for a noisy T state, so they give $n\gtrsim d$ and no more~\cite{fangliu,fangliu2,regulaprl}. Stronger monotone bounds require deterministic or high-success-probability protocols~\cite{regulatakagi,seddon}, which practical factories are not. Exhaustive searches and classifications do resolve $d$, but only within particular code families or circuit layouts~\cite{nezamihaah,wjs,jacinto,borrowed,kbk}. Exact conversions without noise are better understood; for instance, six copies of an arbitrary pure magic qubit state are necessary and sufficient to make one CCZ state~\cite{rizzoleone}. Even for the CCZ state, whose eight-input quadratic factory~\cite{eastin,jones,haah} is a workhorse of resource estimates~\cite{litinski,gidneyfowler}, it was not known whether a smarter, adaptive or multistage protocol could use fewer inputs.
@@ -78,6 +79,7 @@ CCCZ & 1 & 4 & $\mathbf{6}^e$ & 6$^p$ & 6~\cite{beverland} \\
 \end{figure*}
 
 %=====================================================================
+\section{Factories as codes}\label{sec:framework}
 \paragraph*{Setting.}
 Let $|T\rangle=(|0\rangle+\omega|1\rangle)/\sqrt2$ with $\omega=e^{i\pi/4}$. After a standard twirl~\cite{bravyikitaev}, each input is
 \begin{equation}
@@ -116,7 +118,8 @@ with the rightmost gate acting first.
 \end{proposition}
 
 %=====================================================================
-\paragraph*{Lower bounds at all orders.}
+\section{Lower bounds}\label{sec:lower}
+\paragraph*{All orders.}
 When $n$ is small, Theorem~\ref{thm:pairing} forces almost every pattern to be harmless. Feeding the protocol a well-chosen state whose fault patterns all avoid the damaging range then makes the target from too weak a resource. Sec.~\ref{app:analytic} gives the details. The witnesses are $|0\rangle^{\otimes n}$, a GHZ-type stabilizer state that contains every fault weight except the middle one, and a family of low-nullity states with non-dyadic Pauli expectations.
 \begin{theorem}\label{thm:analytic}
 Every protocol of suppression order $d$ satisfies $n\geq d-1+L(\tau)$, where $L(\tau)$ is the least number of ideal T states from which $\tau$ can be made. If $\tau$ is rational and not a stabilizer state, then $L(\tau)\geq\nu(\tau)+1$, so $n\geq d+\nu(\tau)$, and $n\geq2d+1$. If $\tau$ is dyadic and not a stabilizer state, and $d\geq2$, then $n\geq d+\nu(\tau)+1$.
@@ -134,7 +137,7 @@ No stabilizer protocol distills one T state with suppression order two from $n\l
 The eight-input quadratic CCZ factory is therefore optimal, whether single- or multistage, adaptive or not, and it is unique up to symmetry among codes of X-rank at most four. At $n=7$ the weight-one collapse conditions alone exclude every code, which is why the quadratic statement needs no rationality. The complementary-fault symmetry drives the analytic bounds and makes the cubic searches feasible. For one T state, which is not rational, the search uses only patterns of weight below $d$. At $n=8$ it finds codes that collapse, but every one of them encodes a state that is not Clifford-equivalent to $|T\rangle$, mostly stabilizer states (Sec.~\ref{app:search}). At $n=9$ it finds a T-state factory, so the bound is tight (Proposition~\ref{prop:t9}).
 
 %=====================================================================
-\paragraph*{Constructions.}
+\section{Constructions}\label{sec:upper}
 Every construction below is a stabilizer protocol. We certify its suppression order with the collapse test of Theorem~\ref{thm:code}, in exact arithmetic.
 
 \paragraph*{A nine-input T factory from the search.}
@@ -163,7 +166,7 @@ Measuring one qubit of a CCZ state in the Y basis leaves $\CS|{+}{+}\rangle$ up 
 Transversal families cannot be pushed further: the classification shows that no generalized triorthogonal factory beats 36 inputs for cubic or 48 for quartic CCZ~\cite{wjs}. Theorem~\ref{thm:code} suggests where to look instead. Any combination of stabilizer operations is again a factory, so an outer code may consume, besides raw T states, CCZ states produced by small inner factories. The inner factories we use are Jones' four-T preparation, in which a single fault spoils the block, and the eight-T cube factory, which takes two faults to spoil. Each block applies a CCZ gate to three parities of the outer registers by gate teleportation. A faulty block, after a Clifford twirl, applies a Z error on some nonzero combination of those parities. The composite has suppression order $D$ if every combination of faulty units whose total cost is below $D$ is detected or harmless. All conditions remain parities, now including the cubic terms contributed by the blocks, and a SAT encoding solves these instances orders of magnitude faster than the MIP (Sec.~\ref{app:programs}). Six cube blocks give a quartic CCZ factory with \QuarticUB\ T inputs. Only 54 of the cost-four combinations, each consisting of two faulty blocks, are harmful, and each arises from $4\times4$ pairs of input fault pairs. So $\epsilon=\QuarticCoef p^4+O(p^5)$: the best known input count with a third of its leading error. Five cube blocks (40 inputs), and mixtures of four cube blocks with Jones blocks, remain undecided after 15 minutes per instance, so whether 40 inputs suffice is open.
 
 %=====================================================================
-\paragraph*{Discussion.}
+\section{Discussion}
 Viewing a factory as a single code removes the distinction between clever protocols and simple ones: adaptivity, postselection and multistage composition are absorbed into the choice of code. The view is restrictive enough to prove that the workhorse eight-input CCZ factory is optimal, and to give the first bounds beyond $\max(d,\nu)$ that survive postselection. It is also generative enough to certify new factories, from code families whose outputs are taken up to Clifford equivalence to two-level designs. The exhaustive search itself is a constructor: it found the nine-input T factory, which lies outside every structured family we modelled with integer programs. The remaining gaps in Table~\ref{tab:final} are $10\leq n\leq36$ and $10\leq n\leq\QuarticUB$ for cubic and quartic CCZ, $10\leq n\leq14$ for two CCZ states, $9\leq n\leq35$ for cubic CS, and $\TLB\leq n\leq15$ for cubic distillation of one T state.
 
 Cultivation~\cite{cultivation,googlecultivation} shifts the practical emphasis to low suppression orders: a cultivated T state with a small error needs only quadratic suppression to reach much lower errors. That is the regime our results settle exactly, with eight inputs for CCZ, eight for CS and nine for one T state. Two caveats apply. Our bounds count noisy inputs under ideal Clifford operations, not the space-time volume of a factory. And the nine-input T factory accepts only one run in 128, so per accepted output it costs more inputs than the ten-input protocol.
