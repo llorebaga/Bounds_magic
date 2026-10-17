@@ -63,12 +63,11 @@ complementary patterns (needed for non-rational targets such as T).
 | CCCZ exact cost 6 (n=5 excluded) | `R=4 TARGET=cccz python enum_codes.py 5 1` | `results/enum_r4_cccz_n5_d1_a0-1.json` |
 | CS: exact cost 3; d=2 needs >= 8; d=3 needs >= 9 | `R=2 TARGET=cs python enum_codes_v2.py {3,7} {1,2}`; `R=2 TARGET=cs python enum_codes_v2.py 8 3` | `results/enum_r2_cs_*.json`, `log_cs_n8_d3.txt` |
 | One T state, d=2, n<=7 excluded | `GALOIS=0 R=1 TARGET=t python enum_codes_v2.py 7 2` | `results/enum_nogal_r1_t_n7_d2_a0-6.json` |
-| One T state, d=2, n=8 (largest sectors, Julia) | `GALOIS=0 R=1 TARGET=t python export_structs.py 8 2 {6,7}`; `GALOIS=0 julia -t 16 fast_enum.jl ../results/structs_nogal_r1_n8_d2_a{6,7}.txt 8 2 7` | `log_fast_t_n8_d2_a7.txt`, `log_fast_t_n8_d2_a6.txt.gz` |
-| Classification of the 890,940 n=8 collapse survivors (all encode stabilizer states) | `gunzip -k ../results/log_fast_t_n8_d2_a6.txt.gz; python check_t_survivors3.py ../results/log_fast_t_n8_d2_a6.txt 8` | `results/t_n8_survivor_classes.json` |
+| One T state, d=2, n=8: sectors a<=4 (Python, target test) | `GALOIS=0 R=1 TARGET=t python enum_codes_v2.py 8 2 0 4` | `log_t_n8_d2_a0-5.txt` |
+| One T state, d=2, n=8: sectors a=5,6,7 (Julia kernel) | `GALOIS=0 R=1 TARGET=t python export_structs.py 8 2 {5,6,7}`; `GALOIS=0 julia -t 16 fast_enum.jl ../results/structs_nogal_r1_n8_d2_a{5,6,7}.txt 8 2 7` | `log_fast_t_n8_d2_a5.txt.gz`, `log_fast_t_n8_d2_a6.txt.gz`, `log_fast_t_n8_d2_a7.txt` |
+| Classification of the n=8 collapse survivors: a=6 (890,940) all stabilizer states; a=5 (346,136) 345,208 stabilizer states and 928 with logical Bloch moduli {0, 1/3, 2sqrt2/3}, none T-equivalent. Hence one T state at d=2 needs n >= 9 | `gunzip -k ../results/log_fast_t_n8_d2_a{5,6}.txt.gz; python check_t_survivors3.py ../results/log_fast_t_n8_d2_a5.txt 8` (and `..._a6.txt 8`) | stdout, `log_fast_t_n8_d2_a5.txt.nonstab.json`, `results/t_n8_survivor_classes.json` |
 
-Status note: for one T state at n=8, sectors a<=4 (Python, `log_t_n8_d2_a0-5.txt`) and a=6,7 (Julia) are
-complete without a T-state protocol; the a=5 sector (`GALOIS=0 R=1 TARGET=t python enum_codes_v2.py 8 2 5 5`)
-was still running when this repository was created, so the paper states the bound n >= 8.
+Total for one T state at n=8, d=2: 1.32e11 signed codes over all X-ranks.
 
 Validation (App. D): `python validate_enum.py 5 2` (brute force), `python validate_canon.py 7 2 300`
 (canonicalization), `python validate_arith.py 7 2 30` (exact vs dense), `python control_cube.py` (8-T cube

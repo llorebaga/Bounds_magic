@@ -7,34 +7,45 @@
 \begin{tikzpicture}[
   >={Stealth[length=2.2mm]},
   font=\footnotesize,
-  box/.style={draw, rounded corners=2pt, minimum height=5mm, inner sep=2pt, fill=white},
   ttl/.style={font=\footnotesize\bfseries, anchor=west},
+  gate/.style={draw, rounded corners=1.5pt, fill=softgray!18},
+  meter/.pic={
+    \draw[fill=white] (-0.17,-0.13) rectangle (0.17,0.13);
+    \draw (-0.11,-0.06) arc (160:20:0.115);
+    \draw[->, >={Stealth[length=1mm]}] (0,-0.08) -- (0.09,0.09);
+  },
+  cl/.style={double, double distance=1.2pt, softgray!90!black},
 ]
 %======================== (a) one code suffices ========================
 \begin{scope}[shift={(0,0)}]
   \node[ttl] at (-0.2,4.55) {(a) One code suffices};
-  % inputs
-  \foreach \i in {0,...,4} \node[circle, draw, fill=okblue!15, inner sep=1.1pt, font=\scriptsize] (in\i) at (0.35+0.5*\i,3.95) {$T$};
-  \node[box, minimum width=26mm] (c1) at (1.35,3.25) {Cliffords, ancillas};
-  \foreach \i in {0,...,4} \draw[->, thin] (in\i) -- (in\i |- c1.north);
-  \node[box] (c2) at (0.45,2.35) {stage 2};
-  \node[box] (c3) at (2.25,2.35) {stage 2$'$};
-  \draw[->] (c1) -- node[left, font=\scriptsize] {$+$} (c2);
-  \draw[->] (c1) -- node[right, font=\scriptsize] {$-$} (c3);
-  \draw[->, dashed, softgray] (c2.east) -- (c3.west);
-  \node[font=\tiny, softgray] at (1.35,1.92) {feedforward};
-  \node[font=\small, tgtgreen] (ok) at (0.45,1.75) {\checkmark};
-  \node[font=\small, badred] at (2.25,1.75) {$\times$};
-  \draw[->, thin] (c2) -- (ok);
-  % reduction arrow
-  \draw[->, very thick, okblue] (3.25,3.4) -- (3.25,1.25) node[midway, right, align=left, font=\scriptsize] {keep one\\[-1pt] branch};
-  % canonical form
-  \node[box, fill=planefill] (pc) at (0.55,0.55) {$\Pi_C$};
-  \node[box] (v) at (1.55,0.55) {$V$};
-  \node (tau) at (2.6,0.55) {$|\tau\rangle$};
-  \draw[->] (0.0,0.55) node[left, font=\scriptsize] {$\phi$} -- (pc);
-  \draw[->] (pc) -- (v); \draw[->] (v) -- (tau);
-  \node[font=\scriptsize, align=center] at (1.45,-0.2) {measure one code, keep one\\[-1pt] outcome, decode with $V$};
+  % ---- any protocol: gates, measurements, feedforward
+  \foreach \y in {3.75,3.45,3.15,2.85} \node[font=\scriptsize] at (0.05,\y) {$T$};
+  \draw (0.25,3.75) -- (3.45,3.75);
+  \draw (0.25,3.45) -- (3.45,3.45);
+  \draw (0.25,3.15) -- (2.35,3.15);
+  \draw (0.25,2.85) -- (1.30,2.85);
+  \draw[gate] (0.55,2.68) rectangle (0.95,3.92);
+  \pic at (1.30,2.85) {meter};
+  \draw[cl] (1.30,2.98) -- (1.30,3.25) -- (1.80,3.25);
+  \draw[gate] (1.80,2.98) rectangle (2.10,3.92);
+  \pic at (2.35,3.15) {meter};
+  \draw[cl] (2.35,3.28) -- (2.35,3.60) -- (2.65,3.60);
+  \draw[gate] (2.65,3.30) rectangle (2.95,3.92);
+  \node[font=\scriptsize, right] at (3.45,3.60) {$\tau$};
+  % ---- reduction arrow
+  \draw[->, very thick, okblue] (1.75,2.45) -- (1.75,1.85);
+  % ---- one code
+  \foreach \y in {1.50,1.20,0.90,0.60} {
+    \node[font=\scriptsize] at (0.05,\y) {$T$};
+    \draw (0.25,\y) -- (2.35,\y);
+  }
+  \draw (2.35,1.50) -- (3.45,1.50); \draw (2.35,1.20) -- (3.45,1.20);
+  \draw[fill=planefill, rounded corners=1.5pt] (0.65,0.42) rectangle (1.35,1.68);
+  \node at (1.0,1.05) {$\Pi_C$};
+  \draw[gate] (1.75,0.42) rectangle (2.25,1.68);
+  \node at (2.0,1.05) {$V$};
+  \node[font=\scriptsize, right] at (3.45,1.35) {$\tau$};
 \end{scope}
 %======================== (b) collapse ========================
 \begin{scope}[shift={(4.45,0)}]
@@ -43,30 +54,23 @@
   \fill[planefill] (0,0) -- (3.0,0) -- (3.7,1.25) -- (0.7,1.25) -- cycle;
   \draw[okblue!60] (0,0) -- (3.0,0) -- (3.7,1.25) -- (0.7,1.25) -- cycle;
   \node[okblue!80, font=\scriptsize, anchor=south west] at (2.55,0.05) {code $C$};
-  % target line
   \draw[tgtgreen, very thick] ($(O)+(-0.45,-0.12)$) -- ($(O)+(2.45,0.67)$) node[below right, font=\scriptsize, xshift=-8pt, yshift=-1pt] {$U|\tau\rangle$};
-  % harmless vectors and their projections
   \coordinate (p0) at ($(O)+(1.25,0.343)$); \coordinate (t0) at ($(p0)+(0,2.45)$);
   \coordinate (p1) at ($(O)+(2.05,0.562)$); \coordinate (t1) at ($(p1)+(0,1.75)$);
   \draw[->, okblue, thick] (O) -- (t0) node[above, font=\scriptsize] {$\phi_{\mathbf 0}$};
   \draw[->, okblue, thick] (O) -- (t1) node[above right, font=\scriptsize, xshift=-2pt] {$\phi_{\mathbf 1}$};
   \draw[dashed, okblue] (t0) -- (p0); \draw[dashed, okblue] (t1) -- (p1);
   \fill[okblue] (p0) circle (1.3pt); \fill[okblue] (p1) circle (1.3pt);
-  % harmful vector
   \coordinate (ph) at ($(O)+(0.55,0.62)$); \coordinate (th) at ($(ph)+(0,2.2)$);
-  \draw[->, badred, thick] (O) -- (th) node[above left, font=\scriptsize, xshift=3pt] {harmful $\phi_e$};
+  \draw[->, badred, thick] (O) -- (th) node[above left, font=\scriptsize, xshift=3pt] {harmful};
   \draw[dashed, badred] (th) -- (ph);
   \draw[->, badred, thick] (O) -- (ph);
-  % rejected vector (orthogonal to C)
   \draw[->, softgray, thick] (O) -- ($(O)+(-0.55,2.0)$) node[above, font=\scriptsize] {rejected};
   \fill (O) circle (1.1pt);
-  \node[font=\scriptsize, align=center] at (1.85,-0.35) {tolerated faults land on\\[-1pt] the target line or on $0$};
 \end{scope}
 %======================== (c) complementary faults ========================
 \begin{scope}[shift={(8.7,0)}]
   \node[ttl] at (-0.1,4.55) {(c) Complementary faults};
-  \node[font=\scriptsize, align=center] at (1.95,3.95) {$\sqrt2\mapsto-\sqrt2$ turns\\[-1pt] $\rho_T(p)$ into $\rho_T(1-p)$};
-  % weight axis 0..8 (n=8, d=2)
   \fill[badred!12, rounded corners=2pt] (0.95,0.95) rectangle (2.95,1.45);
   \fill[tgtgreen!14, rounded corners=2pt] (-0.1,0.95) rectangle (0.75,1.45);
   \fill[tgtgreen!14, rounded corners=2pt] (3.15,0.95) rectangle (4.0,1.45);
@@ -75,31 +79,41 @@
     \fill (\x,1.2) circle (1.4pt);
     \node[font=\scriptsize] at (\x,0.75) {\w};
   }
-  \node[font=\scriptsize] at (1.95,0.4) {faulty inputs $|e|$ \ ($n=8$, $d=2$)};
+  \node[font=\scriptsize] at (1.95,0.35) {faults $|e|$};
   \node[font=\scriptsize, tgtgreen!70!black] at (0.33,1.75) {harmless};
   \node[font=\scriptsize, tgtgreen!70!black] at (3.57,1.75) {harmless};
   \node[font=\scriptsize, badred] at (1.95,1.75) {may damage};
-  % pairing arcs
   \foreach \w/\h in {0/1.55,1/1.2,2/0.85,3/0.5} {
     \pgfmathsetmacro{\xa}{0.1+0.475*\w}
     \pgfmathsetmacro{\xb}{0.1+0.475*(8-\w)}
     \draw[<->, okblue, thin] (\xa,2.1) .. controls (\xa,2.1+\h) and (\xb,2.1+\h) .. (\xb,2.1);
   }
-  \node[font=\scriptsize, okblue] at (1.95,3.4) {$e\ \leftrightarrow\ e+\mathbf 1$};
-  \node[font=\scriptsize, align=center] at (1.95,-0.15) {harmless at one end\\[-1pt] $\Rightarrow$ harmless at the other};
+  \node[font=\scriptsize, okblue] at (1.95,3.95) {$\sqrt2\mapsto-\sqrt2$};
 \end{scope}
 %======================== (d) exact search ========================
 \begin{scope}[shift={(13.05,0)}]
   \node[ttl] at (-0.1,4.55) {(d) Exact search};
-  \node[font=\scriptsize] at (1.85,4.0) {quadratic CCZ, $n=7$};
-  \foreach \y/\wtop/\wbot/\col/\txt/\num in {
-      3.25/3.7/3.1/okblue!25/{code structures up to symmetry}/{25{,}829},
-      2.45/3.1/2.5/okblue!40/{no hidden logical}/{225},
-      1.65/2.5/1.9/okblue!55/{signed codes tested exactly}/{7{,}699{,}696},
-      0.85/1.9/1.3/badred!35/{codes that collapse}/{0}} {
-    \fill[\col] ({1.85-\wtop/2},{\y+0.36}) -- ({1.85+\wtop/2},{\y+0.36}) -- ({1.85+\wbot/2},{\y-0.36}) -- ({1.85-\wbot/2},{\y-0.36}) -- cycle;
-    \node[font=\scriptsize, align=center, inner sep=0pt] at (1.85,\y) {\txt\\[-1pt]\textbf{\num}};
+  \node[font=\scriptsize] at (1.85,4.05) {quadratic CCZ};
+  % input counts n = 5..8
+  \foreach \n/\x in {5/0.35,6/1.15,7/1.95,8/2.95} {
+    \node[draw, rounded corners=2pt, minimum width=6mm, minimum height=5mm, font=\footnotesize] at (\x,0.75) {$\n$};
   }
-  \node[font=\scriptsize, align=center] at (1.85,0.05) {no code works $\Rightarrow$ $n\geq8$,\\[-1pt] and the 8-input factory is optimal};
+  \node[font=\scriptsize] at (1.65,0.2) {inputs $n$};
+  \foreach \x in {0.35,1.15,1.95} {
+    \draw[badred, line width=1.4pt] (\x-0.2,1.55) -- (\x+0.2,1.95);
+    \draw[badred, line width=1.4pt] (\x-0.2,1.95) -- (\x+0.2,1.55);
+  }
+  \draw[tgtgreen, line width=1.6pt] (2.72,1.75) -- (2.88,1.55) -- (3.2,2.0);
+  % the eight-input cube code above n=8
+  \begin{scope}[shift={(2.62,2.45)}, scale=0.62]
+    \coordinate (A) at (0,0); \coordinate (B) at (1,0); \coordinate (Cc) at (1,1); \coordinate (D) at (0,1);
+    \coordinate (E) at (0.4,0.32); \coordinate (F) at (1.4,0.32); \coordinate (G) at (1.4,1.32); \coordinate (Hh) at (0.4,1.32);
+    \draw[tgtgreen!70!black] (A) -- (B) -- (Cc) -- (D) -- cycle;
+    \draw[tgtgreen!70!black] (D) -- (Hh) -- (G) -- (Cc);
+    \draw[tgtgreen!70!black] (B) -- (F) -- (G);
+    \draw[tgtgreen!70!black, dashed] (A) -- (E) -- (F); \draw[tgtgreen!70!black, dashed] (E) -- (Hh);
+    \foreach \p in {A,B,Cc,D,E,F,G,Hh} \fill[okblue] (\p) circle (1.6pt);
+  \end{scope}
+  \node[font=\scriptsize, badred] at (1.15,2.35) {no code};
 \end{scope}
 \end{tikzpicture}

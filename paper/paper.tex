@@ -13,8 +13,8 @@
 \newcommand{\CS}{\mathrm{CS}}
 \newcommand{\tr}{\operatorname{Tr}}
 % ---- numbers that depend on running computations (update in one place) ----
-\newcommand{\TNmax}{7}      % largest n excluded for one T state at d=2
-\newcommand{\TLB}{8}        % resulting lower bound
+\newcommand{\TNmax}{8}      % largest n excluded for one T state at d=2
+\newcommand{\TLB}{9}        % resulting lower bound
 \newcommand{\QuarticUB}{48} % best two-level quartic CCZ factory found
 \newcommand{\QuarticCoef}{864}
 \begin{document}
@@ -71,7 +71,7 @@ CCCZ & 1 & 4 & $\mathbf{6}^e$ & 6~\cite{beverland} & 6$^p$ \\
 \begin{figure*}[t]
 \centering
 \resizebox{\textwidth}{!}{\input{fig_reductions}}
-\caption{The reductions behind every result. (a)~Theorem~\ref{thm:code}: however adaptive, postselected or multistage a protocol is, one accepted branch already works, and it amounts to measuring the stabilizers of a single code $C$, keeping one outcome and decoding with a Clifford $V$. (b)~Collapse: the fault states $\phi_e=Z^e|T\rangle^{\otimes n}$ are orthonormal, and the protocol projects them onto the much smaller code space. Every tolerated pattern must land on the line spanned by the encoded target or on zero (rejected); a harmful pattern lands elsewhere. (c)~Theorem~\ref{thm:pairing}: for rational targets, flipping the sign of $\sqrt2$ turns error rate $p$ into $1-p$ and pairs each fault pattern with its complement. The harmless weights below $d$ are mirrored above $n-d$, so damage is confined to the middle (here $n=8$, $d=2$), and in particular the fault-free input $\phi_{\mathbf0}$ and the all-faulty input $\phi_{\mathbf1}$ must collapse together. (d)~The exact search for quadratic CCZ with seven inputs: symmetry and the no-hidden-logical condition shrink the problem, and an exact collapse test rejects every remaining signed code. Appendix~\ref{app:example} follows these steps on explicit examples.}
+\caption{The reductions behind every result. (a)~Theorem~\ref{thm:code}: a protocol with gates, measurements and feedforward (top) can be replaced by one of its accepted branches, which measures the stabilizers of a single code $C$, keeps one outcome and decodes with a Clifford $V$ (bottom). (b)~Collapse: the fault states $\phi_e=Z^e|T\rangle^{\otimes n}$ are orthonormal, and the protocol projects them onto the much smaller code space. Every tolerated pattern must land on the line spanned by the encoded target or on zero (rejected); a harmful pattern lands elsewhere. (c)~Theorem~\ref{thm:pairing}: for rational targets, flipping the sign of $\sqrt2$ turns the error rate $p$ into $1-p$ and pairs each fault pattern with its complement. The harmless weights below $d$ are mirrored above $n-d$, so damage is confined to the middle (here $n=8$, $d=2$); in particular the fault-free input $\phi_{\mathbf0}$ and the all-faulty input $\phi_{\mathbf1}$ must collapse together. (d)~For quadratic CCZ, the exact search finds no code that collapses with five, six or seven inputs; with eight, the cube code of the known factory does. Appendix~\ref{app:example} works through these steps on explicit examples.}
 \label{fig:reductions}
 \end{figure*}
 
@@ -131,7 +131,7 @@ Let $\tau$ be a 3-qubit state fixed by no Pauli operator other than the identity
 \begin{theorem}[computer-assisted]\label{thm:tcs}
 No stabilizer protocol distills one T state with suppression order two from $n\leq\TNmax$ inputs. None distills $\CS|{+}{+}\rangle$ with order two from $n\leq7$ inputs, or with order three from $n\leq8$. Two CCZ states need eight ideal T states and, for quadratic suppression, ten noisy ones. The CCCZ state needs six ideal T states.
 \end{theorem}
-The eight-input quadratic CCZ factory is therefore optimal, whether single- or multistage, adaptive or not, and it is unique up to symmetry among codes of X-rank at most four. At $n=7$ the weight-one collapse conditions alone exclude every code, which is why the quadratic statement needs no rationality. The complementary-fault symmetry drives the analytic bounds and makes the cubic searches feasible. For one T state, which is not rational, the search uses only patterns of weight below $d$ and stops at $n=7$; at $n=8$ no completed sector contains a T-state protocol, but one sector is unfinished (Appendix~\ref{app:search}).
+The eight-input quadratic CCZ factory is therefore optimal, whether single- or multistage, adaptive or not, and it is unique up to symmetry among codes of X-rank at most four. At $n=7$ the weight-one collapse conditions alone exclude every code, which is why the quadratic statement needs no rationality. The complementary-fault symmetry drives the analytic bounds and makes the cubic searches feasible. For one T state, which is not rational, the search uses only patterns of weight below $d$. At $n=8$ it finds codes that collapse, but every one of them encodes a state that is not Clifford-equivalent to $|T\rangle$, mostly stabilizer states (Appendix~\ref{app:search}).
 
 %=====================================================================
 \section{Constructions}\label{sec:upper}
@@ -308,7 +308,7 @@ For rational targets (CCZ, CCZ$^{\otimes2}$, CS, CCCZ) every run takes $H=\{e:|e
 \paragraph*{Target tests.}
 Collapse does not see which state is encoded. Since the code space is $U(\mathbb C^{2^r}\otimes|0\rangle^{\otimes m})$ for a Clifford encoding $U$, the normalized $n$-qubit state $\Pi_C|\phi_{\mathbf0}\rangle/\sqrt{G_{\mathbf0\mathbf0}}$ must be Clifford-equivalent to $|\tau\rangle|0\rangle^{\otimes m}$, with the $m=n-r$ syndrome qubits in $|0\rangle$. The Python search keeps a survivor only if the multiset of absolute Pauli expectations of this normalized state equals that of $|\tau\rangle|0\rangle^{\otimes m}$, a necessary condition for Clifford equivalence. The compiled kernel tests collapse only.
 
-For one T state at $n=8$ and $d=2$, with $H=\{e:|e|<2\}$, the sectors of X-rank at most four (Python, with the target test) contain no T-state protocol, and the X-rank-seven sector ($1.2\times10^{11}$ signed codes, compiled kernel) has no collapse survivor. The X-rank-six sector ($1.1\times10^{10}$ signed codes) has 890{,}940 collapse survivors, which we classified exactly. For each code we compute two logical Paulis by linear algebra over $\F$, and one of the three logical expectations of the normalized state $\Pi_C\phi_{\mathbf0}/\sqrt{G_{\mathbf0\mathbf0}}$ always has modulus one. Every survivor therefore encodes a stabilizer state. The classifier agrees with a full Pauli-spectrum computation on a random sample and recognizes a T-equivalent control. The X-rank-five sector was not completed, so this partial run is not used in Table~\ref{tab:final}; the bound for one T state rests on the complete $n=\TNmax$ search.
+For one T state at $n=8$ and $d=2$, with $H=\{e:|e|<2\}$, the search covers all X-ranks, $1.32\times10^{11}$ signed codes in total. The sectors of X-rank at most four (Python, with the target test) contain no T-state protocol, and the X-rank-seven sector ($1.2\times10^{11}$ signed codes, compiled kernel) has no collapse survivor. The X-rank-six sector ($1.1\times10^{10}$ signed codes) has 890{,}940 collapse survivors and the X-rank-five sector ($9.1\times10^{8}$) has 346{,}136, which we classified exactly. For each code we compute two logical Paulis by linear algebra over $\F$ and the three logical expectations of the normalized state $\Pi_C\phi_{\mathbf0}/\sqrt{G_{\mathbf0\mathbf0}}$. A single-qubit Clifford only permutes these up to sign, and for $|T\rangle$ their moduli are $\{1/\sqrt2,1/\sqrt2,0\}$. All survivors of X-rank six, and all but 928 of X-rank five, have one modulus equal to one and so encode stabilizer states. The remaining 928 have moduli $\{0,1/3,2\sqrt2/3\}$: they encode a non-stabilizer state, but not one in the Clifford orbit of $|T\rangle$. The classifier agrees with a full Pauli-spectrum computation on random samples and on all saved non-stabilizer survivors, and it recognizes a T-equivalent control.
 
 \paragraph*{Padding and monotonicity.}
 A protocol on $n-1$ inputs, extended by one discarded input, keeps its suppression order, so each search at fixed $n$ also excludes all smaller $n$. Order $d$ implies order $d-1$, so the quartic CCZ bound follows from the cubic one, and the quartic run is a consistency check.
@@ -332,7 +332,7 @@ CCZ$^{\otimes2}$ & 1 & 7 & 172 \\
 CCZ$^{\otimes2}$ & 2 & 9 & 3{,}678{,}216 \\
 CS & 2 & 7 & 99{,}429{,}248 \\
 CS & 3 & 8 & 9{,}240{,}117{,}248 \\
-T & 2 & 7 & 469{,}735{,}424 \\
+T & 2 & 8 & $1.32\times10^{11}$ \\
 CCCZ & 1 & 5 & 44 \\
 \end{tabular}
 \end{ruledtabular}
