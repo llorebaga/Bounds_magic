@@ -104,7 +104,9 @@ Independent exact certificates of the full level-1 relaxation (`exact_cert_fast.
 Q(sqrt2) with an exact simplex, `qs2.py`): d = 2..7 verified (5, 8, 10, 14, 17, 20 inequalities).
 
 **Consequence for the paper:** n_min(T,5) >= 10, n_min(T,6) >= 12, ... (previously 9), and the
-T-state analogue of n >= 2d+1. Draft text in `theorem_T2d.tex` (not merged into paper.tex).
+T-state analogue of n >= 2d+1. Merged into the paper as the last claim of Theorem 4, with the proof in Sec. S3
+(notation there: lambda_v / bar-lambda_v for the |T> / Z|T> outputs, mu_v for weight distributions,
+eta = 3 - 2 sqrt2). `theorem_T2d.tex` is the original draft.
 
 ## 6. Rational targets (CS, CCZ): no improvement
 
@@ -115,7 +117,7 @@ beat it at these levels.
 
 ## 7. Next steps
 
-1. Merge Theorem `thm:t2d` into the paper (Table I: a T row for d >= 5 with LB 2d).
+1. Done: merged into Theorem 4 and Table I (T rows d = 4, 5 and d >= 6; d = 5 gives 10 vs the [[49,1,5]] code).
 2. Higher levels for rational targets (5-6 qubit cones) to test whether the constant 2 can be raised.
 3. Stronger outer approximations of the stabilizer cone (multi-copy / Clifford-commutant), not attempted.
 
