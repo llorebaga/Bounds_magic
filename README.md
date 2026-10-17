@@ -17,6 +17,8 @@ scripts/   all code (run from inside scripts/: paths are relative, e.g. ../resul
 results/   logs, JSON outputs, certificates and designs referenced in the paper
 ```
 
+`COMPUTE_PLAN.md` sizes every open search and says what a large cluster would decide.
+
 ## Requirements
 
 - Python >= 3.10 with `numpy`, `sympy`
