@@ -85,17 +85,39 @@ valid mathematics but must be confirmed in exact arithmetic. It also explains th
 inputs onto a singlet always adds exactly one fault, so at n = 2d-1 it forces weight-d patterns to output
 exactly Z|T>; such zero-propagation chains are the same kind of argument as the paper's witnesses.
 
-## 5. Status and next steps
+## 5. Theorem: n_min(T,d) >= 2d for all d >= 2 (analytic)
 
-1. **Rigor.** Results are floating-point LPs. To use them in the paper: rationalize the facets (shrink
-   slightly so they stay valid against the exact Q(sqrt2) generators) and verify the small Farkas
-   certificates in exact arithmetic.
-2. **Analytic proof** of n_min(T,d) >= 2d from the singlet/|+> certificate pattern.
-3. **Rational targets** (CS, CCZ): same hierarchy, but the output cannot be fully dephased; twirl it by the
-   Clifford automorphisms of tau and use the (k+r)-qubit cone (k <= 2 for CCZ, k <= 3 for CS). The paper
-   already has n >= 2d+1 there, so the question is whether the relaxation improves the constant.
-4. Stronger outer approximations of cone(STAB) (Clifford-commutant / multi-copy extensions in the style of
-   Gross-Nezami-Walter) are possible but large; not attempted.
+The LP certificates pointed to a short induction (`theorem_T2d.tex`, checked by `proof_check.py`):
+
+* Single branch (Theorem 1), twirled: weights v < d output exactly |T> (weight A_v), and by
+  sqrt2 -> -sqrt2 weights v >= d output exactly Z|T> (weight B_v), at n = 2d-1.
+* Two-qubit lemma (exact check on all 60 two-qubit stabilizer states), s = 3 - 2 sqrt2 = tan^2(pi/8):
+  g01 - s^2 g10 >= s |g00 - g11|  and  g10 - s^2 g01 >= s |g00 - g11|.
+* Witnesses chi_t^+- = (d-1-t singlets) (x) |+->^{2t}. The singlet carries exactly one fault in the T
+  basis; |+> and |-> have weight ratios s and 1/s. t = 0 gives A_{d-1} = B_d; each t >= 1 gives
+  A_{d-1-t} = s^{2t} B_{d+t} and B_{d+t} = s^{2t} A_{d-1-t}, so both vanish. At t = d-1, A_0 = 0.
+* Checks: symbolic replay of the induction for d = 2..8; LP with only these witnesses and the two
+  inequalities gives max A_0 = 0 for d = 2..14; full relaxation feasible at n = 2d (so 2d is all this
+  relaxation can give).
+
+Independent exact certificates of the full level-1 relaxation (`exact_cert_fast.py`, arithmetic in
+Q(sqrt2) with an exact simplex, `qs2.py`): d = 2..7 verified (5, 8, 10, 14, 17, 20 inequalities).
+
+**Consequence for the paper:** n_min(T,5) >= 10, n_min(T,6) >= 12, ... (previously 9), and the
+T-state analogue of n >= 2d+1. Draft text in `theorem_T2d.tex` (not merged into paper.tex).
+
+## 6. Rational targets (CS, CCZ): no improvement
+
+`gen_lp.py` / `gen_sep.py`: the output is dephased in the basis {Z^a|tau>} by the Cliffords U X^a U^dag
+(e.g. X_1 CZ_23 for CCZ), so these are LPs too. Levels 1-2 give CS: d=1 -> 3, d=2 -> 5 (= 2d+1, as in
+the paper); CCZ: d=1 -> 3 (weaker than the nullity bound 4). The relaxation reproduces 2d+1 but does not
+beat it at these levels.
+
+## 7. Next steps
+
+1. Merge Theorem `thm:t2d` into the paper (Table I: a T row for d >= 5 with LB 2d).
+2. Higher levels for rational targets (5-6 qubit cones) to test whether the constant 2 can be raised.
+3. Stronger outer approximations of the stabilizer cone (multi-copy / Clifford-commutant), not attempted.
 
 ## Files
 
@@ -106,3 +128,8 @@ exactly Z|T>; such zero-propagation chains are the same kind of argument as the 
 * `validate.py` checks real protocols against the constraints
 * `certificate.py` Farkas certificates
 * `scan_t.py`, `scan_big.py`, `results_*.txt` scans
+* `family.py`, `struct_family.py`, `margin.py`, `dual_pattern.py` witness-family experiments
+* `qs2.py`, `exact_cert.py`, `exact_cert_fast.py` exact certificates in Q(sqrt2)
+* `proof_check.py` exact check of the two-qubit lemma and of the induction
+* `theorem_T2d.tex` draft theorem and proof for the paper
+* `gen_lp.py`, `gen_sep.py` relaxations for T, CS, CCZ (output dephased in the Z^a|tau> basis)

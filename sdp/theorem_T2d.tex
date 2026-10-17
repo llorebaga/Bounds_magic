@@ -1,0 +1,38 @@
+% Draft insert for the paper: lower bound n_min(T,d) >= 2d.  Not yet merged into paper.tex.
+% Main text (after Theorem 4, "Lower bounds at all orders"):
+
+\begin{theorem}\label{thm:t2d}
+For $d\geq2$, every stabilizer protocol that distills one T state with suppression order $d$ uses $n\geq2d$ noisy inputs.
+\end{theorem}
+
+For one T state, which is not rational, Theorem~\ref{thm:pairing} does not apply and Theorem~\ref{thm:analytic} gives only $n\geq d$. Theorem~\ref{thm:t2d} is the counterpart of $n\geq2d+1$ for rational targets, and for $d\geq5$ it improves on the exhaustive bound $n\geq9$ (e.g.\ $n_{\min}(T,5)\geq10$). It was found with a linear-programming relaxation of the stabilizer cone (Sec.~S\,7), whose certificate turned out to be a short induction.
+
+% Supplemental Material:
+
+\paragraph*{Proof of Theorem~\ref{thm:t2d}.}
+By padding it suffices to exclude $n=2d-1$. By Theorem~\ref{thm:code} we may assume a single branch, whose Choi operator $J$ is a stabilizer state with rational Pauli coefficients. Twirling the inputs and the output by $W=(X+Y)/\sqrt2$ and averaging over input permutations gives a protocol of the form
+\begin{equation}
+ \Lambda(\rho)=\sum_e\langle\phi_e|\rho|\phi_e\rangle\bigl(A_{|e|}\,|T\rangle\langle T|+B_{|e|}\,Z|T\rangle\langle T|Z\bigr),
+\end{equation}
+with $A,B\geq0$, $A_0>0$ (the fault-free input is accepted) and $B_v=0$ for $v<d$ (harmless patterns). The automorphism $\sigma:\sqrt2\mapsto-\sqrt2$ fixes the twirled $J$, maps $\rho_e$ to $\rho_{e+\mathbf1}$ and swaps $|T\rangle$ with $Z|T\rangle$, so $A_v=0$ for $v>n-d$, that is, for $v\geq d$.
+
+Keep one input and the output, and project the other $2d-2$ inputs onto a stabilizer state $\chi$ whose T-basis weight distribution is $m_v=\sum_{|e|=v}|\langle\phi_e|\chi\rangle|^2$. The result is a two-qubit operator, diagonal in the T basis with entries
+\begin{equation}
+ g_{00}=\sum_vm_vA_v,\quad g_{01}=\sum_vm_vB_v,\quad g_{10}=\sum_vm_vA_{v+1},\quad g_{11}=\sum_vm_vB_{v+1},
+\end{equation}
+(first index: kept input; second: output), and it lies in the cone of two-qubit stabilizer states. (The transpose in the Choi operator replaces $|Tangle$ by $S^\dagger|Tangle$ on the kept input, which an $S$ gate absorbs.) Every two-qubit stabilizer state satisfies, with $s=3-2\sqrt2=\tan^2(\pi/8)$,
+\begin{equation}
+ g_{01}-s^2g_{10}\geq s\,|g_{00}-g_{11}|,\qquad g_{10}-s^2g_{01}\geq s\,|g_{00}-g_{11}|,
+ \label{eq:twoqubit}
+\end{equation}
+as a direct check over the 60 two-qubit stabilizer states shows (\texttt{sdp/proof\_check.py}); by linearity so does every element of the cone.
+
+The singlet carries exactly one fault in the T basis ($m=\delta_1$), while $|{\pm}\rangle$ has $m\propto(1,s^{\pm1})$, since $|\langle T|{+}\rangle|^2/|\langle T|{-}\rangle|^2=s^{-1}$. For $t=0,\dots,d-1$ let $\chi_t^\pm$ be $d-1-t$ singlets times $|{\pm}\rangle^{\otimes2t}$, so that $m_{d-1-t+u}\propto\binom{2t}{u}s^{\pm u}$ (up to an overall factor $s^{2t}$ for $\chi_t^-$). We show by induction on $t$ that
+\begin{equation}
+ A_{d-1}=B_d,\qquad A_{d-1-t}=B_{d+t}=0\quad(1\leq t\leq d-1).
+\end{equation}
+For $t=0$, $\chi_0$ consists of singlets only, so $g_{01}=g_{10}=0$ and the first inequality of~\eqref{eq:twoqubit} gives $A_{d-1}=g_{00}=g_{11}=B_d$. For $t\geq1$, the induction hypothesis leaves, for $\chi_t^+$,
+\begin{equation}
+ g_{01}-s^2g_{10}=\tbinom{2t}{t+1}s^{t+1}(B_d-A_{d-1})=0,\qquad g_{00}-g_{11}=A_{d-1-t}-s^{2t}B_{d+t},
+\end{equation}
+so $A_{d-1-t}=s^{2t}B_{d+t}$. For $\chi_t^-$ the second inequality gives in the same way $B_{d+t}=s^{2t}A_{d-1-t}$. Since $0<s<1$, both vanish. At $t=d-1$ this is $A_0=0$, a contradiction. $\square$
