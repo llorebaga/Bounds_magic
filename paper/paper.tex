@@ -57,7 +57,7 @@ We use the reductions in both directions. Analytic arguments and exhaustive sear
 %
 \section{Factories as codes}\label{sec:framework}
 \paragraph*{Setting.}
-Let $|T\rangle=(|0\rangle+\omega|1\rangle)/\sqrt2$ with $\omega=e^{i\pi/4}$. After the standard twirl~\cite{bravyikitaev}, each input is
+Let $|T\rangle=(|0\rangle+\omega|1\rangle)/\sqrt2$ with $\omega=e^{i\pi/4}$, Clifford-equivalent to the H-type state of Ref.~\cite{bravyikitaev} (not to their T-type state, which the five-qubit code distills). After the standard twirl~\cite{bravyikitaev}, each input is
 \begin{equation}
  \rho_T(p)=(1-p)|T\rangle\langle T|+pZ|T\rangle\langle T|Z=\tfrac12\bigl[I+\tfrac{1-2p}{\sqrt2}(X+Y)\bigr].
  \label{eq:input}
@@ -214,7 +214,7 @@ Method & Scope & Result & Reference \\
 \RR Complementary faults & \RR targets with rational Pauli expectations & \RR $e$ is harmless if and only if $e+\mathbf1$ is; larger tolerated sets $H$ & Thm.~\ref{thm:pairing}, Sec.~\ref{app:proofs} \\
 \RR Analytic witnesses & \RR input states that contain only harmless fault patterns & \RR LB at every order ($2d+1$, $d+\nu+1$) & Thm.~\ref{thm:analytic}, Sec.~\ref{app:analytic} \\
 \RR Stabilizer-cone relaxation & \RR all protocols, through their Choi operators, twirled to T-basis diagonal form & \RR LB $n\geq2d$ for one T state, via its certificate & Thm.~\ref{thm:analytic}, Sec.~\ref{app:analytic} \\
-\RR Exhaustive search & \RR all stabilizer codes on $n$ inputs, up to permutations of the inputs and the symmetry $W$ & \RR LB when no code satisfies the collapse conditions; a factory when one does (T, $n=9$) & Thms.~\ref{thm:ccz},~\ref{thm:tcs}, Sec.~\ref{app:search} \\
+\RR Exhaustive search & \RR all stabilizer codes on $n$ inputs, up to permutations of the inputs and the symmetry $W$ & \RR LB when no code satisfies the collapse conditions; a factory when one does (T, $n=9$) & Thms.~\ref{thm:tcs},~\ref{thm:ccz}, Sec.~\ref{app:search} \\
 \RR Clifford orbits & \RR Clifford-equivalent forms of the target & \RR equivalent targets of lower T-count ($\CS_{12}\CS_{13}\simeq\CCZ$) & Prop.~\ref{prop:orbit} \\
 \RR Integer program & \RR binary matrices $G$ with parity constraints & \RR single-level factories (UB) & Sec.~\ref{app:programs} \\
 \RR SAT & \RR T columns and CCZ blocks of two-level designs & \RR multistage factories (UB) & Sec.~\ref{app:programs} \\
@@ -270,7 +270,7 @@ The projection of the faulty input has a component orthogonal to that of the ide
 Label the eight inputs by the vertices $v\in\F^3$ of a cube. Writing the T$^\dagger$ inputs of the usual construction as $S^\dagger|T\rangle$, the stabilizers are $X$ on the four even-weight vertices times $Y$ on the four odd-weight vertices, together with $Z$ on the faces $v_1=0$, $v_2=0$, $v_3=0$ and $v_1=1$. These generate $Z$ on all six faces and $Z^{\otimes8}$. The collapse test gives the following.
 \begin{itemize}
 \item $G_{\mathbf0\mathbf0}=1/16$, and $\Pi_C\phi_{\mathbf0}$ has the Pauli spectrum of CCZ.
-\item Every single fault anticommutes with the first stabilizer and is rejected: $G_{ee}=G_{\mathbf0e}=0$.
+\item Every single fault anticommutes with the first stabilizer, and indeed $G_{ee}=G_{\mathbf0e}=0$: single faults are always rejected.
 \item Since $Z^{\otimes8}$ is a stabilizer, each pattern behaves like its complement. The weight-seven patterns are rejected, and the all-faulty input collapses onto the fault-free one, with $G_{\mathbf0\mathbf1}=G_{\mathbf1\mathbf1}=1/16$.
 \item Every $Z_jZ_k$ commutes with all stabilizers but is not one, so it is a logical error. All 28 weight-two patterns are harmful, and $\epsilon=28p^2+O(p^3)$.
 \end{itemize}
@@ -541,6 +541,6 @@ Fang and Liu~\cite{fangliu,fangliu2} give $n\geq\log[(1-f_\tau)/\epsilon]/\log[(
 The robustness bound of Regula and Takagi~\cite{regulatakagi}, $n\geq\log[(1-\epsilon)/F]/\log(4-2\sqrt2)$, is independent of $d$. It gives $n\geq4$ for CCZ ($F=9/16$), $n\geq3$ for CS ($F=5/8$) and $n\geq8$ for two CCZ states. Seddon \emph{et al.}~\cite{seddon} weight such bounds by the success probability $P$; for CCZ they give $n\geq4$ only when $P>0.83$.
 
 \paragraph*{Class-restricted bounds.}
-Codes with a transversal non-Clifford phase gate need at least fifteen qubits for distance three~\cite{kbk}. Generalized triorthogonal codes are classified through length 54 at distance at least three~\cite{nezamihaah,wjs}, and footprint bounds limit particular circuit families~\cite{jacinto}. None of these covers adaptive, non-transversal or multistage protocols. The optimal CS factory and the two-level designs lie outside all of these classes.
+Codes with a transversal T gate need at least fifteen qubits for distance three~\cite{kbk}. Generalized triorthogonal codes are classified through length 54 at distance at least three~\cite{nezamihaah,wjs}, and footprint bounds limit particular circuit families~\cite{jacinto}. None of these covers adaptive, non-transversal or multistage protocols. The nine-input T factory, the optimal CS factory and the two-level designs lie outside all of these classes.
 
 \end{document}
