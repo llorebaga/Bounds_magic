@@ -1,7 +1,7 @@
 # Bounds_magic
 
-Code and data for **"Exact limits of magic-state distillation"**
-(`paper/paper.tex`, `paper/refs.bib`, compiled `paper/paper.pdf`).
+Code and data for **"Limits of Magic-State Distillation"**
+(`paper/paper.tex`, `paper/refs.bib`; build with `latexmk -pdf paper.tex` in `paper/`).
 
 Every stabilizer protocol for magic-state distillation is equivalent to projecting the noisy T inputs onto one
 stabilizer code; it tolerates a set of input faults exactly when they all *collapse* onto one code vector
@@ -12,7 +12,7 @@ into lower bounds, the integer/SAT programs that find constructions, and the exa
 ## Layout
 
 ```
-paper/     paper.tex, refs.bib, paper.bbl, paper.pdf, fig_reductions.tex (TikZ source of Fig. 1, \input by paper.tex)
+paper/     paper.tex, refs.bib, fig_reductions.tex (TikZ source of Fig. 1, \input by paper.tex)
 scripts/   all code (run from inside scripts/: paths are relative, e.g. ../results/)
 results/   logs, JSON outputs, certificates and designs referenced in the paper
 ```

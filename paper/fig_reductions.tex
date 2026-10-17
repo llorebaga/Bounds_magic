@@ -1,117 +1,128 @@
-% Figure 1: the reductions. Requires \usepackage{tikz} with libraries arrows.meta, calc, positioning.
-\definecolor{okblue}{RGB}{33,102,172}
-\definecolor{badred}{RGB}{200,55,45}
-\definecolor{tgtgreen}{RGB}{26,140,80}
-\definecolor{softgray}{RGB}{150,150,150}
-\definecolor{planefill}{RGB}{232,240,250}
+% Figure 1: the reductions. Drawn at final size (no rescaling), 8 pt sans-serif text with sans-italic maths.
+% Requires \usepackage{tikz} with libraries arrows.meta, calc, decorations.pathreplacing, and the math
+% version figsans declared in the preamble of paper.tex. Colours are CMYK (Okabe--Ito hues).
+\definecolor{tolblue}{cmyk}{1,0.36,0,0.30}      % tolerated patterns and the target line
+\definecolor{harmver}{cmyk}{0,0.56,1,0.165}     % harmful patterns
+\definecolor{skyblue}{cmyk}{0.63,0.23,0,0.09}   % code space
+\definecolor{rejgray}{cmyk}{0,0,0,0.50}         % rejected patterns
+\definecolor{inkgray}{cmyk}{0,0,0,0.75}         % neutral annotation
+\newcommand{\figPi}{\text{\fontencoding{OT1}\fontfamily{cmss}\selectfont\char5}}
 \begin{tikzpicture}[
-  >={Stealth[length=2.2mm]},
-  font=\footnotesize,
-  ttl/.style={font=\footnotesize\bfseries, anchor=west},
-  gate/.style={draw, rounded corners=1.5pt, fill=softgray!18},
+  font=\fontsize{8}{9.6}\fontfamily{phv}\selectfont\mathversion{figsans},
+  line width=0.5pt,
+  >={Stealth[length=1.9mm,width=1.4mm]},
+  letter/.style={font=\fontsize{8}{9.6}\fontfamily{phv}\fontseries{b}\selectfont, anchor=north west, inner sep=0pt},
+  gate/.style={draw, rounded corners=1pt, fill=black!8},
+  code/.style={draw=skyblue, rounded corners=1pt, fill=skyblue!18},
+  cl/.style={double=white, double distance=0.9pt, line width=0.4pt, rejgray},
+  brace/.style={decorate, decoration={brace, amplitude=2.2pt}},
   meter/.pic={
-    \draw[fill=white] (-0.17,-0.13) rectangle (0.17,0.13);
-    \draw (-0.11,-0.06) arc (160:20:0.115);
-    \draw[->, >={Stealth[length=1mm]}] (0,-0.08) -- (0.09,0.09);
+    \draw[fill=white] (-0.15,-0.12) rectangle (0.15,0.12);
+    \draw (-0.095,-0.055) arc (160:20:0.1);
+    \draw[->, >={Stealth[length=0.9mm,width=0.8mm]}] (0,-0.07) -- (0.08,0.08);
   },
-  cl/.style={double, double distance=1.2pt, softgray!90!black},
+  vec/.style={->, line width=0.8pt},
+  drop/.style={dotted, line width=0.6pt},
+  proj/.style={->, line width=1pt},
 ]
-% (a) one code suffices
+% ---------------------------------------------------------------- (a) reduction to one code
 \begin{scope}[shift={(0,0)}]
-  \node[ttl] at (-0.2,4.55) {(a) One code suffices};
-  % ---- any protocol: gates, measurements, feedforward
-  \foreach \y in {3.75,3.45,3.15,2.85} \node[font=\scriptsize] at (0.05,\y) {$T$};
-  \draw (0.25,3.75) -- (3.45,3.75);
-  \draw (0.25,3.45) -- (3.45,3.45);
-  \draw (0.25,3.15) -- (2.35,3.15);
-  \draw (0.25,2.85) -- (1.30,2.85);
-  \draw[gate] (0.55,2.68) rectangle (0.95,3.92);
-  \pic at (1.30,2.85) {meter};
-  \draw[cl] (1.30,2.98) -- (1.30,3.25) -- (1.80,3.25);
-  \draw[gate] (1.80,2.98) rectangle (2.10,3.92);
-  \pic at (2.35,3.15) {meter};
-  \draw[cl] (2.35,3.28) -- (2.35,3.60) -- (2.65,3.60);
-  \draw[gate] (2.65,3.30) rectangle (2.95,3.92);
-  \node[font=\scriptsize, right] at (3.45,3.60) {$\tau$};
-  % ---- reduction arrow
-  \draw[->, very thick, okblue] (1.75,2.45) -- (1.75,1.85);
-  % ---- one code
-  \foreach \y in {1.50,1.20,0.90,0.60} {
-    \node[font=\scriptsize] at (0.05,\y) {$T$};
-    \draw (0.25,\y) -- (2.35,\y);
+  \node[letter] at (0,4.5) {(a)};
+  % any protocol: gates, measurements, feedforward
+  \draw[brace] (0.92,2.83) -- (0.92,4.05);
+  \node[anchor=east] at (0.86,3.44) {$\rho_T^{\otimes n}$};
+  \draw (1.0,3.95) -- (4.05,3.95);
+  \draw (1.0,3.61) -- (4.05,3.61);
+  \draw (1.0,3.27) -- (2.95,3.27);
+  \draw (1.0,2.93) -- (1.95,2.93);
+  \draw[gate] (1.22,2.80) rectangle (1.55,4.08);
+  \draw[cl] (1.95,3.05) -- (1.95,3.44) -- (2.30,3.44);
+  \pic at (1.95,2.93) {meter};
+  \draw[gate] (2.30,3.14) rectangle (2.60,4.08);
+  \draw[cl] (2.95,3.39) -- (2.95,3.78) -- (3.30,3.78);
+  \pic at (2.95,3.27) {meter};
+  \draw[gate] (3.30,3.48) rectangle (3.60,4.08);
+  \draw[brace] (4.10,4.03) -- (4.10,3.53);
+  \node[anchor=west] at (4.17,3.78) {$\tau$};
+  % reduction
+  \draw[->, line width=0.8pt, inkgray] (2.30,2.62) -- (2.30,2.12);
+  \node[anchor=west, align=left, inkgray] at (2.42,2.37) {one accepted\\branch};
+  % one code projection and a Clifford decoder
+  \draw[brace] (0.92,0.63) -- (0.92,1.85);
+  \node[anchor=east] at (0.86,1.24) {$\rho_T^{\otimes n}$};
+  \foreach \y in {1.75,1.41,1.07,0.73} \draw (1.0,\y) -- (2.30,\y);
+  \draw (2.80,1.75) -- (4.05,1.75);
+  \draw (2.80,1.41) -- (4.05,1.41);
+  \draw[code] (1.22,0.60) rectangle (1.88,1.88);
+  \node at (1.55,1.24) {$\figPi_C$};
+  \draw[gate] (2.30,0.60) rectangle (2.80,1.88);
+  \node at (2.55,1.24) {$V$};
+  \draw[brace] (4.10,1.83) -- (4.10,1.33);
+  \node[anchor=west] at (4.17,1.58) {$\tau$};
+\end{scope}
+% ---------------------------------------------------------------- (b) collapse
+\begin{scope}[shift={(5.15,0)}]
+  \node[letter] at (0,4.5) {(b)};
+  \coordinate (O) at (2.55,0.58);
+  \coordinate (t) at (1,0.17);                       % direction of the target line in the plane
+  % code space C, a plane seen in perspective
+  \fill[skyblue!15] (0.15,0.15) -- (4.75,0.15) -- (6.25,1.20) -- (1.65,1.20) -- cycle;
+  \draw[skyblue] (0.15,0.15) -- (4.75,0.15) -- (6.25,1.20) -- (1.65,1.20) -- cycle;
+  \node[skyblue!70!black] at (4.45,0.32) {$C$};
+  % the line spanned by the encoded target
+  \draw[tolblue!40, line width=1.8pt, line cap=round] ($(O)-2.0*(t)$) -- ($(O)+3.3*(t)$);
+  \node[anchor=south west, tolblue, inner sep=1pt] at ($(O)+3.3*(t)+(0.02,0.04)$) {$\mathbb C\,U|\tau\rangle$};
+  % feet of the projections
+  \coordinate (f0) at ($(O)+2.85*(t)$);  \coordinate (p0) at ($(f0)+(0,2.30)$);
+  \coordinate (f1) at ($(O)-1.45*(t)$);  \coordinate (p1) at ($(f1)+(0,2.55)$);
+  \coordinate (fh) at ($(O)+(0.80,-0.30)$); \coordinate (ph) at ($(fh)+(0,3.00)$);
+  \coordinate (pr) at ($(O)+(0,2.97)$);
+  % right-angle marks where the projections meet the plane
+  \draw[tolblue, line width=0.4pt] ($(f0)-0.13*(t)$) -- ++(0,0.13) -- ($(f0)+(0,0.13)$);
+  \draw[tolblue, line width=0.4pt] ($(f1)+0.13*(t)$) -- ++(0,0.13) -- ($(f1)+(0,0.13)$);
+  \draw[harmver, line width=0.4pt] ($(fh)+(-0.122,0.046)$) -- ++(0,0.13) -- ($(fh)+(0,0.13)$);
+  % drop lines (the projection Pi_C)
+  \draw[drop, tolblue] (p0) -- (f0);
+  \draw[drop, tolblue] (p1) -- (f1);
+  \draw[drop, harmver] (ph) -- (fh);
+  % projected vectors: tolerated ones on the target line, the harmful one off it
+  \draw[proj, tolblue] (O) -- (f0);
+  \draw[proj, tolblue] (O) -- (f1);
+  \draw[proj, harmver] (O) -- (fh);
+  % input vectors
+  \draw[vec, rejgray] (O) -- (pr);
+  \draw[vec, harmver] (O) -- (ph);
+  \draw[vec, tolblue] (O) -- (p0);
+  \draw[vec, tolblue] (O) -- (p1);
+  \fill (O) circle (0.9pt);
+  \node[anchor=south, rejgray, inner sep=1.5pt] at (pr) {rejected};
+  \node[anchor=west, harmver, inner sep=1.5pt] at (ph) {harmful};
+  \node[anchor=west, tolblue, inner sep=1.5pt] at (p0) {$\phi_{\mathbf 0}$};
+  \node[anchor=east, tolblue, inner sep=1.5pt] at (p1) {$\phi_{\mathbf 1}$};
+\end{scope}
+% ---------------------------------------------------------------- (c) complementary faults
+\begin{scope}[shift={(12.25,0)}]
+  \node[letter] at (0,4.5) {(c)};
+  \fill[tolblue!14, rounded corners=2pt] (0.08,1.27) rectangle (1.07,1.63);
+  \fill[harmver!14, rounded corners=2pt] (1.18,1.27) rectangle (3.82,1.63);
+  \fill[tolblue!14, rounded corners=2pt] (3.93,1.27) rectangle (4.92,1.63);
+  % the automorphism acts as a mirror at n/2
+  \draw[inkgray, dashed, line width=0.5pt] (2.50,1.20) -- (2.50,3.92);
+  \node[inkgray] at (2.50,4.18) {$\sigma\colon\ \sqrt2\mapsto-\sqrt2,\quad p\mapsto1-p$};
+  \foreach \w/\h in {0/2.55,1/1.95,2/1.35,3/0.75} {
+    \pgfmathsetmacro{\xa}{0.30+0.55*\w}
+    \pgfmathsetmacro{\xb}{0.30+0.55*(8-\w)}
+    \draw[<->, inkgray, >={Stealth[length=1.5mm,width=1.1mm]}]
+      (\xa,1.62) .. controls (\xa,1.62+\h) and (\xb,1.62+\h) .. (\xb,1.62);
   }
-  \draw (2.35,1.50) -- (3.45,1.50); \draw (2.35,1.20) -- (3.45,1.20);
-  \draw[fill=planefill, rounded corners=1.5pt] (0.65,0.42) rectangle (1.35,1.68);
-  \node at (1.0,1.05) {$\Pi_C$};
-  \draw[gate] (1.75,0.42) rectangle (2.25,1.68);
-  \node at (2.0,1.05) {$V$};
-  \node[font=\scriptsize, right] at (3.45,1.35) {$\tau$};
-\end{scope}
-% (b) collapse
-\begin{scope}[shift={(4.45,0)}]
-  \node[ttl] at (-0.1,4.55) {(b) Collapse};
-  \coordinate (O) at (1.0,0.55);
-  \fill[planefill] (0,0) -- (3.0,0) -- (3.7,1.25) -- (0.7,1.25) -- cycle;
-  \draw[okblue!60] (0,0) -- (3.0,0) -- (3.7,1.25) -- (0.7,1.25) -- cycle;
-  \node[okblue!80, font=\scriptsize, anchor=south west] at (2.55,0.05) {code $C$};
-  \draw[tgtgreen, very thick] ($(O)+(-0.45,-0.12)$) -- ($(O)+(2.45,0.67)$) node[below right, font=\scriptsize, xshift=-8pt, yshift=-1pt] {$U|\tau\rangle$};
-  \coordinate (p0) at ($(O)+(1.25,0.343)$); \coordinate (t0) at ($(p0)+(0,2.45)$);
-  \coordinate (p1) at ($(O)+(2.05,0.562)$); \coordinate (t1) at ($(p1)+(0,1.75)$);
-  \draw[->, okblue, thick] (O) -- (t0) node[above, font=\scriptsize] {$\phi_{\mathbf 0}$};
-  \draw[->, okblue, thick] (O) -- (t1) node[above right, font=\scriptsize, xshift=-2pt] {$\phi_{\mathbf 1}$};
-  \draw[dashed, okblue] (t0) -- (p0); \draw[dashed, okblue] (t1) -- (p1);
-  \fill[okblue] (p0) circle (1.3pt); \fill[okblue] (p1) circle (1.3pt);
-  \coordinate (ph) at ($(O)+(0.55,0.62)$); \coordinate (th) at ($(ph)+(0,2.2)$);
-  \draw[->, badred, thick] (O) -- (th) node[above left, font=\scriptsize, xshift=3pt] {harmful};
-  \draw[dashed, badred] (th) -- (ph);
-  \draw[->, badred, thick] (O) -- (ph);
-  \draw[->, softgray, thick] (O) -- ($(O)+(-0.55,2.0)$) node[above, font=\scriptsize] {rejected};
-  \fill (O) circle (1.1pt);
-\end{scope}
-% (c) complementary faults
-\begin{scope}[shift={(8.7,0)}]
-  \node[ttl] at (-0.1,4.55) {(c) Complementary faults};
-  \fill[badred!12, rounded corners=2pt] (0.95,0.95) rectangle (2.95,1.45);
-  \fill[tgtgreen!14, rounded corners=2pt] (-0.1,0.95) rectangle (0.75,1.45);
-  \fill[tgtgreen!14, rounded corners=2pt] (3.15,0.95) rectangle (4.0,1.45);
   \foreach \w in {0,...,8} {
-    \pgfmathsetmacro{\x}{0.1+0.475*\w}
-    \fill (\x,1.2) circle (1.4pt);
-    \node[font=\scriptsize] at (\x,0.75) {\w};
+    \pgfmathsetmacro{\x}{0.30+0.55*\w}
+    \fill (\x,1.45) circle (1.2pt);
+    \node at (\x,1.06) {\w};
   }
-  \node[font=\scriptsize] at (1.95,0.35) {faults $|e|$};
-  \node[font=\scriptsize, tgtgreen!70!black] at (0.33,1.75) {harmless};
-  \node[font=\scriptsize, tgtgreen!70!black] at (3.57,1.75) {harmless};
-  \node[font=\scriptsize, badred] at (1.95,1.75) {may damage};
-  \foreach \w/\h in {0/1.55,1/1.2,2/0.85,3/0.5} {
-    \pgfmathsetmacro{\xa}{0.1+0.475*\w}
-    \pgfmathsetmacro{\xb}{0.1+0.475*(8-\w)}
-    \draw[<->, okblue, thin] (\xa,2.1) .. controls (\xa,2.1+\h) and (\xb,2.1+\h) .. (\xb,2.1);
-  }
-  \node[font=\scriptsize, okblue] at (1.95,3.95) {$\sqrt2\mapsto-\sqrt2$};
-\end{scope}
-% (d) lower and upper bounds
-\begin{scope}[shift={(13.05,0)}]
-  \node[ttl] at (-0.1,4.55) {(d) Two workflows};
-  \tikzset{
-    wf/.style={draw, rounded corners=2pt, minimum height=5.6mm, align=center, font=\scriptsize, inner sep=1.5pt},
-    lbbox/.style={wf, fill=badred!8, draw=badred!60, minimum width=16mm, text width=15mm},
-    ubbox/.style={wf, fill=tgtgreen!8, draw=tgtgreen!60, minimum width=16mm, text width=15mm},
-    fl/.style={->, thick, softgray!80!black},
-  }
-  \node[font=\scriptsize\bfseries, badred] at (0.85,4.05) {lower bound};
-  \node[font=\scriptsize\bfseries, tgtgreen!70!black] at (2.85,4.05) {upper bound};
-  \node[lbbox] (l1) at (0.85,3.45) {all codes};
-  \node[ubbox] (u1) at (2.85,3.45) {structured\\[-1pt]designs};
-  \node[lbbox] (l2) at (0.85,2.55) {symmetry,\\[-1pt]pruning};
-  \node[ubbox] (u2) at (2.85,2.55) {MIP / SAT};
-  \node[wf, fill=planefill, draw=okblue!70, minimum width=36mm] (c) at (1.85,1.62) {exact collapse test (b)};
-  \draw[fl] (l1) -- (l2); \draw[fl] (u1) -- (u2);
-  \draw[fl] (l2.south) -- (l2.south |- c.north);
-  \draw[fl] (u2.south) -- (u2.south |- c.north);
-  \node[font=\scriptsize, align=center] (lo) at (0.85,0.65) {none passes\\[-1pt]\textcolor{badred}{\large$\boldsymbol\times$}};
-  \node[font=\scriptsize, align=center] (uo) at (2.85,0.65) {factory\\[-1pt]\textcolor{tgtgreen}{\large\checkmark}};
-  \draw[fl] (c.south -| lo.north) -- (lo.north);
-  \draw[fl] (c.south -| uo.north) -- (uo.north);
+  \node[tolblue] at (0.575,0.68) {harmless};
+  \node[harmver] at (2.50,0.68) {may damage};
+  \node[tolblue] at (4.425,0.68) {harmless};
+  \node at (2.50,0.27) {number of faults $|e|$};
 \end{scope}
 \end{tikzpicture}

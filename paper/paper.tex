@@ -1,7 +1,14 @@
 \documentclass[aps,prl,reprint,twocolumn,amsmath,amssymb,floatfix,nofootinbib,superscriptaddress]{revtex4-2}
 \usepackage{amsmath,amssymb,amsthm,booktabs,graphicx,hyperref}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,calc,positioning}
+\usetikzlibrary{arrows.meta,calc,positioning,decorations.pathreplacing}
+% Sans-serif maths for Fig. 1: Helvetica digits and roman, sans-italic letters (newtxsf), used via \mathversion{figsans}
+\DeclareMathVersion{figsans}
+\SetSymbolFont{operators}{figsans}{OT1}{phv}{m}{n}
+\SetSymbolFont{letters}{figsans}{OML}{ntxsfmi}{m}{it}
+\SetSymbolFont{symbols}{figsans}{OMS}{cmsy}{m}{n}
+\SetMathAlphabet{\mathrm}{figsans}{OT1}{phv}{m}{n}
+\SetMathAlphabet{\mathbf}{figsans}{OT1}{phv}{b}{n}
 \hypersetup{hidelinks}
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -18,7 +25,7 @@
 \newcommand{\QuarticUB}{48}
 \newcommand{\QuarticCoef}{864}
 \begin{document}
-\title{Exact limits of magic-state distillation}
+\title{Limits of Magic-State Distillation}
 \author{Lloren\c{c} Balada Gaggioli}
 \affiliation{Czech Technical University in Prague, Prague, Czech Republic}
 \affiliation{LAAS-CNRS, Universit\'e de Toulouse, France}
@@ -36,8 +43,8 @@ Fault-tolerant quantum computers implement Clifford operations cheaply, but univ
 
 \begin{figure*}[t]
 \centering
-\resizebox{\textwidth}{!}{\input{fig_reductions}}
-\caption{The two reductions and their use. (a)~Theorem~\ref{thm:code}: a protocol with gates, measurements and feedforward (top) may be replaced by one of its accepted branches, which measures the stabilizers of a single code $C$, keeps one outcome and decodes with a Clifford $V$ (bottom). (b)~Collapse: the fault states $\phi_e=Z^e|T\rangle^{\otimes n}$ are orthonormal and are projected onto the much smaller code space. Each tolerated pattern must land on the line spanned by the encoded target or on zero (rejected); a harmful pattern lands elsewhere. (c)~Theorem~\ref{thm:pairing}: for rational targets, flipping the sign of $\sqrt2$ maps the error rate $p$ to $1-p$ and pairs each fault pattern with its complement. The harmless weights below $d$ are mirrored above $n-d$, so that damage is confined to the middle weights (here $n=8$, $d=2$); in particular, the fault-free input $\phi_{\mathbf0}$ and the all-faulty input $\phi_{\mathbf1}$ must collapse together. (d)~Lower and upper bounds share the collapse test of (b). For lower bounds, an exhaustive search covers all codes on $n$ inputs, reduced by symmetries and necessary conditions; if none passes, no protocol with $n$ inputs exists. For upper bounds, integer and satisfiability programs propose structured designs (binary matrices or two-level block layouts), and a design that passes is a factory, as is any code that passes within the exhaustive search. Section~\ref{app:example} works through these steps on explicit examples, and Table~\ref{tab:methods} summarizes the methods.}
+\input{fig_reductions}
+\caption{The two reductions. (a)~Theorem~\ref{thm:code}: a protocol with gates, measurements and feedforward (top) may be replaced by one of its accepted branches, which measures the stabilizers of a single code $C$, keeps one outcome and decodes with a Clifford $V$ (bottom). (b)~Collapse: the fault states $\phi_e=Z^e|T\rangle^{\otimes n}$, which are orthonormal (drawn schematically), are projected onto the code space $C$ (dotted lines). A tolerated pattern lands on the line $\mathbb C\,U|\tau\rangle$ spanned by the encoded target, as $\phi_{\mathbf0}$ and $\phi_{\mathbf1}$ do, or is rejected, being orthogonal to $C$; a harmful pattern lands elsewhere in $C$. (c)~Theorem~\ref{thm:pairing}: for rational targets, the automorphism $\sigma$ maps the error rate $p$ to $1-p$ and pairs each fault pattern with its complement, which reflects the fault weight about $n/2$. The harmless weights below $d$ are mirrored above $n-d$, so that damage is confined to the middle weights (here $n=8$, $d=2$); in particular, $\phi_{\mathbf0}$ and $\phi_{\mathbf1}$ must collapse together. Section~\ref{app:example} works through these steps on explicit examples, and Table~\ref{tab:methods} summarizes how the lower and upper bounds are obtained.}
 \label{fig:reductions}
 \end{figure*}
 
@@ -45,7 +52,7 @@ Existing lower bounds depend only weakly on $d$. Resource monotones that remain 
 
 In this Letter we show that, as far as the tolerance of input faults is concerned, adaptivity, randomness, postselection and multiple stages can be dispensed with. A set of fault patterns can be tolerated by some protocol if and only if some stabilizer code on the inputs projects each of them either onto one common vector, which encodes the target, or to zero. The reduction preserves the suppression order, although not the acceptance probability or the leading error coefficient. Moreover, flipping the sign of $\sqrt2$ commutes with stabilizer operations and fixes every target with rational Pauli expectations, CCZ among them, but maps a T state with error $p$ to one with error $1-p$. A fault pattern therefore damages the output if and only if its complement does. With these two facts, the minimum size of a factory becomes a finite and largely combinatorial problem.
 
-We use the reductions in both directions [Fig.~\ref{fig:reductions}(d)]. Analytic arguments and exhaustive searches over all stabilizer codes give lower bounds, and the collapse test certifies factories proposed by integer and satisfiability programs, including two-level designs in which an outer code consumes CCZ states from small inner factories. Table~\ref{tab:final} collects the results. The eight-input quadratic CCZ factory is optimal among all stabilizer protocols, cubic and quartic CCZ need at least ten inputs, and rational targets that are not stabilizer states need $n\geq2d+1$. Quadratic distillation of one T state needs exactly nine inputs, one fewer than any previous protocol, and the search itself found the nine-input factory. Quadratic distillation of the controlled-S (CS) state needs exactly eight inputs, and a CCCZ state exactly six ideal T states. Because $\CS_{12}\CS_{13}|{+}{+}{+}\rangle$ is Clifford-equivalent to CCZ, a known 36-input cubic code~\cite{wjs} also distills CCZ, against 47 inputs reported so far, and a two-level quartic CCZ factory with \QuarticUB\ inputs has leading error $\QuarticCoef p^4$, against $2816p^4$ previously.
+We use the reductions in both directions. Analytic arguments and exhaustive searches over all stabilizer codes give lower bounds, and the collapse test certifies factories proposed by integer and satisfiability programs, including two-level designs in which an outer code consumes CCZ states from small inner factories. Table~\ref{tab:final} collects the results. The eight-input quadratic CCZ factory is optimal among all stabilizer protocols, cubic and quartic CCZ need at least ten inputs, and rational targets that are not stabilizer states need $n\geq2d+1$. Quadratic distillation of one T state needs exactly nine inputs, one fewer than any previous protocol, and the search itself found the nine-input factory. Quadratic distillation of the controlled-S (CS) state needs exactly eight inputs, and a CCCZ state exactly six ideal T states. Because $\CS_{12}\CS_{13}|{+}{+}{+}\rangle$ is Clifford-equivalent to CCZ, a known 36-input cubic code~\cite{wjs} also distills CCZ, against 47 inputs reported so far, and a two-level quartic CCZ factory with \QuarticUB\ inputs has leading error $\QuarticCoef p^4$, against $2816p^4$ previously.
 
 %
 \section{Factories as codes}\label{sec:framework}
