@@ -64,7 +64,8 @@ Let $|T\rangle=(|0\rangle+\omega|1\rangle)/\sqrt2$ with $\omega=e^{i\pi/4}$, Cli
 \end{equation}
 Clifford operations are assumed ideal, and we count the noisy inputs consumed per run. A fault pattern $e\in\F^n$ marks the faulty inputs; the states $|\phi_e\rangle=Z^e|T\rangle^{\otimes n}$ are orthonormal, and $\rho_T(p)^{\otimes n}=\sum_ew_e\rho_e$ with $\rho_e=|\phi_e\rangle\langle\phi_e|$ and $w_e=p^{|e|}(1-p)^{n-|e|}$. A \emph{protocol} applies stabilizer operations to the $n$ inputs: Clifford gates, stabilizer ancillas, Pauli measurements, classical feedforward and randomness, postselection and discarding, in any number of stages. Its accepted output is a trace-nonincreasing map $\Lambda$. For a pure target $\tau$ of $r$ qubits with projector $\Pi$, pattern $e$ has \emph{damage} $h_e=\tr[(I-\Pi)\Lambda(\rho_e)]\geq0$ and is \emph{harmless} if $h_e=0$, that is, if $\Lambda(\rho_e)\propto\Pi$. Since $\epsilon=\sum_ew_eh_e/\sum_ew_e\tr\Lambda(\rho_e)$, the protocol has suppression order $d$ [$\epsilon=O(p^d)$] exactly when it accepts the fault-free pattern and every pattern with $|e|<d$ is harmless. All statements concern individual patterns, so they hold for any fault distribution, correlated or not. We write $n_{\min}(\tau,d)$ for the least possible $n$; it is nondecreasing in $d$. The \emph{stabilizer nullity} $\nu(\tau)$ is $r$ minus the number of independent Pauli operators that fix $\tau$~\cite{beverland}; $\nu=3$ for CCZ. A target is \emph{rational} (\emph{dyadic}) if all its Pauli expectations are rational (of the form $k/2^j$). Phase states $2^{-r/2}\sum_xi^{f(x)}|x\rangle$ with integer $f$, such as CCZ, CS and CCCZ, are dyadic, whereas $|T\rangle$ is not rational.
 
-\paragraph*{Reduction to a single code.}
+Our main analytical result is a reduction to a single code:
+
 \begin{theorem}\label{thm:code}
 Let $\nu(\tau)=r$, and let $H$ be a set of fault patterns containing $\mathbf 0$. Some protocol accepts the fault-free input and makes every pattern in $H$ harmless if and only if there is a stabilizer code $C$ on the $n$ inputs, with a Clifford encoding $U$ of $r$ qubits, such that $\Pi_C|\phi_{\mathbf0}\rangle\neq0$ and
 \begin{equation}
@@ -72,7 +73,8 @@ Let $\nu(\tau)=r$, and let $H$ be a set of fault patterns containing $\mathbf 0$
  \label{eq:collapse}
 \end{equation}
 \end{theorem}
-Figure~\ref{fig:reductions}(a,b) illustrates the statement. The proof (Sec.~\ref{app:proofs}) refines the protocol into branches given by single Kraus operators, as in the normal form of Campbell and Browne for single-output protocols~\cite{campbellbrowne}. Since damages are nonnegative, every branch is harmless on $H$, and each Kraus operator is a code projection followed by a Clifford isometry~\cite{fattal}. We call Eq.~\eqref{eq:collapse} \emph{collapse}: every tolerated input is projected onto one code vector or is rejected ($\Pi_C|\phi_e\rangle=0$). With the Gram matrix $G_{ef}=\langle\phi_e|\Pi_C|\phi_f\rangle$, and given that $\Pi_C|\phi_{\mathbf0}\rangle$ encodes $\tau$, collapse is the set of polynomial conditions $G_{\mathbf0\mathbf0}>0$ and $G_{\mathbf0\mathbf0}G_{ee}=|G_{\mathbf0e}|^2$ for $e\in H$; rejected patterns have $G_{ee}=G_{\mathbf0e}=0$. The theorem holds for any product of resource states, not only T states.
+
+Figure~\ref{fig:reductions} illustrates this in panels a and b. The proof (Sec.~\ref{app:proofs}) refines the protocol into branches given by single Kraus operators, as in the normal form of Campbell and Browne for single-output protocols~\cite{campbellbrowne}. Since damages are nonnegative, every branch is harmless on $H$, and each Kraus operator is a code projection followed by a Clifford isometry~\cite{fattal}. We call Eq.~\eqref{eq:collapse} \emph{collapse}: every tolerated input is projected onto one code vector or is rejected ($\Pi_C|\phi_e\rangle=0$). With the Gram matrix $G_{ef}=\langle\phi_e|\Pi_C|\phi_f\rangle$, and given that $\Pi_C|\phi_{\mathbf0}\rangle$ encodes $\tau$, collapse is the set of polynomial conditions $G_{\mathbf0\mathbf0}>0$ and $G_{\mathbf0\mathbf0}G_{ee}=|G_{\mathbf0e}|^2$ for $e\in H$; rejected patterns have $G_{ee}=G_{\mathbf0e}=0$. The theorem holds for any product of resource states, not only T states.
 
 \begin{table*}[t]
 \caption{Fewest noisy T inputs $n_{\min}(\tau,d)$ for distilling target $\tau$ with suppression order $d$, over all stabilizer protocols, including adaptive, postselected and multistage ones. ``Prior LB'' is $\max(d,\nu)$~\cite{fangliu,fangliu2,regulaprl,beverland}, the best general bound we found stated under arbitrary postselection (deterministic protocols obey stronger bounds~\cite{regulatakagi}; Sec.~\ref{app:prior}). Bold entries are new. Entries marked $\dagger$ follow immediately from the canonical form of Ref.~\cite{beverland} but are not stated there (Theorem~\ref{thm:analytic}). Lower bounds extend to higher $d$ by monotonicity; in particular, the T entries at $d=3$ and $d=4$ are the $d=2$ search. Sources: $a$, analytic (Theorem~\ref{thm:analytic}); $e$, exhaustive search (Theorems~\ref{thm:tcs} and~\ref{thm:ccz}); $c$, Clifford orbit (Proposition~\ref{prop:orbit}); $m$, integer program, certified; $s$, CCZ factory followed by a Y measurement (Proposition~\ref{prop:cs}); $p$, explicit code projection (Proposition~\ref{prop:cccz}); $t$, two-level design, certified; $x$, found by the exhaustive search and certified (Proposition~\ref{prop:t9}). Leading error coefficients are in parentheses.}
@@ -101,7 +103,8 @@ CCCZ & 1 & 4 & $\mathbf{6}^e$ & 6$^p$ & 6~\cite{beverland} \\
 \end{ruledtabular}
 \end{table*}
 
-\paragraph*{Complementary faults.}
+Our second analytical result concerns complementary faults:
+
 \begin{theorem}\label{thm:pairing}
 If $\tau$ is rational, then in every protocol a pattern $e$ is harmless if and only if its complement $e+\mathbf1$ is. With suppression order $d$, every pattern with $|e|<d$ or $|e|>n-d$ is harmless.
 \end{theorem}
@@ -122,14 +125,14 @@ with the rightmost gate acting first.
 
 %
 \section{Lower bounds}\label{sec:lower}
-\paragraph*{Analytic bounds.}
+%\paragraph*{Analytic bounds.}
 When $n$ is small, Theorem~\ref{thm:pairing} forces almost every pattern to be harmless. Feeding the protocol a suitably chosen state, none of whose fault patterns lies in the damaging range, then makes the target from too weak a resource (Sec.~\ref{app:analytic}). The witnesses are $|0\rangle^{\otimes n}$, a GHZ-type stabilizer state that contains every fault weight except the middle one, a family of low-nullity states with non-dyadic Pauli expectations, and, for one T state, singlets combined with $|{\pm}\rangle$ states.
 \begin{theorem}\label{thm:analytic}
 Every protocol of suppression order $d$ satisfies $n\geq d-1+L(\tau)$, where $L(\tau)$ is the least number of ideal T states from which $\tau$ can be made with nonzero probability. If $\tau$ is rational and not a stabilizer state, then $L(\tau)\geq\nu(\tau)+1$, so that $n\geq d+\nu(\tau)$, and $n\geq2d+1$. If $\tau$ is dyadic and not a stabilizer state, and $d\geq2$, then $n\geq d+\nu(\tau)+1$. For one T state and $d\geq2$, $n\geq2d$.
 \end{theorem}
 The bound $L(\tau)\geq\nu(\tau)+1$ is the equality case of the canonical form of Beverland \emph{et al.} for postselected stabilizer circuits~\cite{beverland}; the bounds $2d+1$ and $d+\nu+1$ rest on Theorem~\ref{thm:pairing}. For one T state, $\sigma$ instead exchanges $|T\rangle$ and $Z|T\rangle$, so the complement of a harmless pattern yields exactly $Z|T\rangle$; together with an inequality obeyed by two-qubit stabilizer states, this gives $n\geq2d$, which improves on the exhaustive bound for $d\geq5$. We found this argument as the certificate of a linear-programming relaxation of the set of protocols (Sec.~\ref{app:analytic}). Linear growth in $d$ is the correct scaling: asymptotically good codes with transversal CCZ~\cite{golowich,nguyen,whyamasaki}, fed with four-T CCZ preparations, give one CCZ state with $n=O(d)$. The constant, however, is far from tight.
 
-\paragraph*{Exhaustive search.}
+\section{Exhaustive search}
 Theorem~\ref{thm:code} reduces the existence of a protocol to a search over signed stabilizer codes. We parametrize each code by the X parts of its stabilizers, whose span has dimension $a$ (the \emph{X-rank}), its Z-type stabilizers and the lifts, and reduce modulo input permutations and the Clifford $W=(X+Y)/\sqrt2$, which fixes $|T\rangle$. A simple necessary condition prunes most codes: no harmless $Z^e$ may act as a nontrivial logical operator (Lemma~\ref{lem:logical}). The remaining collapse identities are tested in exact arithmetic over $\mathbb Z[\sqrt2,i]$. Section~\ref{app:search} describes the search, its validation by an independent implementation and a compiled kernel, the size of every run (up to $9\times10^{11}$ signed codes) and the verification behind each result.
 \begin{theorem}[computer-assisted]\label{thm:tcs}
 No stabilizer protocol distills one T state with suppression order two from $n\leq\TNmax$ inputs. None distills $\CS|{+}{+}\rangle$ with order two from $n\leq7$ inputs, or with order three from $n\leq8$.
@@ -477,7 +480,7 @@ For every design we check exactly that $\omega^{-P}$ is Clifford, and evaluate E
 
 \paragraph*{The 36-input cubic factory.}
 For $\tau=\CS_{12}\CS_{13}$, $n=36$, $s=6$ and $d=3$, Gurobi returns the matrix below in 15 minutes (logical rows first). The exact check shows that the correction is Clifford, that all patterns of weight at most two are harmless, and that 120 of the 7140 weight-three patterns are harmful. After diagonal S and CZ corrections, the Clifford of Proposition~\ref{prop:orbit} maps the output to $|\CCZ\rangle$. Reference~\cite{wjs} lists the same parameters and coefficient for this class.
-{\footnotesize
+{
 \begin{verbatim}
 111010110100001011110010000110101010
 000100100111111001100001100001010000
