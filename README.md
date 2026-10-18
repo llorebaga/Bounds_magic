@@ -14,6 +14,12 @@ Section numbers below refer to the PRL version: main text plus Supplemental Mate
 (S1 worked example, S2 proofs of the reductions, S3 analytic bounds, S4 exhaustive search,
 S5 integer and SAT programs, S6 previous lower bounds).
 
+## Find a result by target and suppression order
+
+[`by_target/`](by_target/README.md) has one page per entry of Table I (T, CS, CCZ, two CCZ states, CCCZ; each d):
+the bound, the exhaustive runs per n with their logs and certificates, the explicit construction behind the upper
+bound, and the commands that reproduce both. Regenerate with `python scripts/make_index.py`.
+
 ## Layout
 
 ```
@@ -21,6 +27,7 @@ paper/     paper.tex, refs.bib, fig_reductions.tex (TikZ source of Fig. 1, \inpu
 scripts/   all code (run from inside scripts/: paths are relative, e.g. ../results/)
 results/   logs, JSON outputs, certificates and designs referenced in the paper
 sdp/       stabilizer-cone relaxations (LP), exact Q(sqrt2) certificates, proof check of n >= 2d for one T state
+by_target/ navigation pages by target and d (generated)
 ```
 
 `COMPUTE_PLAN.md` sizes every open search and says what a large cluster would decide.
@@ -51,6 +58,7 @@ complementary patterns (needed for non-rational targets such as T).
 |---|---|---|
 | Prop. 3: CS12CS13\|+++> = CX23 H2 CX12 S2 H2 \|CCZ> (exact, sympy) | `python verify_orbit.py` | stdout |
 | Clifford orbit of \|CCZ> has 69,120 states; its diagonal members | `python clifford_orbit_ccz.py` | stdout |
+| Prop. 11: six T states projected onto the [[6,4,2]] code give X^4\|CCCZ> up to Clifford phases, probability 1/4 (exact) | `python verify_cccz.py` | stdout |
 
 ### Analytic bounds (Theorem 4, Sec. S3)
 | Claim | Command | Output |
