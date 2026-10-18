@@ -10,7 +10,7 @@ lift vectors when a*n > 64 (small change).
 | Task | Result |
 |---|---|
 | One T state, d=2, n=8, last sector (a=5) | no T protocol: n_min(T,2) >= 9 |
-| One T state, d=2, n=9, sectors a <= 6 | 96 codes encode T: nine-input factory, n_min(T,2) = 9 (Prop. 7) |
+| One T state, d=2, n=9, sectors a <= 6 | 96 codes encode T: nine-input factory, n_min(T,2) = 9 (Prop. 5) |
 | In-class MIP, T, n=9, s=6 (the shape of the nine-input factory) | infeasible (869 s): the factory is not generalized triorthogonal; s=1..6 all infeasible at n=9 |
 | Two-level SAT, cubic CCZ below 36 inputs | 3 cube + 4 T (28 inputs): UNSAT for CCZ and CS12CS13 forms. 32 inputs (4 cube; 3 cube + 8 T; 3 cube + 2 Jones; 2 cube + 4 Jones; 8 Jones): UNSAT for the CS12CS13 form, TIMEOUT (15 min) for the CCZ form |
 | Two-CCZ in-class MIP, d=2, n=11-13 (s=3) and n=12 (s=4,5) | all TIMEOUT (15-20 min each) |

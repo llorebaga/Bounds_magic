@@ -77,7 +77,7 @@ CAT = {}
 
 CAT[("T", "d2")] = dict(
     title="One T state, quadratic suppression (d = 2)", row="prior LB 2 | LB **9** (exhaustive) | UB **9** (new factory, 27/2 p^2) | prior UB 10 (Meier-Eastin-Knill)",
-    lb="""No stabilizer protocol with n <= 8 inputs (Theorem 5). Tolerated set: weights < 2 (T is not rational, so no
+    lb="""No stabilizer protocol with n <= 8 inputs (Result 1). Tolerated set: weights < 2 (T is not rational, so no
 complements). n <= 7: Python search with target test. n = 8: X-rank <= 4 in Python (target test), X-ranks 5, 6, 7
 with the compiled Julia kernel (collapse test only), then the 890,940 (a=6) and 346,136 (a=5) collapsing codes
 are classified exactly by their logical Bloch moduli: all stabilizer states except 928 codes with moduli
@@ -93,7 +93,7 @@ GALOIS=0 R=1 TARGET=t python export_structs.py 8 2 5   # and 6, 7
 GALOIS=0 julia -t 16 fast_enum.jl ../results/structs_nogal_r1_n8_d2_a5.txt 8 2 7   # and a6, a7
 gunzip -k ../results/log_fast_t_n8_d2_a5.txt.gz; python check_t_survivors3.py ../results/log_fast_t_n8_d2_a5.txt 8""",
     ub="""Nine-input factory found by the exhaustive search at n = 9 (X-ranks <= 6, 2.2e11 signed codes, 2.5e7 collapsing
-codes classified; 96 encode |T>, all equivalent). Proposition 7: measure the eight stabilizers listed in the paper,
+codes classified; 96 encode |T>, all equivalent). Proposition 5: measure the eight stabilizers listed in the paper,
 postselect on +1 (probability 1/128), decode; error 27/2 p^2 + O(p^3). Exact certificate: single-fault minors,
 logical Bloch moduli {0, 1/sqrt2, 1/sqrt2}, full error polynomial (harmful patterns 36, 45, 90, 75, 76, 15, 6, 1
 at weights 2..9).""",
@@ -152,11 +152,11 @@ CAT[("CS", "d1")] = dict(
 
 CAT[("CS", "d2")] = dict(
     title="Controlled-S state, quadratic suppression (d = 2)", row="prior LB 2 | LB **8** (exhaustive) | UB **8** (new) | prior UB 12",
-    lb="""No protocol with n <= 7 (Theorem 5). Tolerated set includes complements (Theorem 2). Signed codes tested at
+    lb="""No protocol with n <= 7 (Result 1). Tolerated set includes complements (Theorem 2). Signed codes tested at
 n = 7: 99,429,248.""",
     lb_files=["results/log_cs_d2.txt"],
     lb_cmd="R=2 TARGET=cs python enum_codes_v2.py 7 2",
-    ub="""Eight-input CCZ cube factory followed by a Y measurement of one output qubit (Proposition 10: projecting the third
+    ub="""Eight-input CCZ cube factory followed by a Y measurement of one output qubit (Proposition 8: projecting the third
 qubit of |CCZ> onto (|0> +- i|1>)/sqrt2 leaves CS^{+-1}|++>). Order two is inherited from the cube factory.""",
     ub_files=["scripts/control_cube.py", "scripts/worked_example.py"],
     ub_cmd="python control_cube.py",
@@ -165,7 +165,7 @@ qubit of |CCZ> onto (|0> +- i|1>)/sqrt2 leaves CS^{+-1}|++>). Order two is inher
 
 CAT[("CS", "d3")] = dict(
     title="Controlled-S state, cubic suppression (d = 3)", row="prior LB 3 | LB **9** (exhaustive) | UB 35 | prior UB 35 (84 p^3)",
-    lb="""No protocol with n <= 8 (Theorem 5); 9,240,117,248 signed codes at n = 8 with complements.""",
+    lb="""No protocol with n <= 8 (Result 1); 9,240,117,248 signed codes at n = 8 with complements.""",
     lb_files=["results/log_cs_n8_d3.txt"],
     lb_cmd="R=2 TARGET=cs python enum_codes_v2.py 8 3",
     ub="35-input triorthogonal-family factory (literature: Nezami-Haah, Wills-Jain-Singh).",
@@ -183,7 +183,7 @@ CAT[("CCZ", "d1")] = dict(
 
 CAT[("CCZ", "d2")] = dict(
     title="CCZ, quadratic suppression (d = 2)", row="prior LB 3 | LB **8** (exhaustive) | UB 8 (28 p^2) | prior UB 8 (Eastin, Jones, Haah-Hastings)",
-    lb="""No protocol with n <= 7 (Theorem 6). At n = 7 two independent runs: (i) tolerated set = weights <= 1 only,
+    lb="""No protocol with n <= 7 (Result 2). At n = 7 two independent runs: (i) tolerated set = weights <= 1 only,
 valid for any 3-qubit target with nu = 3 (17,161,440 signed codes); (ii) with complements (7,699,696 signed codes).
 Confirmed by a separately written Julia implementation. Worked example Step 6 follows one rejected n = 7 code.""",
     lb_files=["results/log_n7_d2.txt", "results/structs_r3_n7_d2_a4.txt", "scripts/independent_check.jl"],
@@ -200,7 +200,7 @@ python tri_mip.py ccz 8 1 2""",
 
 CAT[("CCZ", "d3")] = dict(
     title="CCZ, cubic suppression (d = 3)", row="prior LB 3 | LB **10** (exhaustive) | UB **36** (120 p^3) | prior UB 47 (236 p^3)",
-    lb="""No protocol with n <= 9 (Theorem 6), complements included. n = 7, 8 in Python (X-rank 5 at n = 8 in 12
+    lb="""No protocol with n <= 9 (Result 2), complements included. n = 7, 8 in Python (X-rank 5 at n = 8 in 12
 shards); n = 9: X-ranks <= 5 in Python (X-rank 5 in 10 shards) and X-rank 6 with the Julia kernel (9.13e11 signed
 codes in total at n = 9). Validated against a second implementation at n = 7.""",
     lb_files=["results/log_n7_d3.txt", "results/log_n8_d3_a0-4.txt", "results/log_n8_d3_a5_s0.txt",
@@ -257,13 +257,13 @@ python 52_check_low_nullity_witness.py 10""",
 
 CAT[("CCZ2", "d1")] = dict(
     title="Two CCZ states, d = 1 (ideal T states)", row="prior LB 6 | LB **8** (exhaustive) | UB 8 | prior UB 8 (two Jones preparations)",
-    lb="No code on 7 inputs encodes two CCZ states (Theorem 6).", lb_files=[],
+    lb="No code on 7 inputs encodes two CCZ states (Result 2).", lb_files=[],
     lb_cmd="R=6 TARGET=ccz2 python enum_codes.py 7 1",
     ub="Two copies of Jones' four-T preparation.", ub_files=[], ub_cmd="", other="")
 
 CAT[("CCZ2", "d2")] = dict(
     title="Two CCZ states, quadratic suppression (d = 2)", row="prior LB 6 | LB **10** (exhaustive) | UB 14 | prior UB 14 (Campbell-Howard)",
-    lb="No protocol with n <= 9 (Theorem 6); 3,678,216 signed codes at n = 9 with complements.",
+    lb="No protocol with n <= 9 (Result 2); 3,678,216 signed codes at n = 9 with complements.",
     lb_files=["results/log_ccz2_n9_d2.txt"], lb_cmd="R=6 TARGET=ccz2 python enum_codes.py 9 2",
     ub="Campbell-Howard 14-input protocol (literature).", ub_files=[], ub_cmd="",
     other="""- In-class MIP scans at n = 11-13 (undecided): `results/mip/ccz2_d2.txt`, `results/mip/scan2_*`, `results/mip/scan3_*`.
@@ -271,9 +271,9 @@ CAT[("CCZ2", "d2")] = dict(
 
 CAT[("CCCZ", "d1")] = dict(
     title="CCCZ state, d = 1 (ideal T states)", row="prior LB 4 | LB **6** (exhaustive) | UB 6 | prior UB 6 (Beverland et al.)",
-    lb="No code on 5 inputs encodes CCCZ (Theorem 6); 44 signed codes survive pruning and none collapses.",
+    lb="No code on 5 inputs encodes CCCZ (Result 2); 44 signed codes survive pruning and none collapses.",
     lb_files=[], lb_cmd="R=4 TARGET=cccz python enum_codes.py 5 1",
-    ub="""Proposition 11: project |T>^6 onto the [[6,4,2]] code with Z^6 = +1 and X^6 = -1 (probability 1/4); the result is
+    ub="""Proposition 9: project |T>^6 onto the [[6,4,2]] code with Z^6 = +1 and X^6 = -1 (probability 1/4); the result is
 X^{(x)4}|CCCZ> up to Clifford phases. Exact check below.""",
     ub_files=["scripts/verify_cccz.py"], ub_cmd="python verify_cccz.py", other="")
 
@@ -291,7 +291,7 @@ def page(target, dkey, runs):
     rs = sorted(runs.get((target, dnum), []), key=lambda r: (r["n"], r["file"])) if dnum else []
     if rs:
         L += ["Exhaustive runs for this target and d (generated from `results/enum_*.json`; signed codes = codes not",
-              "removed by Lemma 8 and tested in exact arithmetic):", "",
+              "removed by Lemma 6 and tested in exact arithmetic):", "",
               "| n | X-ranks | tolerated set | signed codes tested | collapsing codes with target spectrum | time (s) | file |",
               "|---|---|---|---|---|---|---|"]
         for r in rs:
