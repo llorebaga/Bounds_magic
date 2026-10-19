@@ -58,7 +58,7 @@ complementary patterns (needed for non-rational targets such as T).
 |---|---|---|
 | Prop. 3: CS12CS13\|+++> = CX23 H2 CX12 S2 H2 \|CCZ> (exact, sympy) | `python verify_orbit.py` | stdout |
 | Clifford orbit of \|CCZ> has 69,120 states; its diagonal members | `python clifford_orbit_ccz.py` | stdout |
-| Prop. 9: six T states projected onto the [[6,4,2]] code give X^4\|CCCZ> up to Clifford phases, probability 1/4 (exact) | `python verify_cccz.py` | stdout |
+| Prop. 11: six T states projected onto the [[6,4,2]] code give X^4\|CCCZ> up to Clifford phases, probability 1/4 (exact) | `python verify_cccz.py` | stdout |
 
 ### Analytic bounds (Theorem 4, Sec. S3)
 | Claim | Command | Output |
@@ -71,7 +71,7 @@ complementary patterns (needed for non-rational targets such as T).
 Exploratory (not in the paper): `python 53_search_magic_witnesses.py 6 2 4` (floating-point search for
 low-nullity witnesses); the remaining relaxations in `sdp/` (see `sdp/README.md`).
 
-### Exhaustive searches (Results 1, 2, Sec. S4, Table SII)
+### Exhaustive searches (Propositions 5, 6, Sec. S4, Table SII)
 | Claim | Command | Output |
 |---|---|---|
 | Any 3-qubit nu=3 target, d=2, n=7: no code (weight <= 1 only, 17,161,440 signed codes) | `GALOIS=0 R=3 python enum_codes_v2.py 7 2` | stdout |
@@ -89,7 +89,7 @@ low-nullity witnesses); the remaining relaxations in `sdp/` (see `sdp/README.md`
 
 Total for one T state at n=8, d=2: 1.32e11 signed codes over all X-ranks.
 
-### Nine-input quadratic T factory (Proposition 5)
+### Nine-input quadratic T factory (Proposition 7)
 | Claim | Command | Output |
 |---|---|---|
 | n=9, d=2, one T state: sectors a<=6 (Julia kernel, 2.2e11 signed codes) | `GALOIS=0 R=1 TARGET=t python export_structs.py 9 2 {1..6}`; `GALOIS=0 julia -t 16 fast_enum.jl ../results/structs_nogal_r1_n9_d2_a{1..6}.txt 9 2 8` | `log_fast_t_n9_d2_a{1..6}.txt.gz` |
