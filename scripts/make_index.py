@@ -122,10 +122,10 @@ python tri_mip_opt.py t 15 4 300""",
     other="")
 
 CAT[("T", "d4")] = dict(
-    title="One T state, quartic suppression (d = 4)", row="prior LB 4 | LB **9** (monotonicity) | UB 49 | prior UB 49 (Bravyi-Haah [[49,1,5]])",
+    title="One T state, quartic suppression (d = 4)", row="prior LB 4 | LB **9** (monotonicity) | UB 48 | prior UB 48 (Wills-Jain-Singh)",
     lb="Order 4 implies order 2: the d = 2 search gives n >= 9 ([d2](d2.md)); the analytic bound 2d = 8 is weaker here.",
     lb_files=[], lb_cmd="(see d2)",
-    ub="Bravyi-Haah [[49,1,5]] triorthogonal code (literature, order 5, error 1411 p^5), which is also order 4.",
+    ub="Wills-Jain-Singh list a 48-input single-T protocol with d_Z = 4 (literature, arXiv:2609.30860, Table 2); the Bravyi-Haah [[49,1,5]] code (order 5) also gives order 4 with 49 inputs.",
     ub_files=[], ub_cmd="", other="")
 
 CAT[("T", "d5plus")] = dict(
@@ -235,13 +235,13 @@ is an independent consistency check.""",
     lb_cmd="""python enum_codes.py 9 4 0 5
 julia -t 16 fast_enum.jl ../results/structs_r3_n9_d4_a6.txt 9 4 6""",
     ub="""Two-level design: six eight-T cube blocks (48 T inputs) in an outer code with 3 logical + 5 check registers, found
-by SAT and certified exactly; 54 harmful block pairs, each contributing 16 p^4, so 864 p^4.""",
+by SAT and certified exactly; 54 harmful two-block error configurations, each contributing 16 p^4, so 864 p^4.""",
     ub_files=["results/sat/quartic_ccz_6cube_s5.json", "results/sat/quartic_ccz_6cube_s4.json",
               "results/sat/quartic_ccz_6cube_s6.json", "results/sat/quartic_ccz_6cube_s7.json", "results/sat/A2.jsonl"],
     ub_cmd="""python sat_sweep.py out.jsonl 600 "ccz 4 5 0 0 6"
 python verify_block.py ../results/sat/quartic_ccz_6cube_s5.json""",
     other="""- Cube-block sweeps (fields target D s nT nJ nC): `results/sat/A*.jsonl` / `listA*.txt`; two and three cube blocks
-  UNSAT; six SAT with 4-7 check rows (54-98 harmful block pairs); five cube blocks undecided after 15 min.
+  UNSAT; six SAT with 4-7 check rows (54-98 harmful two-block configurations); five cube blocks undecided after 15 min.
 - Mixtures with Jones blocks or T columns: `results/sat/M4.jsonl` (undecided).
 - Gurobi version of the two-level model: `results/blockmip/cube_d4.txt` (two cube blocks infeasible in 459 s).""")
 
@@ -291,8 +291,9 @@ def page(target, dkey, runs):
     rs = sorted(runs.get((target, dnum), []), key=lambda r: (r["n"], r["file"])) if dnum else []
     if rs:
         L += ["Exhaustive runs for this target and d (generated from `results/enum_*.json`; signed codes = codes not",
-              "removed by Lemma 8 and tested in exact arithmetic):", "",
-              "| n | X-ranks | tolerated set | signed codes tested | collapsing codes with target spectrum | time (s) | file |",
+              "removed by Lemma 8 and tested in exact arithmetic; surviving codes = codes satisfying the collapse",
+              "conditions, and, in runs whose file name names the target (e.g. `_cs_`, `_cccz_`), also its Pauli spectrum):", "",
+              "| n | X-ranks | tolerated set | signed codes tested | surviving codes | time (s) | file |",
               "|---|---|---|---|---|---|---|"]
         for r in rs:
             L.append(f"| {r['n']} | {r['ranks']} | {r['H']}{' (' + r['shard'] + ')' if r['shard'] else ''} | "

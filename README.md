@@ -95,6 +95,7 @@ Total for one T state at n=8, d=2: 1.32e11 signed codes over all X-ranks.
 | n=9, d=2, one T state: sectors a<=6 (Julia kernel, 2.2e11 signed codes) | `GALOIS=0 R=1 TARGET=t python export_structs.py 9 2 {1..6}`; `GALOIS=0 julia -t 16 fast_enum.jl ../results/structs_nogal_r1_n9_d2_a{1..6}.txt 9 2 8` | `log_fast_t_n9_d2_a{1..6}.txt.gz` |
 | Classification of the 2.5e7 collapse survivors: 96 encode a T-equivalent state (all one factory up to symmetry) | `python classify_parallel.py ../results/log_fast_t_n9_d2_a6.txt 9 16` (after `gunzip -k`) | `log_fast_t_n9_d2_a6.txt.T.json` |
 | Exact certificate: all single faults collapse, logical Bloch moduli {0,1/sqrt2,1/sqrt2}, acceptance 1/128, eps = 27/2 p^2 + O(p^3) | `python verify_t_factory.py ../results/log_fast_t_n9_d2_a6.txt.T.json 5 9` | `results/t9_factory_cert.txt` |
+| Explicit logical frame (X, Y, Z bars), expectations (1/sqrt2, 1/sqrt2, 0), exact A(p)=D(p)/256 and eps(p)=N(p)/D(p) (Sec. S4) | `python verify_t9_frame.py` | `results/t9_frame_cert.txt` |
 
 Sectors a=7, 8 at n=9 (3.8e12 and 7.0e13 signed codes) were not run: the factory already shows n_min(T,2)=9.
 
@@ -120,7 +121,7 @@ fails first). The Julia kernel is cross-checked on `structs_nogal_r1_n7_d2_a6.tx
 | Claim | Command | Output |
 |---|---|---|
 | SAT model controls | `python sat_block.py ccz 2 1 8 0 0`; `python sat_block.py ccz 2 2 7 0 0`; `python sat_block.py ccz 1 0 0 1 0` | stdout |
-| Quartic CCZ from six cube blocks (48 T), certified, 54 harmful block pairs -> 864 p^4 | `python sat_sweep.py out.jsonl 600 "ccz 4 5 0 0 6"` | `results/sat/quartic_ccz_6cube_s{4,5,6,7}.json`, `results/sat/A2.jsonl` |
+| Quartic CCZ from six cube blocks (48 T), certified, 54 harmful two-block error configurations -> 864 p^4 | `python sat_sweep.py out.jsonl 600 "ccz 4 5 0 0 6"` | `results/sat/quartic_ccz_6cube_s{4,5,6,7}.json`, `results/sat/A2.jsonl` |
 | Exact certificate of a design | `python verify_block.py ../results/sat/quartic_ccz_6cube_s5.json` | stdout |
 | Negative / undecided instances listed in Sec. S5 | see `results/sat/*.log`, `*.jsonl` | |
 
