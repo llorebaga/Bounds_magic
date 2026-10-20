@@ -110,7 +110,7 @@ python verify_t_factory.py ../results/log_fast_t_n9_d2_a6.txt.T.json 5 9""",
 
 CAT[("T", "d3")] = dict(
     title="One T state, cubic suppression (d = 3)", row="prior LB 3 | LB **10** (Lemma 13 + d = 2 search) | UB 15 | prior UB 15 (35 p^3, Bravyi-Kitaev 15-to-1)",
-    lb="""Lemma 13 (trading order for inputs): n_min(tau, d) >= n_min(tau, s) + d - s, by feeding d - s inputs with maximally mixed qubits I/2 = rho_T(1/2).
+    lb="""Lemma 13 (trading order for inputs): for non-stabilizer tau, n_min(tau, d) >= n_min(tau, s) + d - s, by feeding d - s inputs with maximally mixed qubits I/2 = rho_T(1/2).
 With n_min(T, 2) >= 9 ([d2](d2.md)) this gives n >= 10 at d = 3. Excluding n = 10 needs new searches.""",
     lb_files=["results/structs_nogal_r1_n9_d3_a7.txt", "results/structs_nogal_r1_n9_d3_a8.txt"],
     lb_cmd="(see d2)",
@@ -123,14 +123,14 @@ python tri_mip_opt.py t 15 4 300""",
 
 CAT[("T", "d4")] = dict(
     title="One T state, quartic suppression (d = 4)", row="prior LB 4 | LB **11** (Lemma 13 + d = 2 search) | UB 48 | prior UB 48 (Wills-Jain-Singh)",
-    lb="Lemma 13 (trading order for inputs): n_min(tau, d) >= n_min(tau, s) + d - s, by feeding d - s inputs with maximally mixed qubits I/2 = rho_T(1/2). With n_min(T, 2) >= 9 ([d2](d2.md)) this gives n >= 11; the analytic bound 2d = 8 is weaker here.",
+    lb="Lemma 13 (trading order for inputs): for non-stabilizer tau, n_min(tau, d) >= n_min(tau, s) + d - s, by feeding d - s inputs with maximally mixed qubits I/2 = rho_T(1/2). With n_min(T, 2) >= 9 ([d2](d2.md)) this gives n >= 11; the analytic bound 2d = 8 is weaker here.",
     lb_files=[], lb_cmd="(see d2)",
     ub="Wills-Jain-Singh list a 48-input single-T protocol with d_Z = 4 (literature, arXiv:2609.30860, Table 2); the Bravyi-Haah [[49,1,5]] code (order 5) also gives order 4 with 49 inputs.",
     ub_files=[], ub_cmd="", other="")
 
 CAT[("T", "d5plus")] = dict(
     title="One T state, d >= 5", row="prior LB d | LB **max(2d, d+7)** (Theorem 4 and Lemma 13: 12 at d = 5, 13 at d = 6) | UB 49 at d = 5 (Bravyi-Haah) | prior UB 49 at d = 5",
-    lb="""Lemma 13 (trading order for inputs): n_min(tau, d) >= n_min(tau, s) + d - s, by feeding d - s inputs with maximally mixed qubits I/2 = rho_T(1/2). With the d = 2 search it gives n >= d + 7.
+    lb="""Lemma 13 (trading order for inputs): for non-stabilizer tau, n_min(tau, d) >= n_min(tau, s) + d - s, by feeding d - s inputs with maximally mixed qubits I/2 = rho_T(1/2). With the d = 2 search it gives n >= d + 7.
 Theorem 4, last claim: every order-d protocol (d >= 2) uses n >= 2d inputs. Proof (Sec. S3): single branch, the
 sqrt2 -> -sqrt2 automorphism forces complements of harmless patterns to output exactly Z|T>, and the two-qubit
 inequality g01 - eta^2 g10 >= eta |g00 - g11| (eta = 3 - 2 sqrt2, checked on all 60 two-qubit stabilizer states)
@@ -229,7 +229,7 @@ python verify_tri2.py ../results/mip/cs12cs13_36.json 3""",
 
 CAT[("CCZ", "d4")] = dict(
     title="CCZ, quartic suppression (d = 4)", row="prior LB 4 | LB **11** (Lemma 13 + cubic search) | UB 48 (**864 p^4**) | prior UB 48 (2816 p^4)",
-    lb="""Lemma 13 (trading order for inputs): n_min(tau, d) >= n_min(tau, s) + d - s, by feeding d - s inputs with maximally mixed qubits I/2 = rho_T(1/2). With n_min(CCZ, 3) >= 10 ([d3](d3.md)) this gives n >= 11.
+    lb="""Lemma 13 (trading order for inputs): for non-stabilizer tau, n_min(tau, d) >= n_min(tau, s) + d - s, by feeding d - s inputs with maximally mixed qubits I/2 = rho_T(1/2). With n_min(CCZ, 3) >= 10 ([d3](d3.md)) this gives n >= 11.
 The quartic run at n = 9 (complements, 1.39e11 signed codes) is an independent consistency check.""",
     lb_files=["results/log_n9_d4_a0-5.txt", "results/structs_r3_n9_d4_a6.txt", "results/log_export_n9_d4_a6.txt",
               "results/log_fast_n9_d4_a6.txt"],
