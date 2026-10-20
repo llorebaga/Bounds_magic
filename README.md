@@ -56,7 +56,7 @@ complementary patterns (needed for non-rational targets such as T).
 ### Reductions and Clifford orbit (Theorems 1-2, Proposition 3, Sec. S2)
 | Claim | Command | Output |
 |---|---|---|
-| Prop. 3: CS12CS13\|+++> = CX23 H2 CX12 S2 H2 \|CCZ> (exact, sympy) | `python verify_orbit.py` | stdout |
+| Prop. 3: CS12CS13\|+++> = CX23 H2 CX12 S2 H2 \|CCZ> (exact, sympy; the equivalence is due to Howard-Campbell 2017, the circuit is explicit here) | `python verify_orbit.py` | stdout |
 | Clifford orbit of \|CCZ> has 69,120 states; its diagonal members | `python clifford_orbit_ccz.py` | stdout |
 | Prop. 11: six T states projected onto the [[6,4,2]] code give X^4\|CCCZ> up to Clifford phases, probability 1/4 (exact) | `python verify_cccz.py` | stdout |
 
