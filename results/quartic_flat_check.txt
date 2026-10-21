@@ -1,0 +1,7 @@
+matrix (14, 48) rank 13
+F2 rank of rows 13 check rows rank 10
+parity violations: 0 []
+weight 1 harmful 0
+weight 2 harmful 0
+weight 3 harmful 0
+weight 4 harmful 864

@@ -122,6 +122,7 @@ fails first). The Julia kernel is cross-checked on `structs_nogal_r1_n7_d2_a6.tx
 |---|---|---|
 | SAT model controls | `python sat_block.py ccz 2 1 8 0 0`; `python sat_block.py ccz 2 2 7 0 0`; `python sat_block.py ccz 1 0 0 1 0` | stdout |
 | Quartic CCZ from six cube blocks (48 T), certified, 54 harmful two-block error configurations -> 864 p^4 | `python sat_sweep.py out.jsonl 600 "ccz 4 5 0 0 6"` | `results/sat/quartic_ccz_6cube_s{4,5,6,7}.json`, `results/sat/A2.jsonl` |
+| Same design flattened to one generalized triorthogonal 13x48 matrix (3 logical, 10 check rows): overlap conditions hold, undetected logical errors 0, 0, 0, 864 at weights 1-4 | `python verify_quartic_flat.py` | `results/quartic_flat_check.txt` |
 | Exact certificate of a design | `python verify_block.py ../results/sat/quartic_ccz_6cube_s5.json` | stdout |
 | Negative / undecided instances listed in Sec. S5 | see `results/sat/*.log`, `*.jsonl` | |
 
