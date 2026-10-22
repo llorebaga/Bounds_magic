@@ -1,5 +1,7 @@
 # Remaining work: what was done, what needs a cluster, what is out of reach (17 Oct 2026; updated 21 Oct 2026 for Lemma 13)
 
+**The short, current list of realistic cluster runs is in `CLUSTER_RUNS.md`.** This file keeps the full history.
+
 Measured throughput (16 cores, Julia kernel `fast_enum.jl`): 1.2e8 signed codes per second, i.e. 7.5e6 per
 core-second. Exhaustive searches are CPU-bound and embarrassingly parallel (independent code structures,
 megabytes per worker). Memory matters only for the Python structure enumeration at n >= 10: subspaces of

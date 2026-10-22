@@ -14,6 +14,10 @@ Section numbers below refer to the PRL version: main text plus Supplemental Mate
 (S1 worked example, S2 proofs of the reductions, S3 analytic bounds, S4 exhaustive search,
 S5 integer and SAT programs, S6 previous lower bounds).
 
+## Possible cluster runs
+
+`CLUSTER_RUNS.md` lists the runs that are realistic on a cluster and would change an entry of Table I, with commands, costs and what to update afterwards.
+
 ## Find a result by target and suppression order
 
 [`by_target/`](by_target/README.md) has one page per entry of Table I (T, CS, CCZ, two CCZ states, CCCZ; each d):
