@@ -165,7 +165,7 @@ qubit of |CCZ> onto (|0> +- i|1>)/sqrt2 leaves CS^{+-1}|++>). Order two is inher
   ([`results/mip/cs_d2.txt`](../../results/mip/cs_d2.txt)). Not used in Table I.""")
 
 CAT[("CS", "d3")] = dict(
-    title="Controlled-S state, cubic suppression (d = 3)", row="prior LB 3 | LB **9** (exhaustive; also Lemma 13 + d = 2 search) | UB 35 | prior UB 35 (84 p^3)",
+    title="Controlled-S state, cubic suppression (d = 3)", row="prior LB 3 | LB **9** (exhaustive; also Lemma 13 + d = 2 search) | UB 35 | prior UB 35 (Nezami-Haah code, restricted as in Wills-Jain-Singh)",
     lb="""No protocol with n <= 8 (Proposition 5); 9,240,117,248 signed codes at n = 8 with complements.""",
     lb_files=["results/log_cs_n8_d3.txt"],
     lb_cmd="R=2 TARGET=cs python enum_codes_v2.py 8 3",
