@@ -2,7 +2,7 @@
 
 Only runs that are realistic on a cluster (or a large-memory node) and would change an entry of Table I.
 Status as of 22 Oct 2026. Nothing here is mentioned in the paper. Background and the full history are in
-`COMPUTE_PLAN.md`.
+`COMPUTE_PLAN.md`. Scripts to run A1, A2, A3, B1 and B2 on the RCI cluster of FEL CTU: `cluster/README.md`.
 
 Conventions: commands run from `scripts/`. Measured kernel throughput: 1.2e8 signed codes per second on 16
 cores (7.5e6 per core-second); exhaustive searches are embarrassingly parallel over code structures.
@@ -31,8 +31,11 @@ exclusion at order s to all higher orders.
   ```bash
   R=6 TARGET=ccz2 python enum_codes.py 10 2
   ```
-- Cost: about 1e12-1e13 signed codes; limited by enumerating subspaces of F_2^10 in Python (20-40 GB RAM).
-  Minutes to hours on one large-memory node.
+- Cost: about 1e12-1e13 signed codes. The Python search does about 1e5 signed codes per core-second
+  (measured on the n = 9 runs), i.e. 3e3-3e4 core-hours, so use the kernel instead: export the structures
+  (`R=6 python export_structs.py 10 2 a`, a = 0..4, 20-40 GB RAM each), then
+  `julia fast_enum.jl ../results/structs_r6_n10_d2_a<a>.txt 10 2 4` (40-400 core-hours). Kernel survivors still
+  need the two-CCZ target test.
 - If no survivors: Proposition 6 "for quadratic suppression, at least eleven noisy ones"; Table I CCZ^{x2}
   d = 2 LB 11; Table SII row.
 
@@ -44,9 +47,10 @@ becomes max(2d+1, d+8), i.e. 13 at d = 5 and 14 at d = 6)
   (`R=3 python export_structs.py 10 3 a`, then `julia fast_enum.jl ../results/structs_r3_n10_d3_a<a>.txt 10 3 7`).
 - Top sector a = 7: 33 structures, 2^39 lifts each, input already exported:
   `results/structs_r3_n10_d3_a7.txt`.
-- **Code change needed first:** for a * n > 64 the lift vectors do not fit in 64 bits (a = 7, n = 10 gives 70
-  bits; the structure file already contains numbers above 2^64). In `fast_enum.jl`, parse the basis with
-  `parse(UInt128, ...)` and use `UInt128` for `basis`, `cv` and the shifts. Re-validate on the n = 9 runs.
+- Code change done (22 Oct 2026): `fast_enum.jl` reads lift vectors as `UInt128` (a = 7, n = 10 gives 70 bits) and
+  takes `SHARD=k NSHARDS=K` to split one structure's lift range over many jobs (each structure of the top
+  sector is about 2,600 core-hours). Validated on the T search at n = 8, a = 5: full and three-way sharded runs
+  reproduce the stored log exactly (910,163,968 signed codes, the same 346,136 survivors).
 - Cost: about 2.3e15 signed codes (+~10 % for the lower sectors); about 4 days on 1000 cores (about 1e5
   core-hours).
 - If no survivors: Proposition 6 "none has suppression order three with n <= 10"; Table I CCZ d = 3 LB 11,

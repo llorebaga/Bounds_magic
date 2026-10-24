@@ -2,7 +2,10 @@
 # (WHT), and test G00 != 0 and the 2x2 minors G00*Gee = |G0e|^2 exactly in Z[sqrt2][i].
 # Order of patterns: all-fault (Galois partner of 0) first, then weight n-1, then the rest.
 # Usage: julia -t 16 fast_enum.jl structs.txt n d m
+# Optional: SHARD=k NSHARDS=K runs only the k-th of K contiguous pieces of the lift range of every structure
+# (k = 0..K-1), so one structure can be spread over many jobs. Lift vectors are UInt128 (a*n may exceed 64).
 using Base.Threads
+const SHARD = parse(Int, get(ENV, "SHARD", "0")); const NSHARDS = parse(Int, get(ENV, "NSHARDS", "1"))
 const fname = ARGS[1]; const n = parse(Int, ARGS[2]); const d = parse(Int, ARGS[3]); const m = parse(Int, ARGS[4])
 const MASK = (1 << n) - 1; const C = (n + 1) ÷ 2; const NE = 1 << m
 pc(x) = count_ones(x)
@@ -41,21 +44,24 @@ end
 function process(a, AX, BZ, basis)
     L = length(basis)
     nsurv = Atomic{Int}(0)
-    nchunks = max(1, min(1 << L, 4 * nthreads()))
-    chunk = (1 << L) ÷ nchunks
+    slo = SHARD * (1 << L) ÷ NSHARDS; shi = (SHARD + 1) * (1 << L) ÷ NSHARDS - 1
+    nlifts = shi - slo + 1
+    nlifts <= 0 && return 0, 0
+    nchunks = max(1, min(nlifts, 4 * nthreads()))
+    chunk = nlifts ÷ nchunks
     @threads for t in 0:nchunks-1
         P = zeros(Int, NE); X = zeros(Int, NE); Z = zeros(Int, NE)
         G00 = zeros(Int, NE, 4); G0e = zeros(Int, NE, 4); Gee = zeros(Int, NE, 4)
         alive = falses(NE)
         GQ = zeros(Int, m); GX = zeros(Int, m); GZ = zeros(Int, m)
-        lo = t * chunk; hi = (t == nchunks - 1) ? (1 << L) - 1 : lo + chunk - 1
+        lo = slo + t * chunk; hi = (t == nchunks - 1) ? shi : lo + chunk - 1
         for msk in lo:hi
-            cv = 0
+            cv = UInt128(0)
             for bi in 1:L; (msk >> (bi - 1)) & 1 == 1 && (cv ⊻= basis[bi]) end
             # generators
             P[1] = 0; X[1] = 0; Z[1] = 0; cnt = 1
             for i in 0:a-1
-                ci = (cv >> (i * n)) & MASK
+                ci = Int((cv >> (i * n)) & MASK)
                 GQ[i+1] = pc(AX[i+1] & ci) % 4; GX[i+1] = AX[i+1]; GZ[i+1] = ci
             end
             for (j, b) in enumerate(BZ); GQ[a+j] = 0; GX[a+j] = 0; GZ[a+j] = b end
@@ -91,7 +97,7 @@ function process(a, AX, BZ, basis)
             end
         end
     end
-    nsurv[]
+    nsurv[], nlifts
 end
 
 function main()
@@ -101,11 +107,11 @@ function main()
         a = parse(Int, strip(f[1]))
         AX = [parse(Int, s) for s in split(strip(f[2]))]
         BZ = [parse(Int, s) for s in split(strip(f[3]))]
-        basis = [parse(Int, s) for s in split(strip(f[4]))]
-        s = process(a, AX, BZ, basis)
-        tot += (1 << length(basis)) * NE; totsurv += s
+        basis = [parse(UInt128, s) for s in split(strip(f[4]))]
+        s, nl = process(a, AX, BZ, basis)
+        tot += nl * NE; totsurv += s
         println("structure AX=$AX L=$(length(basis)) survivors=$s  elapsed=$(round(time() - t0, digits=1))s"); flush(stdout)
     end
-    println("RESULT file=$fname signed candidates $tot survivors $totsurv")
+    println("RESULT file=$fname" * (NSHARDS > 1 ? " shard $SHARD of $NSHARDS" : "") * " signed candidates $tot survivors $totsurv")
 end
 main()

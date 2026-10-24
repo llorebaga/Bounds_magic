@@ -1,0 +1,38 @@
+# Two-level SAT instances (CLUSTER_RUNS.md, B1): 'target D s nT nJ nC', one per array task.
+# Cubic CCZ with 32 noisy T inputs (the cs12cs13 form is already UNSAT for all of these):
+ccz 3 3 0 0 4
+ccz 3 4 0 0 4
+ccz 3 5 0 0 4
+ccz 3 6 0 0 4
+ccz 3 7 0 0 4
+ccz 3 3 8 0 3
+ccz 3 4 8 0 3
+ccz 3 5 8 0 3
+ccz 3 6 8 0 3
+ccz 3 7 8 0 3
+ccz 3 3 0 2 3
+ccz 3 4 0 2 3
+ccz 3 5 0 2 3
+ccz 3 6 0 2 3
+ccz 3 7 0 2 3
+ccz 3 3 0 4 2
+ccz 3 4 0 4 2
+ccz 3 5 0 4 2
+ccz 3 6 0 4 2
+ccz 3 7 0 4 2
+ccz 3 3 0 8 0
+ccz 3 4 0 8 0
+ccz 3 5 0 8 0
+ccz 3 6 0 8 0
+ccz 3 7 0 8 0
+# Quartic CCZ with 40 noisy T inputs:
+ccz 4 3 0 0 5
+ccz 4 4 0 0 5
+ccz 4 5 0 0 5
+ccz 4 6 0 0 5
+ccz 4 7 0 0 5
+ccz 4 3 0 2 4
+ccz 4 4 0 2 4
+ccz 4 5 0 2 4
+ccz 4 6 0 2 4
+ccz 4 7 0 2 4
