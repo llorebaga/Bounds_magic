@@ -6,7 +6,7 @@ the cluster with `rci.sh` (for example in a MobaXterm SSH tab, from `~/magic_run
 
 ## First time
 1. Get an RCI account (request form on the RCI wiki, login.rci.cvut.cz/wiki, FEL SSO).
-2. In `cluster/config.sh` set `RCI_USER`. `RCI_HOST` defaults to `login3.rci.cvut.cz` (AMD nodes).
+2. In `cluster/config.sh` set `RCI_USER`. `RCI_HOST` defaults to `login.rci.cvut.cz` (it accepts the password for the first `keys` step; login3 accepts keys only).
 3. In the MobaXterm local terminal, go to the repository
    (`cd /drives/c/Users/<you>/Documents/2026/Magic/Bounds_magic`), then:
    ```bash

@@ -2,7 +2,7 @@
 # Read by from_pc.sh (on your computer) and by rci.sh (on the cluster).
 
 RCI_USER="${RCI_USER:-baladllo}"         # your RCI login (CTU username)
-RCI_HOST="${RCI_HOST:-login3.rci.cvut.cz}"  # login3 = AMD nodes; login.rci.cvut.cz = older Intel nodes
+RCI_HOST="${RCI_HOST:-login.rci.cvut.cz}"   # accepts password login (needed once, for `keys`); login3 accepts keys only
 REMOTE_DIR="${REMOTE_DIR:-magic_runs}"   # working directory on the cluster, relative to your home
 
 # Partitions. Empty = chosen automatically from `sinfo`: the CPU partition with the shortest time limit
