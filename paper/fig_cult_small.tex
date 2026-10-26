@@ -1,0 +1,180 @@
+% Figure 1 of cultivation.tex, written by scripts/make_fig_cultivation.py. Requires tikz (arrows.meta, calc,
+% decorations.pathreplacing) and the math version figsans declared in the preamble.
+\definecolor{tolblue}{cmyk}{1,0.36,0,0.30}      % T states, absorbed faults
+\definecolor{skyblue}{cmyk}{0.63,0.23,0,0.09}   % code, trivial faults
+\definecolor{harmver}{cmyk}{0,0.56,1,0.165}     % faulty states, harmful faults
+\definecolor{rejgray}{cmyk}{0,0,0,0.62}         % rejected
+\definecolor{inkgray}{cmyk}{0,0,0,0.75}         % annotation
+\definecolor{pauX}{cmyk}{0,0.31,1,0.10}         % X
+\definecolor{pauY}{cmyk}{1,0,0.27,0.38}         % Y
+\definecolor{pauZ}{cmyk}{0,0.41,0.18,0.20}      % Z
+
+\begin{tikzpicture}[
+  font=\fontsize{8}{9.6}\fontfamily{phv}\selectfont\mathversion{figsans},
+  line width=0.5pt,
+  >={Stealth[length=1.6mm,width=1.2mm]},
+  letter/.style={font=\fontsize{8}{9.6}\fontfamily{phv}\fontseries{b}\selectfont, anchor=north west, inner sep=0pt},
+  small/.style={font=\fontsize{7}{8.4}\fontfamily{phv}\selectfont\mathversion{figsans}},
+  pbox/.style={draw=none, fill=white, inner sep=0.6pt, minimum size=2.2mm, font=\fontsize{7}{8}\fontfamily{phv}\fontseries{b}\selectfont},
+  brace/.style={decorate, decoration={brace, amplitude=2.2pt}},
+]
+% ---------------------------------------------------------------- (a) a check seen on the equator
+\node[letter] at (0,4.05) {(a)};
+\coordinate (C) at (2.05,2.05);
+\draw[black!25, line width=0.4pt] ($(C)+(-1.75,0)$) -- ($(C)+(1.75,0)$) node[right, inkgray, inner sep=1pt] {$x$};
+\draw[black!25, line width=0.4pt] ($(C)+(0,-1.75)$) -- ($(C)+(0,1.75)$) node[above, inkgray, inner sep=1pt] {$y$};
+\draw[inkgray] (C) circle (1.35);
+\draw[tolblue!40, line width=1.8pt, line cap=round] ($(C)+(225:1.55)$) -- ($(C)+(45:1.55)$);
+\node[tolblue, anchor=west, inner sep=1pt, align=left] at ($(C)+(45:1.6)+(0.02,-0.12)$) {check\\[-1pt]$TXT^\dagger$};
+\draw[<->, harmver!80, dashed, line width=0.4pt, shorten <=2pt, shorten >=2pt] ($(C)+(45:1.35)$) -- ($(C)+(-45:1.35)$);
+\draw[<->, harmver!80, dashed, line width=0.4pt, shorten <=2pt, shorten >=2pt] ($(C)+(45:1.35)$) -- ($(C)+(135:1.35)$);
+\draw[harmver, dotted, line width=0.7pt] ($(C)+(-45:1.35)$) -- (C);
+\draw[harmver, dotted, line width=0.7pt] ($(C)+(135:1.35)$) -- (C);
+\draw[harmver, line width=0.35pt] ($(C)+(-45:0.13)$) -- ++(45:0.13) -- ($(C)+(45:0.13)$);
+\node[harmver, anchor=north, inner sep=1.5pt] at ($(C)+(0,-0.12)$) {$\tfrac12$};
+\fill[tolblue] ($(C)+(45:1.35)$) circle (1.6pt);
+\draw[rejgray, fill=white] ($(C)+(225:1.35)$) circle (1.6pt);
+\fill[harmver] ($(C)+(-45:1.35)$) circle (1.6pt);
+\fill[harmver] ($(C)+(135:1.35)$) circle (1.6pt);
+\node[tolblue, anchor=south east, inner sep=2pt] at ($(C)+(45:1.35)$) {$|T\rangle$};
+\node[rejgray, anchor=north east, inner sep=1.5pt, align=right] at ($(C)+(225:1.35)$) {$Z|T\rangle$\\[-1pt]rejected};
+\node[harmver, anchor=north west, inner sep=2pt] at ($(C)+(-45:1.35)$) {$X|T\rangle$};
+\node[harmver, anchor=south east, inner sep=2pt] at ($(C)+(135:1.35)$) {$Y|T\rangle$};
+% ---------------------------------------------------------------- (b) the nine-T circuit
+\node[letter] at (4.55,4.05) {(b)};
+\draw[brace] (5.07,1.03) -- (5.07,3.67);
+\node[anchor=east, inner sep=1pt] at (5.02,2.35) {$|{+}\rangle$};
+\draw (5.17,3.55) -- (10.72,3.55);
+\draw (5.17,3.25) -- (10.72,3.25);
+\draw (5.17,2.95) -- (10.72,2.95);
+\draw (5.17,2.65) -- (10.72,2.65);
+\draw (5.17,2.35) -- (10.72,2.35);
+\draw (5.17,2.05) -- (10.72,2.05);
+\draw (5.17,1.75) -- (10.72,1.75);
+\draw (5.17,1.45) -- (10.72,1.45);
+\draw (5.17,1.15) -- (10.72,1.15);
+\draw (5.80,0.78) -- (10.55,0.78);
+\node[anchor=east, inner sep=1pt, small] at (5.77,0.78) {ancilla};
+\draw (5.80,0.48) -- (6.40,0.48);
+\node[anchor=east, inner sep=1pt, small] at (5.77,0.48) {flag};
+\node[draw, fill=white, inner sep=0pt, minimum width=2.6mm, minimum height=2.4mm, small] at (5.50,3.55) {$T$};
+\node[draw, fill=white, inner sep=0pt, minimum width=2.6mm, minimum height=2.4mm, small] at (5.50,3.25) {$T$};
+\node[draw, fill=white, inner sep=0pt, minimum width=2.6mm, minimum height=2.4mm, small] at (5.50,2.95) {$T$};
+\node[draw, fill=white, inner sep=0pt, minimum width=2.6mm, minimum height=2.4mm, small] at (5.50,2.65) {$T$};
+\node[draw, fill=white, inner sep=0pt, minimum width=2.6mm, minimum height=2.4mm, small] at (5.50,2.35) {$T$};
+\node[draw, fill=white, inner sep=0pt, minimum width=2.6mm, minimum height=2.4mm, small] at (5.50,2.05) {$T$};
+\node[draw, fill=white, inner sep=0pt, minimum width=2.6mm, minimum height=2.4mm, small] at (5.50,1.75) {$T$};
+\node[draw, fill=white, inner sep=0pt, minimum width=2.6mm, minimum height=2.4mm, small] at (5.50,1.45) {$T$};
+\node[draw, fill=white, inner sep=0pt, minimum width=2.6mm, minimum height=2.4mm, small] at (5.50,1.15) {$T$};
+\node[inkgray, small] at (6.10,3.88) {1};
+\draw[inkgray] (6.10,3.25) -- (6.10,0.78);
+\fill (6.10,0.78) circle (1.1pt);
+\node[pbox, text=pauY] at (6.10,3.25) {Y};
+\node[pbox, text=pauX] at (6.10,2.65) {X};
+\node[pbox, text=pauX] at (6.10,2.05) {X};
+\node[pbox, text=pauY] at (6.10,1.15) {Y};
+\node[small, inkgray] at (6.30,0.61) {$-$};
+\draw (5.95,0.78) -- (5.95,0.42);
+\fill (5.95,0.78) circle (0.9pt);
+\draw[fill=white] (5.95,0.48) circle (0.75mm);
+\draw (5.87,0.48) -- (6.02,0.48) (5.95,0.40) -- (5.95,0.55);
+\draw (6.25,0.78) -- (6.25,0.42);
+\fill (6.25,0.78) circle (0.9pt);
+\draw[fill=white] (6.25,0.48) circle (0.75mm);
+\draw (6.17,0.48) -- (6.33,0.48) (6.25,0.40) -- (6.25,0.55);
+\node[inkgray, small] at (6.70,3.88) {2};
+\draw[inkgray] (6.70,3.25) -- (6.70,0.78);
+\fill (6.70,0.78) circle (1.1pt);
+\node[pbox, text=pauZ] at (6.70,3.25) {Z};
+\node[pbox, text=pauZ] at (6.70,2.95) {Z};
+\node[pbox, text=pauX] at (6.70,1.45) {X};
+\node[pbox, text=pauX] at (6.70,1.15) {X};
+\node[small, inkgray] at (6.90,0.61) {$-$};
+\node[inkgray, small] at (7.30,3.88) {3};
+\draw[inkgray] (7.30,2.05) -- (7.30,0.78);
+\fill (7.30,0.78) circle (1.1pt);
+\node[pbox, text=pauZ] at (7.30,2.05) {Z};
+\node[pbox, text=pauZ] at (7.30,1.75) {Z};
+\node[pbox, text=pauX] at (7.30,1.45) {X};
+\node[pbox, text=pauX] at (7.30,1.15) {X};
+\node[small, inkgray] at (7.50,0.61) {$-$};
+\node[inkgray, small] at (7.90,3.88) {4};
+\draw[inkgray] (7.90,3.55) -- (7.90,0.78);
+\fill (7.90,0.78) circle (1.1pt);
+\node[pbox, text=pauY] at (7.90,3.55) {Y};
+\node[pbox, text=pauY] at (7.90,3.25) {Y};
+\node[pbox, text=pauX] at (7.90,2.95) {X};
+\node[pbox, text=pauX] at (7.90,2.65) {X};
+\node[small, inkgray] at (8.10,0.61) {$-$};
+\node[inkgray, small] at (8.50,3.88) {5};
+\draw[inkgray] (8.50,2.65) -- (8.50,0.78);
+\fill (8.50,0.78) circle (1.1pt);
+\node[pbox, text=pauX] at (8.50,2.65) {X};
+\node[pbox, text=pauX] at (8.50,2.35) {X};
+\node[pbox, text=pauY] at (8.50,1.45) {Y};
+\node[pbox, text=pauY] at (8.50,1.15) {Y};
+\node[small, inkgray] at (8.70,0.61) {$+$};
+\node[inkgray, small] at (9.10,3.88) {6};
+\draw[inkgray] (9.10,3.55) -- (9.10,0.78);
+\fill (9.10,0.78) circle (1.1pt);
+\node[pbox, text=pauX] at (9.10,3.55) {X};
+\node[pbox, text=pauZ] at (9.10,2.65) {Z};
+\node[pbox, text=pauZ] at (9.10,2.05) {Z};
+\node[pbox, text=pauX] at (9.10,1.45) {X};
+\node[small, inkgray] at (9.30,0.61) {$+$};
+\node[inkgray, small] at (9.70,3.88) {7};
+\draw[inkgray] (9.70,3.55) -- (9.70,0.78);
+\fill (9.70,0.78) circle (1.1pt);
+\node[pbox, text=pauX] at (9.70,3.55) {X};
+\node[pbox, text=pauZ] at (9.70,3.25) {Z};
+\node[pbox, text=pauZ] at (9.70,2.35) {Z};
+\node[pbox, text=pauX] at (9.70,1.15) {X};
+\node[small, inkgray] at (9.90,0.61) {$-$};
+\node[inkgray, small] at (10.30,3.88) {8};
+\draw[inkgray] (10.30,2.95) -- (10.30,0.78);
+\fill (10.30,0.78) circle (1.1pt);
+\node[pbox, text=pauX] at (10.30,2.95) {X};
+\node[pbox, text=pauX] at (10.30,2.65) {X};
+\node[pbox, text=pauY] at (10.30,1.75) {Y};
+\node[pbox, text=pauY] at (10.30,1.45) {Y};
+\node[small, inkgray] at (10.50,0.61) {$-$};
+\draw[fill=skyblue!18, draw=skyblue, rounded corners=1pt] (10.72,0.98) rectangle (11.14,3.72);
+\node[rotate=90, small] at (10.93,2.35) {ideal decoder};
+\draw[->] (11.14,2.35) -- (11.44,2.35) node[right, inner sep=1pt] {$|T\rangle$};
+% ---------------------------------------------------------------- (c) single faults
+\node[letter] at (13.15,4.05) {(c)};
+\node[anchor=south west, inner sep=0pt] at (13.20,3.43) {preparations (54)};
+\fill[black!22] (13.200,3.115) rectangle (14.600,3.385);
+\node[small, text=black] at (13.900,3.250) {18};
+\fill[rejgray] (14.600,3.115) rectangle (15.067,3.385);
+\node[small, text=white] at (14.833,3.250) {6};
+\fill[skyblue!55] (15.067,3.115) rectangle (16.467,3.385);
+\node[small, text=black] at (15.767,3.250) {18};
+\fill[tolblue] (16.467,3.115) rectangle (17.400,3.385);
+\node[small, text=white] at (16.933,3.250) {12};
+\node[anchor=south west, inner sep=0pt] at (13.20,2.77) {T gates (27)};
+\fill[rejgray] (13.200,2.455) rectangle (13.667,2.725);
+\node[small, text=white] at (13.433,2.590) {3};
+\fill[tolblue] (13.667,2.455) rectangle (17.400,2.725);
+\node[small, text=white] at (15.533,2.590) {24};
+\node[anchor=south west, inner sep=0pt] at (13.20,2.11) {two-qubit gates (510)};
+\fill[black!22] (13.200,1.795) rectangle (16.758,2.065);
+\node[small, text=black] at (14.979,1.930) {432};
+\fill[rejgray] (16.758,1.795) rectangle (16.791,2.065);
+\fill[skyblue!55] (16.791,1.795) rectangle (16.939,2.065);
+\fill[tolblue] (16.939,1.795) rectangle (17.400,2.065);
+\node[small, text=white] at (17.169,1.930) {56};
+\node[anchor=south west, inner sep=0pt] at (13.20,1.46) {measurements (36)};
+\fill[black!22] (13.200,1.135) rectangle (16.350,1.405);
+\node[small, text=black] at (14.775,1.270) {27};
+\fill[skyblue!55] (16.350,1.135) rectangle (17.400,1.405);
+\node[small, text=black] at (16.875,1.270) {9};
+\fill[black!22] (13.20,0.42) rectangle (13.48,0.62);
+\node[anchor=west, inner sep=1.5pt] at (13.50,0.52) {detected};
+\fill[rejgray] (15.30,0.42) rectangle (15.58,0.62);
+\node[anchor=west, inner sep=1.5pt] at (15.60,0.52) {rejected};
+\fill[skyblue!55] (13.20,0.10) rectangle (13.48,0.30);
+\node[anchor=west, inner sep=1.5pt] at (13.50,0.20) {trivial};
+\fill[tolblue] (15.30,0.10) rectangle (15.58,0.30);
+\node[anchor=west, inner sep=1.5pt] at (15.60,0.20) {absorbed};
+\end{tikzpicture}

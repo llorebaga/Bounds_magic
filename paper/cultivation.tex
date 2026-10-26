@@ -1,0 +1,306 @@
+\documentclass[aps,prl,reprint,twocolumn,amsmath,amssymb,floatfix,nofootinbib,superscriptaddress]{revtex4-2}
+\usepackage{amsmath,amssymb,amsthm,booktabs,graphicx,hyperref}
+\usepackage{tikz,pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta,calc,positioning,decorations.pathreplacing}
+% Sans-serif maths for the figures: Helvetica digits and roman, sans-italic letters (newtxsf)
+\DeclareMathVersion{figsans}
+\SetSymbolFont{operators}{figsans}{OT1}{phv}{m}{n}
+\SetSymbolFont{letters}{figsans}{OML}{ntxsfmi}{m}{it}
+\SetSymbolFont{symbols}{figsans}{OMS}{cmsy}{m}{n}
+\SetMathAlphabet{\mathrm}{figsans}{OT1}{phv}{m}{n}
+\SetMathAlphabet{\mathbf}{figsans}{OT1}{phv}{b}{n}
+\hypersetup{hidelinks}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\F}{\mathbb F_2}
+\newcommand{\CCZ}{\mathrm{CCZ}}
+\newcommand{\CS}{\mathrm{CS}}
+\newcommand{\tr}{\operatorname{Tr}}
+\newcommand{\wt}{\operatorname{wt}}
+\newcommand{\fs}{\mathbb V}
+\begin{document}
+\title{Limits of Magic-State Cultivation}
+\author{Lloren\c{c} Balada Gaggioli}
+\affiliation{Czech Technical University in Prague, Prague, Czech Republic}
+\affiliation{LAAS-CNRS, Universit\'e de Toulouse, France}
+\author{Jakub Mare\v{c}ek}
+\affiliation{Czech Technical University in Prague, Prague, Czech Republic}
+\date{Draft, \today}
+\begin{abstract}
+Magic-state cultivation prepares T states with physical T gates and postselection, with every operation noisy. We show that any fault configuration either triggers a Clifford detector or acts as a Pauli error on the T gates, linearly in the faults; it is then harmless exactly when one stabilizer code projects the perturbed T states onto the encoded target or to zero. Fault distance two thus needs nine T gates, and an optimized circuit attains this. With T gates in place of the S gates used to simulate it, a published distance-three circuit has fault distance two.
+\end{abstract}
+\maketitle
+
+%
+\section{Introduction}
+Magic-state cultivation~\cite{cultivation} prepares a T state by injecting it into a small color code, checking it with circuits built from physical T and T$^\dagger$ gates, and postselecting on every check, before the code is grown into a surface code. It has been demonstrated on hardware~\cite{googlecultivation}, and in simulations it reaches logical error rates that previously required distillation, at a cost comparable to that of a lattice-surgery CNOT~\cite{cultivation}. Related schemes inject a state and verify it by postselection~\cite{li2015,chamberlandnoh,itogawa}. All of them are designed and assessed by simulation, usually of Clifford circuits in which S gates stand in for the T gates, and we know of no lower bounds on their cost.
+
+For distillation, the corresponding questions have exact answers in small cases~\cite{distillationpaper}. There, Clifford operations are ideal and only the T-state inputs are noisy, and every protocol, however adaptive, is equivalent for fault tolerance to the projection of its inputs onto a single stabilizer code. Cultivation differs in two respects: every operation is noisy, including the Clifford gates and the measurements that implement the checks, and a Pauli fault before a T gate becomes a non-Pauli error after it. In this Letter we show that both differences can be absorbed into a characterization of the same kind. The tolerance of any cultivation protocol to circuit-level Pauli noise is decided by one stabilizer code on its T gates together with a linear map from faults to Pauli errors on those T gates. Distillation is the special case of Z faults at T gates. As consequences, fault distance two for one T state needs exactly nine T gates, attained by a circuit that we find by integer programming over the characterization; and the distance-three cultivation circuit of Ref.~\cite{cultivation} has fault distance two once its T gates are treated as T gates, in quantitative agreement with the state-vector simulations published with it.
+
+%
+\section{Setting}
+\paragraph*{Circuits and protocols.}
+Let $|T\rangle=(|0\rangle+\omega|1\rangle)/\sqrt2$ with $\omega=e^{i\pi/4}$. A \emph{Clifford+T protocol} acts on qubits initialized in $|0\rangle$ with Clifford gates, T and T$^\dagger$ gates, Pauli measurements, classical randomness, feedforward of any operation on earlier outcomes, postselection and discarding, and outputs $r$ qubits. Its target is a pure state $\tau$ with stabilizer nullity $\nu(\tau)=r$, that is, fixed by no Pauli operator other than the identity, as $|T\rangle$ and $|\CCZ\rangle$ are. A protocol is \emph{non-adaptive and fully postselected} if it is a fixed sequence of Clifford gates, T and T$^\dagger$ gates, projections $(I+sQ)/2$ with a Pauli $Q$ and a fixed sign $s$, and removals $\langle k|_q$ of qubits with fixed $k\in\{0,1\}$; T$^\dagger$ gates count as T gates. Such a circuit has a single Kraus operator $K$, and we call it \emph{correct} if $K|0\rangle$ is a nonzero multiple of $|\tau\rangle$.
+
+\paragraph*{Faults.}
+Every preparation, gate and measurement is a \emph{location}, except those declared ideal; removals are ideal. A fault at a location is a Pauli operator on its support, applied immediately after a preparation or gate or immediately before a projection, or the flip of a projection's sign. Faults at different locations compose, and the \emph{fault space} $\fs$ is the $\F$-vector space of all assignments of Pauli operators and flips to locations, with the weight $\wt(F)$ of $F\in\fs$ the number of locations at which $F$ acts. Each location suffers each of its faults independently with probability $p\lambda>0$, so a run of an adaptive protocol is described by its random choices and observed outcomes $b$ together with the faults $F$ at the locations executed along $b$, and has Kraus operator $K_{b,F}$. The pair $(b,F)$ is \emph{harmless} if $K_{b,F}|0\rangle\in\mathbb C|\tau\rangle$, which includes rejection. The output error after postselection is $\epsilon=O(p^d)$ exactly when every run with $\wt(F)<d$ is harmless and some fault-free run is accepted; the largest such $d$ is the \emph{fault distance}.
+
+\paragraph*{Ideal decoders.}
+A protocol whose output is encoded is judged after an ideal decoder: projections onto the stabilizers of an $[[m,r,\delta]]$ code $Q$ on $m$ output qubits, followed by an ideal Clifford unencoding. We call the decoder \emph{admissible} if the fault-free state at its input lies in $Q$, so that it accepts the fault-free run with certainty. Simulations of cultivation use decoders of this kind~\cite{cultivation}. Without the condition, the decoder could carry out the T-dependent checks itself: nine noisy T states handed to an ideal decoder of the code of Proposition~\ref{prop:t9} below would already tolerate every single fault.
+
+%
+\section{One circuit, one code}
+\begin{proposition}\label{prop:branch}
+Let a Clifford+T protocol have fault distance $d$, and let $b$ be any accepted fault-free run. The non-adaptive, fully postselected circuit formed by the operations executed along $b$, with every measurement replaced by the projection onto its outcome in $b$ and every discarded qubit removed with an outcome of nonzero amplitude, is correct and has fault distance at least $d$.
+\end{proposition}
+The proof (Sec.~\ref{sm:proofs}) uses only that a sum of positive operators is a multiple of a pure state exactly when each term is. Every lower bound on the qubits, gates or T gates of correct non-adaptive circuits of fault distance $d$ therefore holds for every accepted fault-free run of every protocol of fault distance $d$.
+
+\begin{theorem}\label{thm:main}
+Let a non-adaptive, fully postselected Clifford+T circuit with $t$ T gates be correct for a target $\tau$ with $\nu(\tau)=r$. There are a stabilizer code $C$ on $t$ qubits of dimension $2^r$ with $\Pi_C|T\rangle^{\otimes t}\neq0$, a Clifford isometry $V$ with $V\Pi_C|T\rangle^{\otimes t}\propto|\tau\rangle$, and $\F$-linear maps $D\colon\fs\to\F^\delta$ and $E\colon\fs\to\mathcal P_t/\langle iI,S_C\rangle$ into the Pauli group on $t$ qubits modulo phases and the stabilizers of $C$, such that a fault configuration $F$ is harmless if and only if $D(F)\neq0$ or
+\begin{equation}
+ \Pi_C\,E(F)\,|T\rangle^{\otimes t}\in\mathbb C\,\Pi_C|T\rangle^{\otimes t}.
+ \label{eq:collapse}
+\end{equation}
+A Z fault immediately before or after the $j$th T gate has $D=0$ and $E=Z_j$.
+\end{theorem}
+The construction behind the theorem is the injection gadget~\cite{zhouleungchuang}: for every single-qubit state,
+\begin{equation}
+ \sqrt2\,\langle0|_a\,\mathrm{CX}_{q\to a}\,|\psi\rangle_q|T\rangle_a=T|\psi\rangle_q,
+ \label{eq:gadget}
+\end{equation}
+and T$^\dagger=S^\dagger T$. Replacing every T gate by Eq.~\eqref{eq:gadget}, with its own ideal ancilla in $|T\rangle$, leaves a noisy Clifford circuit, the \emph{skeleton}, acting on $t$ ideal T states. Its fault-free Kraus operator is a code projection followed by a Clifford isometry, $c\,V\Pi_C$, as in Ref.~\cite{distillationpaper}. A Pauli fault anywhere in the skeleton can be pushed to the end of the circuit, where it flips the signs of the projections it anticommutes with and leaves a Pauli operator on the output. Sign flips that contradict a deterministic outcome annihilate the circuit; these are the detectors, $D(F)\neq0$. All other sign flips, and the output Pauli, are equivalent to a Pauli on the T inputs, by the Gottesman--Knill description of stabilizer circuits~\cite{aaronsongottesman}. This gives $E(F)$, and Eq.~\eqref{eq:collapse} is the condition that the perturbed T states still project onto the encoded target, or onto zero (Sec.~\ref{sm:proofs}).
+
+The pair $(D,E)$ plays the role of the detector error model of a Clifford circuit~\cite{stim,delfossepaetznick,bombinzx}, in which a fault is harmless when it triggers a detector or flips no logical observable. Here the observables are replaced by the Pauli group on the T gates, and the test on them by the collapse condition~\eqref{eq:collapse}, which is exactly the one that decides distillation~\cite{distillationpaper}. Both maps can be computed by following the Choi state of the skeleton symbolically, and the collapse condition for each class of $E$ by one simulation of the circuit with modified T gates (Sec.~\ref{sm:compute}).
+
+\paragraph*{Coherent faults.}
+The new feature relative to distillation is that $E(F)$ may have an X part. Since $X|T\rangle=(|T\rangle+iZ|T\rangle)/\sqrt2$ and $XZ|T\rangle=-(i|T\rangle+Z|T\rangle)/\sqrt2$, a Pauli $E=X^uZ^v$ turns $|T\rangle^{\otimes t}$ into a superposition, with amplitudes of modulus $2^{-|u|/2}$, of the states $Z^{v+w}|T\rangle^{\otimes t}$ with $w$ supported on $u$.
+\begin{lemma}\label{lem:shadow}
+If every pattern $v+w$ with $\operatorname{supp}w\subseteq\operatorname{supp}u$ satisfies the distillation condition $\Pi_CZ^{v+w}|T\rangle^{\otimes t}\in\mathbb C\,\Pi_C|T\rangle^{\otimes t}$, then every $F$ with $E(F)=X^uZ^v$ is harmless.
+\end{lemma}
+The converse can fail, because harmful components may cancel. The smallest instance is a single check (Fig.~\ref{fig:small}a): a projection onto $|T\rangle$ rejects $Z|T\rangle$ and returns $X|T\rangle$ and $Y|T\rangle$ to $|T\rangle$ half of the time, so X and Y faults before it are harmless although they are neither detected nor stabilizers (Sec.~\ref{sm:example}).
+
+\begin{figure*}[t]
+\centering
+\input{fig_cult_small}
+\caption{Fault distance two with nine T gates. (a)~A check that projects onto $|T\rangle$, drawn on the equator of the Bloch sphere. A Z fault maps $|T\rangle$ to the antipodal, orthogonal state $Z|T\rangle$, which the check rejects. X and Y faults reflect $|T\rangle$ in the $x$ and $y$ axes; the reflected states lie at right angles to the check axis, so the check accepts them with probability $1/2$ and then outputs exactly $|T\rangle$. Faults of this kind are harmless although no detector sees them. (b)~The circuit of Proposition~\ref{prop:t9}. Nine qubits are prepared in $|{+}\rangle$ and receive one T gate each. Eight stabilizers of the nine-input factory code are then measured in turn (columns 1 to 8): each column couples the ancilla by controlled-Pauli gates to the four marked qubits, with the marked Pauli operators, and keeps the indicated outcome. The first measurement carries a flag, which detects errors of the ancilla that would spread to two data qubits. The output remains encoded in the factory code, which has distance three, and an ideal decoder measures its stabilizers and unencodes. (c)~The $627$ single faults of the circuit, by location type. A fault is detected (a flag, or a stabilizer measured both before and after it, changes its outcome); rejected (its Pauli on the T inputs projects them to zero); trivial (that Pauli is a stabilizer of the code on the T gates); or absorbed (the projection is a nonzero multiple of the encoded T state, as in panel a). No single fault is harmful.}
+\label{fig:small}
+\end{figure*}
+
+%
+\section{Consequences}
+\begin{corollary}\label{cor:tcount}
+In a noise model in which every T gate may suffer a Z fault, every accepted run of a protocol of fault distance $d$ executes at least $n_{\min}(\tau,d)$ T gates, the least number of noisy T inputs of any order-$d$ distillation protocol for $\tau$.
+\end{corollary}
+\begin{proof}
+By Proposition~\ref{prop:branch} it suffices to consider a correct non-adaptive circuit with $t$ T gates and fault distance $d$. Configurations of Z faults at T gates have $D=0$ and $E=Z^e$, so by Theorem~\ref{thm:main} each with $|e|<d$ satisfies $\Pi_CZ^e|T\rangle^{\otimes t}\in\mathbb C\,\Pi_C|T\rangle^{\otimes t}$. Measuring the stabilizers of $C$ on $t$ noisy T states, postselecting and decoding with $V$ is therefore an order-$d$ distillation protocol~\cite{distillationpaper}.
+\end{proof}
+With the values of Ref.~\cite{distillationpaper}, a cultivation circuit of fault distance two or more for one T state contains at least nine T gates, and one for $|\CCZ\rangle$ contains at least eight for $d=2$, ten for $d=3,4$, and $2d+1$ for every $d$.
+
+\begin{corollary}\label{cor:galois}
+If all Pauli expectations of $\tau$ are rational, a fault configuration $F$ of a correct non-adaptive circuit is harmless if and only if $F+Z_{\mathcal T}$ is, where $Z_{\mathcal T}$ places a Z fault after every T gate.
+\end{corollary}
+\begin{proof}
+The automorphism $\sigma$ of $\mathbb Q(\sqrt2,i)$ that flips the sign of $\sqrt2$ and fixes $i$ maps $\omega$ to $-\omega$, so, applied entrywise, it maps T and T$^\dagger$ to $ZT$ and $ZT^\dagger$. It maps every Clifford gate to itself up to a global phase, because up to such a phase the entries of a Clifford gate are $2^{-k/2}$ times Gaussian integers, and it fixes projections, Pauli faults and $|0\rangle$. Hence $\sigma$ maps $K_F|0\rangle\langle0|K_F^\dagger$ to $K_{F+Z_{\mathcal T}}|0\rangle\langle0|K_{F+Z_{\mathcal T}}^\dagger$, as $\sigma$ commutes with complex conjugation. It fixes $|\tau\rangle\langle\tau|$, whose entries lie in $\mathbb Q(i)$ because its Pauli coefficients are rational. Since $\sigma^2$ is the identity, one of the two operators is a multiple of $|\tau\rangle\langle\tau|$ exactly when the other is.
+\end{proof}
+
+\begin{proposition}\label{prop:singleton}
+If a correct circuit ends with an admissible ideal decoder for an $[[m,r,\delta]]$ code, and each of the $m$ qubits has an idle location before the decoder, then its fault distance is at most $\delta$, and $m\geq r+2(d-1)$.
+\end{proposition}
+\begin{proof}
+A logical Pauli of weight $\delta$ placed at the idle locations commutes with the stabilizers, passes the decoder and applies a nontrivial Pauli to the decoded state, which differs from $|\tau\rangle$ because $\nu(\tau)=r$. The inequality is the quantum Singleton bound~\cite{knilllaflamme}.
+\end{proof}
+
+\begin{figure}[t]
+\centering
+\input{fig_cult_gsj}
+\caption{The distance-three cultivation circuit of Ref.~\cite{cultivation} with T gates. (a)~One of its $48$ harmful pairs of faults, on the seven data qubits of the color code (faces shaded). Fault~1, an X error on qubit~2, is copied to qubit~1 through a qubit of the cat state, which is measured in the X basis. After the last layer of S gates of the stabilizer simulation the errors become $Y_1Y_2$, which the top face detects; after the last layer of T gates the component $X_1X_2$ survives, and fault~2 on qubit~3 completes the logical operator $\bar X$ along the left edge. (b)~Difference of the logical errors per accepted run with T and with S gates, divided by $p^2$, from the state-vector simulations published with the circuit~\cite{gsjcode} (one standard deviation; dashed: weighted linear fit for $p\leq5\times10^{-3}$), and its limit $32/75$ at $p\to0$ from Theorem~\ref{thm:main}.}
+\label{fig:gsj}
+\end{figure}
+
+%
+\section{The smallest case}
+By Corollary~\ref{cor:tcount} and $n_{\min}(T,2)=9$~\cite{distillationpaper}, fault distance two for one T state needs nine T gates.
+\begin{proposition}\label{prop:t9}
+There is a circuit with nine T gates, eleven qubits and $34$ two-qubit gates, ending in an admissible ideal decoder, that prepares one T state with fault distance two. Hence nine T gates are necessary and sufficient.
+\end{proposition}
+The circuit (Fig.~\ref{fig:small}b) prepares nine qubits in $|{+}\rangle$ and applies T to each, so that its T inputs are its data qubits. It then measures eight independent stabilizers of weight four of the nine-input factory code of Ref.~\cite{distillationpaper}, each with one ancilla and four controlled-Pauli gates, and postselects on the outcomes of the factory, which occur with probability $1/128$ without faults. That code has distance three, so the output stays encoded in it, and the decoder, which re-measures the stabilizers, is admissible. By Theorem~\ref{thm:main}, a single fault is harmless when it triggers a detector, here a flag or a stabilizer measured both before and after the fault, or when its Pauli on the T inputs collapses. Faults on the preparations and T gates are single-qubit Paulis on the inputs, which collapse because the code distills to order two, by Lemma~\ref{lem:shadow}. A fault while the $k$th stabilizer is measured leaves a Pauli $R$ on the data and may flip the outcome. It is detected if $R$ anticommutes with a stabilizer measured before, or if the flip does not match the commutation of $R$ with the $k$th stabilizer; otherwise it acts as $R$ on the inputs, and every Pauli of weight two on the inputs is harmful. The weight-two errors that the measurement circuits spread to the data must therefore anticommute with a stabilizer measured earlier, or be caught by a flag~\cite{chaoreichardt}. Choosing the eight stabilizers, their order, the order of the qubits in each measurement and the flags is an integer program over the fault map (Sec.~\ref{sm:t9}). The first measurement needs a flag, since no stabilizer precedes it, and Gurobi shows in under a minute that one flag suffices. The proof is exact: the remaining single faults reduce to Paulis on the inputs of weight at most one modulo the stabilizers. An enumeration of all $627$ single faults confirms it, both with the fault map and by direct simulation, and finds $7146$ harmful configurations among the $192{,}546$ pairs. Fig.~\ref{fig:small}c shows how single faults are tolerated.
+
+The construction is a distillation at the physical level, in the spirit of Ref.~\cite{itogawa}, made fault tolerant by the order of its measurements. It minimizes T gates, not space-time cost, and accepts one run in $128$.
+
+
+%
+\section{A published circuit}
+Stabilizer simulations of cultivation replace T by S, which turns the circuit into a Clifford circuit, and rely on state-vector simulations of small cases for the difference~\cite{cultivation}. Theorem~\ref{thm:main} computes the fault distance with T gates directly.
+\begin{proposition}\label{prop:gsj}
+With T gates at the positions where its stabilizer simulations use S gates, the distance-three cultivation circuit of Ref.~\cite{cultivation}, unitary injection followed by one T check, has fault distance two. With S gates, no pair of faults is harmful.
+\end{proposition}
+We compose the circuit from the published chunks~\cite{gsjcode} ($15$ qubits, $15$ T gates, $81$ CNOTs) and keep the final stabilizer measurements as an admissible ideal decoder, as in Ref.~\cite{cultivation}. With every operation a noisy location, no single fault is harmful, and $48$ of the $966{,}391$ pairs are. Fig.~\ref{fig:gsj}a shows one of them. The first fault leaves X errors on two data qubits of an edge of the code, and on a qubit of the cat state that is measured in the X basis and does not see them. Before the final checks, the last layer of T gates turns each X error into $(X+Y)/\sqrt2$. With S, only the Y errors would remain, and their Z components are detected; with T, the component $X\otimes X$ remains as well, and a second X fault on the third qubit of the edge completes a logical operator. Direct simulation confirms every harmful pair.
+
+Under the uniform depolarizing noise of Ref.~\cite{cultivation}, with idle noise in every time step of the chunks, $96$ pairs are harmful, and the logical error per accepted run is $\epsilon_T=32p^2/75+O(p^3)$, while $\epsilon_S=O(p^3)$ (Sec.~\ref{sm:gsj}). The state-vector simulations published with the circuit~\cite{gsjcode} agree. Extrapolated linearly to $p=0$, they give $(\epsilon_T-\epsilon_S)/p^2=0.45\pm0.08$ (Fig.~\ref{fig:gsj}b), and the ratio $\epsilon_T/\epsilon_S$ grows from $1.4$ at $p=10^{-2}$ to $2.5$ at $p=10^{-3}$. At $p=10^{-3}$, where $69\%$ of runs are accepted, the new term accounts for $6\times10^{-7}$ of the observed $1.0\times10^{-6}$; at smaller $p$ it dominates. Flags do not repair the check: a set-cover program over the fault map shows that no flags on single qubits detect all $48$ pairs (Sec.~\ref{sm:gsj}), so restoring fault distance three requires a different cat-state circuit.
+
+
+
+%
+\section{Outlook}
+Theorem~\ref{thm:main} reduces the fault tolerance of a cultivation circuit to a stabilizer code on its T gates and a binary matrix, the columns of $D$ and $E$, and makes exact computation of the fault distance possible, together with optimization over circuits by integer programming. Our model assumes stochastic Pauli noise on every operation, including the T gates, and ideal classical processing, and Proposition~\ref{prop:branch} gives up the acceptance probability, so the bounds concern the size of a single run rather than the expected cost per accepted state. Open questions include the least space-time cost at fault distance two, the least number of T gates at fault distance three, between nine and fifteen, and the fault distance with T gates of the distance-five circuit of Ref.~\cite{cultivation}, which contains a check of the same kind but is beyond state-vector simulation.
+
+%
+\bibliography{refs,cultivation}
+
+\clearpage
+\setcounter{secnumdepth}{2}\setcounter{section}{0}\setcounter{equation}{0}\setcounter{table}{0}\setcounter{figure}{0}
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\theequation}{S\arabic{equation}}
+\renewcommand{\thetable}{S\Roman{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\onecolumngrid
+\begin{center}\textbf{\large Supplemental Material}\end{center}
+
+\section{Proofs}\label{sm:proofs}
+\begin{proof}[Proof of Proposition~\ref{prop:branch}]
+For a fixed fault configuration, the unnormalized accepted output of the protocol is $\sum_{b'}q\,K_{b',F'}\rho_0K_{b',F'}^\dagger$, summed over accepted runs $b'$ and the faults $F'$ along them, with probabilities $q>0$; this is exact for stochastic Pauli noise, because faults are sampled classically at the locations actually executed. A run $(b,F)$ is harmless exactly when its own term is a multiple of $|\tau\rangle\langle\tau|$. Fix an accepted fault-free run $b$. Along $b$, every random choice and every measurement outcome is fixed, so the operations executed along $b$ form a non-adaptive circuit, and for every fault configuration $F$ at its locations, $K_{b,F}$ is the Kraus operator of this circuit with $F$ inserted, postselected on the outcomes of $b$. A discarded qubit contributes a partial trace, $\sum_k\langle k|\cdot|k\rangle$; if the sum is a multiple of a pure state, each term is, so replacing the partial trace by the removal $\langle k|$ for an outcome $k$ with $\langle k|K_{b,\emptyset}|0\rangle\neq0$ keeps the circuit correct and every harmless configuration harmless. Hence every configuration with $\wt(F)<d$ is harmless in the circuit. The removals are ideal and add no locations.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+\emph{Skeleton.} Eq.~\eqref{eq:gadget} follows from $\mathrm{CX}_{q\to a}(\alpha|0\rangle+\beta|1\rangle)(|0\rangle+\omega|1\rangle)/\sqrt2$, whose component with $a$ in $|0\rangle$ is $(\alpha|0\rangle+\beta\omega|1\rangle)/\sqrt2$. Introduce one ancilla $a_j$ per T gate, prepared ideally in $|T\rangle$, and write T$^\dagger=S^\dagger T$ with an ideal $S^\dagger$. A fault of the $j$th T gate acts after the gadget. The circuit becomes $K_F=2^{t/2}K_{S,F}(|0\rangle\otimes|T\rangle^{\otimes t})$, where the skeleton $K_{S,F}$ consists of Clifford gates, projections and removals, and $F$ is inserted at the same qubits and times. Let $M_F=K_{S,F}(|0\rangle\otimes\cdot)$, a linear map from $t$ qubits to $r$ qubits, and $M=M_0$. As in the proof of Theorem~1 of Ref.~\cite{distillationpaper}, $M$ applied to half of $t$ Bell pairs gives a stabilizer state on $t+r$ qubits, and by the local-Clifford normal form of bipartite stabilizer states $M=c\,V\Pi_C$ with a stabilizer code $C$ on $t$ qubits and a Clifford isometry $V$ from $C$ onto its range. The range contains $|\tau\rangle$ and is a stabilizer subspace; since no Pauli operator other than the identity fixes $\tau$, it is the whole output space, so $\dim C=2^r$ and $V$ is unitary from $C$ onto $(\mathbb C^2)^{\otimes r}$.
+
+\emph{Signs.} Treat each removal $\langle k|_q$ as a projection of $Z_q$ with sign $(-1)^k$ followed by an ideal removal, and let $\sigma\in\F^\mu$ list the signs of all projections relative to the circuit, so that $M^{(0)}=M$. Let $|\Psi^{(\sigma)}\rangle=(M^{(\sigma)}\otimes I)\sum_x|x\rangle|x\rangle$ be the unnormalized Choi vector. Following the circuit with the stabilizer formalism~\cite{aaronsongottesman}, the Choi vector stays a pure stabilizer state, so the Pauli of every projection either anticommutes with a current stabilizer or is one up to sign. In the first case the projection halves the squared norm and replaces that stabilizer by the projected Pauli with the chosen sign, and in the second it keeps the state or annihilates it, depending on the sign. The unsigned stabilizer groups and the norms of the nonzero $|\Psi^{(\sigma)}\rangle$ are therefore independent of $\sigma$. The signs required by the deterministic projections are affine functions of the earlier signs, so $|\Psi^{(\sigma)}\rangle\neq0$ exactly when $D_0\sigma=0$ for a linear map $D_0$. Two stabilizer states with the same unsigned group and norm differ by a Pauli operator and a phase, and the Pauli is determined by the sign difference modulo the stabilizer group, linearly. Hence, for $D_0\sigma=0$, $|\Psi^{(\sigma)}\rangle=\mu_\sigma(A_\sigma\otimes B_\sigma)|\Psi^{(0)}\rangle$ with $|\mu_\sigma|=1$ and Paulis $A_\sigma$ on the output and $B_\sigma$ on the reference, that is, $M^{(\sigma)}=\mu_\sigma A_\sigma MB_\sigma^{\mathsf T}$.
+
+\emph{Faults.} A Pauli $P$ inserted after an operation is moved to the end of the circuit: a Clifford gate $G$ turns it into $GPG^\dagger$, and a projection $(I+sQ)$ with which it anticommutes becomes $(I-sQ)$ as $P$ passes it. A removal absorbs the Z part of $P$ on the removed qubit, and its projection turns the X part into a sign flip. A sign flip changes $\sigma$ directly. Hence $M_F=\mu\,P_{\mathrm{out}}(F)\,M^{(s(F))}$ with a phase $\mu$, a Pauli $P_{\mathrm{out}}(F)$ on the output and a sign vector $s(F)$, both linear in $F$. Set $D(F)=D_0s(F)$. If $D(F)\neq0$, then $M_F=0$ and the configuration is rejected. Otherwise $M_F=\mu'P_{\mathrm{out}}A_{s}MB_{s}^{\mathsf T}$. For an output Pauli $R$, write $V\Pi_C=W(I\otimes\langle0|^{\otimes(t-r)})U\Pi_C$ with Clifford unitaries $U$ on $t$ qubits, mapping $C$ onto $(\mathbb C^2)^{\otimes r}\otimes|0\rangle^{\otimes(t-r)}$, and $W$ on $r$ qubits; then $RM=ML$ with the Pauli $L=U^\dagger(W^\dagger RW\otimes I)U$, which commutes with the stabilizers of $C$. Hence $M_F=\mu''M\,E(F)$ with $E(F)=L(P_{\mathrm{out}}A_s)B_s^{\mathsf T}$. Finally, $ME\propto ME'$ holds exactly when $E'E^\dagger$ acts on $C$ as a scalar, that is, lies in $\langle iI,S_C\rangle$, because $V$ is injective on $C$ and a Pauli that anticommutes with a stabilizer maps $C$ to an orthogonal code. So $E$ is well defined and linear modulo $\langle iI,S_C\rangle$.
+
+\emph{Collapse.} $K_F|0\rangle=2^{t/2}\mu''c\,V\Pi_CE(F)|T\rangle^{\otimes t}$ and $K_0|0\rangle\propto V\Pi_C|T\rangle^{\otimes t}\propto|\tau\rangle$. Since $V$ is injective on $C$, $K_F|0\rangle\in\mathbb C|\tau\rangle$ exactly when Eq.~\eqref{eq:collapse} holds.
+
+\emph{Z faults at T gates.} A Z fault after the gadget of the $j$th T gate on qubit $q$ satisfies $Z_q\langle0|_a\mathrm{CX}_{q\to a}=\langle0|_aZ_aZ_q\mathrm{CX}_{q\to a}=\langle0|_a\mathrm{CX}_{q\to a}Z_a$, using $\langle0|_a=\langle0|_aZ_a$ and $\mathrm{CX}_{q\to a}Z_a=Z_qZ_a\mathrm{CX}_{q\to a}$. It acts as $Z$ on the ideal input $a_j$, so $D=0$ and $E=Z_j$. A Z fault before the gate is the same, because Z commutes with T and with $S^\dagger$.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lem:shadow}]
+On one qubit, $X|T\rangle=(|T\rangle+iZ|T\rangle)/\sqrt2$, $XZ|T\rangle=-(i|T\rangle+Z|T\rangle)/\sqrt2$ and $Y=iXZ$, so up to a phase $X^uZ^v|T\rangle^{\otimes t}=\sum_w\gamma_wZ^{v+w}|T\rangle^{\otimes t}$, summed over $w$ with $\operatorname{supp}w\subseteq\operatorname{supp}u$ and with $|\gamma_w|=2^{-|u|/2}$. If each projected term lies on the line $\mathbb C\,\Pi_C|T\rangle^{\otimes t}$, so does their sum, and Theorem~\ref{thm:main} applies.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:t9}]
+Let $g_1,\dots,g_8$ be the measured stabilizers in their order (Table~\ref{tab:t9}); they generate the stabilizer group $S$ of the factory code, which is the code $C$ of Theorem~\ref{thm:main} for this circuit, with the T gates numbered by their qubits. A fault after a preparation or a T gate is, up to stabilizers of $|{+}\rangle$, a Pauli of weight one on the T inputs, with no flips. Its $Z$ part collapses, by the exact certificate of the single-fault minors in Ref.~\cite{distillationpaper}, and so does its $X$ part, by Lemma~\ref{lem:shadow}. Consider a fault in the measurement of $g_k$, including its ancilla and flag. Pushed to the end of the measurement circuit, it becomes a Pauli $R$ on the data, a flip $\phi$ of the outcome of $g_k$ and a flip $\psi$ of the flag. If $\psi=1$, the flag detects it. If $R$ anticommutes with some $g_j$, $j<k$, the decoder detects it, because $g_j$ was projected before $R$ and is projected again after it, with only commuting projections in between. If $\phi$ differs from the commutator $\langle R,g_k\rangle$, the decoder detects it, because the projection onto $g_k$ then has the wrong sign relative to the decoder's. Otherwise $R$ commutes with $g_1,\dots,g_{k-1}$ and, together with the flip, equals $R$ applied before the measurement of $g_k$; it can then be moved to the inputs, and the fault is harmless exactly when $R$ collapses. An exact computation over $\F$ (\texttt{scripts/cultivation\_t9.py}) sorts the $573$ faults in the measurement circuits of Table~\ref{tab:t9}: $37$ raise the flag, $288$ leave an $R$ that anticommutes with an earlier stabilizer, $152$ flip the outcome inconsistently with $R$, and the remaining $96$ leave an $R$ of weight at most one modulo $S$, which collapses, since multiplication by a stabilizer changes $\Pi_CR|T\rangle^{\otimes9}$ only by a sign. Measurement flips and faults on the decoder's input are covered by the same cases.
+\end{proof}
+
+\section{The single-qubit check}\label{sm:example}
+The smallest circuit with a check prepares $|+\rangle$, applies the injection T gate, then T$^\dagger$, projects onto $X=+1$ and applies T. The fault-free output is $|T\rangle$, since $|T\rangle$ is the $+1$ eigenstate of $TXT^\dagger$. In the skeleton the three T gates become ideal inputs $a_1,a_2,a_3$. The first two gadgets project the data qubit onto the same computational-basis state, and $S^\dagger$ contributes the phase $(-i)^b$, so the skeleton projects $a_1a_2$ onto $|00\rangle+i|11\rangle$ and passes $a_3$ to the output; $C$ has stabilizers $Z_1Z_2$ and $X_1Y_2$, and $\langle00|+(-i)\langle11|$ applied to $|T\rangle^{\otimes2}$ gives $(1-i\omega^2)/2=1$. Table~\ref{tab:example} lists every single fault. No fault triggers a detector of the skeleton; the check rejects Z-type errors through the collapse condition with zero, and projects X-type errors after the injection back onto $|T\rangle$, as in Fig.~\ref{fig:small}a. Faults after the last T gate are harmful, since nothing protects the output.
+
+\begin{table}[h]
+\caption{Single faults of the single-qubit check. $E$ is a representative modulo $\langle iI,S_C\rangle$ with $S_C=\langle Z_1Z_2,X_1Y_2\rangle$, on inputs $a_1a_2a_3$. The last column is the acceptance probability relative to the fault-free run.}
+\label{tab:example}
+\begin{ruledtabular}
+\begin{tabular}{llccc}
+location & fault & $E$ & harmless & acceptance\\
+\hline
+after preparation of $|+\rangle$ & X & $III$ & yes & 1\\
+ & Y, Z & $IZI$ & yes (rejected) & 0\\
+after the injection T & X & $IYI$ & yes & $1/2$\\
+ & Y & $IXI$ & yes & $1/2$\\
+ & Z & $IZI$ & yes (rejected) & 0\\
+after T$^\dagger$, before the projection & X & $III$ & yes & 1\\
+ & Y, Z & $IZI$ & yes (rejected) & 0\\
+projection & sign flip & $IZZ$ & yes (rejected) & 0\\
+after the last T & X, Y, Z & $IIX$, $IIY$, $IIZ$ & no & 1\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\section{Computing the fault map}\label{sm:compute}
+The script \texttt{scripts/cultiv.py} computes $D$ and $E$ for a non-adaptive circuit given as a list of preparations, Clifford gates, T and T$^\dagger$ gates, projections (with or without reset of the measured qubit), discards of qubits in known eigenstates, and identity operations that carry idle noise. It follows the Choi state of the skeleton on the physical qubits, the gadget inputs $a_j$ and their references $r_j$, as in the proof of Theorem~\ref{thm:main}: the stabilizer generators are stored as binary vectors, and the sign of each generator as a linear form in the flips $\sigma$ of all projections, which is all that the maps need, since constant signs only affect phases. A projection whose Pauli anticommutes with a generator replaces it, with the form $\sigma_k$; one whose Pauli is in the group adds the detector row $\sigma_k+\sum_i\ell_i$, where $\ell_i$ are the forms of the generators that multiply to it. For a fault, Pauli propagation through the skeleton gives the flips $s(F)$ and the output Pauli $P_{\mathrm{out}}(F)$. Then $D(F)$ evaluates the detector rows; the generators whose forms evaluate to one on $s(F)$ change sign, which the destabilizers convert into a Pauli $G$ on physical qubits and references; multiplying $G P_{\mathrm{out}}$ by the stabilizer with the same physical part, found by elimination, leaves a Pauli on the references, which is $E(F)$, reduced modulo $S_C$ by a fixed echelon basis, so that the reduction is linear. When the circuit does not map onto its whole output space, as when the output is encoded and decoded, part $U(F)$ of the physical Pauli may remain unmatched; it is kept, and it vanishes whenever $D(F)=0$ for the circuits of Theorem~\ref{thm:main}. The triple $(D,U,E)$ of a configuration is the sum of those of its faults.
+
+For $D(F)=0$, harmlessness depends only on $(U,E)$ and is decided by one simulation: a Pauli $E=X^uZ^v$ on the T inputs is the same as replacing T$^{k}$ by T$^{k-2}$ at the gates in $u$, which is what the gadget does with input $X|T\rangle$, and applying Z after the gates in $v$. The circuit so modified, followed by $U$, is simulated with state vectors and its output compared with the fault-free one. Pairs of faults are enumerated through the classes of their triples, so that each class is simulated once.
+
+The script \texttt{scripts/cultiv\_test.py} compares harmlessness from the fault map with direct simulation of the faulty circuit on $300$ random circuits of two or three qubits with up to three T gates and two projections, for all single faults and random pairs, $42{,}367$ configurations in all, without a disagreement. For the $65$ circuits whose skeleton map has full row rank it also computes the skeleton map $M_F$ densely, by feeding basis states to the gadgets, and checks for $9{,}271$ configurations that $M_F=0$ exactly when $D(F)\neq0$ and that otherwise $U(F)=0$ and $M_F\propto ME(F)$.
+
+\section{The nine-T circuit}\label{sm:t9}
+Table~\ref{tab:t9} lists the circuit of Proposition~\ref{prop:t9}. Qubits $0$ to $8$ are prepared in $|{+}\rangle$ and receive a T gate each. The $k$th measurement prepares the ancilla in $|{+}\rangle$, applies controlled-$P$ gates from the ancilla to the listed qubits in the listed order, with $P$ the letter of $g_k$ on that qubit, and measures the ancilla in the X basis, keeping the outcome equal to the sign of $g_k$. In the flagged measurement, a flag qubit in $|0\rangle$ is the target of CNOTs from the ancilla after the first and before the last controlled-Pauli gate, and is measured in the Z basis with outcome $+1$ kept. The ideal decoder measures $g_1,\dots,g_8$ with their signs and unencodes. The circuit has $18$ preparations, $9$ T gates, $34$ two-qubit gates and $9$ noisy measurements, $70$ locations in all.
+
+\begin{table}[h]
+\caption{The measurements of the nine-T circuit, in order: stabilizer of the nine-input factory code (qubits $0$ to $8$ from left to right), order of the controlled-Pauli gates, and flag.}
+\label{tab:t9}
+\begin{ruledtabular}
+\begin{tabular}{clcc}
+$k$ & $g_k$ & order & flag\\
+\hline
+1 & $-IYIXIXIIY$ & 8, 5, 3, 1 & yes\\
+2 & $-IZZIIIIXX$ & 8, 2, 7, 1 & \\
+3 & $-IIIIIZZXX$ & 6, 8, 7, 5 & \\
+4 & $-YYXXIIIII$ & 2, 0, 3, 1 & \\
+5 & $+IIIXXIIYY$ & 7, 4, 3, 8 & \\
+6 & $+XIIZIZIXI$ & 5, 0, 3, 7 & \\
+7 & $-XZIIZIIIX$ & 4, 0, 1, 8 & \\
+8 & $-IIXXIIYYI$ & 6, 2, 3, 7 & \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\paragraph*{Integer program.}
+Let $\mathcal W$ be the $18$ elements of weight four of the stabilizer group $S$ of the factory code, with their signs, which span $S$; let $\langle\cdot,\cdot\rangle$ be the symplectic form; and let $\mathcal C$ be the $48$ minimal linearly dependent subsets of $\mathcal W$. For $w\in\mathcal W$, an order $\pi$ of its support and $f\in\{0,1\}$, the measurement circuit $(w,\pi,f)$ is that of Table~\ref{tab:t9}, with a flag if $f=1$. Let $\mathcal R(w,\pi,f)$ be the set of data Paulis $R$ of the single faults in this circuit that raise no flag, satisfy $\phi=\langle R,w\rangle$ and do not collapse; by the proof of Proposition~\ref{prop:t9}, these are the faults that are harmless only if $R$ anticommutes with a stabilizer measured earlier. They are computed once, by Pauli propagation and the collapse test on nine T states; every Pauli that collapses has weight at most one modulo $S$. Binary variables $s_w$ select the measured stabilizers, $y_{vw}$ equals one if $v$ is measured before $w$, and $z_{w\pi f}$ selects the order and the flag of the measurement of $w$:
+\begin{align*}
+\min_{s,y,z}\quad&\sum_{w\in\mathcal W}\sum_{\pi}z_{w\pi1}\\
+\text{s.t.}\quad&\textstyle\sum_{w\in\mathcal W}s_w=8,\qquad \sum_{w\in C}s_w\leq|C|-1\quad(C\in\mathcal C),\\
+&\textstyle\sum_{\pi,f}z_{w\pi f}=s_w\quad(w\in\mathcal W),\\
+&y_{vw}\leq s_v,\quad y_{vw}\leq s_w,\quad y_{vw}+y_{wv}\leq1,\quad y_{vw}+y_{wv}\geq s_v+s_w-1\quad(v\neq w),\\
+&y_{uv}+y_{vw}+y_{wu}\leq2\quad(u,v,w\text{ distinct}),\\
+&\textstyle z_{w\pi f}\leq\sum_{v\in\mathcal W:\,\langle R,v\rangle=1}y_{vw}\quad(R\in\mathcal R(w,\pi,f)),\\
+&s_w,\ y_{vw},\ z_{w\pi f}\in\{0,1\}.
+\end{align*}
+The first line selects eight independent stabilizers, which then generate $S$; the next two lines make $y$ a linear order of the selected ones, since a tournament without directed triangles is transitive; the last line requires every dangerous Pauli to anticommute with a stabilizer measured before. The program has $1188$ variables and $4777$ constraints; Gurobi~10 proves the optimum of one flag in $46$\,s. The script \texttt{scripts/cultivation\_t9.py} builds the program (\texttt{--mip}), verifies the circuit, and writes \texttt{results/cultivation/t9\_circuit.json}. Of the $627$ single faults, $477$ are detected, $13$ rejected, $45$ trivial and $92$ absorbed (Fig.~\ref{fig:small}c), and $7146$ of the $192{,}546$ pairs are harmful.
+
+\section{The published circuit}\label{sm:gsj}
+\paragraph*{Reconstruction.}
+The repository of Ref.~\cite{gsjcode} defines the circuit of Proposition~\ref{prop:gsj} as two stim chunks, the unitary injection (with one round of stabilizer measurements) and the distance-three double-cat check, whose boundary conditions are measurements of the color-code stabilizers and of the logical $Y$ observable; S and S\_DAG stand for T and T$^\dagger$. We copied both chunks (\texttt{data/gsj\_cultivation/}), joined them by the coordinates of their qubits, dropped the boundary measurements between them, kept the final stabilizer measurements as an ideal decoder, and replaced S and S\_DAG by T and T$^\dagger$. All measurements of the result are deterministic, both with T and with S, and it accepts with probability one without faults, so the decoder is admissible; three of its X-type projections are not deterministic in the skeleton, that is, the decoder rejects some faults through the collapse condition. Exchanging T and T$^\dagger$ throughout gives the same $48$ harmful pairs. The repository composes the chunks with its own compiler and re-layers the result; we did not run that code, so our idle noise follows the time steps of the chunk text.
+
+\paragraph*{Noise.}
+With one location per operation, every Pauli at every preparation, gate and measurement and every flip of a measurement is a fault, $1397$ in all on $137$ operations. The uniform depolarizing model of Ref.~\cite{gsjcode} applies, with strength $p$, single-qubit depolarization after T (S) gates, two-qubit depolarization after CNOTs, a bit flip after a $Z$ reset and a phase flip after an X reset, a flip of every measurement result, and single-qubit depolarization to every qubit that is idle in a time step; we apply the last only to qubits between preparation and measurement, since noise on other qubits is removed by the next reset. This gives $436$ locations, $299$ of them idle. The logical error per accepted run is $\epsilon=\sum_Fw_Fh_F/\sum_Fw_F\tr\Lambda(\rho_F)$, with $h_F$ the probability that run $F$ is accepted with a wrong output; the denominator is $1+O(p)$, and the coefficient of $p^2$ in the numerator is a sum over the $96$ harmful pairs ($24$ of two CNOT faults, $24$ of a CNOT and a T fault, $32$ of an idle and a CNOT fault, $8$ of an idle and a T fault, $8$ of two idle faults) of the product of their probabilities divided by $p^2$, times the relative acceptance ($1/4$ for each) and the infidelity ($1/2$ or $1$) of the output. It equals $32/75$. The S version has no harmful pair.
+
+\paragraph*{Comparison.}
+Table~\ref{tab:gsjdata} lists the state-vector simulations of Ref.~\cite{gsjcode} for this circuit, with T and with S gates at the same positions. A weighted least-squares fit of $(\epsilon_T-\epsilon_S)/p^2=a+bp$ gives $a=0.44\pm0.10$ for $p\leq3\times10^{-3}$, $0.45\pm0.08$ for $p\leq5\times10^{-3}$ and $0.42\pm0.06$ for all $p$, against $32/75\approx0.427$.
+
+\begin{table}[h]
+\caption{Logical error per accepted run of the circuit of Proposition~\ref{prop:gsj} under uniform depolarizing noise, from the state-vector simulations of Ref.~\cite{gsjcode} with T and with S gates (one standard deviation), and the acceptance probability with T gates.}
+\label{tab:gsjdata}
+\begin{ruledtabular}
+\begin{tabular}{ccccc}
+$p$ & $\epsilon_T$ & $\epsilon_S$ & acceptance & $(\epsilon_T-\epsilon_S)/p^2$\\
+\hline
+$0.001$ & $(9.7\pm0.5)\times10^{-7}$ & $(3.9\pm0.3)\times10^{-7}$ & $0.69$ & $0.58\pm0.06$\\
+$0.002$ & $(5.86\pm0.15)\times10^{-6}$ & $(2.87\pm0.11)\times10^{-6}$ & $0.47$ & $0.75\pm0.05$\\
+$0.003$ & $(1.81\pm0.06)\times10^{-5}$ & $(1.03\pm0.04)\times10^{-5}$ & $0.33$ & $0.88\pm0.08$\\
+$0.005$ & $(8.75\pm0.28)\times10^{-5}$ & $(5.81\pm0.18)\times10^{-5}$ & $0.15$ & $1.18\pm0.13$\\
+$0.007$ & $(2.60\pm0.08)\times10^{-4}$ & $(1.90\pm0.06)\times10^{-4}$ & $0.074$ & $1.42\pm0.21$\\
+$0.010$ & $(9.1\pm0.3)\times10^{-4}$ & $(6.7\pm0.2)\times10^{-4}$ & $0.025$ & $2.4\pm0.4$\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\paragraph*{Flags.}
+A flag on qubit $q$ over the window $[t_1,t_2)$ of operations of the check is a qubit prepared in $|0\rangle$, the target of a CNOT from $q$ before operations $t_1$ and $t_2$, and measured in the Z basis with outcome $+1$ kept. It is a detector when no operation in the window changes the Z value of $q$ (no CNOT targets $q$, and $q$ is neither measured nor reset), and it detects a fault $F$ exactly when the X part of the Pauli frame of $F$ on $q$ differs at $t_1$ and $t_2$; write $\chi_K(F)\in\{0,1\}$ for this, for each of the $5590$ such candidates $K$. A pair $(F_1,F_2)$ is detected by $K$ when $\chi_K(F_1)\neq\chi_K(F_2)$, so the fewest flags that detect every harmful pair solve
+\begin{align*}
+\min_x\ \sum_Kx_K\quad\text{s.t.}\quad\sum_{K:\,\chi_K(F_1)\neq\chi_K(F_2)}x_K\geq1\ \text{for every harmful pair }(F_1,F_2),\qquad x_K\in\{0,1\}.
+\end{align*}
+The program is infeasible: for two pairs, in which the X errors arise on targets of CNOTs, no candidate detects either fault. Covering the other $46$ pairs takes eight flags. The flags themselves would add faults, which this model ignores; the infeasibility does not depend on them. The script \texttt{scripts/cultivation\_gsj.py} carries out all computations of this section and writes \texttt{results/cultivation/gsj\_d3.json}.
+
+\section{Further numerical checks}\label{sm:numerics}
+The script \texttt{scripts/cultivation\_check.py} checks Theorem~\ref{thm:main} by an independent state-vector implementation. For each circuit it compares, for all single faults and up to 800 pairs of faults, the faulty output computed with physical T gates with the output of the skeleton fed with ideal T states; whether the skeleton map is zero or a multiple of $ME$ for some Pauli $E$ on the T inputs; harmlessness computed directly with the collapse condition; the claim $E=Z_j$ for Z faults at T gates; and $E(F_1+F_2)=E(F_1)E(F_2)$ modulo $\langle iI,S_C\rangle$. For the targets $\CS|{+}{+}\rangle$ (three T gates and a ZZZ check) and $|\CCZ\rangle$ (the standard seven-T circuit), it also checks Corollary~\ref{cor:galois}. We ran 12 circuits, the two above and ten random circuits on two qubits with two to four T gates and one or two projections. The gadget identity holds for all 10{,}542 configurations tested. In the six circuits whose skeleton map has full row rank, as Theorem~\ref{thm:main} assumes, the structural statement and the harmlessness criterion hold for all 5{,}316 configurations, $E=Z_j$ holds for all 24 T gates, and multiplicativity for all 3{,}726 pairs tested; Corollary~\ref{cor:galois} holds for all 1{,}832 configurations of the two rational circuits. An independent dense simulation of the circuit of Proposition~\ref{prop:gsj}, written without shared code, confirms the harmful pairs that we checked, with relative acceptance $1/4$ and infidelity $1/2$ or $1$.
+
+\section{Open problems}\label{sm:open}
+\paragraph*{Space-time cost.}
+The circuit of Proposition~\ref{prop:t9} minimizes T gates. The least number of qubits, two-qubit gates or time steps at fault distance two, and how many T gates fault distance three needs (at least nine, by Corollary~\ref{cor:tcount}), are open. Integer programs over the fault map, as in Sec.~\ref{sm:t9}, apply to any family of circuits in which the fault map is linear in the design choices, such as orders of gates and positions of flags.
+
+\paragraph*{Larger circuits.}
+The collapse condition was tested here by state vectors. For circuits with many T gates, such as the distance-five circuit of Ref.~\cite{cultivation}, the test needs other methods, for example the Gram form of the collapse condition over $\mathbb Q(\omega)$ with structured codes, or simulators of low stabilizer rank.
+
+\paragraph*{Analytic bounds.}
+The witnesses of Ref.~\cite{distillationpaper} feed a protocol a state whose fault patterns are all harmless. With coherent faults, the analogous argument would feed the skeleton states of the form $E|T\rangle^{\otimes t}$ superposed over tolerated $E$.
+
+\paragraph*{Rates.}
+Proposition~\ref{prop:branch} discards the acceptance probability, so bounds on expected cost per accepted state need a different argument.
+
+\end{document}
