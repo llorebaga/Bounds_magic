@@ -268,6 +268,10 @@ if __name__ == "__main__":
             r["skeleton_code_dimension_log2"] = sk.t - len(sk.SC_rref)
             r["final_projections_deterministic_in_skeleton"] = [bool(sk.deterministic[sk.proj_of_op[i]])
                                                                 for i in sorted(ideal)]
+            Ms = [i for i, op in enumerate(ops) if op[0] == "M"]
+            r["projections"] = len(Ms)
+            r["projections_not_deterministic_in_skeleton"] = [
+                [i, ops[i][1], i in ideal] for i in Ms if not sk.deterministic[sk.proj_of_op[i]]]
             r["direct_simulation_agrees"] = all(not A.harmless_direct({a[0]: a[1], b[0]: b[1]})
                                                 for a, b, k in harm)
             r["harmful_pairs_list"] = [[list(a[:2]), list(b[:2]), list(damage(A, k))] for a, b, k in harm]

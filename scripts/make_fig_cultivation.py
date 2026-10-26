@@ -69,7 +69,8 @@ def fig_small():
     ys = [3.55 - 0.3 * i for i in range(9)]
     ya, yf = 0.78, 0.48
     xw0, xT, xm0, dx = x0 + 0.62, x0 + 0.95, x0 + 1.55, 0.6
-    xm = [xm0 + dx * k for k in range(8)]
+    # the flagged first measurement shows its gates apart, so it gets extra room
+    xm = [xm0 + 0.15] + [xm0 + 0.45 + dx * k for k in range(1, 8)]
     xdec = xm[-1] + 0.42
     L.append(r"\draw[brace] (%.2f,%.2f) -- (%.2f,%.2f);" % (x0 + 0.52, ys[-1] - 0.12, x0 + 0.52, ys[0] + 0.12))
     L.append(r"\node[anchor=east, inner sep=1pt] at (%.2f,%.2f) {$|{+}\rangle$};" % (x0 + 0.47, (ys[0] + ys[-1]) / 2))
@@ -83,15 +84,24 @@ def fig_small():
         L.append(r"\node[draw, fill=white, inner sep=0pt, minimum width=2.6mm, minimum height=2.4mm, small] at (%.2f,%.2f) {$T$};" % (xT, y))
     for k, (g, order, flag) in enumerate(plan):
         sup = [q for q in range(9) if g[1 + q] != "I"]
+        # gate positions: one vertical line per measurement, except that the flagged measurement shows its first
+        # and last gate apart, with the flag CNOTs between them
+        pos = {q: xm[k] for q in sup}
+        if flag:
+            pos[order[0]], pos[order[-1]] = xm[k] - 0.24, xm[k] + 0.24
         L.append(r"\node[inkgray, small] at (%.2f,%.2f) {%d};" % (xm[k], ys[0] + 0.33, k + 1))
-        L.append(r"\draw[inkgray] (%.2f,%.2f) -- (%.2f,%.2f);" % (xm[k], ys[min(sup)], xm[k], ya))
-        L.append(r"\fill (%.2f,%.2f) circle (1.1pt);" % (xm[k], ya))
+        for x in sorted(set(pos.values())):
+            top = min(q for q in sup if pos[q] == x)
+            L.append(r"\draw[inkgray] (%.2f,%.2f) -- (%.2f,%.2f);" % (x, ys[top], x, ya))
+            L.append(r"\fill (%.2f,%.2f) circle (1.1pt);" % (x, ya))
         for q in sup:
             p = g[1 + q]
-            L.append(r"\node[pbox, text=pau%s] at (%.2f,%.2f) {%s};" % (p, xm[k], ys[q], p))
-        L.append(r"\node[small, inkgray] at (%.2f,%.2f) {$%s$};" % (xm[k] + 0.2, ya - 0.17, "+" if g[0] == "+" else "-"))
+            L.append(r"\node[pbox, text=pau%s] at (%.2f,%.2f) {%s};" % (p, pos[q], ys[q], p))
+            L.append(r"\node[anchor=south east, inner sep=0pt, inkgray, font=\fontsize{5}{6}\fontfamily{phv}\selectfont] at (%.2f,%.2f) {%d};" %
+                     (pos[q] - 0.1, ys[q] + 0.01, order.index(q) + 1))
+        L.append(r"\node[small, inkgray] at (%.2f,%.2f) {$%s$};" % (xm[k] + (0.38 if flag else 0.2), ya - 0.17, "+" if g[0] == "+" else "-"))
         if flag:
-            for s in (-0.15, 0.15):
+            for s in (-0.12, 0.12):
                 L.append(r"\draw (%.2f,%.2f) -- (%.2f,%.2f);" % (xm[k] + s, ya, xm[k] + s, yf - 0.06))
                 L.append(r"\fill (%.2f,%.2f) circle (0.9pt);" % (xm[k] + s, ya))
                 L.append(r"\draw[fill=white] (%.2f,%.2f) circle (0.75mm);" % (xm[k] + s, yf))

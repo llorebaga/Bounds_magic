@@ -1,11 +1,12 @@
-"""Nine T gates suffice for fault distance two (paper/cultivation.tex, Proposition 7 and Sec. S4).
+"""Nine T gates suffice for fault distance two (paper/cultivation.tex, Proposition 5 and Sec. S4).
 
 The circuit prepares nine |+> states, applies T to each, and measures eight weight-four stabilizers of the
 nine-input factory code of paper/paper.tex (Proposition 7 there; a [[9,1,3]] code) with one ancilla each, the
 first with a flag; the output stays encoded and is decoded ideally. An integer program over the fault map of
 Theorem 2 chooses the stabilizers, their order, the order of the qubits in each measurement and the flagged
 measurements; the result is then verified by enumerating every single and every pair of faults, with the fault
-map and with direct state-vector simulation.
+map and with direct state-vector simulation. Finally, the coefficient of p^2 in the logical error per accepted run
+is computed under the uniform depolarizing model of the cultivation paper, without and with idle noise.
 
 Usage: python cultivation_t9.py [--mip]     (--mip re-solves the integer program with Gurobi)
 Writes results/cultivation/t9_circuit.json.
@@ -200,7 +201,7 @@ def solve_mip():
 
 # ---------------------------------------------------------------- verification
 def exact_proof(plan):
-    """the computational step of the proof of Proposition 7, in exact F2 arithmetic: every single fault in a
+    """the computational step of the proof of Proposition 5, in exact F2 arithmetic: every single fault in a
     measurement either raises the flag, or leaves a data Pauli R that anticommutes with an earlier stabilizer, or
     flips the outcome inconsistently with R, or has weight at most one modulo the stabilizer group"""
     S = [sym(g) for g in group([p[0] for p in plan])]
@@ -273,6 +274,82 @@ def verify(plan):
     return ops, ideal, res
 
 
+# ---------------------------------------------------------------- uniform depolarizing noise
+D1 = [("X", 1 / 3), ("Y", 1 / 3), ("Z", 1 / 3)]
+D2 = [("".join(p), 1 / 15) for p in itertools.product("IXYZ", repeat=2) if p != ("I", "I")]
+
+
+def with_idles(ops, ideal):
+    """the circuit in as-soon-as-possible time steps, except that ancilla and flag preparations come just before
+    their first gate, with an identity operation on every qubit that is live (prepared and not yet measured) and
+    idle in a time step; the ideal decoder stays at the end"""
+    step, last = {}, {}
+    for i, op in enumerate(ops):
+        if i not in ideal:
+            qs = cv.support(op)
+            step[i] = 1 + max(last.get(q, -1) for q in qs)
+            for q in qs:
+                last[q] = step[i]
+    for i, op in enumerate(ops):
+        if op[0] == "R" and op[1] >= N:
+            step[i] = min(step[j] for j in step if j > i and op[1] in cv.support(ops[j])) - 1
+    out, live = [], set()
+    for s in range(max(step.values()) + 1):
+        touched = set()
+        for i in sorted(i for i in step if step[i] == s):
+            op = ops[i]
+            out.append(op)
+            touched |= set(cv.support(op))
+            if op[0] == "R":
+                live.add(op[1])
+            elif op[0] == "M":
+                live -= set(op[2])
+        out += [("I", (q,)) for q in sorted(live - touched)]
+    new_ideal = set(range(len(out), len(out) + len(ideal)))
+    return out + [ops[i] for i in sorted(ideal)], new_ideal
+
+
+def depolarizing(plan, idle):
+    """coefficient c2 of p^2 in the logical error per accepted run under the uniform depolarizing model of the
+    cultivation paper (X or Z flip after a preparation, DEPOLARIZE1 after T and on idle qubits, DEPOLARIZE2 after
+    two-qubit gates, result flips of measurements), without or with idle noise"""
+    ops, ideal = circuit(plan)
+    if idle:
+        ops, ideal = with_idles(ops, ideal)
+    A = cv.Analysis(ops, 11, list(range(N)), ideal)
+    weights = {}
+    for i, fs in A.locs:
+        op = ops[i]
+        if op[0] == "R":
+            weights[i] = {("Z" if op[2] == "X" else "X"): 1.0}
+        elif op[0] == "M":
+            weights[i] = {"flip": 1.0}
+        else:
+            weights[i] = dict(D2 if op[0] == "U2" else D1)
+    by = {}
+    for li, i, f, k in A.faults:
+        if weights[i].get(f, 0) > 0:
+            by.setdefault(li, []).append((i, weights[i][f], k))
+    cache, c2, nharm, kinds = {}, 0.0, 0, {}
+    nref = np.vdot(A.ref, A.ref).real
+    for a, b in itertools.combinations(sorted(by), 2):
+        for i1, w1, k1 in by[a]:
+            for i2, w2, k2 in by[b]:
+                D, U, E = (x ^ y for x, y in zip(k1, k2))
+                if D or A.harmless_UE(U, E):
+                    continue
+                if (U, E) not in cache:
+                    o = A.output_of(U, E)
+                    no = np.vdot(o, o).real
+                    cache[(U, E)] = no / nref * (1 - abs(np.vdot(A.ref, o)) ** 2 / (nref * no))
+                c2 += w1 * w2 * cache[(U, E)]
+                nharm += 1
+                kk = "-".join(sorted((ops[i1][0], ops[i2][0])))
+                kinds[kk] = kinds.get(kk, 0) + 1
+    return dict(locations=len(by), idle_locations=sum(op[0] == "I" for op in ops), harmful_pairs=nharm,
+                harmful_pairs_by_operations=kinds, c2=c2)
+
+
 def _apply(psi, g):
     ps = g[1:]
     v = psi.reshape([2] * N)
@@ -300,5 +377,9 @@ if __name__ == "__main__":
           and res["ideal_projections_deterministic"] and res["output_is_codeword"]
           and res["exact_proof_cases"]["failures"] == 0)
     print("FAULT DISTANCE 2 WITH NINE T GATES: OK" if ok else "CHECK FAILED")
+    dep = dict(without_idle=depolarizing(plan, False), with_idle=depolarizing(plan, True))
+    for k, v in dep.items():
+        print("uniform depolarizing,", k.replace("_", " ") + ":", v)
     json.dump(dict(plan=[[g, list(o), f] for g, o, f in plan], ops=[list(op) for op in ops],
-                   ideal=sorted(ideal), mip=info, verification=res), open(out, "w"), indent=1)
+                   ideal=sorted(ideal), mip=info, verification=res, uniform_depolarizing=dep),
+              open(out, "w"), indent=1)
