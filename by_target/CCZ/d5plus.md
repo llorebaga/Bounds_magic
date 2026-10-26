@@ -1,6 +1,6 @@
 # CCZ (and any rational non-stabilizer target), d >= 5
 
-Table I: prior LB d | LB **2d+1** (analytic, Theorem 4) | UB O(d) | prior UB -
+Table I: prior LB d | LB **max(2d+1, d+7)** for CCZ (Theorem 4 and Lemma 13: 12 at d = 5); 2d+1 for any rational target | UB O(d) | prior UB -
 
 [All targets](../README.md)
 

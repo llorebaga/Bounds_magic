@@ -1,0 +1,11 @@
+A0 0.0078124999999999965 0.9999999999999996
+X commutes with all gens: True expectation (0.707107+0j)
+Y commutes with all gens: True expectation (0.707107+0j)
+Z commutes with all gens: True expectation 0j
+XY = iZ on code: True
+harm [0, 0, 36, 45, 90, 75, 76, 15, 6, 1]
+256A [  2.   3.  39. 101. 111. 111. 101.  39.   3.   2.]
+256H [ 0.  0. 27. 48. 45. 66. 53. 12.  3.  2.]
+D(p)= 112*p**6 - 336*p**5 + 408*p**4 - 256*p**3 + 87*p**2 - 15*p + 2
+N(p)= -48*p**7 + 224*p**6 - 384*p**5 + 324*p**4 - 141*p**3 + 27*p**2
+eps series 27*p**2/2 + 123*p**3/4 + O(p**4)

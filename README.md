@@ -14,6 +14,10 @@ Section numbers below refer to the PRL version: main text plus Supplemental Mate
 (S1 worked example, S2 proofs of the reductions, S3 analytic bounds, S4 exhaustive search,
 S5 integer and SAT programs, S6 previous lower bounds).
 
+## Possible cluster runs
+
+`CLUSTER_RUNS.md` lists the runs that are realistic on a cluster and would change an entry of Table I, with commands, costs and what to update afterwards.
+
 ## Find a result by target and suppression order
 
 [`by_target/`](by_target/README.md) has one page per entry of Table I (T, CS, CCZ, two CCZ states, CCCZ; each d):
@@ -56,7 +60,7 @@ complementary patterns (needed for non-rational targets such as T).
 ### Reductions and Clifford orbit (Theorems 1-2, Proposition 3, Sec. S2)
 | Claim | Command | Output |
 |---|---|---|
-| Prop. 3: CS12CS13\|+++> = CX23 H2 CX12 S2 H2 \|CCZ> (exact, sympy) | `python verify_orbit.py` | stdout |
+| Prop. 3: CS12CS13\|+++> = CX23 H2 CX12 S2 H2 \|CCZ> (exact, sympy; the equivalence is due to Howard-Campbell 2017, the circuit is explicit here) | `python verify_orbit.py` | stdout |
 | Clifford orbit of \|CCZ> has 69,120 states; its diagonal members | `python clifford_orbit_ccz.py` | stdout |
 | Prop. 11: six T states projected onto the [[6,4,2]] code give X^4\|CCCZ> up to Clifford phases, probability 1/4 (exact) | `python verify_cccz.py` | stdout |
 
@@ -71,7 +75,7 @@ complementary patterns (needed for non-rational targets such as T).
 Exploratory (not in the paper): `python 53_search_magic_witnesses.py 6 2 4` (floating-point search for
 low-nullity witnesses); the remaining relaxations in `sdp/` (see `sdp/README.md`).
 
-### Exhaustive searches (Theorems 5, 6, Sec. S4, Table SII)
+### Exhaustive searches (Propositions 5, 6, Sec. S4, Table SII)
 | Claim | Command | Output |
 |---|---|---|
 | Any 3-qubit nu=3 target, d=2, n=7: no code (weight <= 1 only, 17,161,440 signed codes) | `GALOIS=0 R=3 python enum_codes_v2.py 7 2` | stdout |
@@ -95,6 +99,7 @@ Total for one T state at n=8, d=2: 1.32e11 signed codes over all X-ranks.
 | n=9, d=2, one T state: sectors a<=6 (Julia kernel, 2.2e11 signed codes) | `GALOIS=0 R=1 TARGET=t python export_structs.py 9 2 {1..6}`; `GALOIS=0 julia -t 16 fast_enum.jl ../results/structs_nogal_r1_n9_d2_a{1..6}.txt 9 2 8` | `log_fast_t_n9_d2_a{1..6}.txt.gz` |
 | Classification of the 2.5e7 collapse survivors: 96 encode a T-equivalent state (all one factory up to symmetry) | `python classify_parallel.py ../results/log_fast_t_n9_d2_a6.txt 9 16` (after `gunzip -k`) | `log_fast_t_n9_d2_a6.txt.T.json` |
 | Exact certificate: all single faults collapse, logical Bloch moduli {0,1/sqrt2,1/sqrt2}, acceptance 1/128, eps = 27/2 p^2 + O(p^3) | `python verify_t_factory.py ../results/log_fast_t_n9_d2_a6.txt.T.json 5 9` | `results/t9_factory_cert.txt` |
+| Explicit logical frame (X, Y, Z bars), expectations (1/sqrt2, 1/sqrt2, 0), exact A(p)=D(p)/256 and eps(p)=N(p)/D(p) (Sec. S4) | `python verify_t9_frame.py` | `results/t9_frame_cert.txt` |
 
 Sectors a=7, 8 at n=9 (3.8e12 and 7.0e13 signed codes) were not run: the factory already shows n_min(T,2)=9.
 
@@ -120,7 +125,8 @@ fails first). The Julia kernel is cross-checked on `structs_nogal_r1_n7_d2_a6.tx
 | Claim | Command | Output |
 |---|---|---|
 | SAT model controls | `python sat_block.py ccz 2 1 8 0 0`; `python sat_block.py ccz 2 2 7 0 0`; `python sat_block.py ccz 1 0 0 1 0` | stdout |
-| Quartic CCZ from six cube blocks (48 T), certified, 54 harmful block pairs -> 864 p^4 | `python sat_sweep.py out.jsonl 600 "ccz 4 5 0 0 6"` | `results/sat/quartic_ccz_6cube_s{4,5,6,7}.json`, `results/sat/A2.jsonl` |
+| Quartic CCZ from six cube blocks (48 T), certified, 54 harmful two-block error configurations -> 864 p^4 | `python sat_sweep.py out.jsonl 600 "ccz 4 5 0 0 6"` | `results/sat/quartic_ccz_6cube_s{4,5,6,7}.json`, `results/sat/A2.jsonl` |
+| Same design flattened to one generalized triorthogonal 13x48 matrix (3 logical, 10 check rows): overlap conditions hold, undetected logical errors 0, 0, 0, 864 at weights 1-4 | `python verify_quartic_flat.py` | `results/quartic_flat_check.txt` |
 | Exact certificate of a design | `python verify_block.py ../results/sat/quartic_ccz_6cube_s5.json` | stdout |
 | Negative / undecided instances listed in Sec. S5 | see `results/sat/*.log`, `*.jsonl` | |
 

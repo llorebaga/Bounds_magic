@@ -1,4 +1,6 @@
-# Remaining work: what was done, what needs a cluster, what is out of reach (17 Oct 2026)
+# Remaining work: what was done, what needs a cluster, what is out of reach (17 Oct 2026; updated 21 Oct 2026 for Lemma 13)
+
+**The short, current list of realistic cluster runs is in `CLUSTER_RUNS.md`.** This file keeps the full history.
 
 Measured throughput (16 cores, Julia kernel `fast_enum.jl`): 1.2e8 signed codes per second, i.e. 7.5e6 per
 core-second. Exhaustive searches are CPU-bound and embarrassingly parallel (independent code structures,
@@ -20,9 +22,9 @@ lift vectors when a*n > 64 (small change).
 ## B. Doable, but needs a cluster or a large-memory node
 | Task | Size | 1000 cores | Gain if negative / positive |
 |---|---|---|---|
-| Cubic CS, exclude n=9 (a=5: 358, a=6: 124, a=7: 10 structures) | 1.2e13 signed codes | ~30 min (about 27 h here) | LB 9 -> 10 |
-| Cubic T, exclude n=9 (only a=7: 83 and a=8: 7 structures needed) | 6.4e13 | ~2.5 h (about 6 days here) | LB 9 -> 10 |
-| Cubic and quartic CCZ, exclude n=10 (top sector a=7: 33 structures, 2^39 lifts) | 2.3e15 (+~10%) | ~4 days | LB 10 -> 11 for both |
+| Cubic CS, exclude n=9 (a<=5 done, no survivors; remaining a=6: 124, a=7: 10 structures) | 1.2e13 signed codes | ~30 min (about 27 h here) | LB 9 -> 10 |
+| ~~Cubic T, exclude n=9~~ | 6.4e13 | - | no gain: Lemma 13 already gives LB 10 from the d=2 search; the next step (n=10) is in C |
+| Cubic CCZ, exclude n=10 (top sector a=7: 33 structures, 2^39 lifts) | 2.3e15 (+~10%) | ~4 days | cubic LB 10 -> 11; with Lemma 13 also quartic 11 -> 12 and d=5 12 -> 13 |
 | Two CCZ, d=2, exclude n=10 | ~1e12-1e13, enumeration-bound | minutes on a big-memory node | LB 10 -> 11 |
 | Two CCZ, d=2, exclude n=11 | ~5e14 + 1 TB enumeration | ~1 day | LB -> 12 |
 | Two-level SAT, CCZ form, 32-input cubic and 40-input quartic designs | undecided at 15 min | cube-and-conquer, hours-days | a 32-input cubic or 40-input quartic CCZ factory, or UNSAT within the model |
@@ -55,3 +57,5 @@ lift vectors when a*n > 64 (small change).
 Sizing files: `results/structs_r2_n9_d3_a{5,6,7}.txt`, `results/structs_r3_n10_d3_a7.txt`,
 `results/structs_nogal_r1_n9_d3_a{7,8}.txt`. Logs: `results/mip/scan2_*`, `scan3_*`, `opt_*`, `t_d2.txt`,
 `results/sat/C*.jsonl`.
+
+Note (21 Oct 2026): Lemma 13 of the paper, n_min(tau,d) >= n_min(tau,s) + d - s for non-stabilizer targets, makes every exclusion at order s propagate to higher orders. None of the runs in B closes a gap; each raises one lower bound by one. Nothing in this file is mentioned in the paper.

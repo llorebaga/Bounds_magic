@@ -23,4 +23,7 @@ results/log_fast_t_n8_d2_a5.txt
 results/log_fast_t_n9_d2_a?.txt
 results/sat/*.err
 paper/paper_source.zip
+paper/arxiv_submission.zip
+cluster/.software
+venv/
 paper/cultivationNotes.bib

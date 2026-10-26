@@ -9,7 +9,7 @@ saved = sys.argv; sys.argv = ["x", str(n), str(d)]
 ns = {}; exec(open(os.environ.get("ENUM", "enum_codes_v2.py")).read().split("t0 = time.time()")[0], ns); sys.argv = saved
 from common import *
 m = ns["m"]; E = ns["E"]; R = ns["R"]
-out = open(f"../results/structs{"" if ns.get("GALOIS",1) else "_nogal"}_r{R}_n{n}_d{d}_a{a}" + (f"_s{shard}" if nsh > 1 else "") + ".txt", "w")
+out = open(f"../results/structs{'' if ns.get('GALOIS', 1) else '_nogal'}_r{R}_n{n}_d{d}_a{a}" + (f"_s{shard}" if nsh > 1 else "") + ".txt", "w")
 cnt = 0
 for ix, AX in enumerate(subspace_orbits(n, a)):
     if ix % nsh != shard: continue
