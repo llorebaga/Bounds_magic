@@ -47,6 +47,12 @@ Status: open unless marked.
 6. **Theorem 1 beyond Pauli noise** [theory, medium]. State what survives for local non-Pauli noise and
    spell out the coherent-noise limit (Hines et al. 2603.18457 show coherent errors raise the cost).
 
+6b. **Gate lower bounds for real-T checks** [theory, hard] (open problem in the Outlook). Code-relative fault
+   tolerance is weaker than fault tolerance of the cat, so SpiderCat-type bounds (2603.05391) apply only at
+   delta = 3 (>= 8 cat CNOTs). For delta >= 5 a new constraint problem over code-relative conditions is needed
+   (minimum CNOTs / ancillas for a check of full real-T fault distance). Would complement the T-count theorem
+   with a two-qubit-gate bound; notes in `cultivation2/notes/lower_bounds_direction.md`.
+
 ## Computation
 
 7. **Fault distance of the delta = 7 ladder** [compute, running time]. Finish the weight-6 search
@@ -95,5 +101,7 @@ Status: open unless marked.
     cultivation; check whether their data actually follow (f+1)/2 and, if so, cite as independent evidence.
 12c. **Main-text figure of a delta = 5 malignant configuration** [writing, cheap]. Fig. 2 shows delta = 3 only;
     a small panel with two hooks and one completion at delta = 5 would show the general mechanism.
+12d. **Archive the code with a DOI** [writing, cheap, before submission]. Make a Zenodo release of the
+    repository (GitHub integration) and cite it in the data-availability statement instead of only the URL.
 13. **Escape stage** [external, large]. Combine Mehta et al.'s noisy-syndrome postselection
     (2610.06828) with the exact real-T evaluation, to remove the ideal decoder from our comparisons.
