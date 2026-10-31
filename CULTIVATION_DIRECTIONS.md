@@ -30,6 +30,13 @@ Status: open unless marked.
    delta, not only 3, 5, 7. Needs a condition on the fold tree (pairs of sibling leaves inside a logical
    support) that we can check for the trees we use. Turns Prop. 5(ii) partly into a theorem.
 
+3c. **A full-distance grid check for every delta** [theory, medium-hard] (from "Keeping the distance").
+   The ring and ladder generalise to a family (path grown from its middle, end parity, rungs and diagonals).
+   Prove that the family is code-relatively fault tolerant for every delta; together with direction 1 this
+   gives nearest-neighbour checks of full real-T fault distance at every distance, not only 3, 5 and >= 6 of 7.
+   Even without direction 1, a proof that one fault reaches at most one data qubit and two faults at most two
+   (the rungs and diagonals argument) is a clean statement.
+
 ## Theory, within the framework
 
 4. **Theorem 2 for r-qubit targets** [theory, cheap]. With deterministic checks on an r-qubit target the
@@ -59,6 +66,24 @@ Status: open unless marked.
 10c. **Best fold tree** [compute, cheap]. The leading term of the delta = 7 fold ranges from 0.011 to 15 p^4 over
     six trees, three orders of magnitude at no cost. A tree search (and the same for Google's grid fold)
     would give experimentalists a free improvement while the distance loss remains. Report it as a side result.
+
+10d. **Full nearest-neighbour protocol at delta = 5** [compute, medium-hard]. Only delta = 3 is done with every
+    operation noisy (FD 3). At delta = 5 the state must be prepared and grown on the grid; this is what makes
+    the ladder a real protocol and would replace "start from an ideally encoded state" in Prop. 6.
+10e. **Cheaper stabilizer measurements on the grid** [compute + theory, medium]. The complete delta = 3 protocol
+    loses to Google's circuit above p ~ 3e-4 only because of slow stabilizer rounds. Ideas: measure stabilizers
+    with the same path cat, interleave them with the un-growing, or use the route through |0>_L and a
+    projecting first check. Already listed as an open problem in Sec. S13.
+10f. **Head-to-head with Chan et al.'s repaired circuits** [external + compute, medium]. Chan et al. restore
+    fault distance 4 at delta = 5 with 13 two-qubit flags (5 with a fourth stabilizer round). Comparing their
+    circuits with the ladder (qubits, layers, acceptance, leading term under SI1000) would show which repair is
+    cheaper. Needs their circuits (check whether public).
+10g. **Logical error of the un-grown ladder** [compute, cheap-medium]. Table SIX omits epsilon for the un-grown
+    ladder because the p^6 order dominates at p = 1e-3 under SI1000. Computing the weight-6 term (or sampling)
+    would give the number the cost comparison is missing.
+10h. **Proxy fault distance of the delta = 7 checks** [compute, cheap]. Table I lists the delta = 7 proxies as
+    >= 5 while the real-T ladder is >= 6, which looks odd. A weight-5 (and weight-6) proxy search with stim
+    would remove the inconsistency.
 
 ## Writing
 
