@@ -1,18 +1,18 @@
 # cultivation_exact
 
-Exact real-T evaluation of cultivation circuits for `paper/cultivation.tex` (Theorem 5 and Proposition 6, the
-mechanism of Lemma 12 and Corollary 13, and Propositions 14-18 with Tables I, II and SV-SVII, Figs. 3 and 4).
-The fault map of Theorem 2 is computed as a stim detector error model of the skeleton (the T-aware detector
-error model, TDEM). The collapse condition is decided by the Z4 Gauss sums of Theorem 5, which cost O(t^3) per
-fault class. This is independent of the state-vector implementation in `../scripts/cultiv.py`, used for
-Propositions 10 and 11. The two agree on the published d=3 circuit: 96 harmful pairs with idle noise, leading
-coefficient 32/75.
+Exact real-T evaluation of cultivation circuits for `paper/cultivation.tex` ("Cultivating Magic States Without
+Losing Distance"): Theorem 2 (Gauss sums, precise form Theorem 12 and Proposition 13), Lemma 4, Propositions 5 and 6,
+Table I, Figures 2 and 3, and Tables SV to SIX. The fault map of Theorem 1 is computed as a stim detector error
+model of the skeleton (the T-aware detector error model, TDEM). The collapse condition is decided by Z4 Gauss sums,
+which cost O(t^3) per fault class. This is independent of the state-vector implementation in `../scripts/cultiv.py`,
+used for Propositions 5 (d = 3) and 18. The two agree on the published d = 3 circuit: 96 harmful pairs with idle
+noise, leading coefficient 32/75.
 
 All commands are run from `scripts/` (paths such as `../results/` are relative to this directory). Propositions,
-tables and figures in the table below refer to the PRL-length version of the original draft; their numbers in
-`paper/cultivation.tex` are: fold = Prop. 14, flags = Prop. 15, verified cat = Prop. 16,
-nearest-neighbour checks = Prop. 17, Google's experiment = Prop. 18; Tables I, II; Figs. 3, 4; Table SV
-(rates), SVI (acceptance), SVII (logical cover).
+tables and figures in the table below refer to the original draft. In `paper/cultivation.tex`, the folds, the
+published circuits and Google's experiment are Proposition 5, the cats and grid checks Proposition 6, flags
+Proposition 19, the old Table I is Table SVIII, the cost table SIX, the fault-distance figure Fig. 2 and the grid
+figure Fig. 3.
 
 ## Layout
 
