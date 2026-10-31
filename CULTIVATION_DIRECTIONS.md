@@ -30,6 +30,12 @@ Status: open unless marked.
    delta, not only 3, 5, 7. Needs a condition on the fold tree (pairs of sibling leaves inside a logical
    support) that we can check for the trees we use. Turns Prop. 5(ii) partly into a theorem.
 
+3b'. **Logical-aware fold trees** [theory + compute, medium] (from S10). Code-relative fault tolerance only forbids
+   hooks that put X on more than s, but fewer than delta, qubits of a minimum-weight logical support, and Table SVII
+   shows how rare those sets are (10.5% of pairs avoid every support at delta = 5; at delta = 7, 99.96% of weight-6
+   sets do). Search for fold trees (or folds with a few extra parity checks) whose s-fault hooks never land inside
+   a support. Impossible at delta = 3 (every pair is in a support) but possibly feasible at delta >= 5; a fold that
+   keeps full distance without cat verification would be cheaper than the ladder. Integer program over subtrees.
 3c. **A full-distance grid check for every delta** [theory, medium-hard] (from "Keeping the distance").
    The ring and ladder generalise to a family (path grown from its middle, end parity, rungs and diagonals).
    Prove that the family is code-relatively fault tolerant for every delta; together with direction 1 this
@@ -83,7 +89,8 @@ Status: open unless marked.
 
 7. **Fault distance of the delta = 7 ladder** [compute, running time]. Finish the weight-6 search
    (`python fd_k6.py ../results/nn_cat_d7_r1_v1_unf.stim 14 7`, killed earlier). If clean, FD = 7 exactly
-   and Table I / Prop 6 lose their ">=".
+   and Table I / Prop 6 lose their ">=". Same for the delta = 7 verified cat (all-to-all), certified only >= 5:
+   a weight-5 search (`leading_k5.py`, about 15 min on 14 cores for the ladder) would give >= 6 or a witness.
 8. **|CS> cultivation as a non-T target** [compute, medium]. Run Theorem 1 on Min and Heo's circuit.
 9. **Independent cross-check with merlin** [external + compute, cheap]. merlin (Cercelescu, Koch, Pesah,
    2610.06811) is open source. Reproducing one or two fault distances gives a third, outside implementation.
