@@ -1,0 +1,4 @@
+tree0_1ZZ uniform p=0.001: acc 0.1228 eps 1.111e-09 +- 2.8e-10 (186s)
+tree0_1ZZ uniform p=0.0005: acc 0.3501 eps 1.431e-10 +- 7.0e-11 (102s)
+tree0_1ZZ si1000 p=0.001: acc 0.1507 eps 2.594e-09 +- 1.3e-09 (124s)
+tree0_1ZZ si1000 p=0.0005: acc 0.3880 eps 3.910e-11 +- 1.4e-11 (54s)

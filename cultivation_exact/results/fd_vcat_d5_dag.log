@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "C:\Users\llore\Documents\2026\Magic\cultivation2\scripts\fd_file.py", line 10, in <module>
+    c = stim.Circuit.from_file(path)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Failed to open 'results/vcat_d5_injdag.stim' for reading.

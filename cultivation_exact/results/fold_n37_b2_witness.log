@@ -1,0 +1,13 @@
+  k=1: 0 malignant
+  k=2: 0 malignant
+  k=3: 0 malignant
+  k=4: 7018131 pairs, 2816960 hash groups, max distinct o per group 1842, sum of squares 81477131
+  k=4: 555656 distinct observable masks to evaluate
+  k=4: 523 malignant
+search: fault distance 4, 523 harmful masks (494s)
+exact witnesses for 523 of 523 harmful masks (709s)
+  {'mask': '590295810358743285489', 'classes': [748, 749, 2705, 2708], 'prob': 2.2150665299051333e-15, 'acc': 0.031249999999999938, 'bad': 0.031249999999999938, 'acc_contraction': 0.03125000000000001, 'bad_contraction': 0.03125000000000001}
+  {'mask': '37633777', 'classes': [748, 749, 2706, 2708], 'prob': 6.330269123049932e-16, 'acc': 0.06249999999999989, 'bad': 0.06249999999999989, 'acc_contraction': 0.06250000000000001, 'bad_contraction': 0.06250000000000001}
+  {'mask': '590295810358750691060', 'classes': [748, 749, 2707, 2708], 'prob': 4.11186839804405e-15, 'acc': 0.031249999999999938, 'bad': 0.031249999999999938, 'acc_contraction': 0.03125000000000001, 'bad_contraction': 0.03125000000000001}
+  {'mask': '768356712530840533679', 'classes': [1682, 1683, 2716, 2721], 'prob': 9.494559522148469e-16, 'acc': 0.015624999999999969, 'bad': 0.007812499999999984, 'acc_contraction': 0.015624999999999983, 'bad_contraction': 0.007812499999999991}
+  {'mask': '6024284383099557', 'classes': [1682, 1683, 2717, 2721], 'prob': 3.1653456831136297e-16, 'acc': 0.015624999999999972, 'bad': 0.015624999999999972, 'acc_contraction': 0.015624999999999958, 'bad_contraction': 0.015624999999999958}

@@ -1,0 +1,4 @@
+  Gidney uniform p=0.001: acc 0.1435 eps 3.189e-09 +- 5.7e-10
+  Gidney uniform p=0.0005: acc 0.3788 eps 2.593e-10 +- 2.2e-11
+  Gidney si1000 p=0.001: acc 0.1551 eps 1.171e-09 +- 3.3e-10
+  Gidney si1000 p=0.0005: acc 0.3942 eps 8.611e-11 +- 7.6e-12

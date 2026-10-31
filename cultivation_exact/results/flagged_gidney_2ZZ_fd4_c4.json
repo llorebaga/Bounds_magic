@@ -1,0 +1,18 @@
+{
+ "circuit": "flagged_gidney_2ZZ_fd4.stim",
+ "malignant_4sets": 6824,
+ "weight": 1.1639088876798692e-09,
+ "c4": 1163.908887679869,
+ "distinct_masks_evaluated": 411647,
+ "harmful_masks": 3784,
+ "acceptances": [
+  0.015625,
+  0.03125,
+  0.0625,
+  0.125,
+  0.25,
+  0.5,
+  1.0
+ ],
+ "seconds": 218
+}

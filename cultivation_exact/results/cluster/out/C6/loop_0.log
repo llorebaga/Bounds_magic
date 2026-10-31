@@ -1,0 +1,6 @@
+{"k": 5, "malignant": 3855, "weight": 2.7222020977434405e-14, "evaluated": 86084, "circuit": "vcat_d5_r1", "shard": 0, "nshards": 64, "classes": 1591, "k_affine": 11, "t": 39, "seconds": 123}
+{"k": 5, "malignant": 31927, "weight": 3.16850905329689e-14, "evaluated": 143196, "circuit": "vcat_d5_r1", "shard": 12, "nshards": 64, "classes": 1591, "k_affine": 11, "t": 39, "seconds": 189}
+{"k": 5, "malignant": 14615, "weight": 6.983560772863448e-14, "evaluated": 100731, "circuit": "vcat_d5_r1", "shard": 24, "nshards": 64, "classes": 1591, "k_affine": 11, "t": 39, "seconds": 200}
+{"k": 5, "malignant": 1629, "weight": 6.186461036049916e-15, "evaluated": 57397, "circuit": "vcat_d5_r1", "shard": 36, "nshards": 64, "classes": 1591, "k_affine": 11, "t": 39, "seconds": 165}
+{"k": 5, "malignant": 8060, "weight": 1.438099792556324e-13, "evaluated": 102414, "circuit": "vcat_d5_r1", "shard": 48, "nshards": 64, "classes": 1591, "k_affine": 11, "t": 39, "seconds": 173}
+{"k": 5, "malignant": 1529, "weight": 9.864135573411653e-15, "evaluated": 68888, "circuit": "vcat_d5_r1", "shard": 60, "nshards": 64, "classes": 1591, "k_affine": 11, "t": 39, "seconds": 97}

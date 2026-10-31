@@ -1,0 +1,50 @@
+fig3 cut=162 p=0.003 T: P_acc=0.1378 eps=4.785e-05 +- 2.5e-07 (1.2e+09 shots, 80s)
+fig3 cut=162 p=0.003 S: P_acc=0.1382 eps=1.546e-05 +- 3.1e-07 (1.2e+09 shots, 82s)
+fig3 cut=162 p=0.0023 T: P_acc=0.2188 eps=2.382e-05 +- 1.1e-07 (2.0e+09 shots, 129s)
+fig3 cut=162 p=0.0023 S: P_acc=0.2192 eps=6.913e-06 +- 1.3e-07 (2.0e+09 shots, 137s)
+fig3 cut=162 p=0.0015 T: P_acc=0.3711 eps=8.161e-06 +- 3.0e-08 (4.7e+09 shots, 281s)
+fig3 cut=162 p=0.0015 S: P_acc=0.3715 eps=1.801e-06 +- 3.2e-08 (4.7e+09 shots, 285s)
+fig3 cut=162 p=0.001 T: P_acc=0.5164 eps=3.128e-06 +- 1.0e-08 (1.1e+10 shots, 714s)
+fig3 cut=162 p=0.001 S: P_acc=0.5167 eps=5.169e-07 +- 9.7e-09 (1.1e+10 shots, 1154s)
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\llore\anaconda3\Lib\multiprocessing\spawn.py", line 108, in spawn_main
+    source_process = _winapi.OpenProcess(
+                     ^^^^^^^^^^^^^^^^^^^^
+OSError: [WinError 87] The parameter is incorrect
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\llore\anaconda3\Lib\multiprocessing\spawn.py", line 108, in spawn_main
+    source_process = _winapi.OpenProcess(
+                     ^^^^^^^^^^^^^^^^^^^^
+OSError: [WinError 87] The parameter is incorrect
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\llore\anaconda3\Lib\multiprocessing\spawn.py", line 108, in spawn_main
+    source_process = _winapi.OpenProcess(
+                     ^^^^^^^^^^^^^^^^^^^^
+OSError: [WinError 87] The parameter is incorrect
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\llore\anaconda3\Lib\multiprocessing\spawn.py", line 108, in spawn_main
+    source_process = _winapi.OpenProcess(
+                     ^^^^^^^^^^^^^^^^^^^^
+OSError: [WinError 87] The parameter is incorrect
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\llore\anaconda3\Lib\multiprocessing\spawn.py", line 108, in spawn_main
+Traceback (most recent call last):
+    source_process = _winapi.OpenProcess(
+  File "<string>", line 1, in <module>
+  File "C:\Users\llore\anaconda3\Lib\multiprocessing\spawn.py", line 108, in spawn_main
+                     ^^^^^^^^^^^^^^^^^^^^
+OSError: [WinError 87] The parameter is incorrect
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\llore\anaconda3\Lib\multiprocessing\spawn.py", line 108, in spawn_main
+    source_process = _winapi.OpenProcess(
+                     ^^^^^^^^^^^^^^^^^^^^
+OSError: [WinError 87] The parameter is incorrect
+    source_process = _winapi.OpenProcess(
+                     ^^^^^^^^^^^^^^^^^^^^
+OSError: [WinError 87] The parameter is incorrect

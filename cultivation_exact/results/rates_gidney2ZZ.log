@@ -1,0 +1,4 @@
+gidney2ZZ uniform p=0.001: acc 0.1192 eps 8.636e-10 +- 3.9e-10 (149s)
+gidney2ZZ uniform p=0.0005: acc 0.3450 eps 1.034e-10 +- 3.9e-11 (70s)
+gidney2ZZ si1000 p=0.001: acc 0.1481 eps 2.040e-09 +- 1.2e-09 (111s)
+gidney2ZZ si1000 p=0.0005: acc 0.3852 eps 5.226e-11 +- 2.1e-11 (51s)

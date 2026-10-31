@@ -1,0 +1,7 @@
+skeleton: 42 qubits + 53 magic gates; 164 records
+skeleton detectors: 93, observables: 54 (original circuit: 107 detectors)
+Choi state: N=54, affine dimension k=15 (32768 terms)
+d1=5 magic=T: t=53, 2929 mechanisms, 93 skeleton detectors
+  k=1: 0 malignant configurations
+  k=2: 300 malignant configurations
+fault distance = 2; leading P_bad term = 0.0001222 at p=1e-3 -> coefficient 122.2 p^2; 3.6s

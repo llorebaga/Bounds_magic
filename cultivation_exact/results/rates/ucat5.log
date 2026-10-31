@@ -1,0 +1,19 @@
+ucat5: t=39 k=11 classes=1483 accepted Z classes=2 (1s)
+    k=2: P_bad contribution 5.603e-23 +- 0
+    k=3: P_bad contribution 1.244e-10 +- 0
+    k=4: P_bad contribution 1.583e-10 +- 3.4e-11
+    k=5: P_bad contribution 5.264e-11 +- 1.2e-11
+    k=6: P_bad contribution 6.391e-12 +- 2.5e-12
+    k=7: P_bad contribution 1.523e-13 +- 6.3e-14
+    k=8: P_bad contribution 8.617e-15 +- 7.3e-15
+    k=9: P_bad contribution 2.718e-17 +- 2e-17
+  uniform p=0.001: acceptance 0.2263 +- 0.0002, eps 1.511e-09 +- 1.6e-10 (39s)
+    k=2: P_bad contribution 2.951e-23 +- 0
+    k=3: P_bad contribution 3.264e-11 +- 0
+    k=4: P_bad contribution 1.941e-11 +- 3.4e-12
+    k=5: P_bad contribution 2.67e-12 +- 8.9e-13
+    k=6: P_bad contribution 1.721e-13 +- 5.5e-14
+    k=7: P_bad contribution 9.586e-16 +- 5.3e-16
+    k=8: P_bad contribution 3.708e-18 +- 2.9e-18
+    k=9: P_bad contribution 4.924e-36 +- 4.9e-36
+  uniform p=0.0005: acceptance 0.4743 +- 0.0002, eps 1.157e-10 +- 7.4e-12 (27s)

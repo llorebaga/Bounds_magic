@@ -1,0 +1,42 @@
+[
+ {
+  "model": "uniform",
+  "p": 0.001,
+  "fault_distance": 3,
+  "n_malignant": 9,
+  "c3": 1.5224043765112114,
+  "P_acc": 0.14391662291666665,
+  "eps_leading": 1.5224043765112116e-09,
+  "note": "eps ~ c3 p^3 to leading order (the factor P(no other fault) cancels between P_bad and P_acc)"
+ },
+ {
+  "model": "uniform",
+  "p": 0.0005,
+  "fault_distance": 3,
+  "n_malignant": 9,
+  "c3": 1.5224043765112114,
+  "P_acc": 0.37891486458333334,
+  "eps_leading": 1.9030054706390145e-10,
+  "note": "eps ~ c3 p^3 to leading order (the factor P(no other fault) cancels between P_bad and P_acc)"
+ },
+ {
+  "model": "si1000",
+  "p": 0.001,
+  "fault_distance": 3,
+  "n_malignant": 9,
+  "c3": 0.5187015964450041,
+  "P_acc": 0.15517351458333334,
+  "eps_leading": 5.187015964450041e-10,
+  "note": "eps ~ c3 p^3 to leading order (the factor P(no other fault) cancels between P_bad and P_acc)"
+ },
+ {
+  "model": "si1000",
+  "p": 0.0005,
+  "fault_distance": 3,
+  "n_malignant": 9,
+  "c3": 0.5187015964450041,
+  "P_acc": 0.39386140625,
+  "eps_leading": 6.483769955562552e-11,
+  "note": "eps ~ c3 p^3 to leading order (the factor P(no other fault) cancels between P_bad and P_acc)"
+ }
+]

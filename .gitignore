@@ -7,6 +7,9 @@ paper/*.blg
 paper/*.out
 paper/*.pdf
 !paper/paper.pdf
+!paper/cultivation.pdf
+!paper/fig_fd.pdf
+!paper/fig_nn.pdf
 paper/*.bbl
 paper/*.fls
 paper/*.fdb_latexmk

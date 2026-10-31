@@ -1,0 +1,530 @@
+QUBIT_COORDS(3, 3) 0
+QUBIT_COORDS(3, 4) 1
+QUBIT_COORDS(3, 5) 2
+QUBIT_COORDS(3, 6) 3
+QUBIT_COORDS(3, 7) 4
+QUBIT_COORDS(4, 3) 5
+QUBIT_COORDS(4, 4) 6
+QUBIT_COORDS(4, 5) 7
+QUBIT_COORDS(4, 6) 8
+QUBIT_COORDS(4, 7) 9
+QUBIT_COORDS(5, 4) 10
+QUBIT_COORDS(5, 5) 11
+QUBIT_COORDS(5, 6) 12
+QUBIT_COORDS(6, 5) 13
+H_YZ[conjugate] 7
+TICK
+S[injection] 7
+TICK
+H 5 1 6 2 3 8 12
+H_YZ[conjugate] 7
+TICK
+I[injection] 7
+TICK
+CZ 1 2 6 7 3 8
+TICK
+H 6 10 3
+TICK
+CZ 6 10
+TICK
+H 10 7 11
+I[echo] 6
+TICK
+CZ 1 6 10 11 2 7
+TICK
+H 6 11
+TICK
+I[echo] 10
+TICK
+CZ 6 10 7 11
+TICK
+H 11
+I[echo] 6
+TICK
+CZ 5 6 11 12
+TICK
+H 6 10 2 11 13
+TICK
+I[echo] 7
+TICK
+CZ 1 6 10 11
+TICK
+I[echo] 2 13
+TICK
+CZ 6 7 2 3 11 13
+TICK
+H 2 13 12
+I[echo] 6 10 11
+TICK
+CZ 1 2 6 10 7 11 8 12
+TICK
+H 1 6 10 11 8 12
+I[echo] 2
+TICK
+CZ 5 6 2 7 11 13 3 8
+TICK
+H 6 2 7 11 8
+TICK
+I[echo] 6 11
+TICK
+I[echo] 5 1 10 7 13 3 12 9
+M 6 2 8 11
+DETECTOR(4, 4, 0) rec[-4]
+DETECTOR(3, 5, 0) rec[-3]
+DETECTOR(4, 6, 0) rec[-2]
+DETECTOR(5, 5, 0) rec[-1]
+TICK
+R 6 2 11 8
+TICK
+H 0 6 2 11 8 4
+TICK
+CZ 0 5 3 4 8 12
+TICK
+H 0 5 3 8 12 4
+I[echo] 6 2 11
+TICK
+CZ 5 6 2 3 11 12
+TICK
+H 5 6 2 11 12
+TICK
+I[echo] 3 8
+TICK
+CZ 6 10 2 7 11 13 3 8
+TICK
+I[echo] 6 2 11
+TICK
+CZ 1 2 6 7 10 11
+TICK
+CZ 1 6 7 11
+TICK
+H 1 6 10 2 7 11 13 3 8
+TICK
+I[echo] 4 0 5 12
+TICK
+CZ 1 6 7 11
+TICK
+I[echo] 1 6 10 2 7 11 8 13
+TICK
+CZ 1 2 6 7 10 11
+TICK
+I[echo] 3
+TICK
+CZ 6 10 2 7 11 13 3 8
+TICK
+H 1 6 10 2 7 11 13 8
+TICK
+CZ 5 6 2 3 11 12
+TICK
+H 5 6 2 11 3 12
+I[echo] 8
+TICK
+CZ 0 5 3 4 8 12
+TICK
+H 0 5 3 8 12 4
+TICK
+I[echo] 6 8
+TICK
+I[echo] 5 1 10 7 13 3 12 9
+M 6 2 11 0 8 4
+DETECTOR(4, 4, 1) rec[-6]
+DETECTOR(3, 5, 1) rec[-5]
+DETECTOR(5, 5, 1) rec[-4]
+DETECTOR(3, 3, 1) rec[-3]
+DETECTOR(4, 6, 1) rec[-2]
+DETECTOR(3, 7, 1) rec[-1]
+TICK
+R 6 2 11 8 4 0
+TICK
+I[conjugate] 5 1 10 7 13 3 12
+TICK
+I[echo] 5 1 10 7 13 3
+TICK
+I[T_gate] 5 1 10 7 13 3 12
+TICK
+I[conjugate] 5 1 10 7 13 3 12
+TICK
+H 1 6 2 7 11 13 3 8
+TICK
+CZ 1 6 2 7 11 13 3 8
+TICK
+H 5 7 8 12
+I[echo] 6
+TICK
+CZ 5 6 7 8 11 12
+TICK
+H 6 10 8 9
+I[echo] 7 11
+TICK
+CZ 6 7 10 11 8 9
+TICK
+H 7 8 9
+TICK
+CZ 7 11 8 9
+TICK
+H 11 8
+TICK
+I[echo] 5 1 6 10 2 7 13 3 12 9
+M 11 8
+DETECTOR(3, 7, 2) rec[-2] rec[-3] rec[-4] rec[-5]
+DETECTOR(4, 6, 2) rec[-1]
+TICK
+R 11 8
+TICK
+H 11 8
+TICK
+CZ 7 11 8 9
+TICK
+H 7 8 9
+TICK
+CZ 6 7 10 11 8 9
+TICK
+H 6 10 8
+I[echo] 7 11
+TICK
+CZ 5 6 7 8 11 12
+TICK
+H 5 7 8 12
+I[echo] 6
+TICK
+CZ 1 6 2 7 11 13 3 8
+TICK
+H 1 6 2 7 11 13 3 8
+TICK
+I[conjugate] 5 1 10 7 13 3 12
+TICK
+I[echo] 5 1 6 10 2 7 11 13 8 3 9 12
+TICK
+I[T_dagger_gate] 5 1 10 7 13 3 12
+TICK
+I[conjugate] 5 1 10 7 13 3 12
+TICK
+I[echo] 5 1 10 7 13 3 12 9
+M 6 2 11 8
+DETECTOR(4, 4, 3) rec[-4]
+DETECTOR(3, 5, 3) rec[-3]
+DETECTOR(5, 5, 3) rec[-2] rec[-6]
+DETECTOR(4, 6, 3) rec[-1]
+TICK
+R 0 6 2 4 11 8
+TICK
+H 0 6 2 11 8 4
+TICK
+CZ 0 5 3 4 8 12
+TICK
+H 0 5 3 8 12 4
+I[echo] 6 2 11
+TICK
+CZ 5 6 2 3 11 12
+TICK
+H 5 6 2 11 12
+TICK
+I[echo] 3 8
+TICK
+CZ 6 10 2 7 11 13 3 8
+TICK
+I[echo] 6 2 11
+TICK
+CZ 1 2 6 7 10 11
+TICK
+CZ 1 6 7 11
+TICK
+H 1 6 10 2 7 11 13 3 8
+TICK
+I[echo] 4 0 5 12
+TICK
+CZ 1 6 7 11
+TICK
+I[echo] 1 6 10 2 7 11 13 8
+TICK
+CZ 1 2 6 7 10 11
+TICK
+I[echo] 3
+TICK
+CZ 6 10 2 7 11 13 3 8
+TICK
+H 1 6 10 2 7 11 13 8
+TICK
+CZ 5 6 2 3 11 12
+TICK
+H 5 6 2 11 3 12
+I[echo] 8
+TICK
+CZ 0 5 3 4 8 12
+TICK
+H 0 5 3 8 12 4
+TICK
+I[echo] 2
+TICK
+I[echo] 5 1 10 7 13 3 12 9
+M 6 2 11 0 8 4
+DETECTOR(4, 4, 4) rec[-6]
+DETECTOR(5, 5, 4) rec[-5] rec[-11] rec[-16] rec[-17]
+DETECTOR(3, 5, 4) rec[-4] rec[-17]
+DETECTOR(3, 3, 4) rec[-3]
+DETECTOR(4, 6, 4) rec[-2]
+DETECTOR(3, 7, 4) rec[-1] rec[-14]
+TICK
+R 6 2 11 8 4 0
+TICK
+I[conjugate] 5 1 10 7 13 3 12
+TICK
+I[echo] 5 1 7 13 3
+TICK
+I[T_gate] 5 1 10 7 13 3 12
+TICK
+I[conjugate] 5 1 10 7 13 3 12
+TICK
+H 1 6 2 7 11 13 3 8
+TICK
+CZ 1 6 2 7 11 13 3 8
+TICK
+H 5 7 8 12
+I[echo] 6
+TICK
+CZ 5 6 7 8 11 12
+TICK
+H 6 10 8
+I[echo] 7 11
+TICK
+CZ 6 7 10 11 8 9
+TICK
+H 7 8 9
+TICK
+CZ 7 11 8 9
+TICK
+H 11 8
+TICK
+I[echo] 5 1 6 10 2 7 13 3 12 9
+M 11 8
+DETECTOR(4, 6, 5) rec[-1]
+OBSERVABLE_INCLUDE(0) rec[-2] rec[-3] rec[-4] rec[-5] rec[-9] rec[-10] rec[-12]
+TICK
+R 11 8
+TICK
+H 11 8
+TICK
+CZ 7 11 8 9
+TICK
+H 7 8 9
+TICK
+CZ 6 7 10 11 8 9
+TICK
+H 6 10 8
+I[echo] 7 11
+TICK
+CZ 5 6 7 8 11 12
+TICK
+H 5 7 8 12
+I[echo] 6
+TICK
+CZ 1 6 2 7 11 13 3 8
+TICK
+H 1 6 2 7 11 13 3 8
+TICK
+I[conjugate] 5 1 10 7 13 3 12
+TICK
+I[echo] 5 1 6 10 2 7 11 13 8 3 9 12
+TICK
+I[T_dagger_gate] 5 1 10 7 13 3 12
+TICK
+I[conjugate] 5 1 10 7 13 3 12
+TICK
+I[echo] 5 1 10 7 13 3 12 9
+M 6 2 11 8
+DETECTOR(4, 4, 6) rec[-4]
+DETECTOR(3, 5, 6) rec[-3]
+DETECTOR(5, 5, 6) rec[-2] rec[-6]
+DETECTOR(4, 6, 6) rec[-1]
+TICK
+R 0 6 2 4 11 8
+TICK
+H 0 6 2 11 8 4
+TICK
+CZ 0 5 3 4 8 12
+TICK
+H 0 5 3 8 12 4
+I[echo] 6 2 11
+TICK
+CZ 5 6 2 3 11 12
+TICK
+H 5 6 2 11 12
+TICK
+I[echo] 3 8
+TICK
+CZ 6 10 2 7 11 13 3 8
+TICK
+I[echo] 6 2 11
+TICK
+CZ 1 2 6 7 10 11
+TICK
+CZ 1 6 7 11
+TICK
+H 1 6 10 2 7 11 13 3 8
+TICK
+I[echo] 4 0 5 12
+TICK
+CZ 1 6 7 11
+TICK
+I[echo] 1 6 10 2 7 11 13 8
+TICK
+CZ 1 2 6 7 10 11
+TICK
+I[echo] 3
+TICK
+CZ 6 10 2 7 11 13 3 8
+TICK
+H 1 6 10 2 7 11 13 8
+TICK
+CZ 5 6 2 3 11 12
+TICK
+H 5 6 2 11 3 12
+I[echo] 8
+TICK
+CZ 0 5 3 4 8 12
+TICK
+H 0 5 3 8 12 4
+TICK
+I[echo] 2
+TICK
+I[echo] 5 1 10 7 13 3 12 9
+M 6 2 11 0 8 4
+DETECTOR(4, 4, 7) rec[-6]
+DETECTOR(5, 5, 7) rec[-5] rec[-11] rec[-16] rec[-17]
+DETECTOR(3, 5, 7) rec[-4] rec[-17]
+DETECTOR(3, 3, 7) rec[-3]
+DETECTOR(4, 6, 7) rec[-2]
+DETECTOR(3, 7, 7) rec[-1] rec[-14]
+TICK
+R 6 2 11 8 4 0
+TICK
+I[conjugate] 5 1 10 7 13 3 12
+TICK
+I[echo] 5 1 7 13 3
+TICK
+I[T_gate] 5 1 10 7 13 3 12
+TICK
+I[conjugate] 5 1 10 7 13 3 12
+TICK
+H 1 6 2 7 11 13 3 8
+TICK
+CZ 1 6 2 7 11 13 3 8
+TICK
+H 5 7 8 12
+I[echo] 6
+TICK
+CZ 5 6 7 8 11 12
+TICK
+H 6 10 8
+I[echo] 7 11
+TICK
+CZ 6 7 10 11 8 9
+TICK
+H 7 8 9
+TICK
+CZ 7 11 8 9
+TICK
+H 11 8
+TICK
+I[echo] 5 1 6 10 2 7 13 3 12 9
+M 11 8
+DETECTOR(4, 6, 8) rec[-2] rec[-3] rec[-4] rec[-5] rec[-9] rec[-10] rec[-12]
+DETECTOR(4, 6, 9) rec[-1]
+TICK
+R 11 8
+TICK
+H 11 8
+TICK
+CZ 7 11 8 9
+TICK
+H 7 8 9
+TICK
+CZ 6 7 10 11 8 9
+TICK
+H 6 10 8 9
+I[echo] 7 11
+TICK
+CZ 5 6 7 8 11 12
+TICK
+H 5 7 8 12
+I[echo] 6
+TICK
+CZ 1 6 2 7 11 13 3 8
+TICK
+H 1 6 2 7 11 13 3 8
+TICK
+I[conjugate] 5 1 10 7 13 3 12
+TICK
+I[echo] 5 1 6 10 2 7 11 13 8 3 9 12
+TICK
+I[T_dagger_gate] 5 1 10 7 13 3 12
+TICK
+I[conjugate] 5 1 10 7 13 3 12
+TICK
+I[echo] 5 1 10 7 13 3 12 9
+M 6 2 11 8
+DETECTOR(4, 4, 10) rec[-4]
+DETECTOR(3, 5, 10) rec[-3]
+DETECTOR(5, 5, 10) rec[-2] rec[-6]
+DETECTOR(4, 6, 10) rec[-1]
+TICK
+R 0 6 2 4 11 8
+TICK
+H 0 6 2 11 8 4
+TICK
+CZ 0 5 3 4 8 12
+TICK
+H 0 5 3 8 12 4
+I[echo] 6 2 11
+TICK
+CZ 5 6 2 3 11 12
+TICK
+H 5 6 2 11 12
+TICK
+I[echo] 3 8
+TICK
+CZ 6 10 2 7 11 13 3 8
+TICK
+I[echo] 6 2 11
+TICK
+CZ 1 2 6 7 10 11
+TICK
+CZ 1 6 7 11
+TICK
+H 1 6 10 2 7 11 13 3 8
+TICK
+I[echo] 4 0 5 12
+TICK
+CZ 1 6 7 11
+TICK
+I[echo] 6 2 11 8
+TICK
+CZ 1 2 6 7 10 11
+TICK
+I[echo] 3
+TICK
+CZ 6 10 2 7 11 13 3 8
+TICK
+H 6 2 11 8
+TICK
+CZ 5 6 2 3 11 12
+TICK
+H 5 6 2 11 3 12
+I[echo] 8
+TICK
+CZ 0 5 3 4 8 12
+TICK
+H 0 8 4
+TICK
+I[echo] 2 1 12 9
+TICK
+M 6 2 11 0 8 4 5 1 10 7 13 3 12 9
+DETECTOR(4, 4, 11) rec[-14]
+DETECTOR(5, 5, 11) rec[-13] rec[-19] rec[-24] rec[-25]
+DETECTOR(3, 5, 11) rec[-12] rec[-25]
+DETECTOR(3, 3, 11) rec[-11]
+DETECTOR(4, 6, 11) rec[-10]
+DETECTOR(3, 7, 11) rec[-9] rec[-22]
+DETECTOR(4, 5, 11) rec[-5] rec[-6] rec[-7] rec[-8]
+DETECTOR(5, 6, 11) rec[-2] rec[-3] rec[-5] rec[-7] rec[-10]
+DETECTOR(6, 5, 11) rec[-2] rec[-4] rec[-5] rec[-6]
+DETECTOR(4, 7, 11) rec[-1]

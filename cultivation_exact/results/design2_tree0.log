@@ -1,0 +1,9 @@
+8028 non-disturbing candidates on base ticks 74..90 (44s)
+iter 0: 0 flags, 0 added layers -> first malignant weight 3 (3 configurations) [93s]
+Set parameter Username
+Set parameter LicenseID to value 2873805
+Academic license - for non-commercial use only - expires 2027-10-12
+   +1152 constraints (total 168, 24 undetectable reps); ILP -> 6 flags, objective 66, gap 0
+iter 1: 6 flags, 6 added layers -> first malignant weight 3 (3 configurations) [146s]
+   ILP infeasible (239 constraints, 24 undetectable)
+RESULT d5_design_tree0_74-90_aligned_lw10: flags [(3, 76, 77, 'Z'), (3, 78, 88, 'Z'), (3, 89, 90, 'Z'), (14, 76, 77, 'Z'), (14, 78, 88, 'Z'), (14, 89, 90, 'Z')], failed=True, 147s

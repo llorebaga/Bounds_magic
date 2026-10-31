@@ -1,0 +1,95 @@
+c=inject[unitary]+cultivate,p=0.001,noise=uniform,g=css,q=15,b=Y,r=4,d1=3.stim: t=15 k_affine=5 classes=394 accepted Z classes=2 (setup 0s)
+  k=1: 0 malignant
+  k=2: 9 malignant
+  RESULT real-T fault distance 2, 9 malignant (c_2 = 0.426 if the file has p = 1e-3), 174 exact evaluations, 0.0s
+JSON {"circuit": "c=inject[unitary]+cultivate,p=0.001,noise=uniform,g=css,q=15,b=Y,r=4,d1=3.stim", "opt": "default", "t": 15, "k_affine": 5, "classes": 394, "fd": 2, "malignant": 9, "coef_at_p1e3": 0.42641785665905035, "evaluations": 174, "seconds": 0.0}
+gidney_d5.stim: t=53 k_affine=15 classes=2929 accepted Z classes=2 (setup 0s)
+  k=1: 0 malignant
+  k=2: 0 malignant
+  k=3: 9 malignant
+  RESULT real-T fault distance 3, 9 malignant (c_3 = 1.52 if the file has p = 1e-3), 25348 exact evaluations, 15.3s
+JSON {"circuit": "gidney_d5.stim", "opt": "complement", "t": 53, "k_affine": 15, "classes": 2929, "fd": 3, "malignant": 9, "coef_at_p1e3": 1.5224043765112116, "evaluations": 25348, "seconds": 15.3}
+ucat_d5_r1.stim: t=39 k_affine=11 classes=1483 accepted Z classes=2 (setup 0s)
+  k=1: 0 malignant
+  k=2: 0 malignant
+  k=3: 99 malignant
+  RESULT real-T fault distance 3, 99 malignant (c_3 = 0.545 if the file has p = 1e-3), 6277 exact evaluations, 3.4s
+JSON {"circuit": "ucat_d5_r1.stim", "opt": "nopattern", "t": 39, "k_affine": 11, "classes": 1483, "fd": 3, "malignant": 99, "coef_at_p1e3": 0.5447502114181783, "evaluations": 6277, "seconds": 3.4}
+flagged_gidney_2ZZ_fd4.stim: t=53 k_affine=15 classes=2968 accepted Z classes=2 (setup 0s)
+  k=1: 0 malignant
+  k=2: 0 malignant
+  k=3: 0 malignant
+  k=4: 4403028 pairs, 2062085 hash groups, max distinct o per group 1328, sum of squares 40509906
+  k=4: 411647 distinct observable masks to evaluate
+  k=4: 3784 malignant
+  RESULT real-T fault distance 4, 3784 malignant, 411647 exact evaluations, 3215.2s
+JSON {"circuit": "flagged_gidney_2ZZ_fd4.stim", "opt": "complement", "t": 53, "k_affine": 15, "classes": 2968, "fd": 4, "malignant": 3784, "coef_at_p1e3": null, "evaluations": 411647, "seconds": 3215.2}
+vcat_d5_r1.stim: t=39 k_affine=11 classes=1591 accepted Z classes=2 (setup 0s)
+  k=1: 0 malignant
+  k=2: 0 malignant
+  k=3: 0 malignant
+  k=4: 1264845 pairs, 446175 hash groups, max distinct o per group 570, sum of squares 13296931
+  k=4: 56319 distinct observable masks to evaluate
+  k=4: 0 malignant
+  RESULT real-T fault distance >4, 0 malignant, 56319 exact evaluations, 22.2s
+JSON {"circuit": "vcat_d5_r1.stim", "opt": "nopattern", "t": 39, "k_affine": 11, "classes": 1591, "fd": ">4", "malignant": 0, "coef_at_p1e3": null, "evaluations": 56319, "seconds": 22.2}
+vcat_d3_T_merged.stim: t=29 k_affine=9 classes=778 accepted Z classes=4 (setup 0s)
+  note: more than two accepted Z-pattern classes; FastExact sums over all of them
+  k=1: 0 malignant
+  k=2: 1 malignant
+  RESULT real-T fault distance 2, 1 malignant (c_2 = 1.54e+03 if the file has p = 1e-3), 739 exact evaluations, 0.2s
+JSON {"circuit": "vcat_d3_T_merged.stim", "opt": "nopattern", "t": 29, "k_affine": 9, "classes": 778, "fd": 2, "malignant": 1, "coef_at_p1e3": 1536.69733461352, "evaluations": 739, "seconds": 0.2}
+ucat_d7_r1_injdag.stim: t=75 k_affine=20 classes=3175 accepted Z classes=2 (setup 3s)
+  k=1: 0 malignant
+  k=2: 0 malignant
+  k=3: 0 malignant
+  RESULT real-T fault distance >3, 0 malignant, 32743 exact evaluations, 14.5s
+JSON {"circuit": "ucat_d7_r1_injdag.stim", "opt": "nopattern", "t": 75, "k_affine": 20, "classes": 3175, "fd": ">3", "malignant": 0, "coef_at_p1e3": null, "evaluations": 32743, "seconds": 14.5}
+vcat_d7_r1_injdag.stim: t=75 k_affine=20 classes=3391 accepted Z classes=2 (setup 4s)
+  k=1: 0 malignant
+  k=2: 0 malignant
+  k=3: 0 malignant
+Traceback (most recent call last):
+  File "C:\Users\llore\anaconda3\Lib\site-packages\numpy\lib\arraysetops.py", line 297, in unique
+    consolidated = ar.view(dtype)
+                   ^^^^^^^^^^^^^^
+  File "C:\Users\llore\anaconda3\Lib\site-packages\numpy\core\_internal.py", line 551, in _view_is_safe
+    raise TypeError("Cannot change data-type for object array.")
+TypeError: Cannot change data-type for object array.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\llore\Documents\2026\Magic\cultivation2\scripts\fd_gauss.py", line 23, in <module>
+    k, f = fault_distance_fast(fe, kmax, mech, verbose=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\llore\Documents\2026\Magic\cultivation2\scripts\..\src\fd_fast.py", line 92, in fault_distance_fast
+    key = np.unique(key, axis=0)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\llore\anaconda3\Lib\site-packages\numpy\lib\arraysetops.py", line 308, in unique
+    raise TypeError(msg.format(dt=ar.dtype)) from e
+TypeError: The axis argument to unique is not supported for dtype object
+vcat_d5_injT.stim: t=77 k_affine=21 classes=2495 accepted Z classes=2 (setup 6s)
+  k=1: 0 malignant
+  k=2: 0 malignant
+  k=3: 0 malignant
+Traceback (most recent call last):
+  File "C:\Users\llore\anaconda3\Lib\site-packages\numpy\lib\arraysetops.py", line 297, in unique
+    consolidated = ar.view(dtype)
+                   ^^^^^^^^^^^^^^
+  File "C:\Users\llore\anaconda3\Lib\site-packages\numpy\core\_internal.py", line 551, in _view_is_safe
+    raise TypeError("Cannot change data-type for object array.")
+TypeError: Cannot change data-type for object array.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\llore\Documents\2026\Magic\cultivation2\scripts\fd_gauss.py", line 23, in <module>
+    k, f = fault_distance_fast(fe, kmax, mech, verbose=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\llore\Documents\2026\Magic\cultivation2\scripts\..\src\fd_fast.py", line 92, in fault_distance_fast
+    key = np.unique(key, axis=0)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\llore\anaconda3\Lib\site-packages\numpy\lib\arraysetops.py", line 308, in unique
+    raise TypeError(msg.format(dt=ar.dtype)) from e
+TypeError: The axis argument to unique is not supported for dtype object
