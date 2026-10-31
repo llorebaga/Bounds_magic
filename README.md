@@ -132,14 +132,24 @@ fails first). The Julia kernel is cross-checked on `structs_nogal_r1_n7_d2_a6.tx
 
 `block_mip.py` is the Gurobi version of the same two-level model (much slower than the SAT encoding).
 
-## Draft: limits of magic-state cultivation (`paper/cultivation.tex`)
+## Draft: a stabilizer-code criterion for fault-tolerant magic-state cultivation (`paper/cultivation.tex`)
 
 Circuit-level characterization (Theorem 2 there): replacing every T gate by a postselected injection gadget with an
 ideal |T> ancilla, each Pauli fault configuration either triggers a detector of the Clifford skeleton or acts as a
 Pauli error E(F) on the T inputs, linearly in F; it is harmless iff Pi_C E(F)|T>^t is parallel to Pi_C|T>^t.
+Characterization (Lemma 3, Theorem 5, Corollary 6 there): a code that tolerates Z faults on fewer than d inputs
+tolerates every Pauli fault on them and has distance at least d; the fault distance of a circuit lies between the
+order d_C of its code (as a distillation code) and min(d_C, spreading distance); every code is the code of a circuit
+with fault distance d_C (cat-state measurements checked in d_C - 1 rounds, ideal decoder). Hence fault distance d
+needs exactly n_min(tau, d) T gates, the number of inputs of the best order-d distillation protocol, and at least
+the length of a stabilizer code with distance d (Rains: 3d - 4 for odd d; linear programming with shadow, certified
+in exact arithmetic: 16, 17, 22, 23, 28, 29, 34 for one T state at d = 6..12, 12, 14, 17, 20, 23 for CCZ at d = 4..8).
 Applications: nine T gates are necessary and sufficient for fault distance two (Proposition 7; circuit found by an
-integer program over the fault map), and the distance-three cultivation circuit of Gidney, Shutty and Jones has
-fault distance two with T gates in place of the S gates of its stabilizer simulations (Proposition 8).
+integer program over the fault map), 15 T gates suffice for fault distance three (Theorem 5 with the 15-to-1 code),
+and the distance-three cultivation circuit of Gidney, Shutty and Jones has fault distance two with T gates in place
+of the S gates of its stabilizer simulations (Proposition 8), as found earlier by Chan et al. (arXiv:2609.17706) and
+Wan and Zapirain (arXiv:2609.18922), whose exact leading coefficient 32/75 we reproduce; its code has order three,
+and two faults spread to a Pauli of weight five on the T inputs.
 Build with `latexmk -pdf cultivation.tex` in `paper/` (bibliography `refs.bib` + `cultivation.bib`).
 `scripts/cultiv.py` is the library: circuits, state vectors, and the symbolic Choi-state computation of the fault
 map (D, U, E). All commands from `scripts/`; Gurobi is needed only for the integer programs.
@@ -148,9 +158,11 @@ map (D, U, E). All commands from `scripts/`; Gurobi is needed only for the integ
 |---|---|---|
 | Fault map agrees with direct simulation (42,367 configurations); D and E agree with dense skeleton maps (9,271) | `python cultiv_test.py 300 11` | stdout (`ALL OK`) |
 | Gadget identity, Pauli-error form of every fault, harmlessness criterion, E = Z_j for Z faults at T gates, multiplicativity, Galois duality (CS, CCZ) | `python cultivation_check.py 10 7` | stdout (`ALL OK`) |
-| Proposition 7: nine-T circuit with fault distance two; exact proof cases; 627 single faults (fault map and direct simulation), 7146 harmful of 192,546 pairs | `python cultivation_t9.py` | `results/cultivation/t9_circuit.json` |
+| Proposition 7: nine-T circuit with fault distance two; exact proof cases; 627 single faults (fault map and direct simulation), 7146 harmful of 192,546 pairs; uniform depolarizing noise: p^2 coefficient 53.1 without and 1.9e3 with idle noise | `python cultivation_t9.py` | `results/cultivation/t9_circuit.json` |
 | Integer program for the nine-T circuit: one flag is optimal (Gurobi, about 1 min) | `python cultivation_t9.py --mip` | same file, key `mip` |
-| Proposition 8: published d = 3 circuit with T gates: 48 harmful pairs (S: none); uniform depolarizing noise: 96 harmful pairs, p^2 coefficient 32/75; fit to the published state-vector data; flag set cover infeasible | `python cultivation_gsj.py` | `results/cultivation/gsj_d3.json` |
+| Proposition 8: published d = 3 circuit with T gates: 48 harmful pairs (S: none); 4 of 20 projections not deterministic in the skeleton; uniform depolarizing noise: 96 harmful pairs, p^2 coefficient 32/75; fit to the published state-vector data; flag set cover infeasible | `python cultivation_gsj.py` | `results/cultivation/gsj_d3.json` |
+| Lemma 3 on the nine-input, CCZ and 15-to-1 codes; Proposition 12 (signed weight distributions decide collapse) against state vectors on random codes; Theorem 5's construction for the three codes (no harmful single fault; for the 15-to-1 code no harmful pair, with two and with one round of checks); order of the published circuit's code and weights modulo S_C of its undetected pairs | `python cultivation_codes.py` (about 5 min) | `results/cultivation/codes.json` |
+| Corollary 6, Table S1: exact Farkas certificates for the linear-programming bound on [[n,k,d]] stabilizer codes | `python cultivation_codes.py --lp` (about 20 min) | same file, key `linear-programming bound` |
 | Figures 1 and 2 of the draft | `python make_fig_cultivation.py` | `paper/fig_cult_small.tex`, `paper/fig_cult_gsj.tex` |
 
 The published circuit is composed from two stim chunks copied, with attribution and licence, into

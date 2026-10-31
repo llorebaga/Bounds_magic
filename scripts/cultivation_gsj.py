@@ -1,4 +1,4 @@
-"""The distance-three cultivation circuit of Gidney, Shutty and Jones with T gates (paper/cultivation.tex, Sec. S5).
+"""The distance-three cultivation circuit of Gidney, Shutty and Jones with T gates (paper/cultivation.tex, Sec. S6).
 
 Composes the injection chunk and the T-check chunk of data/gsj_cultivation/ by qubit coordinates, replaces the
 S and S_DAG gates that stand for T and T^dagger by T and T^dagger (or keeps S, for comparison), keeps the final

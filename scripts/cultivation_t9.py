@@ -1,4 +1,4 @@
-"""Nine T gates suffice for fault distance two (paper/cultivation.tex, Proposition 5 and Sec. S4).
+"""Nine T gates suffice for fault distance two (paper/cultivation.tex, Proposition 7 and Sec. S5).
 
 The circuit prepares nine |+> states, applies T to each, and measures eight weight-four stabilizers of the
 nine-input factory code of paper/paper.tex (Proposition 7 there; a [[9,1,3]] code) with one ancilla each, the
@@ -120,7 +120,7 @@ class InputHarm:
 
 def dangers(g, order, flag, harm):
     """residual data Paulis R of single faults in the measurement of g that are harmful unless R anticommutes
-    with a stabilizer measured earlier (Sec. S4)"""
+    with a stabilizer measured earlier (Sec. S5)"""
     ops, _ = circuit([(g, order, flag)])
     ops = ops[2 * N:-1]
     meas = [i for i, op in enumerate(ops) if op[0] == "M"]
@@ -201,7 +201,7 @@ def solve_mip():
 
 # ---------------------------------------------------------------- verification
 def exact_proof(plan):
-    """the computational step of the proof of Proposition 5, in exact F2 arithmetic: every single fault in a
+    """the computational step of the proof of Proposition 7, in exact F2 arithmetic: every single fault in a
     measurement either raises the flag, or leaves a data Pauli R that anticommutes with an earlier stabilizer, or
     flips the outcome inconsistently with R, or has weight at most one modulo the stabilizer group"""
     S = [sym(g) for g in group([p[0] for p in plan])]

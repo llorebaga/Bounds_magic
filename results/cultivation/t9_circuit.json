@@ -1,0 +1,709 @@
+{
+ "plan": [
+  [
+   "-IYIXIXIIY",
+   [
+    8,
+    5,
+    3,
+    1
+   ],
+   1
+  ],
+  [
+   "-IZZIIIIXX",
+   [
+    8,
+    2,
+    7,
+    1
+   ],
+   0
+  ],
+  [
+   "-IIIIIZZXX",
+   [
+    6,
+    8,
+    7,
+    5
+   ],
+   0
+  ],
+  [
+   "-YYXXIIIII",
+   [
+    2,
+    0,
+    3,
+    1
+   ],
+   0
+  ],
+  [
+   "+IIIXXIIYY",
+   [
+    7,
+    4,
+    3,
+    8
+   ],
+   0
+  ],
+  [
+   "+XIIZIZIXI",
+   [
+    5,
+    0,
+    3,
+    7
+   ],
+   0
+  ],
+  [
+   "-XZIIZIIIX",
+   [
+    4,
+    0,
+    1,
+    8
+   ],
+   0
+  ],
+  [
+   "-IIXXIIYYI",
+   [
+    6,
+    2,
+    3,
+    7
+   ],
+   0
+  ]
+ ],
+ "ops": [
+  [
+   "R",
+   0,
+   "X"
+  ],
+  [
+   "R",
+   1,
+   "X"
+  ],
+  [
+   "R",
+   2,
+   "X"
+  ],
+  [
+   "R",
+   3,
+   "X"
+  ],
+  [
+   "R",
+   4,
+   "X"
+  ],
+  [
+   "R",
+   5,
+   "X"
+  ],
+  [
+   "R",
+   6,
+   "X"
+  ],
+  [
+   "R",
+   7,
+   "X"
+  ],
+  [
+   "R",
+   8,
+   "X"
+  ],
+  [
+   "T",
+   0,
+   1
+  ],
+  [
+   "T",
+   1,
+   1
+  ],
+  [
+   "T",
+   2,
+   1
+  ],
+  [
+   "T",
+   3,
+   1
+  ],
+  [
+   "T",
+   4,
+   1
+  ],
+  [
+   "T",
+   5,
+   1
+  ],
+  [
+   "T",
+   6,
+   1
+  ],
+  [
+   "T",
+   7,
+   1
+  ],
+  [
+   "T",
+   8,
+   1
+  ],
+  [
+   "R",
+   9,
+   "X"
+  ],
+  [
+   "U2",
+   "CY",
+   9,
+   8
+  ],
+  [
+   "R",
+   10,
+   "Z"
+  ],
+  [
+   "U2",
+   "CX",
+   9,
+   10
+  ],
+  [
+   "U2",
+   "CX",
+   9,
+   5
+  ],
+  [
+   "U2",
+   "CX",
+   9,
+   3
+  ],
+  [
+   "U2",
+   "CX",
+   9,
+   10
+  ],
+  [
+   "U2",
+   "CY",
+   9,
+   1
+  ],
+  [
+   "M",
+   "X",
+   [
+    9
+   ],
+   -1,
+   true
+  ],
+  [
+   "M",
+   "Z",
+   [
+    10
+   ],
+   1,
+   true
+  ],
+  [
+   "R",
+   9,
+   "X"
+  ],
+  [
+   "U2",
+   "CX",
+   9,
+   8
+  ],
+  [
+   "U2",
+   "CZ",
+   9,
+   2
+  ],
+  [
+   "U2",
+   "CX",
+   9,
+   7
+  ],
+  [
+   "U2",
+   "CZ",
+   9,
+   1
+  ],
+  [
+   "M",
+   "X",
+   [
+    9
+   ],
+   -1,
+   true
+  ],
+  [
+   "R",
+   9,
+   "X"
+  ],
+  [
+   "U2",
+   "CZ",
+   9,
+   6
+  ],
+  [
+   "U2",
+   "CX",
+   9,
+   8
+  ],
+  [
+   "U2",
+   "CX",
+   9,
+   7
+  ],
+  [
+   "U2",
+   "CZ",
+   9,
+   5
+  ],
+  [
+   "M",
+   "X",
+   [
+    9
+   ],
+   -1,
+   true
+  ],
+  [
+   "R",
+   9,
+   "X"
+  ],
+  [
+   "U2",
+   "CX",
+   9,
+   2
+  ],
+  [
+   "U2",
+   "CY",
+   9,
+   0
+  ],
+  [
+   "U2",
+   "CX",
+   9,
+   3
+  ],
+  [
+   "U2",
+   "CY",
+   9,
+   1
+  ],
+  [
+   "M",
+   "X",
+   [
+    9
+   ],
+   -1,
+   true
+  ],
+  [
+   "R",
+   9,
+   "X"
+  ],
+  [
+   "U2",
+   "CY",
+   9,
+   7
+  ],
+  [
+   "U2",
+   "CX",
+   9,
+   4
+  ],
+  [
+   "U2",
+   "CX",
+   9,
+   3
+  ],
+  [
+   "U2",
+   "CY",
+   9,
+   8
+  ],
+  [
+   "M",
+   "X",
+   [
+    9
+   ],
+   1,
+   true
+  ],
+  [
+   "R",
+   9,
+   "X"
+  ],
+  [
+   "U2",
+   "CZ",
+   9,
+   5
+  ],
+  [
+   "U2",
+   "CX",
+   9,
+   0
+  ],
+  [
+   "U2",
+   "CZ",
+   9,
+   3
+  ],
+  [
+   "U2",
+   "CX",
+   9,
+   7
+  ],
+  [
+   "M",
+   "X",
+   [
+    9
+   ],
+   1,
+   true
+  ],
+  [
+   "R",
+   9,
+   "X"
+  ],
+  [
+   "U2",
+   "CZ",
+   9,
+   4
+  ],
+  [
+   "U2",
+   "CX",
+   9,
+   0
+  ],
+  [
+   "U2",
+   "CZ",
+   9,
+   1
+  ],
+  [
+   "U2",
+   "CX",
+   9,
+   8
+  ],
+  [
+   "M",
+   "X",
+   [
+    9
+   ],
+   -1,
+   true
+  ],
+  [
+   "R",
+   9,
+   "X"
+  ],
+  [
+   "U2",
+   "CY",
+   9,
+   6
+  ],
+  [
+   "U2",
+   "CX",
+   9,
+   2
+  ],
+  [
+   "U2",
+   "CX",
+   9,
+   3
+  ],
+  [
+   "U2",
+   "CY",
+   9,
+   7
+  ],
+  [
+   "M",
+   "X",
+   [
+    9
+   ],
+   -1,
+   true
+  ],
+  [
+   "M",
+   "YXXY",
+   [
+    1,
+    3,
+    5,
+    8
+   ],
+   -1,
+   false
+  ],
+  [
+   "M",
+   "ZZXX",
+   [
+    1,
+    2,
+    7,
+    8
+   ],
+   -1,
+   false
+  ],
+  [
+   "M",
+   "ZZXX",
+   [
+    5,
+    6,
+    7,
+    8
+   ],
+   -1,
+   false
+  ],
+  [
+   "M",
+   "YYXX",
+   [
+    0,
+    1,
+    2,
+    3
+   ],
+   -1,
+   false
+  ],
+  [
+   "M",
+   "XXYY",
+   [
+    3,
+    4,
+    7,
+    8
+   ],
+   1,
+   false
+  ],
+  [
+   "M",
+   "XZZX",
+   [
+    0,
+    3,
+    5,
+    7
+   ],
+   1,
+   false
+  ],
+  [
+   "M",
+   "XZZX",
+   [
+    0,
+    1,
+    4,
+    8
+   ],
+   -1,
+   false
+  ],
+  [
+   "M",
+   "XXYY",
+   [
+    2,
+    3,
+    6,
+    7
+   ],
+   -1,
+   false
+  ]
+ ],
+ "ideal": [
+  70,
+  71,
+  72,
+  73,
+  74,
+  75,
+  76,
+  77
+ ],
+ "mip": {
+  "weight4_elements": 18,
+  "matroid_circuits": 48,
+  "variables": 1188,
+  "constraints": 4777,
+  "min_flags": 1,
+  "seconds": 46.5
+ },
+ "verification": {
+  "qubits": 11,
+  "t_gates": 9,
+  "two_qubit_gates": 34,
+  "preparations": 18,
+  "noisy_measurements": 9,
+  "locations": 70,
+  "elementary_faults": 627,
+  "acceptance": 0.007812499999999998,
+  "code_dimension_log2": 1,
+  "ideal_projections_deterministic": true,
+  "output_is_codeword": true,
+  "harmful_singles_fault_map": 0,
+  "harmful_singles_direct": 0,
+  "pair_configurations": 192546,
+  "pair_classes": 15153,
+  "harmful_pairs": 7146,
+  "exact_proof_cases": {
+   "flagged": 37,
+   "earlier": 288,
+   "inconsistent": 152,
+   "weight_le_1": 96,
+   "failures": 0
+  },
+  "single_fault_classes": {
+   "trivial": 45,
+   "rejected": 13,
+   "absorbed": 92,
+   "detected": 477
+  },
+  "single_fault_classes_by_location": {
+   "preparation": {
+    "trivial": 18,
+    "rejected": 6,
+    "absorbed": 12,
+    "detected": 18
+   },
+   "T gate": {
+    "absorbed": 24,
+    "rejected": 3
+   },
+   "two-qubit gate": {
+    "detected": 432,
+    "absorbed": 56,
+    "trivial": 18,
+    "rejected": 4
+   },
+   "measurement": {
+    "trivial": 9,
+    "detected": 27
+   }
+  }
+ },
+ "uniform_depolarizing": {
+  "without_idle": {
+   "locations": 70,
+   "idle_locations": 0,
+   "harmful_pairs": 6279,
+   "harmful_pairs_by_operations": {
+    "R-R": 36,
+    "R-T": 216,
+    "R-U2": 501,
+    "T-T": 324,
+    "T-U2": 1440,
+    "U2-U2": 3741,
+    "M-U2": 21
+   },
+   "c2": 53.07527777777519
+  },
+  "with_idle": {
+   "locations": 481,
+   "idle_locations": 411,
+   "harmful_pairs": 132968,
+   "harmful_pairs_by_operations": {
+    "R-R": 36,
+    "R-T": 216,
+    "R-U2": 501,
+    "I-R": 3208,
+    "T-T": 324,
+    "T-U2": 1440,
+    "I-T": 9624,
+    "I-U2": 31950,
+    "U2-U2": 3741,
+    "I-I": 81907,
+    "M-U2": 21
+   },
+   "c2": 1948.8141666657912
+  }
+ }
+}
