@@ -51,6 +51,16 @@ Status: open unless marked.
    two cosets of Sigma. Each coset still gives a Z4 Gauss sum, so the cost is polynomial times the number of
    cosets that survive. Characterise when that number stays small; would extend the exact test to distillation
    and cultivation hybrids (Itogawa et al.).
+4d. **Close the T-count gap at fault distance three: 10 <= n <= 15** [compute + theory, medium] (from S3).
+   By Theorem 3 this is exactly n_min(T, 3) for distillation. The SAT / integer-programming machinery of the
+   distillation paper (this repo) could settle n = 10..14 at order three. Either a smaller circuit or a proof that
+   15 is optimal; both strengthen Theorem 3's "Published circuits are far from these bounds".
+4e. **Cheaper converse in Theorem 14** [theory, medium]. The construction uses d_C - 1 verification rounds per
+   cat state and an ideal decoder. One round already sufficed for the 15-to-1 code (Sec. S4); prove when one round
+   suffices (e.g. when the spread of a preparation fault is caught by later generators), and say what a noisy
+   final stage costs.
+4f. **State Theorem 3 for every target** [writing, cheap]. The proof works for any tau with nu(tau) = r
+   (e.g. eight T gates for |CCZ> at fault distance two); the main-text statement says "one T state" only.
 5. **Proposition 7 for rates** [theory, cheap]. The leading coefficient of an adaptive protocol is a
    probability-weighted combination of the branch coefficients; partly settles the "Rates" open problem.
 6. **Theorem 1 beyond Pauli noise** [theory, medium]. State what survives for local non-Pauli noise and
