@@ -1,18 +1,19 @@
 # cultivation_exact
 
-Exact real-T evaluation of cultivation circuits for `paper/cultivation.tex` ("Cultivating Magic States Without
-Losing Distance"): Theorem 2 (Gauss sums, precise form Theorem 12 and Proposition 13), Lemma 4, Propositions 5 and 6,
-Table I, Figures 2 and 3, and Tables SV to SIX. The fault map of Theorem 1 is computed as a stim detector error
+Exact real-T evaluation of cultivation circuits for `paper/cultivation.tex` ("The limits of magic-state
+cultivation"): Theorem 2 (Gauss sums, precise form Theorem 11 and Proposition 12), Lemma 4, Propositions 5 and 6,
+Tables I and SIV to SIX, and Figures 2 to 4. The fault map of Theorem 1 is computed as a stim detector error
 model of the skeleton (the T-aware detector error model, TDEM). The collapse condition is decided by Z4 Gauss sums,
 which cost O(t^3) per fault class. This is independent of the state-vector implementation in `../scripts/cultiv.py`,
-used for Propositions 5 (d = 3) and 18. The two agree on the published d = 3 circuit: 96 harmful pairs with idle
+used for Propositions 5 (d = 3) and 16. The two agree on the published d = 3 circuit: 96 harmful pairs with idle
 noise, leading coefficient 32/75.
 
 All commands are run from `scripts/` (paths such as `../results/` are relative to this directory). Propositions,
 tables and figures in the table below refer to the original draft. In `paper/cultivation.tex`, the folds, the
-published circuits and Google's experiment are Proposition 5, the cats and grid checks Proposition 6, flags
-Proposition 19, the old Table I is Table SVIII, the cost table SIX, the fault-distance figure Fig. 2 and the grid
-figure Fig. 3.
+published circuits and Google's experiment are Proposition 5 (with details in Proposition 19), the cats and grid
+checks Proposition 6, flags Proposition 17, the old Table I is Table SVIII, the old Table II (cost) is Table SIX,
+the old Tables SII, SIII and SIV are Tables SV, SVI and SVII, the fault-distance figure is Fig. 3 and the grid
+figure Fig. 4. Here d is the code distance (delta in the paper).
 
 ## Layout
 
@@ -67,13 +68,13 @@ All commands are run from `scripts/`.
 | Acceptance at d=5 and 7 (Table SIII) | `python rates_gauss.py TAG PATH nopattern 1e-3,5e-4 9 20000 5e6` | `results/rates_gauss_<TAG>.json`, `results/rates/` |
 | Fig. 3 | `python fig_fd.py` | `../paper/fig_fd.pdf` |
 | X patterns inside minimum-weight logicals (Table SIV) | `python logical_cover.py` | `results/logical_cover.txt` |
-| Nearest-neighbour checks on a square grid (`src/nn_cat.py`): ring at d=3 (17 qubits) real-T FD 3; ladder at d=5 (46 qubits) FD 5 with one and two rounds (FD 4 without diagonals); ladder at d=7 (91 qubits) FD >= 5 (Proposition 14, Tables I and II) | `python nn_cat_fd.py d3`, `python fd_gauss.py ../results/nn_cat_d5_r1_v1.stim 4 nopattern` (also `nn_cat_d5_r2_v1.stim`, `nn_cat_d7_r1_v1_dag.stim`) | `results/nn_cat_*.stim`, `results/nn_cat_*_k4.log` |
+| Nearest-neighbour checks on a square grid (`src/nn_cat.py`): ring at d=3 (17 qubits) real-T FD 3; ladder at d=5 (46 qubits) FD 5 with one and two rounds (FD 4 without diagonals); ladder at d=7 (91 qubits) FD >= 5, >= 6 with the un-grown cat (Proposition 14, Tables I and II) | `python nn_cat_fd.py d3`, `python fd_gauss.py ../results/nn_cat_d5_r1_v1.stim 4 nopattern` (also `nn_cat_d5_r2_v1.stim`, `nn_cat_d7_r1_v1_dag.stim`) | `results/nn_cat_*.stim`, `results/nn_cat_*_k4.log` |
 | Exact weight-5 terms: NN ladder 43 p^5 (SI1000) and 121 p^5 (uniform); verified cat under SI1000 | `python leading_k5.py ../results/nn_cat_d5_r1_v1.stim si1000` (and `file`) | `results/*_c5.json` |
 | Google's experimental circuits (Rosenfeld et al., arXiv:2512.13908) with real T: FD 2 vs proxy 3 after 1-3 checks, also with ideal injection; malignant pairs (Proposition 15) | `python google_crumble_to_stim.py` (decodes the paper's Crumble links), `python google_tdem.py fig3 1e-3 -1 162`, `python google_fd.py PATH 3`, `python google_malignant.py PATH` | `external/google_circuits/`, `results/google_*.stim` |
 | Google's circuit under SI1000, real T vs proxy (Fig. 2c) | `python google_mc.py fig3 162 3e-3,2.3e-3,1.5e-3,1e-3 2e9` | `results/google_mc.json`, `results/google_mc.log` |
 | Resources under SI1000 at p = 1e-3 (Table II) | `python resources.py`, `python acceptance.py si1000 1e-3 1e6 PATHS` | `results/resources_si1000.json` |
 | Fig. 4 | `python fig_nn.py` | `../paper/fig_nn.pdf` |
-| Un-grown NN checks (Prop. 14): ring 3.6 p^3 uniform, 0.056 p^3 + 30 p^4 SI1000; ladder 12 p^5 uniform, 0.012 p^5 SI1000; d=7 ladder FD >= 5 | `python fd_gauss.py ../results/nn_cat_d5_r1_v1_unf.stim 4 nopattern`, `python leading_k5.py ../results/nn_cat_d5_r1_v1_unf.stim si1000`, `python leading_k4.py ../results/nn_cat_d3_r1_v1_unf_si1000.stim nopattern` | `results/nn_cat_*_unf*` |
+| Un-grown NN checks (Prop. 14): ring 3.6 p^3 uniform, 0.056 p^3 + 30 p^4 SI1000; ladder 12 p^5 uniform, 0.012 p^5 SI1000; d=7 ladder FD >= 6 (no malignant 5-set, `leading_k5.py ../results/nn_cat_d7_r1_v1_unf.stim file`, 15 min on 14 cores) | `python fd_gauss.py ../results/nn_cat_d5_r1_v1_unf.stim 4 nopattern`, `python leading_k5.py ../results/nn_cat_d5_r1_v1_unf.stim si1000`, `python leading_k4.py ../results/nn_cat_d3_r1_v1_unf_si1000.stim nopattern` | `results/nn_cat_*_unf*` |
 | Complete NN protocol at d=3 (relayed injection, Shor-style stabilizer round, three checks): FD 3, 7.8e3 p^3 SI1000; variants and the measurement-prepared protocol | `python nn_full.py d3 3 1 0 1 3 shor routed` (args: ROUNDS ZROUNDS ZBETWEEN VER KMAX KIND INJECT [unfold]), `python nn_sched.py d3 XCZXCC unfold` | `results/nn_full_*.stim`, `results/nn_meas_*.stim` |
 | Where the malignant configurations sit | `python malignant_profile.py PATH 3 [si1000]` | stdout |
 
