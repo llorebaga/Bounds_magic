@@ -92,6 +92,10 @@ Status: open unless marked.
 10. **A 15-T circuit with better acceptance** [compute, medium]. Our fault-distance-three 15-T circuit
     accepts one fault-free run in 1024. The integer program of Sec. S5 could search for a better one.
 
+10a. **Schedule the nine-T circuit in parallel** [compute, cheap] (from S5). With idle noise its leading term
+    rises from 53 p^2 to 1.9e3 p^2, mostly from data idling while eight stabilizers are measured one after another.
+    Commuting stabilizers on disjoint supports can be measured at the same time, and the integer program can be
+    given a depth objective; this would make the smallest circuit also a sensible one.
 10b. **A delta = 9 fold data point** [compute, medium-hard]. Fig. 3 has delta = 3, 5, 7. An explicit malignant
     configuration of 5 faults on the [[61,1,9]] fold is cheap (direction 3b); certifying that no 4 faults are
     harmful is a weight-4 search like those at delta = 7 (minutes to hours). Makes "the gap grows" visible.
