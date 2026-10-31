@@ -148,7 +148,6 @@ def fig_small():
 def fig_gsj():
     r = json.load(open(os.path.join(RES, "gsj_d3.json")))
     table = r["published_vector_simulations"]
-    fit = r["fit_excess_over_p2"]["0.005"]
     c2 = r["T_uniform_depolarizing"]["c2"]
     L = []
     L.append("% Figure 2 of cultivation.tex, written by scripts/make_fig_cultivation.py. Requires tikz and pgfplots.")
@@ -156,7 +155,6 @@ def fig_gsj():
     L.append(r"\begin{tikzpicture}[")
     L.append(STYLE.rstrip("\n"))
     L.append("]")
-    L.append(r"\node[letter] at (0,8.35) {(a)};")
     # colour-code triangle; qubit labels as in the circuit (coordinates of the published chunks)
     P = {10: (0.35, 4.75), 12: (3.95, 4.75), 13: (2.15, 7.87), 4: (2.15, 4.75), 6: (1.25, 6.31), 5: (3.05, 6.31),
          3: (2.15, 5.79)}
@@ -183,15 +181,21 @@ def fig_gsj():
              r"fault 1 leaves $X_1X_2$ through\\ a cat qubit measured in $X$\\[3pt]"
              r"last $S$ layer: $X_1X_2\mapsto Y_1Y_2$,\\ caught by the top face\\[3pt]"
              r"last $T$ layer:\\ $X_1X_2\mapsto\tfrac12(X{+}Y)_1(X{+}Y)_2$;\\ with fault 2, $X_1X_2X_3=\bar X$\\ passes every check};")
-    # ---------------------------------------------------------------- (b)
-    L.append(r"\node[letter] at (0,3.95) {(b)};")
+    L.append(r"\end{tikzpicture}")
+    open(os.path.join(PAPER, "fig_cult_gsj.tex"), "w").write("\n".join(L) + "\n")
+    # ---------------------------------------------------------------- data (supplement)
+    L = []
+    L.append("% Figure S1 of cultivation.tex, written by scripts/make_fig_cultivation.py. Requires tikz and pgfplots.")
+    L.append(COLOURS)
+    L.append(r"\begin{tikzpicture}[")
+    L.append(STYLE.rstrip("\n"))
+    L.append("]")
     L.append(r"\begin{axis}[at={(1.0cm,0.8cm)}, anchor=south west, width=7.0cm, height=2.85cm, scale only axis,")
     L.append(r"  xmin=-0.3, xmax=10.5, ymin=0, ymax=3.0, xtick={0,2,4,6,8,10}, ytick={0,1,2,3},")
     L.append(r"  tick label style={font=\fontsize{8}{9.6}\fontfamily{phv}\selectfont}, label style={font=\fontsize{8}{9.6}\fontfamily{phv}\selectfont\mathversion{figsans}},")
     L.append(r"  xlabel={noise strength $p$ ($10^{-3}$)}, ylabel={$(\epsilon_T-\epsilon_S)/p^2$},")
     L.append(r"  axis line style={line width=0.5pt}, tick style={line width=0.5pt}, xlabel shift=-3pt, ylabel shift=-4pt,")
     L.append(r"  clip=false]")
-    L.append(r"\addplot[inkgray, dashed, line width=0.5pt, domain=0:5.6] {%.4f + %.6f*x};" % (fit["a"], fit["b"] * 1e-3))
     pts = " ".join("(%.3f,%.4f) +- (0,%.4f)" % (t["p"] * 1e3, t["excess_over_p2"], t["sd_excess"]) for t in table)
     L.append(r"\addplot[only marks, mark=*, mark size=1.3pt, black, error bars/.cd, y dir=both, y explicit, error bar style={line width=0.5pt}] coordinates {%s};" % pts)
     L.append(r"\addplot[only marks, mark=diamond*, mark size=2.4pt, harmver] coordinates {(0,%.4f)};" % c2)
@@ -199,7 +203,7 @@ def fig_gsj():
     L.append(r"\node[anchor=south west, align=left, inner sep=1pt, small] at (axis cs:0.3,2.25) {state-vector simulations\\[-1pt]published with the circuit};")
     L.append(r"\end{axis}")
     L.append(r"\end{tikzpicture}")
-    open(os.path.join(PAPER, "fig_cult_gsj.tex"), "w").write("\n".join(L) + "\n")
+    open(os.path.join(PAPER, "fig_cult_gsj_data.tex"), "w").write("\n".join(L) + "\n")
 
 
 if __name__ == "__main__":

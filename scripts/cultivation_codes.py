@@ -7,8 +7,9 @@
 3. Theorem 5, construction: T gates on |+> data, a cat-state measurement of every generator, each cat state checked
    in rounds of parity measurements, and an ideal decoder; all single faults, and for the 15-qubit code all pairs
    of faults, are harmless.
-4. Theorem 5, bounds: for the published distance-three circuit, the order of the code on its T gates and the
-   weights modulo S_C of the Paulis of undetected pairs of faults.
+4. Theorem 5, bounds: for the published distance-three circuit, the order of the code on its T gates, the
+   weights modulo S_C of the Paulis of undetected pairs of faults, and its harmful pairs grouped as in Chan et al.
+   An example in which the converse of Lemma 3(i) fails (Sec. S3).
 5. Corollary 6: exact Farkas certificates for the linear-programming bound on [[n,k,d]] stabilizer codes, with the
    quantum MacWilliams identities and Rains' shadow enumerator (--lp; several minutes).
 
@@ -206,8 +207,12 @@ def check_construction(gens, rounds, pairs):
             s = "".join("IXZY"[((E >> j) & 1) + 2 * ((E >> (t + j)) & 1)] for j in range(t))
             cache[E] = cv.parallel(project(apply_letters(T, s), gens), ref)
         return cache[E]
+    dec = [sk.proj_of_op[i] for i in sorted(ideal)]
     res = {"T gates": t, "qubits": nq, "rounds of checks": rounds, "noisy operations": len(ops) - len(ideal),
-           "two-qubit gates": sum(op[0] == "U2" for op in ops), "elementary faults": len(faults),
+           "two-qubit gates": sum(op[0] == "U2" for op in ops),
+           "fault-free acceptance": float(np.vdot(ref, ref).real),
+           "decoder projections that are detectors": "%d of %d" % (sum(sk.deterministic[p] for p in dec), len(dec)),
+           "elementary faults": len(faults),
            "harmful single faults": sum(1 for li, (D, U, E) in faults if D == 0 and not harmless(U, E))}
     if pairs:
         per = {}
@@ -257,9 +262,48 @@ def published():
                 key = (wmod(k[2]), "harmless" if A.harmless_key(k) else "harmful")
                 table[key] = table.get(key, 0) + 1
     single = max(wmod(k[2]) for loc, i, f, w, k in faults if k[0] == 0)
+    # the 48 harmful pairs grouped as in Chan et al.: each fault by the flips of all projections and the Pauli it
+    # leaves at the end of the circuit; output fidelity zero is what they call malignant
+    harm, _ = G.harmful_pairs(A, faults)
+
+    def effect(i, f):
+        fl, res = sk.fault_effect(i, f)
+        return fl, res.x, res.z
+    classes = {}
+    for (i1, f1, w1), (i2, f2, w2), k in harm:
+        acc, infid = G.damage(A, k)
+        fid = "%.3f" % (1 - infid)
+        classes.setdefault(fid, set()).add(tuple(sorted([effect(i1, f1), effect(i2, f2)])))
     return {"T gates": t, "harmful Z patterns by weight": zbad,
             "largest weight modulo S_C of an undetected single fault": single,
-            "undetected pairs by weight modulo S_C": {"%d %s" % kk: v for kk, v in sorted(table.items())}}
+            "undetected pairs by weight modulo S_C": {"%d %s" % kk: v for kk, v in sorted(table.items())},
+            "harmful pairs": len(harm),
+            "classes of harmful pairs by output fidelity (grouping of Chan et al.)":
+                {fid: len(c) for fid, c in sorted(classes.items())}}
+
+
+# ------------------------------------------------------------------ Lemma 3(i): the converse fails
+def converse_example():
+    """stabilizers IXX and -IYY on three T inputs (input 1 is the logical qubit, carrying |T>): E = Z1 Y3 is
+    rejected, but every representative of E modulo S_C has a pattern in its Z shadow that is a logical Z"""
+    gens = ["+IXX", "-IYY"]
+    T, ref = t_states(3), project(t_states(3), gens)
+    col = lambda s: cv.parallel(project(apply_letters(T, s), gens), ref)
+    E = "ZIY"
+    reps = ["ZIY", "ZXZ", "ZYI", "ZZX"]          # E times I, IXX, IYY, IZZ, up to phases
+
+    def shadow(rep):
+        u = [q for q in range(3) if rep[q] in "XY"]
+        out = []
+        for w in itertools.product((0, 1), repeat=len(u)):
+            z = ["Z" if rep[q] == "Z" else "I" for q in range(3)]
+            for q, b in zip(u, w):
+                z[q] = "Z" if b else "I"
+            out.append("".join(z))
+        return out
+    return {"code": gens, "E": E, "E collapses": col(E),
+            "E rejected": bool(np.linalg.norm(project(apply_letters(T, E), gens)) < 1e-9),
+            "every representative has a harmful shadow pattern": all(not all(col(z) for z in shadow(r)) for r in reps)}
 
 
 # ------------------------------------------------------------------ Corollary 6, linear-programming bound
@@ -395,6 +439,8 @@ if __name__ == "__main__":
         "[[15,1,3]] Reed-Muller code, 1 round": check_construction(RM15, 1, True)}
     print("construction", json.dumps(res["construction"], indent=1), flush=True)
     res["published circuit"] = published()
+    res["converse of lemma 3(i)"] = converse_example()
+    print("converse of Lemma 3(i)", res["converse of lemma 3(i)"], flush=True)
     print("published circuit", res["published circuit"], flush=True)
     if "--lp" in sys.argv:
         res["linear-programming bound"] = lp_bounds()

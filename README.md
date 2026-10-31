@@ -132,7 +132,7 @@ fails first). The Julia kernel is cross-checked on `structs_nogal_r1_n7_d2_a6.tx
 
 `block_mip.py` is the Gurobi version of the same two-level model (much slower than the SAT encoding).
 
-## Draft: a stabilizer-code criterion for fault-tolerant magic-state cultivation (`paper/cultivation.tex`)
+## Draft: magic-state cultivation needs as many T gates as distillation (`paper/cultivation.tex`)
 
 Circuit-level characterization (Theorem 2 there): replacing every T gate by a postselected injection gadget with an
 ideal |T> ancilla, each Pauli fault configuration either triggers a detector of the Clifford skeleton or acts as a
@@ -149,7 +149,8 @@ integer program over the fault map), 15 T gates suffice for fault distance three
 and the distance-three cultivation circuit of Gidney, Shutty and Jones has fault distance two with T gates in place
 of the S gates of its stabilizer simulations (Proposition 8), as found earlier by Chan et al. (arXiv:2609.17706) and
 Wan and Zapirain (arXiv:2609.18922), whose exact leading coefficient 32/75 we reproduce; its code has order three,
-and two faults spread to a Pauli of weight five on the T inputs.
+and two faults spread to a Pauli of weight five on the T inputs. Grouped as in Chan et al., its 48 harmful pairs form
+4 classes of output fidelity zero (their 4 malignant configurations) and 8 of fidelity one half.
 Build with `latexmk -pdf cultivation.tex` in `paper/` (bibliography `refs.bib` + `cultivation.bib`).
 `scripts/cultiv.py` is the library: circuits, state vectors, and the symbolic Choi-state computation of the fault
 map (D, U, E). All commands from `scripts/`; Gurobi is needed only for the integer programs.
@@ -161,9 +162,9 @@ map (D, U, E). All commands from `scripts/`; Gurobi is needed only for the integ
 | Proposition 7: nine-T circuit with fault distance two; exact proof cases; 627 single faults (fault map and direct simulation), 7146 harmful of 192,546 pairs; uniform depolarizing noise: p^2 coefficient 53.1 without and 1.9e3 with idle noise | `python cultivation_t9.py` | `results/cultivation/t9_circuit.json` |
 | Integer program for the nine-T circuit: one flag is optimal (Gurobi, about 1 min) | `python cultivation_t9.py --mip` | same file, key `mip` |
 | Proposition 8: published d = 3 circuit with T gates: 48 harmful pairs (S: none); 4 of 20 projections not deterministic in the skeleton; uniform depolarizing noise: 96 harmful pairs, p^2 coefficient 32/75; fit to the published state-vector data; flag set cover infeasible | `python cultivation_gsj.py` | `results/cultivation/gsj_d3.json` |
-| Lemma 3 on the nine-input, CCZ and 15-to-1 codes; Proposition 12 (signed weight distributions decide collapse) against state vectors on random codes; Theorem 5's construction for the three codes (no harmful single fault; for the 15-to-1 code no harmful pair, with two and with one round of checks); order of the published circuit's code and weights modulo S_C of its undetected pairs | `python cultivation_codes.py` (about 5 min) | `results/cultivation/codes.json` |
+| Lemma 3 on the nine-input, CCZ and 15-to-1 codes, and a code where the converse of Lemma 3(i) fails; Proposition 12 (signed weight distributions decide collapse) against state vectors on random codes; Theorem 5's construction for the three codes (no harmful single fault; for the 15-to-1 code no harmful pair, with two and with one round of checks; fault-free acceptance 1/16, 1/128, 1/1024; every decoder projection a detector); order of the published circuit's code, weights modulo S_C of its undetected pairs, and its harmful pairs grouped as in Chan et al. | `python cultivation_codes.py` (about 5 min) | `results/cultivation/codes.json` |
 | Corollary 6, Table S1: exact Farkas certificates for the linear-programming bound on [[n,k,d]] stabilizer codes | `python cultivation_codes.py --lp` (about 20 min) | same file, key `linear-programming bound` |
-| Figures 1 and 2 of the draft | `python make_fig_cultivation.py` | `paper/fig_cult_small.tex`, `paper/fig_cult_gsj.tex` |
+| Figures 1, 2 and S1 of the draft | `python make_fig_cultivation.py` | `paper/fig_cult_small.tex`, `paper/fig_cult_gsj.tex`, `paper/fig_cult_gsj_data.tex` |
 
 The published circuit is composed from two stim chunks copied, with attribution and licence, into
 `data/gsj_cultivation/` (see the README there); the original generator code was not run.
