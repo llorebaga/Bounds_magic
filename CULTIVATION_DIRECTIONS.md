@@ -42,6 +42,15 @@ Status: open unless marked.
 4. **Theorem 2 for r-qubit targets** [theory, cheap]. With deterministic checks on an r-qubit target the
    same proof gives 2^r Gauss sums. Makes the exact test cover |CS> and |CCZ> cultivation (Min and Heo,
    2609.09993, 2609.09994). A remark plus a few lines in Sec. S2.
+4b. **A structural sufficient condition for deterministic checks** [theory, medium] (from S2). Definition 10 is
+   now tested circuit by circuit. Prove it for a class, e.g. circuits whose T gates act only on data qubits and
+   whose Clifford parts between T layers map Z errors on the data to Z-type errors (true for transversal checks
+   with folds or cats coupled by CNOTs from the ancilla). Then Theorem 2 applies to the whole class without a test.
+4c. **Gauss sums beyond deterministic checks** [theory, medium-hard]. When Z errors are only detected with some
+   probability (distillation-like codes, zero-level distillation, hybrids), the projection splits over more than
+   two cosets of Sigma. Each coset still gives a Z4 Gauss sum, so the cost is polynomial times the number of
+   cosets that survive. Characterise when that number stays small; would extend the exact test to distillation
+   and cultivation hybrids (Itogawa et al.).
 5. **Proposition 7 for rates** [theory, cheap]. The leading coefficient of an adaptive protocol is a
    probability-weighted combination of the branch coefficients; partly settles the "Rates" open problem.
 6. **Theorem 1 beyond Pauli noise** [theory, medium]. State what survives for local non-Pauli noise and
