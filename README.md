@@ -163,6 +163,7 @@ map (D, U, E). All commands from `scripts/`; Gurobi is needed only for the integ
 | Proposition 5: published d = 3 circuit with T gates: 48 harmful pairs (S: none); 4 of 20 projections not deterministic in the skeleton; uniform depolarizing noise: 96 harmful pairs, p^2 coefficient 32/75; fit to the published state-vector data; flag set cover infeasible | `python cultivation_gsj.py` | `results/cultivation/gsj_d3.json` |
 | Lemma 3 on the nine-input, CCZ and 15-to-1 codes; Proposition 17 (signed weight distributions decide collapse) against state vectors on random codes; Theorem 15's construction for the three codes (no harmful single fault; for the 15-to-1 code no harmful pair, with two and with one round of checks); order of the published circuit's code and weights modulo S_C of its undetected pairs | `python cultivation_codes.py` (about 5 min) | `results/cultivation/codes.json` |
 | Theorem 3, Table SI: exact Farkas certificates for the linear-programming bound on [[n,k,d]] stabilizer codes | `python cultivation_codes.py --lp` (about 20 min) | same file, key `linear-programming bound` |
+| Proposition 5, published d = 3 circuit: the 48 harmful pairs form 9 harmful pairs of fault classes (same D and E), with and without idle noise | `python cultivation_gsj_classes.py` | stdout |
 | Figures S1 and 1 | `python make_fig_cultivation.py` | `paper/fig_cult_small.tex`, `paper/fig_cult_gsj.tex` |
 
 Exact evaluation at scale (Theorems 2 and 12, Proposition 13, Lemma 4, Propositions 5 and 6, Table I, Figures 2-3
