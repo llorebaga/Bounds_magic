@@ -10,6 +10,7 @@ paper/*.pdf
 !paper/cultivation.pdf
 !paper/fig_fd.pdf
 !paper/fig_nn.pdf
+!paper/fig_google.pdf
 paper/*.bbl
 paper/*.fls
 paper/*.fdb_latexmk
