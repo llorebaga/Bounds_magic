@@ -55,6 +55,13 @@ Status: open unless marked.
    By Theorem 3 this is exactly n_min(T, 3) for distillation. The SAT / integer-programming machinery of the
    distillation paper (this repo) could settle n = 10..14 at order three. Either a smaller circuit or a proof that
    15 is optimal; both strengthen Theorem 3's "Published circuits are far from these bounds".
+4d'. **A distillation linear program beyond code distance** [theory + compute, medium] (from S4). Our T-count
+   bounds at d = 6, 7, 10 equal the lengths of known stabilizer codes ([[16,1,6]], [[17,1,7]], [[28,1,10]],
+   codetables.de), so the distance alone cannot improve them. Add the distillation condition itself to the LP:
+   the collapse of every Z pattern of weight < d is a set of identities between signed weight enumerators of the
+   cosets of S_C (Rall's description of distillation; our removed Proposition on signed enumerators gave the exact
+   form). Even the weight-one and weight-two identities might cut the LP below these code lengths.
+   Side question: [[22,1,8]] is open (7 <= d <= 8 in the tables); its non-existence would raise the d = 8 bound to 23.
 4e. **Cheaper converse in Theorem 14** [theory, medium]. The construction uses d_C - 1 verification rounds per
    cat state and an ideal decoder. One round already sufficed for the 15-to-1 code (Sec. S4); prove when one round
    suffices (e.g. when the spread of a preparation fault is caught by later generators), and say what a noisy
