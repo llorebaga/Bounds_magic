@@ -195,7 +195,7 @@ def fig_gsj():
     pts = " ".join("(%.3f,%.4f) +- (0,%.4f)" % (t["p"] * 1e3, t["excess_over_p2"], t["sd_excess"]) for t in table)
     L.append(r"\addplot[only marks, mark=*, mark size=1.3pt, black, error bars/.cd, y dir=both, y explicit, error bar style={line width=0.5pt}] coordinates {%s};" % pts)
     L.append(r"\addplot[only marks, mark=diamond*, mark size=2.4pt, harmver] coordinates {(0,%.4f)};" % c2)
-    L.append(r"\node[harmver, anchor=west, align=left, inner sep=2pt] at (axis cs:0.25,0.22) {$32/75$, Theorem~2};")
+    L.append(r"\node[harmver, anchor=west, align=left, inner sep=2pt] at (axis cs:0.25,0.22) {$32/75$, Theorem~\ref{thm:main}};")
     L.append(r"\node[anchor=south west, align=left, inner sep=1pt, small] at (axis cs:0.3,2.25) {state-vector simulations\\[-1pt]published with the circuit};")
     L.append(r"\end{axis}")
     L.append(r"\end{tikzpicture}")

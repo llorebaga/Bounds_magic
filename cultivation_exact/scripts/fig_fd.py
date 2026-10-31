@@ -42,7 +42,7 @@ for k, (ax, (title, real, upper)) in enumerate(zip(axes, panels)):
         ax.spines[s].set_visible(False)
     ax.tick_params(colors=INK, labelsize=6.5)
 axes[0].set_ylabel("fault distance", color=INK, fontsize=7)
-fig.text(0.33, 0.01, "code distance $d$", ha="center", va="bottom", color=INK, fontsize=7)
+fig.text(0.33, 0.01, r"code distance $\delta$", ha="center", va="bottom", color=INK, fontsize=7)
 h_code, = axes[0].plot([], [], "o", ms=4.2, mfc="white", mec=GRAY, mew=0.9)
 h_real, = axes[0].plot([], [], "o", ms=4.2, color=TOLBLUE, mec="white", mew=0.5)
 fig.legend([h_code, h_real], ["code distance", "real T"], loc="lower right", bbox_to_anchor=(0.995, -0.01),
