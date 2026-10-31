@@ -156,7 +156,10 @@ def fig_gsj():
     L.append(r"\begin{tikzpicture}[")
     L.append(STYLE.rstrip("\n"))
     L.append("]")
-    L.append(r"\node[letter] at (0,8.35) {(a)};")
+    # (a) the colour-code triangle, scaled into the left half; (b) the plot beside it. All explanations are in
+    # the caption, so the panels carry no sentences.
+    L.append(r"\node[letter] at (0,3.05) {(a)};")
+    L.append(r"\begin{scope}[shift={(0.55,-3.55)}, scale=0.78]")
     # colour-code triangle; qubit labels as in the circuit (coordinates of the published chunks)
     P = {10: (0.35, 4.75), 12: (3.95, 4.75), 13: (2.15, 7.87), 4: (2.15, 4.75), 6: (1.25, 6.31), 5: (3.05, 6.31),
          3: (2.15, 5.79)}
@@ -171,32 +174,28 @@ def fig_gsj():
         L.append(r"\fill (%.2f,%.2f) circle (1.5pt);" % (x, y))
     # cat qubit 14 and the hook 6 -> 14 -> 10
     L.append(r"\draw[fill=white] (-0.07,5.28) rectangle (0.13,5.48);")
-    L.append(r"\node[anchor=east, small, inner sep=1.5pt] at (-0.07,5.38) {cat};")
     L.append(r"\draw[->, harmver, dashed, line width=0.5pt] (%.2f,%.2f) to[out=200, in=60] (0.13,5.47);" % (P[6][0] - 0.06, P[6][1] - 0.04))
     L.append(r"\draw[->, harmver, dashed, line width=0.5pt] (0.03,5.27) to[out=-80, in=150] (%.2f,%.2f);" % (P[10][0] - 0.04, P[10][1] + 0.06))
     for q, lab, anc in ((10, "1", "north"), (6, "2", "south east"), (13, "3", "east")):
         L.append(r"\node[anchor=%s, inner sep=1.5pt, small] at (%.2f,%.2f) {%s};" % (anc, P[q][0], P[q][1], lab))
-    L.append(r"\node[harmver, anchor=west, inner sep=1pt] at (%.2f,%.2f) {fault 1};" % (P[6][0] + 0.12, P[6][1] + 0.12))
-    L.append(r"\node[harmver, anchor=west, inner sep=2pt] at (%.2f,%.2f) {fault 2};" % (P[13][0] + 0.08, P[13][1]))
-    L.append(r"\node[harmver, anchor=south east, inner sep=1pt] at (%.2f,%.2f) {$\bar X$};" % (P[10][0] + 0.78 * (P[13][0] - P[10][0]) - 0.1, P[10][1] + 0.78 * (P[13][1] - P[10][1])))
-    L.append(r"\node[anchor=north west, align=left, inner sep=0pt] at (4.45,7.95) {"
-             r"fault 1 leaves $X_1X_2$ through\\ a cat qubit measured in $X$\\[3pt]"
-             r"last $S$ layer: $X_1X_2\mapsto Y_1Y_2$,\\ caught by the top face\\[3pt]"
-             r"last $T$ layer:\\ $X_1X_2\mapsto\tfrac12(X{+}Y)_1(X{+}Y)_2$;\\ with fault 2, $X_1X_2X_3=\bar X$\\ passes every check};")
+    # the two faults (stars) and the logical operator they complete
+    for q, dx, dy in ((6, 0.30, 0.10), (13, 0.30, 0.0)):
+        L.append(r"\node[star, star points=6, star point ratio=2.4, fill=harmver, draw=white, line width=0.3pt, "
+                 r"inner sep=0pt, minimum size=2.8mm] at (%.2f,%.2f) {};" % (P[q][0] + dx, P[q][1] + dy))
+    L.append(r"\node[harmver, anchor=south east, inner sep=1pt] at (%.2f,%.2f) {$\bar X$};" % (P[10][0] + 0.62 * (P[13][0] - P[10][0]) - 0.1, P[10][1] + 0.62 * (P[13][1] - P[10][1])))
+    L.append(r"\end{scope}")
     # ---------------------------------------------------------------- (b)
-    L.append(r"\node[letter] at (0,3.95) {(b)};")
-    L.append(r"\begin{axis}[at={(1.0cm,0.8cm)}, anchor=south west, width=7.0cm, height=2.85cm, scale only axis,")
-    L.append(r"  xmin=-0.3, xmax=10.5, ymin=0, ymax=3.0, xtick={0,2,4,6,8,10}, ytick={0,1,2,3},")
+    L.append(r"\node[letter] at (3.85,3.05) {(b)};")
+    L.append(r"\begin{axis}[at={(4.95cm,0.62cm)}, anchor=south west, width=3.35cm, height=2.2cm, scale only axis,")
+    L.append(r"  xmin=-0.4, xmax=10.5, ymin=0, ymax=3.0, xtick={0,5,10}, ytick={0,1,2,3},")
     L.append(r"  tick label style={font=\fontsize{8}{9.6}\fontfamily{phv}\selectfont}, label style={font=\fontsize{8}{9.6}\fontfamily{phv}\selectfont\mathversion{figsans}},")
-    L.append(r"  xlabel={noise strength $p$ ($10^{-3}$)}, ylabel={$(\epsilon_T-\epsilon_S)/p^2$},")
+    L.append(r"  xlabel={$p$ ($10^{-3}$)}, ylabel={$(\epsilon_T-\epsilon_S)/p^2$},")
     L.append(r"  axis line style={line width=0.5pt}, tick style={line width=0.5pt}, xlabel shift=-3pt, ylabel shift=-4pt,")
     L.append(r"  clip=false]")
     L.append(r"\addplot[inkgray, dashed, line width=0.5pt, domain=0:5.6] {%.4f + %.6f*x};" % (fit["a"], fit["b"] * 1e-3))
     pts = " ".join("(%.3f,%.4f) +- (0,%.4f)" % (t["p"] * 1e3, t["excess_over_p2"], t["sd_excess"]) for t in table)
     L.append(r"\addplot[only marks, mark=*, mark size=1.3pt, black, error bars/.cd, y dir=both, y explicit, error bar style={line width=0.5pt}] coordinates {%s};" % pts)
     L.append(r"\addplot[only marks, mark=diamond*, mark size=2.4pt, harmver] coordinates {(0,%.4f)};" % c2)
-    L.append(r"\node[harmver, anchor=west, align=left, inner sep=2pt] at (axis cs:0.25,0.22) {$32/75$, Theorem~\ref{thm:main}};")
-    L.append(r"\node[anchor=south west, align=left, inner sep=1pt, small] at (axis cs:0.3,2.25) {state-vector simulations\\[-1pt]published with the circuit};")
     L.append(r"\end{axis}")
     L.append(r"\end{tikzpicture}")
     open(os.path.join(PAPER, "fig_cult_gsj.tex"), "w").write("\n".join(L) + "\n")

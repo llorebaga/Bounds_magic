@@ -15,7 +15,8 @@
   letter/.style={font=\fontsize{8}{9.6}\fontfamily{phv}\fontseries{b}\selectfont, anchor=north west, inner sep=0pt},
   small/.style={font=\fontsize{7}{8.4}\fontfamily{phv}\selectfont\mathversion{figsans}},
 ]
-\node[letter] at (0,8.35) {(a)};
+\node[letter] at (0,3.05) {(a)};
+\begin{scope}[shift={(0.55,-3.55)}, scale=0.78]
 \fill[pauX!14] (0.35,4.75) -- (2.15,4.75) -- (2.15,5.79) -- (1.25,6.31) -- cycle;
 \fill[pauY!14] (2.15,4.75) -- (3.95,4.75) -- (3.05,6.31) -- (2.15,5.79) -- cycle;
 \fill[pauZ!14] (1.25,6.31) -- (2.15,5.79) -- (3.05,6.31) -- (2.15,7.87) -- cycle;
@@ -30,27 +31,24 @@
 \fill (3.05,6.31) circle (1.5pt);
 \fill (2.15,5.79) circle (1.5pt);
 \draw[fill=white] (-0.07,5.28) rectangle (0.13,5.48);
-\node[anchor=east, small, inner sep=1.5pt] at (-0.07,5.38) {cat};
 \draw[->, harmver, dashed, line width=0.5pt] (1.19,6.27) to[out=200, in=60] (0.13,5.47);
 \draw[->, harmver, dashed, line width=0.5pt] (0.03,5.27) to[out=-80, in=150] (0.31,4.81);
 \node[anchor=north, inner sep=1.5pt, small] at (0.35,4.75) {1};
 \node[anchor=south east, inner sep=1.5pt, small] at (1.25,6.31) {2};
 \node[anchor=east, inner sep=1.5pt, small] at (2.15,7.87) {3};
-\node[harmver, anchor=west, inner sep=1pt] at (1.37,6.43) {fault 1};
-\node[harmver, anchor=west, inner sep=2pt] at (2.23,7.87) {fault 2};
-\node[harmver, anchor=south east, inner sep=1pt] at (1.65,7.18) {$\bar X$};
-\node[anchor=north west, align=left, inner sep=0pt] at (4.45,7.95) {fault 1 leaves $X_1X_2$ through\\ a cat qubit measured in $X$\\[3pt]last $S$ layer: $X_1X_2\mapsto Y_1Y_2$,\\ caught by the top face\\[3pt]last $T$ layer:\\ $X_1X_2\mapsto\tfrac12(X{+}Y)_1(X{+}Y)_2$;\\ with fault 2, $X_1X_2X_3=\bar X$\\ passes every check};
-\node[letter] at (0,3.95) {(b)};
-\begin{axis}[at={(1.0cm,0.8cm)}, anchor=south west, width=7.0cm, height=2.85cm, scale only axis,
-  xmin=-0.3, xmax=10.5, ymin=0, ymax=3.0, xtick={0,2,4,6,8,10}, ytick={0,1,2,3},
+\node[star, star points=6, star point ratio=2.4, fill=harmver, draw=white, line width=0.3pt, inner sep=0pt, minimum size=2.8mm] at (1.55,6.41) {};
+\node[star, star points=6, star point ratio=2.4, fill=harmver, draw=white, line width=0.3pt, inner sep=0pt, minimum size=2.8mm] at (2.45,7.87) {};
+\node[harmver, anchor=south east, inner sep=1pt] at (1.37,6.68) {$\bar X$};
+\end{scope}
+\node[letter] at (3.85,3.05) {(b)};
+\begin{axis}[at={(4.95cm,0.62cm)}, anchor=south west, width=3.35cm, height=2.2cm, scale only axis,
+  xmin=-0.4, xmax=10.5, ymin=0, ymax=3.0, xtick={0,5,10}, ytick={0,1,2,3},
   tick label style={font=\fontsize{8}{9.6}\fontfamily{phv}\selectfont}, label style={font=\fontsize{8}{9.6}\fontfamily{phv}\selectfont\mathversion{figsans}},
-  xlabel={noise strength $p$ ($10^{-3}$)}, ylabel={$(\epsilon_T-\epsilon_S)/p^2$},
+  xlabel={$p$ ($10^{-3}$)}, ylabel={$(\epsilon_T-\epsilon_S)/p^2$},
   axis line style={line width=0.5pt}, tick style={line width=0.5pt}, xlabel shift=-3pt, ylabel shift=-4pt,
   clip=false]
 \addplot[inkgray, dashed, line width=0.5pt, domain=0:5.6] {0.4448 + 0.146993*x};
 \addplot[only marks, mark=*, mark size=1.3pt, black, error bars/.cd, y dir=both, y explicit, error bar style={line width=0.5pt}] coordinates {(1.000,0.5836) +- (0,0.0631) (2.000,0.7468) +- (0,0.0455) (3.000,0.8757) +- (0,0.0768) (5.000,1.1778) +- (0,0.1329) (7.000,1.4206) +- (0,0.2079) (10.000,2.4351) +- (0,0.3566)};
 \addplot[only marks, mark=diamond*, mark size=2.4pt, harmver] coordinates {(0,0.4267)};
-\node[harmver, anchor=west, align=left, inner sep=2pt] at (axis cs:0.25,0.22) {$32/75$, Theorem~\ref{thm:main}};
-\node[anchor=south west, align=left, inner sep=1pt, small] at (axis cs:0.3,2.25) {state-vector simulations\\[-1pt]published with the circuit};
 \end{axis}
 \end{tikzpicture}
