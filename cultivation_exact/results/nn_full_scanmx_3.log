@@ -1,0 +1,1 @@
+{"name": "nn_full_d3_r3_z1_b1_v1_x_measure", "inject_dag": false, "qubits": 17, "ticks": 65, "T": {"fd": 2, "malignant": 112, "coef_p1e3": 3.886706884798794, "n0": 8388608.00000004, "t": 42}, "T_si1000": {"fd": 2, "malignant": 112, "coef_p1e3": 7.463211252719565, "n0": 8388608.00000004, "t": 42}}

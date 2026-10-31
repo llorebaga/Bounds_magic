@@ -1,0 +1,136 @@
+% Figure 1 of cultivation.tex: the main concepts. Drawn at final size, 8 pt sans-serif text with sans-italic maths,
+% in the style of fig_reductions.tex. Requires tikz (arrows.meta, calc, decorations.pathreplacing) and the math
+% version figsans declared in the preamble. Colours are CMYK (Okabe-Ito hues).
+\definecolor{tolblue}{cmyk}{1,0.36,0,0.30}      % T states, cat path
+\definecolor{harmver}{cmyk}{0,0.56,1,0.165}     % faults and what they spread to
+\definecolor{skyblue}{cmyk}{0.63,0.23,0,0.09}   % code, verification
+\definecolor{rejgray}{cmyk}{0,0,0,0.62}         % rejected, classical wires
+\definecolor{inkgray}{cmyk}{0,0,0,0.75}         % annotation
+\providecommand{\figPi}{\text{\fontencoding{OT1}\fontfamily{cmss}\selectfont\char5}}
+\begin{tikzpicture}[
+  font=\fontsize{8}{9.6}\fontfamily{phv}\selectfont\mathversion{figsans},
+  line width=0.5pt,
+  >={Stealth[length=1.7mm,width=1.3mm]},
+  letter/.style={font=\fontsize{8}{9.6}\fontfamily{phv}\fontseries{b}\selectfont, anchor=north west, inner sep=0pt},
+  small/.style={font=\fontsize{7}{8.4}\fontfamily{phv}\selectfont\mathversion{figsans}},
+  gate/.style={draw, rounded corners=1pt, fill=black!8},
+  tgate/.style={draw=tolblue, rounded corners=1pt, fill=tolblue!12, minimum width=0.36cm, minimum height=0.24cm, inner sep=0pt, font=\fontsize{7}{8}\fontfamily{phv}\selectfont},
+  code/.style={draw=skyblue, rounded corners=1pt, fill=skyblue!18},
+  cl/.style={double=white, double distance=0.9pt, line width=0.4pt, rejgray},
+  brace/.style={decorate, decoration={brace, amplitude=2.2pt}},
+  flt/.pic={\fill[harmver, draw=white, line width=0.3pt] (90:0.15) -- (120:0.06) -- (150:0.15) -- (180:0.06) -- (210:0.15) -- (240:0.06) -- (270:0.15) -- (300:0.06) -- (330:0.15) -- (360:0.06) -- (390:0.15) -- (420:0.06) -- cycle;},
+  dq/.style={circle, fill=black, inner sep=0pt, minimum size=1.5mm},
+  cq/.style={circle, fill=tolblue, draw=white, line width=0.3pt, inner sep=0pt, minimum size=1.6mm},
+  sq/.style={rectangle, fill=skyblue, inner sep=0pt, minimum size=1.4mm},
+]
+% ================================================================ (a) a cultivation circuit
+\begin{scope}[shift={(0,0)}]
+  \node[letter] at (0,4.60) {(a)};
+  \node[anchor=west, small, inkgray] at (0.33,4.52) {a cultivation circuit};
+  % data wires of the color code
+  \foreach \y in {3.50,3.20,2.90,2.60} \draw (0.75,\y) -- (5.15,\y);
+  \draw[brace] (0.68,2.53) -- (0.68,3.57);
+  \node[anchor=east, align=right, small] at (0.62,3.05) {color\\code};
+  % injection
+  \draw[gate] (0.88,2.47) rectangle (1.30,3.63);
+  \node[rotate=90, small] at (1.09,3.05) {inject $|T\rangle$};
+  % the check: T layer, measurement of the logical X, T^dagger layer
+  \draw[rounded corners=2pt, dashed, inkgray] (1.45,1.95) rectangle (3.95,3.83);
+  \node[anchor=south, small, inkgray] at (2.70,3.84) {check, repeated};
+  \foreach \y in {3.50,3.20,2.90,2.60} \node[tgate] at (1.75,\y) {T};
+  \draw[gate] (2.10,2.47) rectangle (3.15,3.63);
+  \node[small, align=center] at (2.625,3.05) {measure\\$\bar X$};
+  \draw[cl] (2.625,2.47) -- (2.625,2.12);
+  \node[anchor=west, small] at (2.66,2.17) {keep $+1$};
+  \foreach \y in {3.50,3.20,2.90,2.60} \node[tgate] at (3.55,\y) {T$^\dagger$};
+  % a fault on one wire
+  \pic at (1.98,2.90) {flt};
+  \draw[harmver, line width=0.4pt] (1.94,2.76) -- (1.80,1.78);
+  \node[anchor=north, small, harmver] at (1.80,1.80) {Pauli fault};
+  % ideal decoder
+  \draw[code] (4.10,2.47) rectangle (4.75,3.63);
+  \node[small, align=center] at (4.425,3.05) {ideal\\dec.};
+  \draw[cl] (4.425,2.47) -- (4.425,2.12);
+  \node[anchor=west, small] at (4.46,2.17) {keep};
+  \draw (4.75,3.05) -- (5.15,3.05);
+  \node[anchor=west] at (5.15,3.05) {$\tau$};
+  % the proxy
+  \draw[rounded corners=2pt, rejgray, fill=black!3] (0.33,0.12) rectangle (5.45,1.35);
+  \node[anchor=north west, small, align=left] at (0.43,1.28) {S proxy: every T replaced by S $=$ T$^2$\\$\Rightarrow$ a Clifford circuit, simulated fast,\\but X errors behave differently};
+  \node[tgate, minimum width=0.42cm] at (4.80,0.98) {T};
+  \draw[->, inkgray] (5.02,0.94) .. controls (5.30,0.80) and (5.30,0.60) .. (5.02,0.50);
+  \node[tgate, minimum width=0.42cm, draw=rejgray, fill=black!8] at (4.80,0.46) {S};
+\end{scope}
+% ================================================================ (b) one code decides
+\begin{scope}[shift={(6.0,0)}]
+  \node[letter] at (0,4.60) {(b)};
+  \node[anchor=west, small, inkgray] at (0.33,4.52) {one code decides (Theorem~\ref{thm:main})};
+  % skeleton: T states as inputs of a Clifford circuit
+  \draw[brace] (0.92,2.78) -- (0.92,4.00);
+  \node[anchor=east] at (0.86,3.39) {$|T\rangle^{\otimes t}$};
+  \foreach \y in {3.90,3.60,3.18,2.88} \draw[tolblue] (1.0,\y) -- (1.30,\y);
+  \node[tolblue] at (1.15,3.42) {$\vdots$};
+  \draw[gate] (1.30,2.72) rectangle (3.55,4.06);
+  \node[small, align=center] at (2.10,3.32) {noisy\\Clifford\\skeleton};
+  \pic at (3.20,3.80) {flt};
+  \draw[->, harmver, dotted, line width=0.7pt] (3.36,3.80) -- (3.95,3.80);
+  \node[anchor=west, small, harmver, align=left] at (3.98,3.80) {push the fault\\to the end};
+  \draw (3.55,3.10) -- (3.95,3.10);
+  \node[anchor=west] at (3.95,3.10) {$\tau$};
+  % two outcomes
+  \draw[->, inkgray, line width=0.6pt] (2.42,2.62) -- (1.55,2.22);
+  \draw[->, inkgray, line width=0.6pt] (2.42,2.62) -- (3.40,2.22);
+  \node[anchor=north, small, align=center] at (1.25,2.20) {a detector fires,\\$D(F)\neq0$: rejected};
+  \node[anchor=north, small, align=center] at (3.80,2.20) {a Pauli $E(F)$\\on the T inputs};
+  \draw[->, inkgray, line width=0.6pt] (3.80,1.52) -- (3.40,1.25);
+  % the code test
+  \node[anchor=north west, small, align=left, inkgray] at (0.05,1.15) {harmless if the\\code $C$ still\\projects onto $\tau$\\or onto zero};
+  \draw[brace] (2.87,0.20) -- (2.87,1.12);
+  \node[anchor=east] at (2.81,0.66) {$|T\rangle^{\otimes t}$};
+  \foreach \y in {1.02,0.78,0.54,0.30} \draw (2.95,\y) -- (4.65,\y);
+  \draw[gate, draw=harmver, fill=harmver!12] (3.10,0.17) rectangle (3.60,1.15);
+  \node at (3.35,0.66) {$E$};
+  \draw[code] (3.80,0.17) rectangle (4.30,1.15);
+  \node at (4.05,0.66) {$\figPi_C$};
+  \draw[gate] (4.65,0.17) rectangle (5.10,1.15);
+  \node at (4.88,0.66) {$V$};
+  \draw (5.10,0.66) -- (5.35,0.66);
+  \node[anchor=west] at (5.35,0.66) {$\tau$\,?};
+\end{scope}
+% ================================================================ (c) how one fault spreads
+\begin{scope}[shift={(12.0,0)}]
+  \node[letter] at (0,4.60) {(c)};
+  \node[anchor=west, small, inkgray] at (0.33,4.52) {how far one fault spreads};
+  % GHZ fold: a tree over the data
+  \node[small] at (1.40,4.15) {GHZ fold};
+  \coordinate (r) at (1.40,3.62);
+  \coordinate (n1) at (0.80,3.12);
+  \coordinate (n2) at (2.00,3.12);
+  \draw[line width=0.7pt] (r) -- (n1); \draw[line width=0.7pt] (r) -- (n2);
+  \foreach \x in {1.65,2.00,2.35} \draw[line width=0.7pt] (n2) -- (\x,2.55);
+  \foreach \x in {0.45,0.80,1.15} \draw[harmver, line width=1.0pt] (n1) -- (\x,2.55);
+  \node[circle, draw, fill=white, inner sep=0pt, minimum size=1.8mm] at (r) {};
+  \node[circle, fill=black!45, inner sep=0pt, minimum size=1.5mm] at (n2) {};
+  \pic at (n1) {flt};
+  \foreach \x in {0.45,0.80,1.15} \node[dq, fill=harmver] at (\x,2.55) {};
+  \foreach \x in {1.65,2.00,2.35} \node[dq] at (\x,2.55) {};
+  \node[anchor=north, small, align=center] at (1.40,2.38) {X on a branch\\of data qubits};
+  \node[anchor=north, small, align=center, harmver] at (1.40,1.55) {fault distance\\$(\delta+1)/2$};
+  % verified cat on a path
+  \node[small] at (4.35,4.15) {verified cat};
+  \foreach \x in {3.25,3.80,4.35,4.90,5.45} \draw (\x,3.30) -- (\x,2.70);
+  \draw[tolblue, line width=1.0pt] (3.25,3.30) -- (5.45,3.30);
+  \draw[harmver, line width=1.2pt] (4.62,3.30) -- (5.45,3.30);
+  \foreach \x in {3.25,3.80} \node[cq] at (\x,3.30) {};
+  \foreach \x in {4.90,5.45} \node[cq, fill=harmver] at (\x,3.30) {};
+  \node[circle, draw=tolblue, fill=white, line width=0.7pt, inner sep=0pt, minimum size=2.0mm] at (4.35,3.30) {};
+  \pic at (4.62,3.30) {flt};
+  \foreach \x in {3.25,3.80,4.35,4.90,5.45} \node[dq] at (\x,2.70) {};
+  \draw[skyblue, dashed, line width=0.6pt] (3.25,3.37) .. controls (3.70,3.64) and (5.00,3.64) .. (5.45,3.37);
+  \node[sq] at (4.35,3.57) {};
+  \node[anchor=west, small, skyblue!80!black] at (4.45,3.67) {end parity};
+  \node[anchor=north, small, align=center] at (4.35,2.52) {X stays on the path\\and flips one end: caught};
+  \node[anchor=north, small, align=center, tolblue] at (4.35,1.55) {fault distance\\$\delta$};
+  \draw[rejgray, line width=0.3pt] (2.82,0.45) -- (2.82,4.25);
+\end{scope}
+\end{tikzpicture}

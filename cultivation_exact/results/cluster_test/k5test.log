@@ -1,0 +1,1 @@
+{"k": 5, "malignant": 3855, "weight": 2.7222020977434405e-14, "evaluated": 86084, "circuit": "vcat_d5_r1", "shard": 0, "nshards": 64, "classes": 1591, "k_affine": 11, "t": 39, "seconds": 1758}

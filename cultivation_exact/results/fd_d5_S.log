@@ -1,0 +1,8 @@
+skeleton: 42 qubits + 53 magic gates; 164 records
+skeleton detectors: 93, observables: 54 (original circuit: 107 detectors)
+Choi state: N=54, affine dimension k=15 (32768 terms)
+d1=5 magic=S: t=53, 2929 mechanisms, 93 skeleton detectors
+  k=1: 0 malignant configurations
+  k=2: 0 malignant configurations
+  k=3: 0 malignant configurations
+  k=4: 4288056 pairs, 1994723 masks

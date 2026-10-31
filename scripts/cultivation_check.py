@@ -6,7 +6,7 @@ a projection, or flips of a projection's sign. For small random circuits we chec
   (i)   gadget: replacing each T by CNOT(q->a), <0|_a on an ideal |T>_a ancilla (times sqrt2) reproduces
         every faulty circuit, so K_F|0> = M_F |T>^t with M_F the faulty skeleton map on the t T-inputs;
   (ii)  for every fault configuration F, M_F = 0 or M_F = lambda M E for a Pauli E on the T-inputs
-        (checked when M has full row rank, as Theorem 2 assumes);
+        (checked when M has full row rank, as Theorem 1 assumes);
   (iii) a Z fault next to T gate j gives E = Z_j up to stabilizers of the code;
   (iv)  E(F1 F2) = E(F1) E(F2) up to phase and stabilizers when both are undetected;
   (v)   'harmless' computed directly equals 'M_F = 0, or M E|T>^t parallel to M|T>^t';

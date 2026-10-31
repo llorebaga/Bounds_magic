@@ -1,8 +1,8 @@
-"""The distance-three cultivation circuit of Gidney, Shutty and Jones with T gates (paper/cultivation.tex, Sec. S6).
+"""The distance-three cultivation circuit of Gidney, Shutty and Jones with T gates (paper/cultivation.tex, Sec. S9).
 
 Composes the injection chunk and the T-check chunk of data/gsj_cultivation/ by qubit coordinates, replaces the
 S and S_DAG gates that stand for T and T^dagger by T and T^dagger (or keeps S, for comparison), keeps the final
-stabilizer measurements as an ideal decoder, and computes with the fault map of Theorem 2:
+stabilizer measurements as an ideal decoder, and computes with the fault map of Theorem 1:
   - harmful single faults and pairs, for the T and for the S version, with one noisy location per operation;
   - the same with the uniform depolarizing model of the original code (DEPOLARIZE2 after CX, DEPOLARIZE1 after
     T, X/Z flips after R/RX, result flips of M/MX, DEPOLARIZE1 on every live idle qubit in every TICK of the

@@ -1,0 +1,39 @@
+SI1000 p=0.002 T: P_acc=0.5226 eps=4.787e-06 +- 1.3e-07 (2.0e+08 shots, 9s)
+SI1000 p=0.002 S: P_acc=0.5226 eps=2.325e-06 +- 1.5e-07 (2.0e+08 shots, 10s)
+SI1000 p=0.0015 T: P_acc=0.6146 eps=2.257e-06 +- 6.2e-08 (3.6e+08 shots, 16s)
+SI1000 p=0.0015 S: P_acc=0.6146 eps=1.052e-06 +- 6.9e-08 (3.6e+08 shots, 15s)
+SI1000 p=0.001 T: P_acc=0.7229 eps=7.999e-07 +- 2.1e-08 (8.0e+08 shots, 33s)
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\llore\anaconda3\Lib\multiprocessing\pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\llore\anaconda3\Lib\multiprocessing\pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\llore\Documents\2026\Magic\cultivation2\src\mc.py", line 82, in _worker
+    circuit_text, magic, shots, seed, overrides = args
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 5, got 4)
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\llore\Documents\2026\Magic\cultivation2\scripts\mc_si1000_d3.py", line 19, in <module>
+    r = sample_parallel(c, magic, shots, workers=8)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\llore\Documents\2026\Magic\cultivation2\src\mc.py", line 95, in sample_parallel
+    with mp.Pool(workers) as pool:
+                ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\llore\anaconda3\Lib\multiprocessing\pool.py", line 367, in map
+    return self._map_async(func, iterable, mapstar, chunksize).get()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\llore\anaconda3\Lib\multiprocessing\pool.py", line 774, in get
+    raise self._value
+ValueError: not enough values to unpack (expected 5, got 4)
+SI1000 p=0.001 T: P_acc=0.7229 eps=7.999e-07 +- 2.1e-08 (8.0e+08 shots, 35s)
+SI1000 p=0.001 S: P_acc=0.7229 eps=2.836e-07 +- 2.2e-08 (8.0e+08 shots, 34s)
+SI1000 p=0.0005 T: P_acc=0.8503 eps=1.518e-07 +- 3.8e-09 (3.2e+09 shots, 135s)
+SI1000 p=0.0005 S: P_acc=0.8503 eps=3.345e-08 +- 3.5e-09 (3.2e+09 shots, 130s)

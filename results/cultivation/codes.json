@@ -1,5 +1,5 @@
 {
- "lemma 3": {
+ "lemma 8": {
   "[[9,1,3]] nine-input T code": {
    "1": {
     "Paulis": 27,
@@ -37,7 +37,7 @@
    "harmful Z patterns of that weight": 35
   }
  },
- "proposition 12": {
+ "proposition 17": {
   "random codes": 25,
   "Paulis tested": 7168,
   "disagreements": 0
@@ -117,7 +117,7 @@
    "0.500": 8
   }
  },
- "converse of lemma 3(i)": {
+ "converse of lemma 8(i)": {
   "code": [
    "+IXX",
    "-IYY"

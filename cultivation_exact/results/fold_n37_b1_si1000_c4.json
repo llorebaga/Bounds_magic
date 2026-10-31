@@ -1,0 +1,17 @@
+{
+ "circuit": "fold_n37_b1_si1000.stim",
+ "malignant_4sets": 111,
+ "weight": 4.2356616508026693e-14,
+ "c4": 0.04235661650802668,
+ "distinct_masks_evaluated": 572704,
+ "harmful_masks": 80,
+ "acceptances": [
+  0.000976562,
+  0.001953125,
+  0.00390625,
+  0.0078125,
+  0.015625,
+  0.03125
+ ],
+ "seconds": 536
+}

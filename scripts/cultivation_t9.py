@@ -1,9 +1,9 @@
-"""Nine T gates suffice for fault distance two (paper/cultivation.tex, Proposition 7 and Sec. S5).
+"""Nine T gates suffice for fault distance two (paper/cultivation.tex, Proposition 18 and Sec. S5).
 
 The circuit prepares nine |+> states, applies T to each, and measures eight weight-four stabilizers of the
 nine-input factory code of paper/paper.tex (Proposition 7 there; a [[9,1,3]] code) with one ancilla each, the
 first with a flag; the output stays encoded and is decoded ideally. An integer program over the fault map of
-Theorem 2 chooses the stabilizers, their order, the order of the qubits in each measurement and the flagged
+Theorem 1 chooses the stabilizers, their order, the order of the qubits in each measurement and the flagged
 measurements; the result is then verified by enumerating every single and every pair of faults, with the fault
 map and with direct state-vector simulation. Finally, the coefficient of p^2 in the logical error per accepted run
 is computed under the uniform depolarizing model of the cultivation paper, without and with idle noise.
@@ -201,7 +201,7 @@ def solve_mip():
 
 # ---------------------------------------------------------------- verification
 def exact_proof(plan):
-    """the computational step of the proof of Proposition 7, in exact F2 arithmetic: every single fault in a
+    """the computational step of the proof of Proposition 18, in exact F2 arithmetic: every single fault in a
     measurement either raises the flag, or leaves a data Pauli R that anticommutes with an earlier stabilizer, or
     flips the outcome inconsistently with R, or has weight at most one modulo the stabilizer group"""
     S = [sym(g) for g in group([p[0] for p in plan])]

@@ -1,0 +1,18 @@
+21206 non-disturbing candidates on base ticks 54..90 (140s)
+iter 0: 0 flags, 0 added layers -> first malignant weight 3 (9 configurations) [160s]  flags=[]
+Set parameter Username
+Set parameter LicenseID to value 2873805
+Academic license - for non-commercial use only - expires 2027-10-12
+   +144 constraints (total 118, 0 undetectable reps); ILP -> 2 flags, objective 42, gap 0
+  k=4: 411647 distinct masks evaluated, 3784 harmful, 6824 malignant 4-sets
+iter 1: 2 flags, 4 added layers -> first malignant weight 4 (6824 configurations) [577s]  flags=[((3, 7), 76, 90, 'ZZ'), ((32, 33), 76, 90, 'ZZ')]
+   +109184 constraints (total 46586, 0 undetectable reps); ILP -> 13 flags, objective 113, gap 0
+  k=4: 386686 distinct masks evaluated, 1870 harmful, 3776 malignant 4-sets
+iter 2: 13 flags, 10 added layers -> first malignant weight 4 (3776 configurations) [1560s]  flags=[(14, 63, 64, 'X'), (22, 63, 64, 'Z'), (24, 63, 64, 'X'), (35, 63, 76, 'Z'), ((12, 13), 77, 89, 'ZZ'), ((12, 18), 76, 90, 'ZZ'), ((13, 14), 76, 90, 'ZZ'), ((18, 25), 77, 89, 'ZZ'), ((25, 32), 76, 90, 'ZZ'), ((26, 27), 76, 90, 'ZZ'), ((27, 28), 77, 89, 'ZZ'), ((28, 29), 76, 90, 'ZZ'), ((37, 38), 76, 90, 'ZZ')]
+   +60416 constraints (total 57171, 0 undetectable reps); ILP -> 14 flags, objective 114, gap 0
+  k=4: 383929 distinct masks evaluated, 1412 harmful, 3106 malignant 4-sets
+iter 3: 14 flags, 10 added layers -> first malignant weight 4 (3106 configurations) [2655s]  flags=[(14, 54, 63, 'X'), (22, 54, 63, 'Z'), (24, 54, 63, 'X'), (35, 54, 89, 'Z'), ((3, 7), 76, 90, 'ZZ'), ((12, 13), 77, 89, 'ZZ'), ((12, 18), 76, 90, 'ZZ'), ((13, 14), 76, 90, 'ZZ'), ((18, 25), 77, 89, 'ZZ'), ((25, 32), 76, 90, 'ZZ'), ((26, 27), 76, 90, 'ZZ'), ((27, 28), 77, 89, 'ZZ'), ((28, 29), 76, 90, 'ZZ'), ((37, 38), 76, 90, 'ZZ')]
+   +49696 constraints (total 58218, 0 undetectable reps); ILP -> 14 flags, objective 114, gap 0
+  k=4: 383929 distinct masks evaluated, 1412 harmful, 3106 malignant 4-sets
+iter 4: 14 flags, 10 added layers -> first malignant weight 4 (3106 configurations) [4080s]  flags=[(14, 63, 64, 'X'), (18, 63, 64, 'Z'), (24, 63, 64, 'X'), (35, 63, 90, 'Z'), ((3, 7), 76, 90, 'ZZ'), ((12, 13), 77, 89, 'ZZ'), ((12, 18), 76, 90, 'ZZ'), ((13, 14), 76, 90, 'ZZ'), ((18, 25), 77, 89, 'ZZ'), ((25, 32), 76, 90, 'ZZ'), ((26, 27), 76, 90, 'ZZ'), ((27, 28), 77, 89, 'ZZ'), ((28, 29), 76, 90, 'ZZ'), ((37, 38), 76, 90, 'ZZ')]
+   +49696 constraints (total 58835, 0 undetectable reps); ILP -> 14 flags, objective 114, gap 0

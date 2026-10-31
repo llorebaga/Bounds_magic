@@ -1,0 +1,10 @@
+vcat_r1 uniform p=0.001: acc 0.1102 eps 2.646e-11 +- 2.0e-11 (68s)
+vcat_r1 uniform p=0.0005: acc 0.3301 eps 1.876e-13 +- 1.7e-13 (73s)
+Traceback (most recent call last):
+  File "C:\Users\llore\Documents\2026\Magic\cultivation2\scripts\rates_designs.py", line 18, in <module>
+    m = TDEM((si1000 if model == "si1000" else uniform)(c0, 1e-3), magic="T", **tkw)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\llore\Documents\2026\Magic\cultivation2\src\noise.py", line 64, in si1000
+    assert set(qs) <= reset, "flip channel not after a reset"
+           ^^^^^^^^^^^^^^^^
+AssertionError: flip channel not after a reset

@@ -1,0 +1,5 @@
+{"P_acc": 0.020825384934696368, "P_bad": 2.0129171497384153e-09, "eps": 9.665690003092197e-08, "se_eps": 5.24635927969318e-08, "model": "uniform", "p": 0.002, "magic": "T", "circuit": "unflagged", "seconds": 143, "SOFT": 3.41e-08}
+{"P_acc": 0.020830285225894068, "P_bad": 1.117142840807826e-20, "eps": 5.363070302172861e-19, "se_eps": 1.4682675792169164e-20, "model": "uniform", "p": 0.002, "magic": "S", "circuit": "unflagged", "seconds": 139}
+{"P_acc": 0.14395341951802254, "P_bad": 2.9866077134891585e-22, "eps": 2.0747042505060076e-21, "se_eps": 2.281371605835798e-22, "model": "uniform", "p": 0.001, "magic": "T", "circuit": "unflagged", "seconds": 143, "SOFT": 4.59e-09}
+{"P_acc": 0.1439625294330722, "P_bad": 1.8840385465226647e-20, "eps": 1.3087006417170165e-19, "se_eps": 3.655979071825242e-21, "model": "uniform", "p": 0.001, "magic": "S", "circuit": "unflagged", "seconds": 143}
+{"P_acc": 0.3791829014965601, "P_bad": 1.6731784056369705e-11, "eps": 4.412589278243469e-11, "se_eps": 4.412589167893581e-11, "model": "uniform", "p": 0.0005, "magic": "T", "circuit": "unflagged", "seconds": 150, "SOFT": 1.57e-10}

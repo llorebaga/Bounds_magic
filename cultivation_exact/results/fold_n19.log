@@ -1,0 +1,3 @@
+{"n": 19, "seed": "c", "max_children": null, "inject_dag": false, "tree_depth": 2, "partner_reps": 0, "t": 39, "k_affine": 11, "classes": 1767, "fd_real": 3, "malignant": 68, "coef_p1e3": 0.4276599947781554, "seconds": 4, "fd_proxy": ">4"}
+{"n": 19, "seed": "bc", "max_children": 2, "inject_dag": false, "tree_depth": 5, "partner_reps": 0, "t": 39, "k_affine": 11, "classes": 1767, "fd_real": 3, "malignant": 85, "coef_p1e3": 0.6925000051734739, "seconds": 5, "fd_proxy": ">4"}
+{"n": 19, "seed": "b1", "max_children": 2, "inject_dag": false, "tree_depth": 5, "partner_reps": 10, "t": 39, "k_affine": 11, "classes": 1767, "fd_real": 3, "malignant": 3, "coef_p1e3": 0.07618913310388588, "seconds": 5, "fd_proxy": ">4"}

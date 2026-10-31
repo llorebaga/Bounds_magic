@@ -1,0 +1,57 @@
+{
+ "flags": [
+  [
+   [
+    14,
+    20
+   ],
+   75,
+   90,
+   "ZZ"
+  ]
+ ],
+ "log": [
+  {
+   "iter": 0,
+   "flags": [],
+   "layers": 0,
+   "k": 3,
+   "malignant": 3
+  },
+  {
+   "iter": 1,
+   "flags": [
+    [
+     [
+      14,
+      20
+     ],
+     75,
+     89,
+     "ZZ"
+    ]
+   ],
+   "layers": 4,
+   "k": 3,
+   "malignant": 3
+  },
+  {
+   "iter": 2,
+   "flags": [
+    [
+     [
+      14,
+      20
+     ],
+     75,
+     90,
+     "ZZ"
+    ]
+   ],
+   "layers": 4,
+   "k": 4,
+   "malignant": 7843
+  }
+ ],
+ "failed": true
+}

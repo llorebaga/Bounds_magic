@@ -1,0 +1,4 @@
+unflagged si1000 p=0.002: acc 0.0241 eps 1.784e-08 +- 4.4e-09 SOFT None (225s)
+unflagged si1000 p=0.001: acc 0.1550 eps 2.602e-09 +- 9.6e-10 SOFT None (186s)
+unflagged si1000 p=0.0005: acc 0.3940 eps 1.042e-10 +- 2.0e-11 SOFT None (176s)
+unflagged si1000 p=0.00025: acc 0.6278 eps 1.022e-11 +- 1.2e-12 SOFT None (188s)

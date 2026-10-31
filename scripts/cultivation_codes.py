@@ -1,16 +1,16 @@
-"""Codes on the T gates of cultivation circuits (paper/cultivation.tex, Lemma 3, Theorem 5, Corollary 6, Sec. S2).
+"""Codes on the T gates of cultivation circuits (paper/cultivation.tex, Lemma 8, Theorems 3 and 15, Proposition 17, Sec. S4).
 
-1. Lemma 3: for the nine-input T code, the 15-qubit Reed-Muller code and the eight-qubit CCZ code, every Pauli on the
+1. Lemma 8: for the nine-input T code, the 15-qubit Reed-Muller code and the eight-qubit CCZ code, every Pauli on the
    inputs whose support is smaller than the order of the code collapses.
-2. Proposition 12 (combinatorial form of the collapse condition): the twisted signed weight distributions of the
+2. Proposition 17 (combinatorial form of the collapse condition): the twisted signed weight distributions of the
    cosets of S_C in its normalizer decide collapse, compared with state vectors for every Pauli on random codes.
-3. Theorem 5, construction: T gates on |+> data, a cat-state measurement of every generator, each cat state checked
+3. Theorem 15, construction: T gates on |+> data, a cat-state measurement of every generator, each cat state checked
    in rounds of parity measurements, and an ideal decoder; all single faults, and for the 15-qubit code all pairs
    of faults, are harmless.
-4. Theorem 5, bounds: for the published distance-three circuit, the order of the code on its T gates, the
+4. Theorem 15, bounds: for the published distance-three circuit, the order of the code on its T gates, the
    weights modulo S_C of the Paulis of undetected pairs of faults, and its harmful pairs grouped as in Chan et al.
-   An example in which the converse of Lemma 3(i) fails (Sec. S3).
-5. Corollary 6: exact Farkas certificates for the linear-programming bound on [[n,k,d]] stabilizer codes, with the
+   An example in which the converse of Lemma 8(i) fails for a Pauli that the code rejects.
+5. Theorem 3 and Table SI: exact Farkas certificates for the linear-programming bound on [[n,k,d]] stabilizer codes, with the
    quantum MacWilliams identities and Rains' shadow enumerator (--lp; several minutes).
 
 Usage: python cultivation_codes.py [--lp]      Writes results/cultivation/codes.json.
@@ -77,7 +77,7 @@ def order(gens):
 
 
 def lemma3(gens):
-    """number of Paulis of each support size below the order that do not collapse (Lemma 3 says none)"""
+    """number of Paulis of each support size below the order that do not collapse (Lemma 8 says none)"""
     t = len(gens[0]) - 1
     dC, _ = order(gens)
     T, ref = t_states(t), project(t_states(t), gens)
@@ -95,7 +95,7 @@ def lemma3(gens):
     return dC, out
 
 
-# ------------------------------------------------------------------ Proposition 12
+# ------------------------------------------------------------------ Proposition 17
 def herm_pauli(x, z, t):
     m = np.array([[1]])
     for k in range(t):
@@ -165,7 +165,7 @@ def enumerator_test(seed=3, trials=25):
     return {"random codes": codes, "Paulis tested": tested, "disagreements": bad}
 
 
-# ------------------------------------------------------------------ Theorem 5, construction
+# ------------------------------------------------------------------ Theorem 15, construction
 def construction(gens, rounds):
     """ops, ideal op indices, number of qubits, number of T gates"""
     t = len(gens[0]) - 1
@@ -233,7 +233,7 @@ def check_construction(gens, rounds, pairs):
     return res
 
 
-# ------------------------------------------------------------------ Theorem 5, published circuit
+# ------------------------------------------------------------------ Theorem 15, published circuit
 def published():
     import cultivation_gsj as G
     ops, weights, ideal, data, nq = G.build("T")
@@ -282,7 +282,7 @@ def published():
                 {fid: len(c) for fid, c in sorted(classes.items())}}
 
 
-# ------------------------------------------------------------------ Lemma 3(i): the converse fails
+# ------------------------------------------------------------------ Lemma 8(i): the converse fails
 def converse_example():
     """stabilizers IXX and -IYY on three T inputs (input 1 is the logical qubit, carrying |T>): E = Z1 Y3 is
     rejected, but every representative of E modulo S_C has a pattern in its Z shadow that is a logical Z"""
@@ -306,7 +306,7 @@ def converse_example():
             "every representative has a harmful shadow pattern": all(not all(col(z) for z in shadow(r)) for r in reps)}
 
 
-# ------------------------------------------------------------------ Corollary 6, linear-programming bound
+# ------------------------------------------------------------------ Theorem 3, linear-programming bound
 def binom(a, b):
     if b < 0 or b > a:
         return 0
@@ -424,14 +424,14 @@ def lp_bounds():
 
 if __name__ == "__main__":
     t0 = time.time()
-    res = {"lemma 3": {}, "orders": {}}
+    res = {"lemma 8": {}, "orders": {}}
     for name, gens in CODES.items():
         dC, out = lemma3(gens)
         res["orders"][name] = {"order": dC, "harmful Z patterns of that weight": order(gens)[1]}
-        res["lemma 3"][name] = out
-    print("Lemma 3", res["lemma 3"], flush=True)
-    res["proposition 12"] = enumerator_test()
-    print("Proposition 12", res["proposition 12"], flush=True)
+        res["lemma 8"][name] = out
+    print("Lemma 8", res["lemma 8"], flush=True)
+    res["proposition 17"] = enumerator_test()
+    print("Proposition 17", res["proposition 17"], flush=True)
     res["construction"] = {
         "[[8,3,2]] CCZ code, 1 round": check_construction(CUBE, 1, False),
         "[[9,1,3]] nine-input T code, 1 round": check_construction(NINE, 1, False),
@@ -439,8 +439,8 @@ if __name__ == "__main__":
         "[[15,1,3]] Reed-Muller code, 1 round": check_construction(RM15, 1, True)}
     print("construction", json.dumps(res["construction"], indent=1), flush=True)
     res["published circuit"] = published()
-    res["converse of lemma 3(i)"] = converse_example()
-    print("converse of Lemma 3(i)", res["converse of lemma 3(i)"], flush=True)
+    res["converse of lemma 8(i)"] = converse_example()
+    print("converse of Lemma 8(i)", res["converse of lemma 8(i)"], flush=True)
     print("published circuit", res["published circuit"], flush=True)
     if "--lp" in sys.argv:
         res["linear-programming bound"] = lp_bounds()

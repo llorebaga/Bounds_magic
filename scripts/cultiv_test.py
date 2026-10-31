@@ -2,7 +2,7 @@
 
 (i)  harmlessness from the fault map (D, U, E) agrees with direct simulation for all single faults and random
      pairs of faults;
-(ii) for circuits whose skeleton map M has full row rank (Theorem 2), the dense skeleton map M_F, computed by
+(ii) for circuits whose skeleton map M has full row rank (Theorem 1), the dense skeleton map M_F, computed by
      feeding basis states to the injection gadgets, is zero exactly when D(F) != 0, and otherwise U(F) = 0 and
      M_F is a multiple of M E(F).
 Usage: python cultiv_test.py [n_circuits] [seed]

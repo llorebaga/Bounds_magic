@@ -1,0 +1,2 @@
+{"circuit": "nn_cat_d5_r1_v1.stim", "model": "si1000", "malignant_5sets": 92216, "weight": 4.3093614491725005e-14, "c5": 43.093614491725, "seconds": 239}
+{"circuit": "nn_cat_d5_r1_v1.stim", "model": "file", "malignant_5sets": 92216, "weight": 1.208693501742471e-13, "c5": 120.86935017424709, "seconds": 254}

@@ -1,0 +1,2 @@
+vcat_r1 uniform p=0.001: acc 0.1102 eps 1.964e-12 +- 1.2e-12 (291s)
+vcat_r1 uniform p=0.0005: acc 0.3301 eps 1.619e-13 +- 9.4e-14 (295s)

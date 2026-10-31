@@ -1,0 +1,10 @@
+gidney_d5.stim: t=53 k_affine=15 classes=2929 harmful Z patterns 1/32768 (TDEM 0s, table 0.0s)
+  FD_branch = 1 (4 flagged configurations, 0.0s)
+  FD_real   = 3 (9 malignant, 7.1s; exact contractions 2669, cleared by screen 22680, flagged but cancelled 2660)
+JSON {"circuit": "gidney_d5.stim", "opt": "complement", "t": 53, "k_affine": 15, "classes": 2929, "fd_branch": 1, "n_branch": 4, "sec_branch": 0.0, "fd_exact": 3, "n_exact": 9, "sec_exact": 7.1, "cleared": 22680, "exact": 2669, "cancelled": 2660}
+ucat_d5_r1.stim: t=39 k_affine=11 classes=1483 harmful Z patterns 1/2048 (TDEM 0s, table 0.0s)
+  FD_branch = 1 (4 flagged configurations, 0.0s)
+  FD_real   = 3 (99 malignant, 1.7s; exact contractions 1554, cleared by screen 4724, flagged but cancelled 1491)
+JSON {"circuit": "ucat_d5_r1.stim", "opt": "nopattern", "t": 39, "k_affine": 11, "classes": 1483, "fd_branch": 1, "n_branch": 4, "sec_branch": 0.0, "fd_exact": 3, "n_exact": 99, "sec_exact": 1.7, "cleared": 4724, "exact": 1554, "cancelled": 1491}
+flagged_gidney_2ZZ_fd4.stim: t=53 k_affine=15 classes=2968 harmful Z patterns 1/32768 (TDEM 0s, table 0.0s)
+  FD_branch = 1 (4 flagged configurations, 0.0s)

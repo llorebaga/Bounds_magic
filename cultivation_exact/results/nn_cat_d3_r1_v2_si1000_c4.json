@@ -1,0 +1,15 @@
+{
+ "circuit": "nn_cat_d3_r1_v2_si1000.stim",
+ "malignant_4sets": 6554,
+ "weight": 5.045510062728311e-10,
+ "c4": 504.551006272831,
+ "distinct_masks_evaluated": 2503,
+ "harmful_masks": 313,
+ "acceptances": [
+  0.125,
+  0.25,
+  0.5,
+  1.0
+ ],
+ "seconds": 1
+}

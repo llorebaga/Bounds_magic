@@ -1,0 +1,12 @@
+12695 non-disturbing candidates on base ticks 74..90 (67s)
+iter 0: 0 flags, 0 added layers -> first malignant weight 3 (3 configurations) [107s]  flags=[]
+Set parameter Username
+Set parameter LicenseID to value 2873805
+Academic license - for non-commercial use only - expires 2027-10-12
+   +48 constraints (total 43, 0 undetectable reps); ILP -> 1 flags, objective 41, gap 0
+iter 1: 1 flags, 4 added layers -> first malignant weight 3 (3 configurations) [149s]  flags=[((14, 20), 75, 89, 'ZZ')]
+   +48 constraints (total 63, 0 undetectable reps); ILP -> 1 flags, objective 41, gap 0
+  k=4: 457447 distinct masks evaluated, 4139 harmful, 7843 malignant 4-sets
+iter 2: 1 flags, 4 added layers -> first malignant weight 4 (7843 configurations) [755s]  flags=[((14, 20), 75, 90, 'ZZ')]
+   ILP infeasible (26428 constraints, 10286 undetectable)
+RESULT d5_design_tree0_74-90_aligned_lw10_Z-X-ZZ: flags [((14, 20), 75, 90, 'ZZ')], failed=True, 1163s

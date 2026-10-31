@@ -1,4 +1,4 @@
-"""Circuit-level fault analysis of Clifford+T circuits (paper/cultivation.tex, Theorem 2).
+"""Circuit-level fault analysis of Clifford+T circuits (paper/cultivation.tex, Theorem 1).
 
 A circuit is a list of operations on nq qubits, all starting in |0>:
   ("R", q, b)            preparation of qubit q (in |0>) in |0> (b="Z") or |+> (b="X")
@@ -473,7 +473,7 @@ class Skeleton:
     def input_pauli(self, flips, residual):
         """(U, E): E(F) as 2t bits (x | z << t) on the T inputs, reduced modulo S_C, and U a Pauli on the
         physical qubits (x | z << nq) left over at the output; U = 0 whenever D(F) = 0 and the circuit maps
-        onto its whole output space, as in Theorem 2"""
+        onto its whole output space, as in Theorem 1"""
         nq, t, N = self.nq, self.t, self.N
         m = len(self.gens)
         c = np.array([bin(g[1] & flips).count("1") & 1 for g in self.gens], dtype=np.uint8)

@@ -1,0 +1,9 @@
+9323 non-disturbing candidates on base ticks 74..93 (61s)
+iter 0: 0 flags, 0 added layers -> first malignant weight 3 (9 configurations) [114s]
+Set parameter Username
+Set parameter LicenseID to value 2873805
+Academic license - for non-commercial use only - expires 2027-10-12
+   +2928 constraints (total 2070, 0 undetectable reps); ILP -> 4 flags, objective 44, gap 0
+iter 1: 4 flags, 4 added layers -> first malignant weight 3 (9 configurations) [163s]
+   ILP infeasible (4389 constraints, 0 undetectable)
+RESULT d5_aligned_lw10: flags [(23, 89, 91, 'X'), (23, 91, 93, 'Z'), (40, 89, 91, 'X'), (40, 91, 93, 'Z')], failed=True, 169s

@@ -1,0 +1,27 @@
+ucat_d7_r1_injdag.stim: t=75 k_affine=20 classes=3175 accepted Z classes=2 (setup 4s)
+  k=1: 0 malignant
+  k=2: 0 malignant
+  k=3: 0 malignant
+  k=4: 5038725 pairs, 2055998 hash groups, max distinct o per group 1812, sum of squares 70736047
+  k=4: 483696 distinct observable masks to evaluate
+  k=4: 38 malignant
+  RESULT real-T fault distance 4, 38 malignant, 483696 exact evaluations, 320.2s
+JSON {"circuit": "ucat_d7_r1_injdag.stim", "opt": "nopattern", "t": 75, "k_affine": 20, "classes": 3175, "fd": 4, "malignant": 38, "coef_at_p1e3": null, "evaluations": 483696, "seconds": 320.2}
+vcat_d7_r1_injdag.stim: t=75 k_affine=20 classes=3391 accepted Z classes=2 (setup 4s)
+  k=1: 0 malignant
+  k=2: 0 malignant
+  k=3: 0 malignant
+  k=4: 5747745 pairs, 2285311 hash groups, max distinct o per group 1812, sum of squares 73852655
+  k=4: 464480 distinct observable masks to evaluate
+  k=4: 0 malignant
+  RESULT real-T fault distance >4, 0 malignant, 464480 exact evaluations, 334.2s
+JSON {"circuit": "vcat_d7_r1_injdag.stim", "opt": "nopattern", "t": 75, "k_affine": 20, "classes": 3391, "fd": ">4", "malignant": 0, "coef_at_p1e3": null, "evaluations": 464480, "seconds": 334.2}
+vcat_d5_injT.stim: t=77 k_affine=21 classes=2495 accepted Z classes=2 (setup 6s)
+  k=1: 0 malignant
+  k=2: 0 malignant
+  k=3: 0 malignant
+  k=4: 3111265 pairs, 695150 hash groups, max distinct o per group 5456, sum of squares 171005393
+  k=4: 3220729 distinct observable masks to evaluate
+  k=4: 0 malignant
+  RESULT real-T fault distance >4, 0 malignant, 3220729 exact evaluations, 9375.7s
+JSON {"circuit": "vcat_d5_injT.stim", "opt": "nopattern", "t": 77, "k_affine": 21, "classes": 2495, "fd": ">4", "malignant": 0, "coef_at_p1e3": null, "evaluations": 3220729, "seconds": 9375.7}

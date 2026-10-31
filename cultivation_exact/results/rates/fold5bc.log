@@ -1,0 +1,19 @@
+fold5bc: t=39 k=11 classes=1767 accepted Z classes=2 (2s)
+    k=2: P_bad contribution 3.25e-23 +- 0
+    k=3: P_bad contribution 3.518e-11 +- 0
+    k=4: P_bad contribution 9.45e-12 +- 2e-12
+    k=5: P_bad contribution 5.985e-12 +- 4.6e-12
+    k=6: P_bad contribution 8.315e-13 +- 7.6e-13
+    k=7: P_bad contribution 2.293e-29 +- 1.9e-29
+    k=8: P_bad contribution 8.337e-32 +- 8.3e-32
+    k=9: P_bad contribution 0 +- 0
+  uniform p=0.001: acceptance 0.0503 +- 0.0001, eps 1.023e-09 +- 1.0e-10 (25s)
+    k=2: P_bad contribution 3.652e-23 +- 0
+    k=3: P_bad contribution 1.97e-11 +- 0
+    k=4: P_bad contribution 1.53e-12 +- 4.3e-13
+    k=5: P_bad contribution 1.505e-13 +- 5.5e-14
+    k=6: P_bad contribution 2.999e-15 +- 2.1e-15
+    k=7: P_bad contribution 3.202e-18 +- 3.2e-18
+    k=8: P_bad contribution 0 +- 0
+    k=9: P_bad contribution 0 +- 0
+  uniform p=0.0005: acceptance 0.2220 +- 0.0002, eps 9.632e-11 +- 1.9e-12 (19s)

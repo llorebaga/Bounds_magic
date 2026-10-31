@@ -1,0 +1,8 @@
+JSON {"circuit": "nn_cat_d5_r1_v1.stim", "model": "si1000", "p": 0.001, "qubits": 46, "ticks": 24, "P_acc": 0.551699, "shots": 1000000}
+JSON {"circuit": "nn_cat_d5_r1_v2.stim", "model": "si1000", "p": 0.001, "qubits": 46, "ticks": 37, "P_acc": 0.326791, "shots": 1000000}
+JSON {"circuit": "fold_n19_c.stim", "model": "si1000", "p": 0.001, "qubits": 110, "ticks": 82, "P_acc": 0.012693, "shots": 1000000}
+JSON {"circuit": "fold_n19_b1.stim", "model": "si1000", "p": 0.001, "qubits": 110, "ticks": 74, "P_acc": 0.0197965, "shots": 1000000}
+JSON {"circuit": "ucat_d5_r1.stim", "model": "si1000", "p": 0.001, "qubits": 110, "ticks": 36, "P_acc": 0.0934635, "shots": 1000000}
+JSON {"circuit": "vcat_d5_r1.stim", "model": "si1000", "p": 0.001, "qubits": 128, "ticks": 51, "P_acc": 0.0305255, "shots": 1000000}
+JSON {"circuit": "nn_cat_d5_r1_v1.stim", "model": "uniform", "p": 0.001, "qubits": 46, "ticks": 24, "P_acc": 0.699024, "shots": 1000000}
+JSON {"circuit": "nn_cat_d3_r1_v2.stim", "model": "uniform", "p": 0.001, "qubits": 17, "ticks": 14, "P_acc": 0.93002625, "shots": 1000000}
