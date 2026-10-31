@@ -24,13 +24,13 @@ Status: open unless marked.
    is Lemma 4 or one of its two neighbouring cases (Y completion; X on all of l with odd Z). Proving this
    for GHZ-fold checks would make "(delta+1)/2" a theorem rather than a pattern.
 
-3b. **(delta+1)/2 upper bound for every delta** [theory, medium] (from "Real T gates halve the distance").
+3b. **(delta+1)/2 upper bound for every delta** [theory, medium] — PARTLY DONE 2026-10-31: `hook_bound.py` evaluates the bound from the tree; it equals the certified FD for 11/12 trees and gives FD <= (delta+1)/2 for a binary fold at delta = 9, 11 (paper Sec. S10, Fig. 3a). Open: a proof for every tree; tighter bound for the other trees (more min-weight logicals, XOR combinations at s >= 3). (from "Real T gates halve the distance").
    Construct, for a GHZ fold of the kind used, (delta-1)/2 undetected hooks that each put X on two qubits of
    one minimum-weight logical support, plus one data fault; Cor. 18 then gives FD <= (delta+1)/2 for every
    delta, not only 3, 5, 7. Needs a condition on the fold tree (pairs of sibling leaves inside a logical
    support) that we can check for the trees we use. Turns Prop. 5(ii) partly into a theorem.
 
-3b'. **Logical-aware fold trees** [theory + compute, medium] (from S10). Code-relative fault tolerance only forbids
+3b'. **Logical-aware fold trees** [theory + compute, medium] (from S10). NEGATIVE at delta = 5: the earlier search over ~1.2e5 nearest-neighbour fold trees of Gidney's check (search_screen.py) found none above FD 3; now stated in Sec. S10. Still open at delta >= 7 with all-to-all trees. Code-relative fault tolerance only forbids
    hooks that put X on more than s, but fewer than delta, qubits of a minimum-weight logical support, and Table SVII
    shows how rare those sets are (10.5% of pairs avoid every support at delta = 5; at delta = 7, 99.96% of weight-6
    sets do). Search for fold trees (or folds with a few extra parity checks) whose s-fault hooks never land inside
