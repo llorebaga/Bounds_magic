@@ -1,0 +1,6 @@
+N=8 T-qubits=2 blocks=jjtt |E|=79 T-cost=10
+a=0: structures 97155, pruned 97155, signed 0, collapse-survivors 0, target-spectrum 0, 30s
+a=1: structures 342519, pruned 342519, signed 0, collapse-survivors 0, target-spectrum 0, 189s
+a=2: structures 525915, pruned 525915, signed 0, collapse-survivors 0, target-spectrum 0, 398s
+a=3: structures 291400, pruned 291399, signed 524288, collapse-survivors 0, target-spectrum 0, 648s
+a=4: structures 48885, pruned 48867, signed 1073741824, collapse-survivors 0, target-spectrum 0, 8485s

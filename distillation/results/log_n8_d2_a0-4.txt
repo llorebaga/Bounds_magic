@@ -1,0 +1,6 @@
+a=0: structures 97155, pruned 97155, signed candidates 0, survivors so far 0, 2s
+a=1: structures 94488, pruned 93078, signed candidates 45120, survivors so far 135, 25s
+a=2: structures 44640, pruned 41263, signed candidates 1729024, survivors so far 135, 65s
+a=3: structures 11935, pruned 9910, signed candidates 33177600, survivors so far 135, 128s
+a=4: structures 1590, pruned 1089, signed candidates 525336576, survivors so far 137, 553s
+{"n": 8, "d": 2, "E_size": 17, "per_a": {"0": {"structures": 97155, "pruned_by_logical": 97155, "signed_candidates": 0}, "1": {"structures": 94488, "pruned_by_logical": 93078, "signed_candidates": 45120}, "2": {"structures": 44640, "pruned_by_logical": 41263, "signed_candidates": 1729024}, "3": {"structures": 11935, "pruned_by_logical": 9910, "signed_candidates": 33177600}, "4": {"structures": 1590, "pruned_by_logical": 1089, "signed_candidates": 525336576}}, "survivors": 137, "seconds": 552.9119853973389}

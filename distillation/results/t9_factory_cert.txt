@@ -1,0 +1,16 @@
+stabilizer generators (sign, Pauli):
+   - XZIIZIIIX
+   + XIZIZIIXI
+   + ZXZZIIXZI
+   + ZZXIZXIIZ
+   - YXYIXIIZZ
+   - YYXXIIIII
+   + IZIZZIZII
+   + IIZZZZIII
+G00 = 1/128
+all 9 single-fault minors vanish exactly: suppression order >= 2
+logical Bloch moduli: [0, sqrt(2)/2, sqrt(2)/2]
+encoded state is Clifford-equivalent to |T>
+harmful patterns by weight: {2: 36, 3: 45, 4: 90, 5: 75, 6: 76, 7: 15, 8: 6, 9: 1}
+acceptance at p=0: 1/128
+leading error: eps = 27*p**2/2

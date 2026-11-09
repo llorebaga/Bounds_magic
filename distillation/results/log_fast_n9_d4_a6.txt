@@ -1,0 +1,3 @@
+structure AX=[256, 128, 67, 37, 22, 15] L=30 survivors=0  elapsed=2715.0s
+structure AX=[256, 129, 67, 37, 22, 15] L=30 survivors=0  elapsed=4372.0s
+RESULT file=../results/structs_r3_n9_d4_a6.txt signed candidates 137438953472 survivors 0

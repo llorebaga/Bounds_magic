@@ -1,0 +1,2 @@
+{"target": "ccz", "D": 4, "s": 3, "nT": 0, "nJ": 0, "nC": 3, "Tcost": 24, "vars": 844, "clauses": 3243, "fault_combos": 21, "sec": 7.4, "status": "UNSAT"}
+{"target": "ccz", "D": 4, "s": 4, "nT": 0, "nJ": 0, "nC": 3, "Tcost": 24, "vars": 1393, "clauses": 5418, "fault_combos": 21, "sec": 367.0, "status": "UNSAT"}

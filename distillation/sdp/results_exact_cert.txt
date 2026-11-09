@@ -1,0 +1,2 @@
+d=6 n=11: 630 conditioning polynomials, 5040 valid inequalities; exact certificate with 17 inequalities verified: True  [732s]
+d=7 n=13: 1218 conditioning polynomials, 9744 valid inequalities; exact certificate with 20 inequalities verified: True  [1629s]

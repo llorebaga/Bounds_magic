@@ -1,0 +1,17 @@
+structure AX=[71, 43, 29] L=7 survivors=0  elapsed=0.9s
+structure AX=[71, 43, 29] L=7 survivors=0  elapsed=1.0s
+structure AX=[71, 43, 29] L=7 survivors=0  elapsed=1.0s
+structure AX=[71, 43, 29] L=7 survivors=0  elapsed=1.0s
+structure AX=[71, 43, 29] L=7 survivors=0  elapsed=1.0s
+structure AX=[71, 43, 29] L=7 survivors=0  elapsed=1.0s
+structure AX=[71, 43, 29] L=7 survivors=0  elapsed=1.0s
+structure AX=[135, 75, 53] L=7 survivors=0  elapsed=1.0s
+structure AX=[263, 139, 125] L=7 survivors=0  elapsed=1.0s
+structure AX=[263, 139, 125] L=7 survivors=0  elapsed=1.0s
+structure AX=[263, 139, 125] L=7 survivors=0  elapsed=1.0s
+structure AX=[263, 139, 125] L=7 survivors=0  elapsed=1.0s
+structure AX=[263, 139, 125] L=7 survivors=0  elapsed=1.0s
+structure AX=[263, 139, 125] L=7 survivors=0  elapsed=1.0s
+structure AX=[263, 139, 125] L=7 survivors=0  elapsed=1.0s
+structure AX=[263, 153, 106] L=7 survivors=0  elapsed=1.0s
+RESULT file=../results/structs_r2_n9_d3_a3.txt signed candidates 262144 survivors 0

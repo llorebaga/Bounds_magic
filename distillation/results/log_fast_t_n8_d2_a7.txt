@@ -1,0 +1,8 @@
+structure AX=[128, 64, 32, 16, 8, 4, 3] L=27 survivors=0  elapsed=905.8s
+structure AX=[128, 64, 32, 16, 8, 5, 3] L=27 survivors=0  elapsed=1539.1s
+structure AX=[128, 64, 32, 16, 9, 5, 3] L=27 survivors=0  elapsed=2224.3s
+structure AX=[128, 64, 32, 17, 9, 5, 3] L=27 survivors=0  elapsed=2797.0s
+structure AX=[128, 64, 33, 17, 9, 5, 3] L=27 survivors=0  elapsed=3441.0s
+structure AX=[128, 65, 33, 17, 9, 5, 3] L=27 survivors=0  elapsed=4237.5s
+structure AX=[129, 65, 33, 17, 9, 5, 3] L=27 survivors=0  elapsed=4734.9s
+RESULT file=../results/structs_nogal_r1_n8_d2_a7.txt signed candidates 120259084288 survivors 0

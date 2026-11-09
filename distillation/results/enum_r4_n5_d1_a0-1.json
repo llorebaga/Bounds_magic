@@ -1,0 +1,42 @@
+{
+ "stats": {
+  "n": 5,
+  "d": 1,
+  "r": 4,
+  "E_size": 1,
+  "per_a": {
+   "0": {
+    "structures": 31,
+    "pruned_by_logical": 30,
+    "signed_candidates": 2
+   },
+   "1": {
+    "structures": 5,
+    "pruned_by_logical": 2,
+    "signed_candidates": 42
+   }
+  },
+  "survivors": 2,
+  "seconds": 0.0050122737884521484
+ },
+ "survivors": [
+  {
+   "a": 0,
+   "AX": [],
+   "BZ": [
+    31
+   ],
+   "c": [],
+   "signs": 0
+  },
+  {
+   "a": 0,
+   "AX": [],
+   "BZ": [
+    31
+   ],
+   "c": [],
+   "signs": 1
+  }
+ ]
+}

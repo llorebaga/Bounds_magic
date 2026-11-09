@@ -1,0 +1,1 @@
+{"target": "cs12cs13_2", "d": 2, "n": 10, "s": 1, "status": "infeasible", "sec": 1.6}

@@ -1,0 +1,2 @@
+a=5: structures 6, pruned 5, signed candidates 134217728, survivors so far 0, 150s
+{"n": 8, "d": 3, "E_size": 73, "per_a": {"5": {"structures": 6, "pruned_by_logical": 5, "signed_candidates": 134217728}}, "survivors": 0, "seconds": 150.23811888694763}

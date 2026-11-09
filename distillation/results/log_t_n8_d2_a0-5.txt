@@ -1,0 +1,5 @@
+a=0: structures 255, pruned 255, signed candidates 0, survivors so far 0, 0s
+a=1: structures 1016, pruned 769, signed candidates 31616, survivors so far 0, 1168s
+a=2: structures 2016, pruned 1103, signed candidates 467456, survivors so far 0, 3439s
+a=3: structures 2387, pruned 913, signed candidates 6037504, survivors so far 0, 6876s
+a=4: structures 1590, pruned 419, signed candidates 76742656, survivors so far 0, 12973s

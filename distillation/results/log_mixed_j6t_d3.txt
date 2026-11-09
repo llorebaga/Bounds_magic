@@ -1,0 +1,2 @@
+N=9 T-qubits=6 blocks=jtttttt |E|=105 T-cost=10
+a=0: structures 788035, pruned 788035, signed 0, collapse-survivors 0, target-spectrum 0, 400s

@@ -1,0 +1,55 @@
+{
+  "fault_vectors_orthonormal_n_le_4": true,
+  "sigma_swaps_complementary_faults_n_le_4": true,
+  "erasure_witness": true,
+  "pair_witness_fault_weights": {
+    "00": "1/2",
+    "01": "0",
+    "10": "0",
+    "11": "1/2"
+  },
+  "pair_witness_avoids_odd_d_up_to_101": true,
+  "W_twirl_fixes_T_negates_ZT": true,
+  "ghz_y_witness": {
+    "N=2": "q_e=0 exactly for |e|=N/2; q_0>0",
+    "N=4": "q_e=0 exactly for |e|=N/2; q_0>0",
+    "N=6": "q_e=0 exactly for |e|=N/2; q_0>0",
+    "N=8": "q_e=0 exactly for |e|=N/2; q_0>0"
+  },
+  "nu_CCZ": 3,
+  "ccz_bounds": {
+    "k=1": {
+      "d=1": 4,
+      "d=2": 5,
+      "d=3": 7,
+      "d=4": 9,
+      "d=5": 11,
+      "d=6": 13
+    },
+    "k=2": {
+      "d=1": 7,
+      "d=2": 8,
+      "d=3": 9,
+      "d=4": 10,
+      "d=5": 11,
+      "d=6": 13
+    },
+    "k=3": {
+      "d=1": 10,
+      "d=2": 11,
+      "d=3": 12,
+      "d=4": 13,
+      "d=5": 14,
+      "d=6": 15
+    },
+    "k=4": {
+      "d=1": 13,
+      "d=2": 14,
+      "d=3": 15,
+      "d=4": 16,
+      "d=5": 17,
+      "d=6": 18
+    }
+  },
+  "status": "PASS"
+}

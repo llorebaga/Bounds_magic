@@ -1,0 +1,4 @@
+{"target": "ccz", "D": 4, "s": 5, "nT": 0, "nJ": 0, "nC": 6, "Tcost": 48, "status": "SAT", "sec": 11.8, "cert_ok": true, "harm_at_D": 54}
+{"target": "ccz", "D": 4, "s": 6, "nT": 0, "nJ": 0, "nC": 6, "Tcost": 48, "status": "SAT", "sec": 29.9, "cert_ok": true, "harm_at_D": 96}
+{"target": "ccz", "D": 4, "s": 4, "nT": 0, "nJ": 0, "nC": 6, "Tcost": 48, "status": "SAT", "sec": 16.6, "cert_ok": true, "harm_at_D": 98}
+{"target": "ccz", "D": 4, "s": 7, "nT": 0, "nJ": 0, "nC": 6, "Tcost": 48, "status": "SAT", "sec": 291.0, "cert_ok": true, "harm_at_D": 54}

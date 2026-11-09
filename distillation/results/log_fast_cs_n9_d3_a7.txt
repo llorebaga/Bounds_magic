@@ -1,0 +1,18 @@
+TASK 0: L 1 3   file=../results/structs_r2_n9_d3_a7.txt n=9 d=3 m=7 GALOIS=1 cpus=64
+structure AX=[256, 128, 64, 32, 17, 10, 7] L=33 survivors=0  elapsed=1891.1s
+structure AX=[256, 128, 64, 33, 17, 10, 6] L=33 survivors=0  elapsed=3783.8s
+structure AX=[256, 128, 64, 33, 17, 10, 7] L=33 survivors=0  elapsed=5673.2s
+RESULT file=/tmp/magic_11937559_0.txt signed candidates 3298534883328 survivors 0
+TASK 1: L 4 6   file=../results/structs_r2_n9_d3_a7.txt n=9 d=3 m=7 GALOIS=1 cpus=64
+structure AX=[256, 128, 64, 33, 18, 11, 7] L=33 survivors=0  elapsed=1900.9s
+structure AX=[256, 128, 65, 33, 17, 10, 7] L=33 survivors=0  elapsed=3786.5s
+structure AX=[256, 128, 65, 33, 18, 10, 7] L=33 survivors=0  elapsed=5681.5s
+RESULT file=/tmp/magic_11937560_1.txt signed candidates 3298534883328 survivors 0
+TASK 2: L 7 9   file=../results/structs_r2_n9_d3_a7.txt n=9 d=3 m=7 GALOIS=1 cpus=64
+structure AX=[256, 128, 65, 33, 18, 11, 7] L=33 survivors=0  elapsed=1941.4s
+structure AX=[256, 129, 65, 33, 18, 11, 7] L=33 survivors=0  elapsed=3881.0s
+structure AX=[256, 129, 65, 34, 18, 11, 7] L=33 survivors=0  elapsed=5845.9s
+RESULT file=/tmp/magic_11937561_2.txt signed candidates 3298534883328 survivors 0
+TASK 3: L 10 10   file=../results/structs_r2_n9_d3_a7.txt n=9 d=3 m=7 GALOIS=1 cpus=64
+structure AX=[257, 129, 66, 34, 19, 11, 7] L=33 survivors=0  elapsed=1889.9s
+RESULT file=/tmp/magic_11937558_3.txt signed candidates 1099511627776 survivors 0
