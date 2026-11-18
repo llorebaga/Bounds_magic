@@ -1,0 +1,2 @@
+{"kind": "ladder", "delta": 7, "inject_dag": true, "qubits": 91, "ticks": 52}
+{"pieces": 953, "detectors": 86, "cuts": 0, "X": ">=7", "Z": ">=7", "C": ">=7", "bound": 7, "witness": null, "seconds": 2635}

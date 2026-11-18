@@ -1,0 +1,6 @@
+# late_ilp_file.py on the folds of fold_nostab.py (no stabilizer rounds), Gurobi; JSON lines as printed by late_ilp.certify
+{"delta": 7, "tree": "c", "pieces": 910, "detectors": 38, "cuts": 0, "X": 4, "Z": ">=4", "C": ">=4", "bound": 4, "witness": {"branch": "X", "pieces": 2, "data": 2, "A": 541183, "Ap": 3072, "B": 0}, "seconds": 132}
+{"delta": 7, "tree": "b1", "pieces": 880, "detectors": 38, "cuts": 6, "X": 4, "Z": ">=4", "C": ">=4", "bound": 4, "witness": {"branch": "X", "pieces": 3, "data": 1, "A": 541733, "Ap": 64, "B": 0}, "seconds": 68}
+{"delta": 7, "tree": "b2", "pieces": 880, "detectors": 38, "cuts": 0, "X": 4, "Z": ">=4", "C": ">=4", "bound": 4, "witness": {"branch": "X", "pieces": 3, "data": 1, "A": 13436928, "Ap": 128, "B": 0}, "seconds": 63}
+{"delta": 9, "tree": "b2", "pieces": 1456, "detectors": 62, "cuts": 2, "X": 4, "Z": ">=4", "C": ">=4", "bound": 4, "witness": {"branch": "X", "pieces": 3, "data": 1, "A": 545226105154437120, "Ap": 0, "B": 4294967296}, "seconds": 92}
+{"delta": 9, "tree": "b1", "pieces": 1456, "detectors": 62, "cuts": 5, "X": 5, "Z": ">=5", "C": ">=5", "bound": 5, "witness": {"branch": "X", "pieces": 4, "data": 1, "A": 378724649900965888, "Ap": 2251799813685248, "B": 0}, "seconds": 872}

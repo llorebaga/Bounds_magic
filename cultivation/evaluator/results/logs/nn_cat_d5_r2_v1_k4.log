@@ -1,0 +1,9 @@
+nn_cat_d5_r2_v1.stim: t=77 k_affine=12 classes=615 accepted Z classes=2 (setup 1s)
+  k=1: 0 malignant
+  k=2: 0 malignant
+  k=3: 0 malignant
+  k=4: 188805 pairs, 15948 hash groups, max distinct o per group 1275, sum of squares 13413181
+  k=4: 273827 distinct observable masks to evaluate
+  k=4: 0 malignant
+  RESULT real-T fault distance >4, 0 malignant, 273827 exact evaluations, 898.1s
+JSON {"circuit": "nn_cat_d5_r2_v1.stim", "opt": "nopattern", "t": 77, "k_affine": 12, "classes": 615, "fd": ">4", "malignant": 0, "coef_at_p1e3": null, "evaluations": 273827, "seconds": 898.1}

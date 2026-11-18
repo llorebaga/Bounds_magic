@@ -1,0 +1,14 @@
+skeleton: 15 qubits + 15 magic gates; 35 records
+skeleton detectors: 16, observables: 16 (original circuit: 20 detectors)
+Choi state: N=16, affine dimension k=5 (32 terms)
+2444 single physical faults
+{
+ "n": 2844,
+ "rejected_agree": 2224,
+ "accepted": 620,
+ "max_err_acc": 3.3306690738754696e-16,
+ "max_err_bad": 9.992007221626409e-16,
+ "mismatch": 0,
+ "harmful": 0,
+ "seconds": 149.5
+}

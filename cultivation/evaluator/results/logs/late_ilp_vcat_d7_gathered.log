@@ -1,0 +1,2 @@
+{"circuit": "nn_vcat_d7_w8d_didle.stim", "delta": 7, "branches": "XZC", "qubits": 110}
+{"pieces": 511, "detectors": 37, "cuts": 0, "X": ">=7", "Z": ">=7", "C": ">=7", "bound": 7, "witness": null, "seconds": 77}

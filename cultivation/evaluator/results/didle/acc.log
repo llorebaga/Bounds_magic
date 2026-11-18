@@ -1,0 +1,21 @@
+{"circuit": "nn_full_d3_r3_z1_b0_v1", "model": "si1000", "p": 0.001, "shots": 1000000, "P_acc": 0.108678375, "P_det0": 0.139155, "seconds": 1}
+{"circuit": "fold_n19_bc_didle", "model": "uniform", "p": 0.001, "shots": 5000000, "P_acc": 0.0171949125, "P_det0": 0.0192146, "seconds": 4}
+{"circuit": "fold_n19_bc_didle", "model": "uniform", "p": 0.0005, "shots": 5000000, "P_acc": 0.129202275, "P_det0": 0.136425, "seconds": 3}
+{"circuit": "ucat_d5_r1_didle", "model": "uniform", "p": 0.001, "shots": 5000000, "P_acc": 0.1459736625, "P_det0": 0.169399, "seconds": 3}
+{"circuit": "ucat_d5_r1_didle", "model": "uniform", "p": 0.0005, "shots": 5000000, "P_acc": 0.38101375, "P_det0": 0.4107922, "seconds": 3}
+{"circuit": "vcat_d5_r1_didle", "model": "uniform", "p": 0.001, "shots": 5000000, "P_acc": 0.05337855, "P_det0": 0.0675486, "seconds": 4}
+{"circuit": "vcat_d5_r1_didle", "model": "uniform", "p": 0.0005, "shots": 5000000, "P_acc": 0.22960855, "P_det0": 0.2586508, "seconds": 3}
+{"circuit": "ucat_d5_r1_didle", "model": "si1000", "p": 0.0005, "shots": 1000000, "P_acc": 0.214029, "P_det0": 0.247984, "seconds": 1}
+{"circuit": "vcat_d5_r1_didle", "model": "si1000", "p": 0.0005, "shots": 1000000, "P_acc": 0.0963585, "P_det0": 0.119468, "seconds": 1}
+{"circuit": "fold_n37_bc_didle", "model": "uniform", "p": 0.001, "shots": 5000000, "P_acc": 2.1525e-05, "P_det0": 2.84e-05, "seconds": 10}
+{"circuit": "fold_n37_bc_didle", "model": "uniform", "p": 0.0005, "shots": 5000000, "P_acc": 0.00431925, "P_det0": 0.0050186, "seconds": 10}
+{"circuit": "ucat_d7_r1_injdag_didle", "model": "uniform", "p": 0.001, "shots": 5000000, "P_acc": 0.0037835, "P_det0": 0.005211, "seconds": 9}
+{"circuit": "ucat_d7_r1_injdag_didle", "model": "uniform", "p": 0.0005, "shots": 5000000, "P_acc": 0.06050315, "P_det0": 0.0718174, "seconds": 11}
+{"circuit": "vcat_d7_r1_injdag_didle", "model": "uniform", "p": 0.001, "shots": 5000000, "P_acc": 6.2e-05, "P_det0": 0.0001236, "seconds": 9}
+{"circuit": "vcat_d7_r1_injdag_didle", "model": "uniform", "p": 0.0005, "shots": 5000000, "P_acc": 0.0072765, "P_det0": 0.0104766, "seconds": 9}
+{"circuit": "fold_n37_c_didle", "model": "si1000", "p": 0.001, "shots": 10000000, "P_acc": 0.0, "P_det0": 0.0, "seconds": 18}
+{"circuit": "ucat_d7_r1_injdag_didle", "model": "si1000", "p": 0.001, "shots": 10000000, "P_acc": 8.6e-05, "P_det0": 0.0001462, "seconds": 15}
+{"circuit": "vcat_d7_r1_injdag_didle", "model": "si1000", "p": 0.001, "shots": 10000000, "P_acc": 4.899552796702028e-40, "P_det0": 2e-07, "seconds": 16}
+{"circuit": "nn_cat_d7_r1_v1_dag_didle", "model": "si1000", "p": 0.001, "shots": 10000000, "P_acc": 0.0300629125, "P_det0": 0.0778081, "seconds": 109}
+{"circuit": "nn_cat_d7_r1_v1_unf_didle", "model": "si1000", "p": 0.001, "shots": 10000000, "P_acc": 0.00283775, "P_det0": 0.0130659, "seconds": 103}
+phaseB done 22:20:52

@@ -1,0 +1,5 @@
+{"circuit": "nn_cat_d7_r1_v1_unf.stim", "k": 6, "triples": 177910271, "candidates_evaluated": 86098748, "harmful_candidates": 0, "seconds": 21036}
+
+real	350m36.614s
+user	0m0.000s
+sys	0m0.031s

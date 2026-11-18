@@ -1,0 +1,6 @@
+{"delta": 11, "tree": "b1", "mode": "pack", "min_weight_logicals": 104, "single_fault_supports": 182, "fd_upper_bound": 6, "witness": [[78, 81, 82], [79, 83], [54, 68], [46, 47]]}
+{"delta": 11, "tree": "b2", "mode": "pack", "min_weight_logicals": 104, "single_fault_supports": 182, "fd_upper_bound": 8, "witness": [[68, 73], [84, 86], [55, 62]]}
+{"delta": 11, "tree": "b3", "mode": "pack", "min_weight_logicals": 104, "single_fault_supports": 182, "fd_upper_bound": 8, "witness": [[84, 89], [72, 73], [46, 47]]}
+{"delta": 11, "tree": "b4", "mode": "pack", "min_weight_logicals": 104, "single_fault_supports": 182, "fd_upper_bound": 7, "witness": [[47, 55, 62], [89, 90], [72, 73]]}
+{"delta": 11, "tree": "b5", "mode": "pack", "min_weight_logicals": 104, "single_fault_supports": 182, "fd_upper_bound": 10, "witness": [[70, 81]]}
+{"delta": 11, "tree": "b6", "mode": "pack", "min_weight_logicals": 104, "single_fault_supports": 182, "fd_upper_bound": 7, "witness": [[39, 54, 68], [85, 87], [72, 73]]}

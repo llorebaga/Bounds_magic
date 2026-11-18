@@ -1,0 +1,2 @@
+{"undetected_classes": 75, "span_rank": 20, "reached": 828307, "by_weight": {"1": 75, "2": 1266, "3": 12828, "4": 80964, "5": 291670, "6": 441504}, "harmful": [], "harmful_count": 0, "bucket": "zero_sets"}
+{"bucket": 0, "triples": 12965454, "candidates": 3972680, "dropped_undetected": 286002, "harmful": []}

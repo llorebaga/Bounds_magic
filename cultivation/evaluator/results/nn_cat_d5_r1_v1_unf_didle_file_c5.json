@@ -1,0 +1,8 @@
+{
+ "circuit": "nn_cat_d5_r1_v1_unf_didle.stim",
+ "model": "file",
+ "malignant_5sets": 85464,
+ "weight": 5.28157228788529e-09,
+ "c5": 5281572.28788529,
+ "seconds": 36
+}

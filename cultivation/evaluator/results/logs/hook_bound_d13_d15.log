@@ -1,0 +1,9 @@
+{"delta": 13, "tree": "b1", "mode": "pack2", "min_weight_logicals": 272, "single_fault_supports": 254, "fd_upper_bound": 8, "witness": [[[0, 4, 11, 110, 119, 122], 2], [[33, 40], 1]]}
+{"delta": 13, "tree": "b2", "mode": "pack2", "min_weight_logicals": 272, "single_fault_supports": 254, "fd_upper_bound": 9, "witness": [[[7, 20, 26, 48, 67], 2], [[76, 99, 105], 2]]}
+{"delta": 13, "tree": "b3", "mode": "pack2", "min_weight_logicals": 272, "single_fault_supports": 254, "fd_upper_bound": 10, "witness": [[[0, 4, 11, 122, 126], 2]]}
+{"delta": 13, "tree": "b4", "mode": "pack2", "min_weight_logicals": 272, "single_fault_supports": 254, "fd_upper_bound": 7, "witness": [[[26, 48, 57, 92, 110, 119], 2], [[0, 4, 7], 1]]}
+{"delta": 13, "tree": "c", "mode": "pack2", "min_weight_logicals": 272, "single_fault_supports": 264, "fd_upper_bound": 10, "witness": [[[57, 84, 122, 126], 2], [[92, 110], 1]]}
+{"delta": 15, "tree": "b1", "mode": "pack2", "min_weight_logicals": 0, "single_fault_supports": 338, "fd_upper_bound": 15, "witness": null}
+{"delta": 15, "tree": "b2", "mode": "pack2", "min_weight_logicals": 0, "single_fault_supports": 338, "fd_upper_bound": 15, "witness": null}
+{"delta": 15, "tree": "b3", "mode": "pack2", "min_weight_logicals": 0, "single_fault_supports": 338, "fd_upper_bound": 15, "witness": null}
+{"delta": 15, "tree": "c", "mode": "pack2", "min_weight_logicals": 0, "single_fault_supports": 348, "fd_upper_bound": 15, "witness": null}

@@ -1,0 +1,5 @@
+rp_3_rp_5_T_cult.stim: t=101 k=27 nonzero table indices A=[0, 67109635] Bloch [0.7071, 0.7071, 0.0] classes=3255 free records [2, 5, 39, 40, 42, 49, 50, 51] (setup 75s)
+  k=1: 0 malignant
+  k=2: 0 malignant
+  k=3: 4 malignant
+RESULT {"circuit": "rp_3_rp_5_T_cult.stim", "fd": 3, "malignant": 4, "coef_at_p1e3": 0.7701544502468828, "seconds": 205}

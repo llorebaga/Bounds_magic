@@ -1,0 +1,6 @@
+{"kind": "vcat", "delta": 7, "inject_dag": true, "branches": "X", "qubits": 110, "ticks": 82}
+{"pieces": 511, "detectors": 37, "cuts": 0, "X": ">=7", "bound": 7, "witness": null, "seconds": 11}
+{"kind": "vcat", "delta": 7, "inject_dag": true, "branches": "C", "qubits": 110, "ticks": 82}
+{"pieces": 511, "detectors": 37, "cuts": 0, "C": ">=7", "bound": 7, "witness": null, "seconds": 28}
+{"kind": "vcat", "delta": 7, "inject_dag": true, "branches": "Z", "qubits": 110, "ticks": 82}
+{"pieces": 511, "detectors": 37, "cuts": 0, "Z": ">=7", "bound": 7, "witness": null, "seconds": 84}

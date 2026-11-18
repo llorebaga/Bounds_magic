@@ -1,0 +1,47 @@
+[
+ {
+  "n": 7,
+  "seed": "c",
+  "inject_dag": true,
+  "tree_depth": 1,
+  "partner_reps": 0,
+  "t": 15,
+  "k_affine": 5,
+  "classes": 519,
+  "fd_real": 2,
+  "malignant": 6,
+  "coef_p1e3": 0.08892239357884824,
+  "seconds": 0,
+  "fd_proxy": 3
+ },
+ {
+  "n": 7,
+  "seed": "1",
+  "inject_dag": true,
+  "tree_depth": 1,
+  "partner_reps": 4,
+  "t": 15,
+  "k_affine": 5,
+  "classes": 519,
+  "fd_real": 2,
+  "malignant": 12,
+  "coef_p1e3": 0.572709415006277,
+  "seconds": 0,
+  "fd_proxy": 3
+ },
+ {
+  "n": 7,
+  "seed": "2",
+  "inject_dag": true,
+  "tree_depth": 1,
+  "partner_reps": 3,
+  "t": 15,
+  "k_affine": 5,
+  "classes": 519,
+  "fd_real": 2,
+  "malignant": 12,
+  "coef_p1e3": 1.009938322535453,
+  "seconds": 0,
+  "fd_proxy": 3
+ }
+]

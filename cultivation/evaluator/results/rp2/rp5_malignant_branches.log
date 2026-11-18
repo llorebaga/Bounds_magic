@@ -1,0 +1,24 @@
+ticks of the magic layers (original circuit): [21, 38, 62, 81]
+reference branch: fault distance 3, 4 malignant
+  triple: acceptance 0.0625, bad 0.0625
+      skeleton tick 75: DEPOLARIZE2 [4, 7] ['stim.target_y(7)']
+      skeleton tick 65: DEPOLARIZE2 [12, 7] ['stim.target_y(12)']
+      skeleton tick 54: DEPOLARIZE2 [49, 26] ['stim.target_z(26)']
+  triple: acceptance 0.03125, bad 0.03125
+      skeleton tick 82: DEPOLARIZE1 [7] ['stim.target_x(7)']
+      skeleton tick 68: DEPOLARIZE2 [7, 28] ['stim.target_x(7)']
+      skeleton tick 54: DEPOLARIZE2 [49, 26] ['stim.target_z(26)']
+  triple: acceptance 0.0625, bad 0.0625
+      skeleton tick 80: DEPOLARIZE2 [12, 7] ['stim.target_y(7)']
+      skeleton tick 68: DEPOLARIZE2 [7, 28] ['stim.target_x(7)']
+      skeleton tick 54: DEPOLARIZE2 [49, 26] ['stim.target_z(26)']
+  triple: acceptance 0.03125, bad 0.03125
+      skeleton tick 82: DEPOLARIZE1 [7] ['stim.target_y(7)']
+      skeleton tick 68: DEPOLARIZE2 [7, 28] ['stim.target_x(7)']
+      skeleton tick 54: DEPOLARIZE2 [49, 26] ['stim.target_z(26)']
+BRANCH {"branch": {"2": 0, "5": 0, "39": 1, "40": 0, "42": 1, "49": 1, "50": 1, "51": 1}, "fd": 3, "malignant": 4, "seconds": 197}
+BRANCH {"branch": {"2": 0, "5": 0, "39": 1, "40": 0, "42": 1, "49": 1, "50": 0, "51": 1}, "fd": 3, "malignant": 4, "seconds": 196}
+BRANCH {"branch": {"2": 1, "5": 0, "39": 0, "40": 1, "42": 0, "49": 0, "50": 0, "51": 0}, "fd": 3, "malignant": 4, "seconds": 197}
+BRANCH {"branch": {"2": 1, "5": 0, "39": 1, "40": 0, "42": 0, "49": 1, "50": 1, "51": 0}, "fd": 3, "malignant": 4, "seconds": 201}
+BRANCH {"branch": {"2": 1, "5": 0, "39": 0, "40": 1, "42": 1, "49": 0, "50": 1, "51": 0}, "fd": 3, "malignant": 4, "seconds": 199}
+BRANCH {"branch": {"2": 0, "5": 1, "39": 0, "40": 1, "42": 1, "49": 0, "50": 1, "51": 1}, "fd": 3, "malignant": 4, "seconds": 198}

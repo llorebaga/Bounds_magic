@@ -1,0 +1,14 @@
+last layer at instruction 690, 35 data qubits
+stabilizers on the data: 35; pure-X subgroup rank 17, pure-Z subgroup rank 17
+{"self_dual": true, "z_signs_plus": false, "Xn_logical_X": true, "flat_phases_with_signs": true, "last_layer": "S", "z_weights": [4, 6, 6, 6, 6, 8, 8, 8, 8, 8, 8, 10, 10, 12, 14, 14, 14], "z_signs": [1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, 1, -1, -1, 1, -1, 1]}
+132 detectors, 96 gadget detectors kept
+724 distinct late pieces (3s)
+undetected single pieces: 194
+1097179 distinct patterns from three pieces
+  0 of 1097179 triple patterns tested (222s)
+  200000 of 1097179 triple patterns tested (228s)
+  400000 of 1097179 triple patterns tested (234s)
+  600000 of 1097179 triple patterns tested (240s)
+  800000 of 1097179 triple patterns tested (246s)
+  1000000 of 1097179 triple patterns tested (252s)
+RESULT {"upper_bound": ">3 among late configurations", "witness": null, "seconds": 256}

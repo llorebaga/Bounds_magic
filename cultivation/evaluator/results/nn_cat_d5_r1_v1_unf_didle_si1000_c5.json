@@ -1,0 +1,8 @@
+{
+ "circuit": "nn_cat_d5_r1_v1_unf_didle.stim",
+ "model": "si1000",
+ "malignant_5sets": 85464,
+ "weight": 5.512630105040772e-08,
+ "c5": 55126301.050407715,
+ "seconds": 40
+}

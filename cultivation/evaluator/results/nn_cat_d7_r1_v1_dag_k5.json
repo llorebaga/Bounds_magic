@@ -1,0 +1,12 @@
+{
+ "circuit": "nn_cat_d7_r1_v1_dag.stim",
+ "k": 5,
+ "triples": 47698420,
+ "candidates_evaluated": 7598996,
+ "undetected_classes": 75,
+ "zero_span_rank": 20,
+ "zero_span_reached": 386803,
+ "harmful_candidates": 0,
+ "examples": [],
+ "seconds": 406
+}

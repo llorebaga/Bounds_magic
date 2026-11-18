@@ -1,0 +1,5 @@
+unflagged uniform p=0.002: acc 0.0208 eps 3.603e-08 +- 7.0e-09 SOFT 3.41e-08 (240s)
+unflagged uniform p=0.001: acc 0.1439 eps 2.642e-09 +- 3.1e-10 SOFT 4.59e-09 (232s)
+unflagged uniform p=0.0005: acc 0.3791 eps 2.497e-10 +- 1.7e-11 SOFT 1.57e-10 (218s)
+unflagged uniform p=0.00025: acc 0.6156 eps 2.718e-11 +- 9.9e-13 SOFT None (209s)
+unflagged si1000 p=0.002: acc 0.0241 eps 1.784e-08 +- 4.4e-09 SOFT None (141s)

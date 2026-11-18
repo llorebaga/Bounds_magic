@@ -1,0 +1,16 @@
+{
+ "model": "uniform",
+ "p": 0.002,
+ "proxy_fd": 4,
+ "malignant": 38,
+ "leading_P_bad": 8.401122863149721e-11,
+ "seconds_leading": 282,
+ "shots": 300000000000,
+ "accepted": 6249189737,
+ "failures": 72,
+ "P_acc": 0.020830632456666668,
+ "eps": 1.1521493670404137e-08,
+ "se_eps": 1.3578210506234418e-09,
+ "leading_eps": 4.0330618288361244e-09,
+ "seconds_sampling": 6137
+}

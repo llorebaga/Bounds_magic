@@ -1,0 +1,11 @@
+{
+ "malignant_pairs": 96,
+ "max_dev": 2.7755575615628914e-16,
+ "acc_values": [
+  0.25
+ ],
+ "bad_values": [
+  0.125,
+  0.25
+ ]
+}

@@ -1,0 +1,8 @@
+{"circuit": "fold_n37_c_si1000.stim", "malignant_4sets": 15, "weight": 8.709623930105455e-15, "c4": 0.008709623930105452, "distinct_masks_evaluated": 540567, "harmful_masks": 15, "acceptances": [0.0078125, 0.015625], "seconds": 1198}
+{"circuit": "fold_n37_b1_si1000.stim", "malignant_4sets": 111, "weight": 4.2356616508026693e-14, "c4": 0.04235661650802668, "distinct_masks_evaluated": 572704, "harmful_masks": 80, "acceptances": [0.000976562, 0.001953125, 0.00390625, 0.0078125, 0.015625, 0.03125], "seconds": 536}
+{"circuit": "ucat_d7_r1_injdag_si1000.stim", "malignant_4sets": 120, "weight": 8.553241456266654e-14, "c4": 0.08553241456266653, "distinct_masks_evaluated": 483696, "harmful_masks": 38, "acceptances": [0.0078125, 0.015625, 0.03125], "seconds": 393}
+JSON {"circuit": "fold_n37_c.stim", "model": "si1000", "p": 0.001, "qubits": 218, "ticks": 114, "P_acc": 8e-06, "shots": 1000000}
+JSON {"circuit": "fold_n37_b1.stim", "model": "si1000", "p": 0.001, "qubits": 218, "ticks": 104, "P_acc": 1e-05, "shots": 1000000}
+JSON {"circuit": "ucat_d7_r1_injdag.stim", "model": "si1000", "p": 0.001, "qubits": 218, "ticks": 51, "P_acc": 0.0009635, "shots": 1000000}
+JSON {"circuit": "vcat_d7_r1_injdag.stim", "model": "si1000", "p": 0.001, "qubits": 254, "ticks": 88, "P_acc": 1.3e-05, "shots": 1000000}
+JSON {"circuit": "nn_cat_d7_r1_v1_dag.stim", "model": "si1000", "p": 0.001, "qubits": 91, "ticks": 33, "P_acc": 0.20658, "shots": 1000000}

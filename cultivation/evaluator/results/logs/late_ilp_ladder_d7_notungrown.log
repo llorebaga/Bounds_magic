@@ -1,0 +1,2 @@
+{"circuit": "nn_cat_d7_r1_v1_dag.stim", "delta": 7, "branches": "XZC", "qubits": 91}
+{"pieces": 589, "detectors": 50, "cuts": 5, "X": 6, "Z": ">=6", "C": ">=6", "bound": 6, "witness": {"branch": "X", "pieces": 4, "data": 2, "A": 8224768, "Ap": 10485760, "B": 0}, "seconds": 95}

@@ -1,0 +1,2 @@
+{"delta": 7, "tree": "c", "pieces": 72, "late_bound": 4, "witness": [2, [0, 1, 2, 3, 4, 5, 6, 7, 8, 14, 19]], "s": 3816.3}
+{"delta": 7, "tree": "bc", "pieces": 72, "late_bound": 4, "witness": [2, [0, 2, 13, 18, 24]], "s": 2039.5}

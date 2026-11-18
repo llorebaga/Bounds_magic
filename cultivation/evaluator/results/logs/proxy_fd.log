@@ -1,0 +1,6 @@
+JSON {"circuit": "fold_n37_c.stim", "fd_proxy": ">4", "malignant": 0}
+JSON {"circuit": "fold_n37_bc.stim", "fd_proxy": ">4", "malignant": 0}
+JSON {"circuit": "ucat_d7_r1_injdag.stim", "fd_proxy": ">4", "malignant": 0}
+JSON {"circuit": "vcat_d7_r1_injdag.stim", "fd_proxy": ">4", "malignant": 0}
+JSON {"circuit": "vcat_d5_injT.stim", "fd_proxy": ">4", "malignant": 0}
+JSON {"circuit": "vcat_d3_injdag_merged.stim", "fd_proxy": 3, "malignant": 215}

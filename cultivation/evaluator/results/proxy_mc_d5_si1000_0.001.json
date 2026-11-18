@@ -1,0 +1,16 @@
+{
+ "model": "si1000",
+ "p": 0.001,
+ "proxy_fd": 4,
+ "malignant": 38,
+ "leading_P_bad": 1.7861453234830145e-11,
+ "seconds_leading": 284,
+ "shots": 1500000000000,
+ "accepted": 232878056062,
+ "failures": 88,
+ "P_acc": 0.15525203737466667,
+ "eps": 3.778801725164325e-10,
+ "se_eps": 4.028216173854253e-11,
+ "leading_eps": 1.1504810846201943e-10,
+ "seconds_sampling": 26452
+}

@@ -1,0 +1,16 @@
+{"delta": 9, "tree": "cat", "mode": "pack2", "min_weight_logicals": 424, "single_fault_supports": 121, "fd_upper_bound": 7, "witness": [[[3, 16, 35, 48], 2]]}
+{"delta": 9, "tree": "c", "mode": "pack2", "min_weight_logicals": 424, "single_fault_supports": 132, "fd_upper_bound": 6, "witness": [[[14, 19, 25, 32], 2], [[12, 13, 15], 2]]}
+{"delta": 9, "tree": "bc", "mode": "pack2", "min_weight_logicals": 424, "single_fault_supports": 122, "fd_upper_bound": 6, "witness": [[[15, 26, 44, 53], 2], [[56, 60], 1]]}
+{"delta": 9, "tree": "b1", "mode": "pack2", "min_weight_logicals": 424, "single_fault_supports": 122, "fd_upper_bound": 5, "witness": [[[19, 24, 36, 47, 48], 2], [[55, 57], 1]]}
+{"delta": 9, "tree": "b2", "mode": "pack2", "min_weight_logicals": 424, "single_fault_supports": 122, "fd_upper_bound": 4, "witness": [[[48, 52, 55, 56, 57, 58], 2], [[32, 38], 1]]}
+{"delta": 9, "tree": "b3", "mode": "pack2", "min_weight_logicals": 424, "single_fault_supports": 122, "fd_upper_bound": 6, "witness": [[[47, 48, 55, 56, 57], 2]]}
+{"delta": 9, "tree": "1", "mode": "pack2", "min_weight_logicals": 424, "single_fault_supports": 132, "fd_upper_bound": 6, "witness": [[[37, 38, 59, 60], 2], [[51, 52, 54], 2]]}
+{"delta": 9, "tree": "2", "mode": "pack2", "min_weight_logicals": 424, "single_fault_supports": 132, "fd_upper_bound": 6, "witness": [[[37, 38, 54, 59, 60], 2]]}
+{"delta": 11, "tree": "cat", "mode": "pack2", "min_weight_logicals": 340, "single_fault_supports": 181, "fd_upper_bound": 9, "witness": [[[3, 9, 67, 73], 2]]}
+{"delta": 11, "tree": "c", "mode": "pack2", "min_weight_logicals": 340, "single_fault_supports": 192, "fd_upper_bound": 7, "witness": [[[24, 25, 32, 39, 47], 2], [[12, 13, 15], 2]]}
+{"delta": 11, "tree": "bc", "mode": "pack2", "min_weight_logicals": 340, "single_fault_supports": 182, "fd_upper_bound": 7, "witness": [[[25, 32, 46, 55], 2], [[11, 12, 13, 18], 2]]}
+{"delta": 11, "tree": "b1", "mode": "pack2", "min_weight_logicals": 340, "single_fault_supports": 182, "fd_upper_bound": 6, "witness": [[[78, 79, 81, 82, 83], 2], [[46, 47], 1], [[54, 61, 67], 2]]}
+{"delta": 11, "tree": "b2", "mode": "pack2", "min_weight_logicals": 340, "single_fault_supports": 182, "fd_upper_bound": 7, "witness": [[[61, 67, 72, 77], 2], [[55, 62, 89, 90], 2]]}
+{"delta": 11, "tree": "b3", "mode": "pack2", "min_weight_logicals": 340, "single_fault_supports": 182, "fd_upper_bound": 6, "witness": [[[1, 3, 6, 10, 38, 39], 2], [[24, 31], 1]]}
+{"delta": 11, "tree": "1", "mode": "pack2", "min_weight_logicals": 340, "single_fault_supports": 192, "fd_upper_bound": 8, "witness": [[[55, 61, 62, 89, 90], 2]]}
+{"delta": 11, "tree": "2", "mode": "pack2", "min_weight_logicals": 340, "single_fault_supports": 192, "fd_upper_bound": 7, "witness": [[[1, 3, 9, 38, 39, 47], 2]]}

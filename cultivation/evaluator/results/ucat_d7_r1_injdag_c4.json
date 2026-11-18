@@ -1,0 +1,14 @@
+{
+ "circuit": "ucat_d7_r1_injdag.stim",
+ "malignant_4sets": 120,
+ "weight": 9.300244184078936e-14,
+ "c4": 0.09300244184078935,
+ "distinct_masks_evaluated": 483696,
+ "harmful_masks": 38,
+ "acceptances": [
+  0.0078125,
+  0.015625,
+  0.03125
+ ],
+ "seconds": 559
+}

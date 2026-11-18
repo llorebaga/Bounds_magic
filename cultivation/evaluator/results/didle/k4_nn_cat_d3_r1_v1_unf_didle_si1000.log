@@ -1,0 +1,1 @@
+{"circuit": "nn_cat_d3_r1_v1_unf_didle_si1000.stim", "malignant_4sets": 9340, "weight": 2.0931156684070198e-08, "c4": 20931.156684070193, "distinct_masks_evaluated": 2359, "harmful_masks": 241, "acceptances": [0.25, 0.5, 1.0], "seconds": 1}

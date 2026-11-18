@@ -1,0 +1,1 @@
+{"circuit": "fold_n37_b1_didle.stim", "malignant_4sets": 111, "weight": 5.255626987739155e-11, "c4": 52.55626987739154, "distinct_masks_evaluated": 572704, "harmful_masks": 80, "acceptances": [0.000976562, 0.001953125, 0.00390625, 0.0078125, 0.015625, 0.03125], "seconds": 259}

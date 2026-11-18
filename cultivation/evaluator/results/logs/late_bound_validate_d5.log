@@ -1,0 +1,53 @@
+{"k": 0, "late_bound": 5, "witness_cost": null, "pieces": 95, "tb": 7.4, "family_pred": 5, "certified": 5}
+{"k": 1, "late_bound": 5, "witness_cost": null, "pieces": 95, "tb": 7.2, "family_pred": 5, "certified": 5}
+{"k": 2, "late_bound": 5, "witness_cost": null, "pieces": 95, "tb": 7.4, "family_pred": 4, "certified": 5}
+{"k": 3, "late_bound": 5, "witness_cost": null, "pieces": 95, "tb": 7.4, "family_pred": 5, "certified": 5}
+{"k": 4, "late_bound": 4, "witness_cost": 3, "pieces": 95, "tb": 1.4, "family_pred": 4, "certified": 4}
+{"k": 5, "late_bound": 4, "witness_cost": 3, "pieces": 95, "tb": 1.4, "family_pred": 4, "certified": 4}
+{"k": 6, "late_bound": 5, "witness_cost": null, "pieces": 95, "tb": 5.2, "family_pred": 5, "certified": 5}
+{"k": 7, "late_bound": 5, "witness_cost": null, "pieces": 95, "tb": 5.1, "family_pred": 5, "certified": 5}
+{"k": 8, "late_bound": 5, "witness_cost": null, "pieces": 95, "tb": 5.1, "family_pred": 5, "certified": 5}
+{"k": 9, "late_bound": 5, "witness_cost": null, "pieces": 95, "tb": 5.7, "family_pred": 5, "certified": 5}
+{"k": 10, "late_bound": 5, "witness_cost": null, "pieces": 95, "tb": 5.5, "family_pred": 5, "certified": 5}
+{"k": 11, "late_bound": 5, "witness_cost": null, "pieces": 95, "tb": 5.3, "family_pred": 5, "certified": 5}
+{"k": 0, "late_bound": 5, "witness_cost": null, "pieces": 95, "tb": 5.5, "family_pred": 5, "certified": 5}
+{"k": 1, "late_bound": 4, "witness_cost": 3, "pieces": 95, "tb": 1.4, "family_pred": 4, "certified": 4}
+{"k": 2, "late_bound": 4, "witness_cost": 3, "pieces": 95, "tb": 1.4, "family_pred": 4, "certified": 4}
+{"k": 3, "late_bound": 4, "witness_cost": 3, "pieces": 95, "tb": 1.0, "family_pred": 4, "certified": 4}
+{"k": 4, "late_bound": 5, "witness_cost": null, "pieces": 95, "tb": 5.6, "family_pred": 5, "certified": 5}
+{"k": 5, "late_bound": 5, "witness_cost": null, "pieces": 95, "tb": 6.0, "family_pred": 4, "certified": 5}
+{"k": 6, "late_bound": 5, "witness_cost": null, "pieces": 95, "tb": 5.8, "family_pred": 5, "certified": 5}
+{"k": 7, "late_bound": 5, "witness_cost": null, "pieces": 95, "tb": 5.5, "family_pred": 5, "certified": 5}
+{"k": 8, "late_bound": 5, "witness_cost": null, "pieces": 95, "tb": 5.5, "family_pred": 5, "certified": 5}
+{"k": 9, "late_bound": 4, "witness_cost": 3, "pieces": 95, "tb": 1.3, "family_pred": 4, "certified": 4}
+{"k": 10, "late_bound": 4, "witness_cost": 3, "pieces": 95, "tb": 1.3, "family_pred": 4, "certified": 4}
+{"k": 11, "late_bound": 5, "witness_cost": null, "pieces": 95, "tb": 5.8, "family_pred": 5, "certified": 5}
+{"k": 0, "late_bound": 3, "witness_cost": 1, "pieces": 38, "tb": 0.1, "certified": 3}
+{"k": 1, "late_bound": 3, "witness_cost": 1, "pieces": 38, "tb": 0.1, "certified": 3}
+{"k": 2, "late_bound": 3, "witness_cost": 1, "pieces": 38, "tb": 0.1, "certified": 3}
+{"k": 3, "late_bound": 3, "witness_cost": 2, "pieces": 38, "tb": 0.1, "certified": 3}
+{"k": 4, "late_bound": 3, "witness_cost": 1, "pieces": 38, "tb": 0.1, "certified": 3}
+{"k": 5, "late_bound": 2, "witness_cost": 1, "pieces": 38, "tb": 0.1, "certified": 2}
+{"k": 6, "late_bound": 3, "witness_cost": 2, "pieces": 38, "tb": 0.1, "certified": 3}
+{"k": 7, "late_bound": 3, "witness_cost": 1, "pieces": 38, "tb": 0.1, "certified": 3}
+{"k": 0, "late_bound": 3, "witness_cost": 1, "pieces": 38, "tb": 0.1, "certified": 3}
+{"k": 1, "late_bound": 3, "witness_cost": 1, "pieces": 38, "tb": 0.1, "certified": 3}
+{"k": 2, "late_bound": 3, "witness_cost": 1, "pieces": 38, "tb": 0.2, "certified": 3}
+{"k": 3, "late_bound": 3, "witness_cost": 2, "pieces": 38, "tb": 0.1, "certified": 3}
+{"k": 4, "late_bound": 3, "witness_cost": 1, "pieces": 38, "tb": 0.2, "certified": 3}
+{"k": 5, "late_bound": 3, "witness_cost": 1, "pieces": 38, "tb": 0.1, "certified": 3}
+{"k": 6, "late_bound": 3, "witness_cost": 2, "pieces": 38, "tb": 0.2, "certified": 3}
+{"k": 7, "late_bound": 2, "witness_cost": 1, "pieces": 38, "tb": 0.1, "certified": 2}
+{"k": 8, "late_bound": 3, "witness_cost": 1, "pieces": 38, "tb": 0.1, "certified": 3}
+{"k": 9, "late_bound": 3, "witness_cost": 1, "pieces": 38, "tb": 0.1, "certified": 3}
+{"k": 10, "late_bound": 3, "witness_cost": 1, "pieces": 38, "tb": 0.1, "certified": 3}
+{"k": 11, "late_bound": 3, "witness_cost": 1, "pieces": 38, "tb": 0.1, "certified": 3}
+{"delta": 3, "tree": "c", "pieces": 12, "late_bound": 2, "witness": [1, [0, 2]], "s": 0.0}
+{"delta": 3, "tree": "1", "pieces": 12, "late_bound": 2, "witness": [1, [2, 3]], "s": 0.0}
+{"delta": 3, "tree": "2", "pieces": 12, "late_bound": 2, "witness": [1, [2, 3]], "s": 0.0}
+{"delta": 3, "tree": "b1", "pieces": 12, "late_bound": 2, "witness": [1, [1, 3]], "s": 0.0}
+{"delta": 3, "tree": "cat", "pieces": 12, "late_bound": 2, "witness": [1, [0, 4]], "s": 0.0}
+{"delta": 5, "tree": "c", "pieces": 36, "late_bound": 3, "witness": [1, [0, 1, 2, 3, 4, 5, 6, 8, 10, 13]], "s": 0.1}
+{"delta": 5, "tree": "bc", "pieces": 36, "late_bound": 3, "witness": [1, [0, 4, 11]], "s": 0.1}
+{"delta": 5, "tree": "b1", "pieces": 36, "late_bound": 3, "witness": [2, [0, 1, 2, 3, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 17]], "s": 0.1}
+{"delta": 5, "tree": "cat", "pieces": 36, "late_bound": 3, "witness": [1, [0, 4, 8, 12, 16]], "s": 0.1}

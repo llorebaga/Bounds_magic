@@ -1,0 +1,6607 @@
+{
+ "trees": [
+  {
+   "edges": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "pdppppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "dppddpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "dpddppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     2
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "pdpddpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 11
+  },
+  {
+   "edges": [
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "dppppdp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 10
+  },
+  {
+   "edges": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "dppdpdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 9
+  },
+  {
+   "edges": [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "dpdppdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 9
+  },
+  {
+   "edges": [
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "dpppppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "ddpdppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 15
+  },
+  {
+   "edges": [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "pdppddd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 9
+  },
+  {
+   "edges": [
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 6,
+   "reps": "pddddpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     0,
+     6
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "dppdddp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 9
+  },
+  {
+   "edges": [
+    [
+     0,
+     4
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "pppppdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 1,
+   "reps": "pdpdpdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 7
+  },
+  {
+   "edges": [
+    [
+     2,
+     0
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 1,
+   "reps": "ppdpddp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 10
+  },
+  {
+   "edges": [
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "pdpdddp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 11
+  },
+  {
+   "edges": [
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "dppdddd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 10
+  },
+  {
+   "edges": [
+    [
+     0,
+     4
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 6,
+   "reps": "dpdpddp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 7
+  },
+  {
+   "edges": [
+    [
+     2,
+     4
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "ppdpppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "dppdpdp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "ddddddd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 17
+  },
+  {
+   "edges": [
+    [
+     0,
+     4
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "ppppdpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 11
+  },
+  {
+   "edges": [
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "root": 1,
+   "reps": "dpdpdpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 11
+  },
+  {
+   "edges": [
+    [
+     3,
+     6
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "pdddppp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     1,
+     4
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "dpdddpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "root": 6,
+   "reps": "pddpddd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "root": 6,
+   "reps": "ppppddp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 9
+  },
+  {
+   "edges": [
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "pppppdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 13
+  },
+  {
+   "edges": [
+    [
+     1,
+     2
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 1,
+   "reps": "pppddpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 11
+  },
+  {
+   "edges": [
+    [
+     3,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "pdpdppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 11
+  },
+  {
+   "edges": [
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "pdpdddd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 9
+  },
+  {
+   "edges": [
+    [
+     2,
+     0
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 2,
+   "reps": "ddddppp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 7
+  },
+  {
+   "edges": [
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "pdddddp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "pddddpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     1
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "dpdpppp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 7
+  },
+  {
+   "edges": [
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "root": 6,
+   "reps": "pdppdpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 15
+  },
+  {
+   "edges": [
+    [
+     3,
+     0
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "ddppppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 7
+  },
+  {
+   "edges": [
+    [
+     2,
+     4
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 1,
+   "reps": "ppddppp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "pdddpdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "pdpddpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     0,
+     1
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "dppppdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 9
+  },
+  {
+   "edges": [
+    [
+     1,
+     4
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "pdddpdp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     6
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "dpddppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     5
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "ddpdddp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 10
+  },
+  {
+   "edges": [
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 1,
+   "reps": "ppppdpp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 15
+  },
+  {
+   "edges": [
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "pdpdddd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 10
+  },
+  {
+   "edges": [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "ddppppp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 10
+  },
+  {
+   "edges": [
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "root": 2,
+   "reps": "ppppdpp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 7
+  },
+  {
+   "edges": [
+    [
+     3,
+     1
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "dpppdpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "pppdpdp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 1,
+   "reps": "ppdddpp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "pdpppdp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 13
+  },
+  {
+   "edges": [
+    [
+     1,
+     4
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "pdpdpdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 10
+  },
+  {
+   "edges": [
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "ppdddpp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "ppddppp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     4
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "dpppdpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "pppdpdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 9
+  },
+  {
+   "edges": [
+    [
+     0,
+     5
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "dppdddp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     0,
+     2
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "dpdddpp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 6,
+   "reps": "dddpppp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 9
+  },
+  {
+   "edges": [
+    [
+     2,
+     0
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 1,
+   "reps": "pdpppdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "pdppppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "ppppdpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     6
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "dpddppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 11
+  },
+  {
+   "edges": [
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "ddddpdp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 11
+  },
+  {
+   "edges": [
+    [
+     2,
+     0
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 1,
+   "reps": "pdppppp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 15
+  },
+  {
+   "edges": [
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "dppdppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 10
+  },
+  {
+   "edges": [
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "pdpdddd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 15
+  },
+  {
+   "edges": [
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "dppdpdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 15
+  },
+  {
+   "edges": [
+    [
+     2,
+     4
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "pdpdppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "ppdppdp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 11
+  },
+  {
+   "edges": [
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "dppppdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "dpddppp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 15
+  },
+  {
+   "edges": [
+    [
+     5,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "dpppppp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 7
+  },
+  {
+   "edges": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "dddpppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "pddddpp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     0,
+     6
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 2,
+   "reps": "ppppppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 10
+  },
+  {
+   "edges": [
+    [
+     3,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "dddpddp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "ddddpdp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 1,
+   "reps": "dpdpppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 6,
+   "reps": "ppddppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 10
+  },
+  {
+   "edges": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "pdppddp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "ppppppp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 11
+  },
+  {
+   "edges": [
+    [
+     0,
+     2
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 1,
+   "reps": "dpdpdpp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "dddpppp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 6,
+   "reps": "ppppdpp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     2,
+     1
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "root": 6,
+   "reps": "ppdpppp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 9
+  },
+  {
+   "edges": [
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "root": 2,
+   "reps": "pdpppdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "dpdpdpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "dppddpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     0,
+     2
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "root": 6,
+   "reps": "dddpdpp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 10
+  },
+  {
+   "edges": [
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "pddpddp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 10
+  },
+  {
+   "edges": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "dppddpp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 6,
+   "reps": "ddppdpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     1
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "ddppppp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 10
+  },
+  {
+   "edges": [
+    [
+     0,
+     2
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "pdpddpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 1,
+   "reps": "dppppdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 15
+  },
+  {
+   "edges": [
+    [
+     3,
+     1
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "dddddpp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 11
+  },
+  {
+   "edges": [
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 2,
+   "reps": "dddpppp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 17
+  },
+  {
+   "edges": [
+    [
+     3,
+     0
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "pddpddd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 10
+  },
+  {
+   "edges": [
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "pdddppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 13
+  },
+  {
+   "edges": [
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "pdpdppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "pppdpdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "root": 1,
+   "reps": "ppdpppp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 2,
+   "reps": "dpdppdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 1,
+   "reps": "ppppddp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 1,
+   "reps": "ppdddpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "ppppppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "ddddppp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     6
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "root": 6,
+   "reps": "ddpdddp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 15
+  },
+  {
+   "edges": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "dpppppp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     3
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "ddpddpp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 10
+  },
+  {
+   "edges": [
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "dpdpddd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "ppppdpp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "root": 2,
+   "reps": "dddppdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     2,
+     5
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "pdddpdp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 6,
+   "reps": "dpddpdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 9
+  },
+  {
+   "edges": [
+    [
+     3,
+     2
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "ddpddpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "ddppddp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "ddddppp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 10
+  },
+  {
+   "edges": [
+    [
+     0,
+     5
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "pppdppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     3
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "root": 2,
+   "reps": "pddppdp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "pdddpdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 9
+  },
+  {
+   "edges": [
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 1,
+   "reps": "pddppdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "dpppddd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 11
+  },
+  {
+   "edges": [
+    [
+     0,
+     1
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 1,
+   "reps": "ppddpdp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 10
+  },
+  {
+   "edges": [
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 6,
+   "reps": "pdpdpdp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     1,
+     6
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "pddddpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     5
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "dpdpddd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 9
+  },
+  {
+   "edges": [
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "dpdddpp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 14
+  },
+  {
+   "edges": [
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "ddddpdp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 9
+  },
+  {
+   "edges": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 6,
+   "reps": "pddddpp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "root": 6,
+   "reps": "ppddpdp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 1,
+   "reps": "dppddpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "pppppdp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 9
+  },
+  {
+   "edges": [
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 2,
+   "reps": "dpdpppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "ddpppdp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 6,
+   "reps": "ppddppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 7
+  },
+  {
+   "edges": [
+    [
+     2,
+     1
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "ppppppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 7
+  },
+  {
+   "edges": [
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "root": 6,
+   "reps": "pppdddp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "pdddppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 6,
+   "reps": "ddpppdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 9
+  },
+  {
+   "edges": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "dppddpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 9
+  },
+  {
+   "edges": [
+    [
+     2,
+     1
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "dppddpp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "ddpddpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 10
+  },
+  {
+   "edges": [
+    [
+     2,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 6,
+   "reps": "ddddppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "ddddppp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "pppdpdp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 10
+  },
+  {
+   "edges": [
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "pppdppp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "dpppdpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 1,
+   "reps": "ppddpdp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     1,
+     6
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "dpppddd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "dpppddd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 10
+  },
+  {
+   "edges": [
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "ppppppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     2,
+     1
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "dddppdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 14
+  },
+  {
+   "edges": [
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "pppdddp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "ppdpppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 11
+  },
+  {
+   "edges": [
+    [
+     1,
+     6
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "ddpppdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 9
+  },
+  {
+   "edges": [
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 1,
+   "reps": "dpddddd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "dddppdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 14
+  },
+  {
+   "edges": [
+    [
+     0,
+     4
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 2,
+   "reps": "pdddpdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 10
+  },
+  {
+   "edges": [
+    [
+     1,
+     4
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 2,
+   "reps": "pdddddd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     3,
+     1
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "pddpddd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 7
+  },
+  {
+   "edges": [
+    [
+     1,
+     5
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "pdddddd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 14
+  },
+  {
+   "edges": [
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 6,
+   "reps": "dpppddp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     6
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "ppdpdpp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 9
+  },
+  {
+   "edges": [
+    [
+     2,
+     1
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "ppppppp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "dpdpdpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     0,
+     6
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "root": 1,
+   "reps": "pddddpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 9
+  },
+  {
+   "edges": [
+    [
+     0,
+     2
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 6,
+   "reps": "ppdpdpp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     3,
+     0
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "dpdddpp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 6,
+   "reps": "ppddpdp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 11
+  },
+  {
+   "edges": [
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 1,
+   "reps": "pppdpdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     3,
+     2
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "ddppddd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "pppdpdp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 11
+  },
+  {
+   "edges": [
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "root": 6,
+   "reps": "dddddpp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 11
+  },
+  {
+   "edges": [
+    [
+     3,
+     1
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "dddpdpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 17
+  },
+  {
+   "edges": [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "ddppddp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 10
+  },
+  {
+   "edges": [
+    [
+     0,
+     3
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "pppdppp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     1,
+     6
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "pddpdpp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 9
+  },
+  {
+   "edges": [
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "pdpdpdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     3
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 2,
+   "reps": "pppdpdp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 11
+  },
+  {
+   "edges": [
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "dppdpdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "dpppdpp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 6,
+   "reps": "pdpdppp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 2,
+   "reps": "dppdddp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     1,
+     6
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 6,
+   "reps": "dppdddp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 10
+  },
+  {
+   "edges": [
+    [
+     0,
+     5
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "dppddpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 9
+  },
+  {
+   "edges": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 2,
+   "reps": "dppppdp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 9
+  },
+  {
+   "edges": [
+    [
+     0,
+     4
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "ddpdppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 10
+  },
+  {
+   "edges": [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "pdddddp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "ddppppp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 12
+  },
+  {
+   "edges": [
+    [
+     0,
+     6
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 2,
+   "reps": "dddddpp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 9
+  },
+  {
+   "edges": [
+    [
+     1,
+     3
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "pppppdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "pdpdpdd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 9
+  },
+  {
+   "edges": [
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "dddpdpd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 7
+  },
+  {
+   "edges": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "root": 0,
+   "reps": "ppppppp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "root": 3,
+   "reps": "dpdpddp",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 7
+  },
+  {
+   "edges": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "root": 5,
+   "reps": "ppppppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 6
+  },
+  {
+   "edges": [
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "root": 4,
+   "reps": "ddpdppd",
+   "inject_dag": true,
+   "fd_real": 2,
+   "malignant": 9
+  }
+ ],
+ "histogram": {
+  "2": 200
+ }
+}

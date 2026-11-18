@@ -1,0 +1,10 @@
+{
+ "n": 2844,
+ "rejected_agree": 2224,
+ "accepted": 620,
+ "max_err_acc": 3.3306690738754696e-16,
+ "max_err_bad": 9.992007221626409e-16,
+ "mismatch": 0,
+ "harmful": 0,
+ "seconds": 149.5
+}

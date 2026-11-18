@@ -1,0 +1,11 @@
+{
+ "circuit": "fold_n37_c.stim",
+ "k": 6,
+ "classes": 3590,
+ "triples": 7704936980,
+ "candidates_evaluated": 0,
+ "candidates_reported": 0,
+ "exact_witnesses": 0,
+ "example": [],
+ "seconds": 5241
+}

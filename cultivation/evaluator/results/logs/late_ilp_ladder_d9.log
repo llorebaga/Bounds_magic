@@ -1,0 +1,6 @@
+{"kind": "ladder", "delta": 9, "inject_dag": false, "branches": "X", "qubits": 151, "ticks": 76}
+{"pieces": 1601, "detectors": 146, "cuts": 0, "X": ">=9", "bound": 9, "witness": null, "seconds": 489}
+{"kind": "ladder", "delta": 9, "inject_dag": false, "branches": "C", "qubits": 151, "ticks": 76}
+{"pieces": 1601, "detectors": 146, "cuts": 0, "C": ">=9", "bound": 9, "witness": null, "seconds": 3726}
+{"kind": "ladder", "delta": 9, "inject_dag": false, "branches": "Z", "qubits": 151, "ticks": 76}
+{"pieces": 1601, "detectors": 146, "cuts": 0, "Z": ">=9", "bound": 9, "witness": null, "seconds": 23711}

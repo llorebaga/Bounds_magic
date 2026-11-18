@@ -1,0 +1,33 @@
+{
+ "circuit": "nn_cat_d5_r1_v1_unf.stim",
+ "k": 5,
+ "classes": 463,
+ "triples": 16542064,
+ "candidates_evaluated": 32,
+ "candidates_reported": 16,
+ "exact_witnesses": 16,
+ "example": [
+  [
+   129,
+   165,
+   201,
+   323,
+   327
+  ],
+  [
+   143,
+   165,
+   263,
+   395,
+   399
+  ],
+  [
+   143,
+   161,
+   201,
+   315,
+   318
+  ]
+ ],
+ "seconds": 30
+}

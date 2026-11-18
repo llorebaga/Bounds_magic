@@ -1,0 +1,12 @@
+{"k": 0, "inject_dag": false, "qubits": 39, "ilp": 5, "X": ">=5", "Z": ">=5", "C": ">=5", "cuts": 0, "pieces": 341, "t_ilp": 31.2, "certified": 5, "match": true}
+{"k": 1, "inject_dag": false, "qubits": 39, "ilp": 4, "X": 4, "Z": ">=4", "C": ">=4", "cuts": 1, "pieces": 341, "t_ilp": 26.5, "certified": 4, "match": true}
+{"k": 2, "inject_dag": false, "qubits": 39, "ilp": 4, "X": 4, "Z": ">=4", "C": ">=4", "cuts": 0, "pieces": 341, "t_ilp": 17.6, "certified": 4, "match": true}
+{"k": 3, "inject_dag": false, "qubits": 39, "ilp": 4, "X": 4, "Z": ">=4", "C": ">=4", "cuts": 1, "pieces": 341, "t_ilp": 19.1, "certified": 4, "match": true}
+{"k": 4, "inject_dag": false, "qubits": 39, "ilp": 5, "X": ">=5", "Z": ">=5", "C": ">=5", "cuts": 1, "pieces": 341, "t_ilp": 24.0, "certified": 5, "match": true}
+{"k": 5, "inject_dag": false, "qubits": 39, "ilp": 5, "X": ">=5", "Z": ">=5", "C": ">=5", "cuts": 3, "pieces": 341, "t_ilp": 32.9, "certified": 5, "match": true}
+{"k": 6, "inject_dag": true, "qubits": 39, "ilp": 5, "X": ">=5", "Z": ">=5", "C": ">=5", "cuts": 0, "pieces": 341, "t_ilp": 23.0, "certified": 5, "match": true}
+{"k": 7, "inject_dag": false, "qubits": 39, "ilp": 5, "X": ">=5", "Z": ">=5", "C": ">=5", "cuts": 0, "pieces": 341, "t_ilp": 19.8, "certified": 5, "match": true}
+{"k": 8, "inject_dag": false, "qubits": 39, "ilp": 5, "X": ">=5", "Z": ">=5", "C": ">=5", "cuts": 0, "pieces": 341, "t_ilp": 20.1, "certified": 5, "match": true}
+{"k": 9, "inject_dag": false, "qubits": 39, "ilp": 4, "X": 4, "Z": ">=4", "C": ">=4", "cuts": 1, "pieces": 341, "t_ilp": 10.3, "certified": 4, "match": true}
+{"k": 10, "inject_dag": true, "qubits": 39, "ilp": 4, "X": 4, "Z": ">=4", "C": ">=4", "cuts": 1, "pieces": 341, "t_ilp": 7.2, "certified": 4, "match": true}
+{"k": 11, "inject_dag": true, "qubits": 39, "ilp": 5, "X": ">=5", "Z": ">=5", "C": ">=5", "cuts": 0, "pieces": 341, "t_ilp": 18.4, "certified": 5, "match": true}

@@ -1,0 +1,15 @@
+{
+ "delta": 3,
+ "n": 7,
+ "ver_rounds": 1,
+ "inject_dag": true,
+ "qubits": 21,
+ "ticks": 16,
+ "t": 15,
+ "classes": 137,
+ "fd_real": 3,
+ "malignant": 622,
+ "seconds_real": 0,
+ "fd_proxy": 3,
+ "seconds_proxy": 0
+}

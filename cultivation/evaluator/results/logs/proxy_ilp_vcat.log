@@ -1,0 +1,4 @@
+{"circuit": "vcat delta=7", "qubits": 110, "detectors": 73, "observables": 1, "classes": 507, "cap": 7, "solver": "gurobi", "obs0": {"weight": null, "status": "infeasible"}, "proxy_fd": ">=7", "seconds": 10}
+{"circuit": "vcat delta=9", "qubits": 182, "detectors": 121, "observables": 1, "classes": 843, "cap": 9, "solver": "gurobi", "obs0": {"weight": null, "status": "infeasible"}, "proxy_fd": ">=9", "seconds": 5176}
+{"circuit": "vcat_d7_r1_injdag_nostab.stim", "qubits": 110, "kmax": 4, "real_T": {"fd": ">4", "malignant": 0, "coef_p1e3": null, "n0": 549755813887.99994, "t": 75}, "seconds": 64}
+{"circuit": "ladder delta=9", "qubits": 151, "detectors": 206, "observables": 1, "classes": 1597, "cap": 9, "solver": "gurobi", "obs0": {"weight": null, "status": "infeasible"}, "proxy_fd": ">=9", "seconds": 216172}

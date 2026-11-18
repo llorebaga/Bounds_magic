@@ -1,0 +1,8 @@
+{"kind": "ladder", "delta": 9, "inject_dag": false, "branches": "X", "qubits": 151}
+{"solver": "HiGHS 1.15.1", "pieces": 1601, "detectors": 146, "cuts": 0, "X": ">=9", "bound": 9, "witness": null, "seconds": 6380}
+{"kind": "ladder", "delta": 9, "inject_dag": false, "branches": "Z", "qubits": 151}
+{"solver": "HiGHS 1.15.1", "pieces": 1601, "detectors": 146, "cuts": 0, "Z": ">=9", "bound": 9, "witness": null, "seconds": 25371}
+{"kind": "ladder", "delta": 9, "inject_dag": false, "branches": "C", "qubits": 151}
+{"solver": "HiGHS 1.15.1", "pieces": 1601, "detectors": 146, "cuts": 0, "C": ">=9", "bound": 9, "witness": null, "seconds": 3853}
+{"kind": "vcat", "delta": 7, "inject_dag": true, "branches": "XZC", "qubits": 110}
+{"solver": "HiGHS 1.15.1", "pieces": 511, "detectors": 37, "cuts": 0, "X": ">=7", "Z": ">=7", "C": ">=7", "bound": 7, "witness": null, "seconds": 566}

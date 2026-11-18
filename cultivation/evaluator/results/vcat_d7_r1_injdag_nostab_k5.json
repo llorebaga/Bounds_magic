@@ -1,0 +1,9 @@
+{
+ "circuit": "vcat_d7_r1_injdag_nostab.stim",
+ "k": 5,
+ "triples": 32687060,
+ "candidates_evaluated": 6658758,
+ "harmful_candidates": 0,
+ "examples": [],
+ "seconds": 558
+}

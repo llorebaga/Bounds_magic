@@ -1,0 +1,16 @@
+{
+ "vcat_d3_T_merged (inject T)": {
+  "accepted_Z_classes": 4,
+  "n0": 65536.00000000023,
+  "fd": 2,
+  "malignant": 1,
+  "coef_p1e3": 1536.69733461352
+ },
+ "vcat_d3_injdag_merged (inject T^dag)": {
+  "accepted_Z_classes": 2,
+  "n0": 131072.00000000044,
+  "fd": 3,
+  "malignant": 2405,
+  "coef_p1e3": 4199.406251330737
+ }
+}

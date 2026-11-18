@@ -1,0 +1,15 @@
+== nn_cat_d5_r1_v1_unf_didle si1000 21:54:17
+{"circuit": "nn_cat_d5_r1_v1_unf_didle.stim", "model": "si1000", "malignant_5sets": 85464, "weight": 5.512630105040772e-08, "c5": 55126301.050407715, "seconds": 40}
+== nn_cat_d5_r1_v1_unf_didle file 21:54:57
+{"circuit": "nn_cat_d5_r1_v1_unf_didle.stim", "model": "file", "malignant_5sets": 85464, "weight": 5.28157228788529e-09, "c5": 5281572.28788529, "seconds": 36}
+== nn_cat_d5_r1_v1_didle si1000 21:55:33
+{"circuit": "nn_cat_d5_r1_v1_didle.stim", "model": "si1000", "malignant_5sets": 92216, "weight": 8.41675760855991e-09, "c5": 8416757.60855991, "seconds": 27}
+== vcat_d5_r1_nostab_didle si1000 21:56:00
+{"circuit": "vcat_d5_r1_nostab_didle.stim", "model": "si1000", "malignant_5sets": 86696, "weight": 1.3508513880849951e-08, "c5": 13508513.88084995, "seconds": 23}
+== vcat_d5_r1_didle si1000 21:56:23
+{"circuit": "vcat_d5_r1_didle.stim", "model": "si1000", "malignant_5sets": 754515, "weight": 1.4660433869450613e-08, "c5": 14660433.869450612, "seconds": 285}
+== vcat_d5_r1_didle file 22:01:08
+{"circuit": "vcat_d5_r1_didle.stim", "model": "file", "malignant_5sets": 754515, "weight": 1.2636088747220315e-09, "c5": 1263608.8747220314, "seconds": 310}
+== nn_cat_d5_r1_v1_didle file 22:06:18
+{"circuit": "nn_cat_d5_r1_v1_didle.stim", "model": "file", "malignant_5sets": 92216, "weight": 9.341961210319885e-10, "c5": 934196.1210319884, "seconds": 28}
+exit all 22:06:47

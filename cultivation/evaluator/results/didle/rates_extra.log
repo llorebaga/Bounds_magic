@@ -1,0 +1,1 @@
+{"circuit": "nn_cat_d3_r1_v1_didle", "qubits": 17, "ticks": 10, "uniform": {"fd": 3, "malignant": 654, "c": 239.1823626999384, "accepted_Z_classes": 2}, "si1000": {"fd": 3, "malignant": 654, "c": 337.02596129247155, "accepted_Z_classes": 2, "P_acc": 0.858983, "shots": 1000000, "volume": 197.90845686119513}, "seconds": 0}

@@ -1,0 +1,1 @@
+{"circuit": "fold_n19_b1_nostab_didle_si1000.stim", "malignant_4sets": 2271, "weight": 3.7269134995091107e-10, "c4": 372.691349950911, "distinct_masks_evaluated": 24411, "harmful_masks": 957, "acceptances": [0.00390625, 0.0078125, 0.015625, 0.03125, 0.0625, 0.125, 0.25], "seconds": 6}
