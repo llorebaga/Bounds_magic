@@ -1,1 +1,11 @@
-{"stabilizer": 890940}
+{
+  "a5": {
+    "stabilizer": 345208,
+    "nonstab_moduli_0_1/3_2sqrt2/3": 928,
+    "total": 346136
+  },
+  "a6": {
+    "stabilizer": 890940,
+    "total": 890940
+  }
+}

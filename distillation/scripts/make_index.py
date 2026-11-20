@@ -79,9 +79,10 @@ CAT[("T", "d2")] = dict(
     title="One T state, quadratic suppression (d = 2)", row="prior LB 2 | LB **9** (exhaustive) | UB **9** (new factory, 27/2 p^2) | prior UB 10 (Meier-Eastin-Knill)",
     lb="""No stabilizer protocol with n <= 8 inputs (Proposition 5). Tolerated set: weights < 2 (T is not rational, so no
 complements). n <= 7: Python search with target test. n = 8: X-rank <= 4 in Python (target test), X-ranks 5, 6, 7
-with the compiled Julia kernel (collapse test only), then the 890,940 (a=6) and 346,136 (a=5) collapsing codes
-are classified exactly by their logical Bloch moduli: all stabilizer states except 928 codes with moduli
-{0, 1/3, 2 sqrt2/3}; none is Clifford-equivalent to |T>. Total 1.32e11 signed codes.""",
+with the compiled Julia kernel (collapse test only), then all 890,940 (a=6) and 346,136 (a=5) collapsing codes
+are classified by their logical Bloch moduli (separated by >0.37 from |T>, with exact arithmetic confirming all 928
+non-stabilizer codes): all stabilizer states except 928 codes with moduli {0, 1/3, 2 sqrt2/3}; none is
+Clifford-equivalent to |T>. Total 1.32e11 signed codes.""",
     lb_files=["results/log_t_n7_d2.txt", "results/log_t_n8_d2_a0-5.txt", "results/structs_nogal_r1_n8_d2_a5.txt",
               "results/structs_nogal_r1_n8_d2_a6.txt", "results/structs_nogal_r1_n8_d2_a7.txt",
               "results/log_export_t_n8_a5.txt", "results/log_fast_t_n8_d2_a5.txt.gz", "results/log_fast_t_n8_d2_a6.txt.gz",
@@ -206,7 +207,7 @@ python tri_mip.py ccz 8 1 2""",
 CAT[("CCZ", "d3")] = dict(
     title="CCZ, cubic suppression (d = 3)", row="prior LB 3 | LB **10** (exhaustive) | UB 36 (120 p^3) (dagger: Wills-Jain-Singh CS12CS13 code + Howard-Campbell equivalence) | prior UB 47 (236 p^3)",
     lb="""No protocol with n <= 9 (Proposition 6), complements included. n = 7, 8 in Python (X-rank 5 at n = 8 in 12
-shards); n = 9: X-ranks <= 5 in Python (X-rank 5 in 10 shards) and X-rank 6 with the Julia kernel (9.13e11 signed
+shards); n = 9: X-ranks <= 5 in Python (X-rank 5 in 10 shards) and X-rank 6 with the Julia kernel (9.14e11 signed
 codes in total at n = 9). Validated against a second implementation at n = 7.""",
     lb_files=["results/log_n7_d3.txt", "results/log_n8_d3_a0-4.txt", "results/log_n8_d3_a5_s0.txt",
               "results/structs_r3_n8_d3_a5.txt", "results/log_n9_d3_a0-4.txt", "results/log_n9_d3_a5_s0.txt",

@@ -62,10 +62,10 @@ function qubit_elem(e, x, zz, f)
 end
 const QE = [qubit_elem(e, x, z, f) for e in 0:1, x in 0:1, z in 0:1, f in 0:1]
 
-# full <phi_e|P|phi_f> * 2^n (P = i^{|x&z|} X^x Z^z, Hermitian), as product over qubits; sign s
-function elem(e, f, x, z)
+# full <phi_e|P|phi_f> * 2^nq (P = i^{|x&z|} X^x Z^z, Hermitian), as product over qubits
+function elem(e, f, x, z, nq=n)
     acc = zpow(0)
-    for j in 0:n-1
+    for j in 0:nq-1
         q = QE[((e>>j)&1)+1, ((x>>j)&1)+1, ((z>>j)&1)+1, ((f>>j)&1)+1]
         q == ZERO && return ZERO
         acc = zmul(acc, q)
@@ -136,32 +136,47 @@ perp(AX) = [v for v in 1:MASK if all(iseven(pc(r & v)) for r in AX)]
 const H = [e for e in 0:MASK if pc(e) < d || pc(e) > n - d]
 const E = [e for e in H if e != 0]
 
-function survives(gens::Vector{Tuple{Int,Int}}, nsig)
-    # group elements as (phase power of i, x, z) for x-bits
+function surviving_signs(gens::Vector{Tuple{Int,Int}}, nsig, Elist=E, nq=n)
+    # group elements as (phase power of i, x, z) representing i^p X^x Z^z
     els = [(0, 0, 0)]
     for (gx, gz) in gens
         q = pc(gx & gz) % 4
         els = vcat(els, [((p + q + 2*pc(z & gx)) % 4, x ⊻ gx, z ⊻ gz) for (p, x, z) in els])
     end
-    # Gram entries for all signs: G^s_{ef} = sum_k chi_s(k) i^{p_k} <phi_e|P_k|phi_f>
+    # Gram entries for all signs: G^s_{ef} = sum_k chi_s(k) i^{p_k - |x_k & z_k|} <phi_e|P_k|phi_f>,
+    # since elem() already includes the Hermitian phase i^{|x_k & z_k|}.
     function gram(e, f)
-        vals = [zmul(zpow(2*p), elem(e, f, x, z)) for (p, x, z) in els]
-        [reduce(zadd, (isodd(pc(s & k-1)) ? zmul(zpow(4), vals[k]) : vals[k] for k in 1:length(vals))) for s in 0:nsig-1]
+        vals = [zmul(zpow(2 * mod(p - pc(x & z), 4)), elem(e, f, x, z, nq)) for (p, x, z) in els]
+        [reduce(zadd, (isodd(pc(s & (k - 1))) ? zmul(zpow(4), vals[k]) : vals[k] for k in 1:length(vals))) for s in 0:nsig-1]
     end
     G00 = gram(0, 0)
     alive = [g != ZERO for g in G00]
-    for e in E
-        any(alive) || return false
+    for e in Elist
+        any(alive) || return Int[]
         G0e = gram(0, e); Gee = gram(e, e)
         for s in 1:nsig
             alive[s] || continue
             alive[s] = zsub(zmul(G00[s], Gee[s]), zmul(G0e[s], zconj(G0e[s]))) == ZERO
         end
     end
-    any(alive)
+    [s - 1 for s in 1:nsig if alive[s]]
+end
+survives(gens::Vector{Tuple{Int,Int}}, nsig) = !isempty(surviving_signs(gens, nsig))
+
+# Startup sanity check on the 8-T cube factory and W-rotated equivalents (with odd/even Y counts)
+function self_test()
+    E8 = [e for e in 1:255 if pc(e) < 2 || pc(e) > 6]
+    base = Tuple{Int,Int}[(255, 0x69), (0, 0x0f), (0, 0x33), (0, 0x55), (0, 0xf0)]
+    for (wmask, expected) in ((0x00, [0]), (0x01, [14]), (0x09, [12]), (0xaa, [0]))
+        wm = Int(wmask)
+        gens = Tuple{Int,Int}[(gx, gz ⊻ (gx & wm)) for (gx, gz) in base]
+        got = surviving_signs(gens, 32, E8, 8)
+        @assert got == expected "Self-test failed for W-mask $wmask: got $got, expected $expected"
+    end
 end
 
 function main()
+    self_test()
     total = Atomic{Int}(0); surv = Atomic{Int}(0)
     for a in 0:min(m, n)
         reps = unique(canon(S) for S in allsubspaces(a))

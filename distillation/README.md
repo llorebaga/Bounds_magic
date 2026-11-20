@@ -73,7 +73,7 @@ complementary patterns (needed for non-rational targets such as T).
 | Witness identities, n >= 2d+1 (exact in Q(zeta_8)) | `python 41_check_free_witnesses.py` | `results/free_witness_checks.json` |
 | Low-nullity witness, n >= d + nu + 1 (exact) | `python 52_check_low_nullity_witness.py 10` | `results/low_nullity_witness_checks.json` |
 | One T state, n >= 2d (d >= 2): two-qubit inequality checked exactly on all 60 two-qubit stabilizer states, symbolic replay of the induction, LP with only the proof's witnesses | `cd sdp; python proof_check.py` | stdout |
-| Independent exact certificates of the level-1 relaxation, d = 2..7 (exact simplex over Q(sqrt2)) | `cd sdp; python exact_cert_fast.py 2,3,4,5,6,7` | `sdp/exact_cert_T_d*.pkl` |
+| Independent exact certificates of the level-1 relaxation, d = 2..7 (exact simplex over Q(sqrt2)) | `cd sdp; python exact_cert_fast.py 2,3,4,5,6,7` | `sdp/results_exact_cert.txt` (writes `sdp/exact_cert_T_d*.pkl` locally) |
 
 Exploratory (not in the paper): `python 53_search_magic_witnesses.py 6 2 4` (floating-point search for
 low-nullity witnesses); the remaining relaxations in `sdp/` (see `sdp/README.md`).
